@@ -113,3 +113,19 @@ def test_run_scans_leaders_match_momentum_leaders():
     assert a.counts == b.counts
     # Rolling means over different-length tails differ by ~1e-15, so compare with a tolerance.
     pd.testing.assert_frame_equal(a.table, b.table)
+
+
+def test_cannot_break_out_after_base_broke_the_day_before():
+    b = busy_tail(textbook(), 157)  # setup on bar 156
+    b.set_bar(159, close=27.0)  # bar 159: >15% below the high, base broken
+    res = run(with_bar(b, close=34.0, high=34.4, low=33.0, volume=3_000_000))
+    assert res.breakouts.table.empty
+
+
+def test_breakout_iff_on_previous_watchlist():
+    b = with_bar(textbook(), close=33.0, high=33.3, low=31.9, volume=2_000_000)
+    p = panels_from({"X": b})
+    yesterday = scans.run_scans(p.as_of(p.dates[-2]), CFG).watchlist.table
+    today = scans.run_scans(p, CFG).breakouts.table
+    assert set(today.index) <= set(yesterday.index)
+    assert today.loc["X", "trigger"] == pytest.approx(yesterday.loc["X", "trigger"])

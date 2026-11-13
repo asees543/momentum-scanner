@@ -203,6 +203,7 @@ class SetupFrames:
     """Stage 3 on every session (date x symbol)."""
 
     qualified: pd.DataFrame  # bool: every rule below holds
+    structure: pd.DataFrame  # bool: leader, trend, sma_order and near_high hold (the base is intact)
     trigger: pd.DataFrame  # highest high of the last `trigger_bars` bars
     conditions: dict[str, pd.DataFrame]  # each rule on its own (bool), for inspection and tests
     leader_recent: dict[str, pd.DataFrame]  # per window: leader on any of the last N sessions
@@ -249,17 +250,32 @@ def setup_frames(panels: Panels, liq: LiquidityFrames, lf: LeaderFrames, scfg: S
         "tight": tight,
         "dryup": v <= scfg.dryup_max_volume_ratio * avg_vol,
     }
-    qualified = conditions["leader"].copy()
-    for name, cond in conditions.items():
-        if name != "leader":
-            qualified &= cond
+    structure = conditions["leader"] & conditions["trend"] & conditions["sma_order"] & conditions["near_high"]
+    qualified = structure & conditions["higher_lows"] & conditions["tight"] & conditions["dryup"]
     return SetupFrames(
         qualified=qualified,
+        structure=structure,
         trigger=ind.highest(h, scfg.trigger_bars),
         conditions=conditions,
         leader_recent=leader_recent,
         avg_volume_prior=avg_vol,
     )
+
+
+def _watch_state(sf: SetupFrames, close: pd.DataFrame, end: int, memory: int) -> pd.DataFrame:
+    """Watchlist membership at row position `end`:
+
+    on_watchlist = the setup qualified on some day s among the last `memory` sessions (end included)
+                   AND no close on s+1..end was above trigger_s
+                   AND the structural rules (leader, close > SMA50, SMA10 > SMA20, within 15% of the
+                       20-day high) still hold on day `end`
+    The noisy day-to-day rules (higher lows, tight range, volume dry-up) may lapse after day s; a
+    broken base (e.g. a drop below the 50-day SMA) removes the name at once.
+    A breakout on day t requires on_watchlist at t-1.
+    """
+    st = _latest_setup(sf, close, end, memory)
+    st["on_watchlist"] = st["has_setup"] & ~st["closed_above"] & sf.structure.iloc[end].astype(bool)
+    return st
 
 
 def _latest_setup(sf: SetupFrames, close: pd.DataFrame, end: int, memory: int) -> pd.DataFrame:
@@ -336,9 +352,8 @@ def _rows_needed(cfg: MarketConfig) -> int:
 def watchlist_from_frames(
     p: Panels, liq: LiquidityFrames, sf: SetupFrames, cfg: MarketConfig, max_lb: int
 ) -> WatchlistResult:
-    """Watchlist on the as-of session t = names that could break out on the NEXT session:
-    their setup qualified on one of the last M sessions (t included; M = watchlist_memory_sessions)
-    and no close since then has been above that day's trigger.
+    """Watchlist on the as-of session t = names that could break out on the NEXT session
+    (see _watch_state: setup within the last M sessions, still below its trigger, base intact).
 
     stop      = low_t (stand-in for the breakout-day low, which SPEC uses as the real stop)
     risk%     = 100 x (trigger - stop) / trigger; risk_too_wide if risk% > max_risk_vs_adr x ADR%_t
@@ -346,9 +361,8 @@ def watchlist_from_frames(
     vol_ratio = volume_t / mean volume of the 20 sessions before t
     """
     t = len(p.dates) - 1
-    latest = _latest_setup(sf, p.close, t, cfg.breakout.watchlist_memory_sessions)
-    keep = latest["has_setup"] & ~latest["closed_above"]
-    syms = latest.index[keep]
+    latest = _watch_state(sf, p.close, t, cfg.breakout.watchlist_memory_sessions)
+    syms = latest.index[latest["on_watchlist"]]
     close = p.close.iloc[-1][syms]
     trig = latest.loc[syms, "trigger"]
     stop = p.low.iloc[-1][syms]
@@ -390,9 +404,9 @@ def breakouts_from_frames(
 ) -> BreakoutResult:
     """Breakouts on the as-of session t (SPEC Stage 4):
 
-    eligible  : setup qualified on some day s in t-M..t-1 (the most recent such s is used,
-                M = watchlist_memory_sessions) and no close on s+1..t-1 was above trigger_s,
-                so only the FIRST close above the trigger counts
+    eligible  : on the watchlist at t-1 (see _watch_state): setup qualified on some day s in
+                t-M..t-1 (the most recent such s is used), no close on s+1..t-1 above trigger_s, so
+                only the FIRST close above the trigger counts, and the base was intact on day t-1
     breakout  : close_t > trigger_s  AND  volume_t >= 1.5 x mean volume of the 20 sessions before t
     stop      = low_t (the breakout day's low)
     risk%     = 100 x (close_t - stop) / close_t
@@ -406,8 +420,8 @@ def breakouts_from_frames(
         empty = pd.DataFrame(columns=["close", "trigger", "stop", "risk_pct", "adr_pct", "vol_ratio", "status"])
         return BreakoutResult(as_of=p.dates[-1], table=empty, ok_count=0, rejected_count=0, windows=windows)
 
-    latest = _latest_setup(sf, p.close, t - 1, bcfg.watchlist_memory_sessions)
-    eligible = latest["has_setup"] & ~latest["closed_above"]
+    latest = _watch_state(sf, p.close, t - 1, bcfg.watchlist_memory_sessions)
+    eligible = latest["on_watchlist"]
     close_t = p.close.iloc[-1]
     vol_t = p.volume.iloc[-1]
     avg_vol = sf.avg_volume_prior.iloc[-1]

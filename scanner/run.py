@@ -1,7 +1,8 @@
-"""CLI: update market data and print the momentum-leaders scan.
+"""CLI: update market data and print breakouts, the watchlist and momentum leaders.
 
-    uv run python -m scanner.run --market us
-    uv run python -m scanner.run --market us --window 1m --mode rank
+    uv run python -m scanner.run --market us                       # breakouts + watchlist + leader counts
+    uv run python -m scanner.run --market us --scan leaders        # full leaders table
+    uv run python -m scanner.run --market us --scan watchlist --window 1m
     uv run python -m scanner.run --market us --no-update --as-of 2026-10-30
     uv run python -m scanner.run --market us --symbols NVDA,PLTR,HOOD     # quick dev run
 
@@ -15,6 +16,7 @@ import logging
 import re
 import sys
 from datetime import date, datetime, timezone
+from pathlib import Path
 from types import ModuleType
 
 import pandas as pd
@@ -27,7 +29,7 @@ from scanner.config import ConfigError, MarketConfig, load_config
 from scanner.data import us_loader
 from scanner.data.base import Panels, last_complete_session_date
 from scanner.data.cache import PriceCache, UpdateReport, update_prices
-from scanner.scans import LeadersResult, momentum_leaders
+from scanner.scans import BreakoutResult, LeadersResult, ScanResults, WatchlistResult, run_scans
 
 MARKETS: dict[str, ModuleType] = {"us": us_loader}
 CURRENCY_SYMBOL = {"USD": "$", "INR": "₹"}
@@ -39,14 +41,18 @@ err_console = Console(stderr=True)
 def parse_args(argv: list[str] | None) -> argparse.Namespace:
     p = argparse.ArgumentParser(prog="python -m scanner.run", description=__doc__.split("\n\n")[0])
     p.add_argument("--market", default="us", choices=sorted(MARKETS))
-    p.add_argument("--window", help="show only names passing this window (e.g. 1m, 3m, 6m)")
+    p.add_argument("--scan", default="all", choices=["all", "leaders", "watchlist", "breakouts"],
+                   help="what to print (default: breakouts, watchlist and leader counts)")
+    p.add_argument("--window", help="only names that are leaders in this window (e.g. 1m, 3m, 6m); for the "
+                   "watchlist and breakouts: a leader in that window during the setup lookback")
     p.add_argument("--mode", choices=["fixed", "rank"], help="override leaders.mode from the config")
     p.add_argument("--no-update", action="store_true", help="use cached data only (no downloads)")
     p.add_argument("--refresh", action="store_true", help="re-run the incremental update even if already done today")
     p.add_argument("--as-of", type=date.fromisoformat, help="evaluate the scan on a past session (YYYY-MM-DD)")
     p.add_argument("--symbols", help="comma-separated symbols instead of the full universe (dev)")
     p.add_argument("--limit", type=int, help="only the first N universe symbols, alphabetically (dev)")
-    p.add_argument("--csv", help="also write the result table to this CSV file")
+    p.add_argument("--csv", help="also write the table(s) to CSV; with --scan all, out.csv becomes "
+                   "out_breakouts.csv, out_watchlist.csv and out_leaders.csv")
     p.add_argument("-v", "--verbose", action="store_true", help="show info-level logs")
     return p.parse_args(argv)
 
@@ -140,21 +146,28 @@ def load_data(cfg: MarketConfig, args: argparse.Namespace) -> tuple[pd.DataFrame
     return universe, prices, report
 
 
-def render(res: LeadersResult, cfg: MarketConfig, universe: pd.DataFrame, args: argparse.Namespace,
-           report: UpdateReport | None) -> pd.DataFrame:
-    names = dict(zip(universe.get("symbol", []), universe.get("name", [])))
-    table = res.table
-    if args.window:
-        table = table[table[f"pass_{args.window}"]]
-    cur = cfg.currency
-    lo, hi = cfg.leaders.target_count
+def _names(universe: pd.DataFrame) -> dict[str, str]:
+    return dict(zip(universe.get("symbol", []), universe.get("name", [])))
 
-    t = Table(
-        title=f"{cfg.market.upper()} momentum leaders · {res.as_of:%Y-%m-%d} · {res.mode} mode",
-        header_style="bold",
-        title_justify="left",
-        pad_edge=False,
-    )
+
+def _symbol_cell(sym: str, r: pd.Series) -> str:
+    return f"{sym} [yellow]⚠[/]" if r.get("flag_day_move", False) else sym
+
+
+def _leader_marks(r: pd.Series, windows: list[str], prefix: str) -> str:
+    return " ".join("[green]✓[/]" if r[f"{prefix}{w}"] else "[dim]·[/]" for w in windows)
+
+
+def _new_table(title: str) -> Table:
+    return Table(title=title, header_style="bold", title_justify="left", pad_edge=False)
+
+
+def render_leaders_table(res: LeadersResult, cfg: MarketConfig, names: dict, window: str | None) -> pd.DataFrame:
+    table = res.table
+    if window:
+        table = table[table[f"pass_{window}"]]
+    cur = cfg.currency
+    t = _new_table(f"{cfg.market.upper()} momentum leaders · {res.as_of:%Y-%m-%d} · {res.mode} mode")
     t.add_column("#", justify="right", style="dim")
     t.add_column("Symbol", style="bold")
     t.add_column("Name", max_width=28, no_wrap=True, overflow="ellipsis")
@@ -166,24 +179,26 @@ def render(res: LeadersResult, cfg: MarketConfig, universe: pd.DataFrame, args: 
     t.add_column("Scans", justify="center")
     t.add_column("ADR%", justify="right")
     t.add_column(f"Avg {CURRENCY_SYMBOL.get(cur, cur)}Vol", justify="right")
-
     for i, (sym, r) in enumerate(table.iterrows(), start=1):
-        shown = f"{sym} [yellow]⚠[/]" if r["flag_day_move"] else sym
-        cells = [str(i), shown, short_name(names.get(sym, "")), f"{r['close']:.2f}"]
+        cells = [str(i), _symbol_cell(sym, r), short_name(names.get(sym, "")), f"{r['close']:.2f}"]
         for w in res.windows:
             txt = fmt_pct(r[f"ret_{w}"])
             cells.append(f"[green]{txt}[/]" if r[f"pass_{w}"] else f"[dim]{txt}[/]")
             if res.mode == "rank":
                 cells.append("-" if pd.isna(r[f"rs_{w}"]) else f"{r[f'rs_{w}']:.0f}")
-        cells.append(" ".join("[green]✓[/]" if r[f"pass_{w}"] else "[dim]·[/]" for w in res.windows))
+        cells.append(_leader_marks(r, res.windows, "pass_"))
         cells += [f"{r['adr_pct']:.1f}", fmt_money(r["avg_traded_value"], cur)]
         t.add_row(*cells)
-
     if len(table):
         console.print(t)
     else:
         console.print(f"[yellow]No leaders on {res.as_of:%Y-%m-%d}.[/]")
+    return table
 
+
+def render_leaders_summary(res: LeadersResult, cfg: MarketConfig, flagged: int | None = None) -> None:
+    cur = cfg.currency
+    lo, hi = cfg.leaders.target_count
     liq = cfg.liquidity
     sym = CURRENCY_SYMBOL.get(cur, cur + " ")
     console.print(
@@ -203,30 +218,168 @@ def render(res: LeadersResult, cfg: MarketConfig, universe: pd.DataFrame, args: 
         if res.mode == "fixed"
         else f"top {cfg.leaders.rank_top_pct:g}% by return"
     )
-    console.print(f"Per scan: {' · '.join(parts)}  [dim](target {lo}–{hi}; {rule})[/]")
-    n_flag = int(table["flag_day_move"].sum()) if len(table) else 0
-    if n_flag:
+    console.print(f"Leaders per scan: {' · '.join(parts)}  [dim](target {lo}–{hi}; {rule})[/]")
+    if flagged:
         m = cfg.leaders.flag_day_move_multiple
         console.print(
-            f"[yellow]⚠[/] {n_flag} names had a one-day move ≥ {m:g}× (or ≤ 1/{m:g}×) inside the window: "
+            f"[yellow]⚠[/] {flagged} names had a one-day move ≥ {m:g}× (or ≤ 1/{m:g}×) inside the 6M window: "
             "a real squeeze or a reverse split the data source has not adjusted yet. Check the chart."
         )
-    if report is not None:
-        msg = (
-            f"[dim]Data: {report.new_symbols:,} new, {report.incremental:,} updated, "
-            f"{len(report.full_refetch)} re-downloaded (split/revision)"
-            + (f", {report.already_current:,} already current" if report.already_current else "")
-            + "[/]"
+
+
+def render_watchlist(wl: WatchlistResult, cfg: MarketConfig, names: dict, window: str | None) -> pd.DataFrame:
+    table = wl.table
+    if window:
+        table = table[table[f"led_{window}"]]
+    cur = cfg.currency
+    s, b = cfg.setup, cfg.breakout
+    t = _new_table(f"{cfg.market.upper()} watchlist · {wl.as_of:%Y-%m-%d} · can break out next session")
+    t.add_column("#", justify="right", style="dim")
+    t.add_column("Symbol", style="bold")
+    t.add_column("Name", max_width=24, no_wrap=True, overflow="ellipsis")
+    t.add_column("Close", justify="right")
+    t.add_column("Trigger", justify="right", style="bold")
+    t.add_column("To trig", justify="right")
+    t.add_column("Stop", justify="right")
+    t.add_column("Risk%", justify="right")
+    t.add_column("ADR%", justify="right")
+    t.add_column("Vol/avg", justify="right")
+    t.add_column("Leader " + " ".join(w.upper() for w in wl.windows), justify="center")
+    t.add_column("Age", justify="right")
+    t.add_column(f"Avg {CURRENCY_SYMBOL.get(cur, cur)}Vol", justify="right")
+    for i, (sym, r) in enumerate(table.iterrows(), start=1):
+        risk = f"{r['risk_pct']:.1f}"
+        t.add_row(
+            str(i),
+            _symbol_cell(sym, r),
+            short_name(names.get(sym, "")),
+            f"{r['close']:.2f}",
+            f"{r['trigger']:.2f}",
+            f"{r['to_trigger_pct']:+.1f}%",
+            f"{r['stop']:.2f}",
+            f"[yellow]{risk}[/]" if r["risk_too_wide"] else risk,
+            f"{r['adr_pct']:.1f}",
+            f"{r['vol_ratio']:.2f}",
+            _leader_marks(r, wl.windows, "led_"),
+            "today" if r["setup_age"] == 0 else f"{int(r['setup_age'])}d",
+            fmt_money(r["avg_traded_value"], cur),
         )
-        console.print(msg)
-        if report.full_refetch:
-            console.print(f"[dim]  re-downloaded: {', '.join(report.full_refetch[:15])}"
-                          + (" …" if len(report.full_refetch) > 15 else "") + "[/]")
-        if report.failed:
-            console.print(f"[yellow]  {len(report.failed)} symbols returned no data: "
-                          f"{', '.join(report.failed[:15])}{' …' if len(report.failed) > 15 else ''}[/]")
-    console.print("[dim]Information only, not investment advice.[/]")
+    if len(table):
+        console.print(t)
+    else:
+        console.print(f"[yellow]Watchlist is empty on {wl.as_of:%Y-%m-%d}.[/]")
+    wide = int(table["risk_too_wide"].sum()) if len(table) else 0
+    console.print(
+        f"Watchlist: {len(table)} names ({wl.qualified_today} qualified today, the rest within the last "
+        f"{b.watchlist_memory_sessions} sessions and still below their trigger)"
+        + (f" · [yellow]{wide} with risk wider than ADR[/]" if wide else "")
+    )
+    console.print(
+        f"[dim]Trigger = highest high of the last {s.trigger_bars} bars on the setup day · stop = latest bar's low "
+        f"(the real stop is the breakout day's low) · risk% = (trigger − stop) / trigger · Age = sessions since "
+        f"the setup last qualified · Vol/avg = today's volume ÷ previous {s.volume_avg_window}-session mean[/]"
+    )
     return table
+
+
+def render_breakouts(bo: BreakoutResult, cfg: MarketConfig, names: dict, window: str | None) -> pd.DataFrame:
+    table = bo.table
+    if window and len(table):
+        table = table[table[f"led_{window}"]]
+    cur = cfg.currency
+    b = cfg.breakout
+    t = _new_table(f"{cfg.market.upper()} breakouts · {bo.as_of:%Y-%m-%d}")
+    t.add_column("#", justify="right", style="dim")
+    t.add_column("Symbol", style="bold")
+    t.add_column("Name", max_width=24, no_wrap=True, overflow="ellipsis")
+    t.add_column("Close", justify="right")
+    t.add_column("Trigger", justify="right")
+    t.add_column("Stop", justify="right", style="bold")
+    t.add_column("Risk%", justify="right")
+    t.add_column("ADR%", justify="right")
+    t.add_column("Vol×", justify="right")
+    t.add_column("Status")
+    t.add_column("Leader " + " ".join(w.upper() for w in bo.windows), justify="center")
+    t.add_column("Setup", justify="right")
+    t.add_column(f"Avg {CURRENCY_SYMBOL.get(cur, cur)}Vol", justify="right")
+    for i, (sym, r) in enumerate(table.iterrows(), start=1):
+        ok = r["status"] == "ok"
+        t.add_row(
+            str(i),
+            _symbol_cell(sym, r),
+            short_name(names.get(sym, "")),
+            f"{r['close']:.2f}",
+            f"{r['trigger']:.2f}",
+            f"{r['stop']:.2f}",
+            f"{r['risk_pct']:.1f}",
+            f"{r['adr_pct']:.1f}",
+            f"{r['vol_ratio']:.1f}",
+            "[green]ok[/]" if ok else "[yellow]too wide[/]",
+            _leader_marks(r, bo.windows, "led_"),
+            f"{int(r['setup_age'])}d ago",
+            fmt_money(r["avg_traded_value"], cur),
+        )
+    if len(table):
+        console.print(t)
+    else:
+        console.print(f"No breakouts on {bo.as_of:%Y-%m-%d}.")
+    if len(table):
+        n_ok = int((table["status"] == "ok").sum())
+        console.print(
+            f"Breakouts: {n_ok} ok, {len(table) - n_ok} too wide  [dim](close > trigger, volume ≥ "
+            f"{b.min_volume_ratio:g}× average; stop = day low; too wide = risk% > {b.max_risk_vs_adr:g}× ADR%)[/]"
+        )
+    return table
+
+
+def render_data_report(report: UpdateReport | None) -> None:
+    if report is None:
+        return
+    console.print(
+        f"[dim]Data: {report.new_symbols:,} new, {report.incremental:,} updated, "
+        f"{len(report.full_refetch)} re-downloaded (split/revision)"
+        + (f", {report.already_current:,} already current" if report.already_current else "")
+        + "[/]"
+    )
+    if report.full_refetch:
+        console.print(f"[dim]  re-downloaded: {', '.join(report.full_refetch[:15])}"
+                      + (" …" if len(report.full_refetch) > 15 else "") + "[/]")
+    if report.failed:
+        console.print(f"[yellow]  {len(report.failed)} symbols returned no data: "
+                      f"{', '.join(report.failed[:15])}{' …' if len(report.failed) > 15 else ''}[/]")
+
+
+def render(res: ScanResults, cfg: MarketConfig, universe: pd.DataFrame, args: argparse.Namespace,
+           report: UpdateReport | None) -> dict[str, pd.DataFrame]:
+    """Print the requested scan(s); return the tables shown, keyed by scan name."""
+    names = _names(universe)
+    shown: dict[str, pd.DataFrame] = {}
+    if args.scan in ("all", "breakouts"):
+        shown["breakouts"] = render_breakouts(res.breakouts, cfg, names, args.window)
+        console.print()
+    if args.scan in ("all", "watchlist"):
+        shown["watchlist"] = render_watchlist(res.watchlist, cfg, names, args.window)
+        console.print()
+    if args.scan == "leaders":
+        shown["leaders"] = render_leaders_table(res.leaders, cfg, names, args.window)
+        render_leaders_summary(res.leaders, cfg, int(shown["leaders"]["flag_day_move"].sum()))
+    elif args.scan == "all":
+        shown["leaders"] = res.leaders.table
+        render_leaders_summary(res.leaders, cfg)
+    render_data_report(report)
+    console.print("[dim]Information only, not investment advice.[/]")
+    return shown
+
+
+def write_csv(path: str, shown: dict[str, pd.DataFrame], as_of: pd.Timestamp, names: dict) -> None:
+    target = Path(path)
+    for scan, table in shown.items():
+        out_path = target if len(shown) == 1 else target.with_name(f"{target.stem}_{scan}{target.suffix or '.csv'}")
+        out = table.copy()
+        out.insert(0, "name", [names.get(s, "") for s in out.index])
+        out.insert(0, "as_of", as_of.date())
+        out.to_csv(out_path)
+        console.print(f"[dim]Wrote {len(out)} rows to {out_path}[/]")
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -260,16 +413,10 @@ def main(argv: list[str] | None = None) -> int:
         if panels.close.empty:
             err_console.print(f"[red]No sessions on or before {args.as_of}.[/]")
             return 1
-    res = momentum_leaders(panels, cfg.liquidity, cfg.leaders, mode=args.mode)
-    table = render(res, cfg, universe, args, report)
-
+    res = run_scans(panels, cfg, mode=args.mode)
+    shown = render(res, cfg, universe, args, report)
     if args.csv:
-        out = table.copy()
-        names = dict(zip(universe.get("symbol", []), universe.get("name", [])))
-        out.insert(0, "name", [names.get(s, "") for s in out.index])
-        out.insert(0, "as_of", res.as_of.date())
-        out.to_csv(args.csv)
-        console.print(f"[dim]Wrote {len(out)} rows to {args.csv}[/]")
+        write_csv(args.csv, shown, res.leaders.as_of, _names(universe))
     return 0
 
 

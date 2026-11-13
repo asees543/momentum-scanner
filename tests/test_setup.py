@@ -204,3 +204,12 @@ def test_watchlist_is_point_in_time():
     assert wl.as_of == p.dates[-1]
     assert wl.table.loc["X", "stop"] == pytest.approx(b.low[158])
     assert wl.table.loc["X", "trigger"] == pytest.approx(b.high[149:159].max())  # bar 159 unseen
+
+
+def test_broken_base_drops_off_even_within_memory():
+    b = busy_tail(textbook(), 157)  # setup on bar 156
+    b.set_bar(159, close=27.0)  # now more than 15% below the 33.28 high
+    wl, sf = watchlist({"X": b})
+    assert bool(sf.qualified["X"].iloc[156])
+    assert not bool(sf.conditions["near_high"]["X"].iloc[159])
+    assert "X" not in wl.table.index
