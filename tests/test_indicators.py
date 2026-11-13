@@ -95,6 +95,34 @@ def test_dollar_volume_aliases():
     assert ind.avg_dollar_volume is ind.avg_traded_value
 
 
+# --- daily range, prior mean, highest / lowest ---------------------------------------------------
+
+
+def test_daily_range_pct():
+    out = ind.daily_range_pct(s([110, 105, 1]), s([100, 100, 0]))
+    assert out.iloc[0] == pytest.approx(10.0)
+    assert out.iloc[1] == pytest.approx(5.0)
+    assert math.isnan(out.iloc[2])  # zero low
+
+
+def test_daily_range_mean_equals_adr():
+    high, low = s([110, 105, 120]), s([100, 100, 100])
+    assert ind.daily_range_pct(high, low).mean() == pytest.approx(ind.adr_pct(high, low, 3).iloc[-1])
+
+
+def test_prior_mean_excludes_current_bar():
+    out = ind.prior_mean(s([1, 2, 3, 100]), 3)
+    assert out.iloc[:3].isna().all()
+    assert out.iloc[3] == pytest.approx(2.0)  # mean of 1, 2, 3; the 100 itself is not included
+
+
+def test_highest_lowest():
+    x = s([5, 1, 4, 2, 3])
+    assert ind.highest(x, 3).tolist()[2:] == [5, 4, 4]
+    assert ind.lowest(x, 3).tolist()[2:] == [1, 1, 2]
+    assert ind.highest(x, 3).iloc[:2].isna().all()
+
+
 # --- rs_rank_pct ------------------------------------------------------------------------------
 
 

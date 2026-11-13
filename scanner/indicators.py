@@ -75,6 +75,37 @@ def avg_traded_value(close: T, volume: T, n: int = 20) -> T:
     return traded_value(close, volume).rolling(n, min_periods=n).mean()
 
 
+def daily_range_pct(high: T, low: T) -> T:
+    """One bar's range in percent, same definition ADR% averages.
+
+    Formula: range%_t = 100 x (high_t / low_t - 1). A non-positive low gives NaN.
+    """
+    return 100 * (high / low.where(low > 0) - 1)
+
+
+def prior_mean(series: T, n: int) -> T:
+    """Mean of the n bars BEFORE bar t (bar t itself excluded).
+
+    Formula: prior_mean_t = (x_{t-1} + x_{t-2} + ... + x_{t-n}) / n
+    Used for "volume vs its 20-day average", so an unusual bar (a breakout, a dry-up day) is
+    compared with a baseline it has not already moved.
+    """
+    _check_window(n)
+    return series.shift(1).rolling(n, min_periods=n).mean()
+
+
+def highest(series: T, n: int) -> T:
+    """Highest value of the last n bars, bar t included (e.g. the 20-day high from highs)."""
+    _check_window(n)
+    return series.rolling(n, min_periods=n).max()
+
+
+def lowest(series: T, n: int) -> T:
+    """Lowest value of the last n bars, bar t included."""
+    _check_window(n)
+    return series.rolling(n, min_periods=n).min()
+
+
 # SPEC.md uses US naming; keep aliases so either name reads naturally.
 dollar_volume = traded_value
 avg_dollar_volume = avg_traded_value

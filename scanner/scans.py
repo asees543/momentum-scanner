@@ -1,21 +1,22 @@
 """Market-agnostic scans. They take price panels + config and never know which market they run on.
 
-Phase 1: Stage 1 liquidity filter and Stage 2 momentum leaders (SPEC.md).
-Phase 2 will add the consolidation setup (watchlist) and the breakout trigger.
+Stage 1 liquidity filter, Stage 2 momentum leaders, Stage 3 consolidation setup (watchlist) and
+Stage 4 breakout trigger (SPEC.md).
 
-All scans are evaluated on a single "as-of" session: the last row of the panels passed in.
-Pass `panels.as_of(date)` to evaluate a past date with no lookahead.
+Rules are computed as date x symbol frames, then read on a single "as-of" session: the last row
+of the panels passed in. Pass `panels.as_of(date)` to evaluate a past date with no lookahead.
 """
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Literal
 
+import numpy as np
 import pandas as pd
 
 from scanner import indicators as ind
-from scanner.config import LeadersConfig, LiquidityConfig
+from scanner.config import BreakoutConfig, LeadersConfig, LiquidityConfig, MarketConfig, SetupConfig
 from scanner.data.base import Panels
 
 
@@ -187,3 +188,190 @@ def max_day_move(close: pd.DataFrame) -> pd.Series:
     """Per symbol, the largest one-day move in `close` as a multiple >= 1 (up or down)."""
     ratio = close / close.shift(1)
     return pd.concat([ratio.max(), 1 / ratio.min()], axis=1).max(axis=1)
+
+
+# --- Stage 3: consolidation setup -------------------------------------------------------------
+
+
+@dataclass
+class SetupFrames:
+    """Stage 3 on every session (date x symbol)."""
+
+    qualified: pd.DataFrame  # bool: every rule below holds
+    trigger: pd.DataFrame  # highest high of the last `trigger_bars` bars
+    conditions: dict[str, pd.DataFrame]  # each rule on its own (bool), for inspection and tests
+    leader_recent: dict[str, pd.DataFrame]  # per window: leader on any of the last N sessions
+    avg_volume_prior: pd.DataFrame  # mean volume of the `volume_avg_window` sessions before t
+
+
+def setup_frames(panels: Panels, liq: LiquidityFrames, lf: LeaderFrames, scfg: SetupConfig) -> SetupFrames:
+    """Stage 3 "orderly consolidation" rules (SPEC), evaluated on every session t:
+
+    leader     : passed a leaders window (and was liquid) on any of the last N sessions (N = 20)
+    trend      : close_t > SMA50_t
+    sma_order  : SMA10_t > SMA20_t
+    near_high  : close_t >= (1 - 15/100) x highest high of the last 20 bars
+    higher_lows: lowest low of bars t-4..t  >  lowest low of bars t-9..t-5
+    tight      : mean daily range% over the last k bars < 1.0 x ADR%_t, for at least one k in 3..5
+                 (daily range% = 100 x (high/low - 1), the same quantity ADR% averages)
+    dryup      : volume_t <= 0.70 x mean volume of the 20 sessions before t
+
+    trigger_t = highest high of the last 10 bars (bars t-9..t).
+    """
+    c, h, lo, v = panels.close, panels.high, panels.low, panels.volume
+    n_lead = scfg.leader_lookback_sessions
+
+    def recent(mask: pd.DataFrame) -> pd.DataFrame:
+        # True if the mask was True on any of the last n_lead sessions (t included).
+        return mask.astype(float).rolling(n_lead, min_periods=1).max() > 0
+
+    leader_recent = {name: recent(m) for name, m in lf.passed.items()}
+    leader_any = recent(lf.any_window())
+
+    hl = scfg.higher_lows_bars
+    rng = ind.daily_range_pct(h, lo)
+    tight = pd.DataFrame(False, index=c.index, columns=c.columns)
+    for k in range(scfg.tight_min_days, scfg.tight_max_days + 1):
+        tight |= rng.rolling(k, min_periods=k).mean() < scfg.tight_vs_adr * liq.adr_pct
+    avg_vol = ind.prior_mean(v, scfg.volume_avg_window)
+
+    conditions = {
+        "leader": leader_any,
+        "trend": c > ind.sma(c, scfg.sma_trend),
+        "sma_order": ind.sma(c, scfg.sma_fast) > ind.sma(c, scfg.sma_slow),
+        "near_high": c >= (1 - scfg.max_below_high_pct / 100) * ind.highest(h, scfg.high_window),
+        "higher_lows": ind.lowest(lo, hl) > ind.lowest(lo, hl).shift(hl),
+        "tight": tight,
+        "dryup": v <= scfg.dryup_max_volume_ratio * avg_vol,
+    }
+    qualified = conditions["leader"].copy()
+    for name, cond in conditions.items():
+        if name != "leader":
+            qualified &= cond
+    return SetupFrames(
+        qualified=qualified,
+        trigger=ind.highest(h, scfg.trigger_bars),
+        conditions=conditions,
+        leader_recent=leader_recent,
+        avg_volume_prior=avg_vol,
+    )
+
+
+def _latest_setup(sf: SetupFrames, close: pd.DataFrame, end: int, memory: int) -> pd.DataFrame:
+    """For each symbol, the most recent qualifying setup day s among the `memory` sessions ending at
+    row position `end` (inclusive), and whether any close after s (up to `end`) was above its trigger.
+
+    Returns columns: has_setup (bool), age (sessions from s to `end`), trigger (trigger on day s),
+    closed_above (bool). Rows are symbols.
+    """
+    lo = max(0, end - memory + 1)
+    q = sf.qualified.iloc[lo : end + 1].to_numpy(dtype=bool)
+    trig = sf.trigger.iloc[lo : end + 1].to_numpy(dtype=float)
+    cl = close.iloc[lo : end + 1].to_numpy(dtype=float)
+    m = q.shape[0]
+    has = q.any(axis=0)
+    last = m - 1 - np.argmax(q[::-1], axis=0)  # row of the most recent True (garbage if not has)
+    cols = np.arange(q.shape[1])
+    trigger = np.where(has, trig[last, cols], np.nan)
+    after = np.arange(m)[:, None] > last[None, :]
+    with np.errstate(invalid="ignore"):
+        closed_above = ((cl > trigger[None, :]) & after).any(axis=0) & has
+    return pd.DataFrame(
+        {"has_setup": has, "age": np.where(has, m - 1 - last, -1), "trigger": trigger, "closed_above": closed_above},
+        index=sf.qualified.columns,
+    )
+
+
+@dataclass
+class WatchlistResult:
+    as_of: pd.Timestamp
+    # One row per watchlist symbol, closest to its trigger first. Columns: close, trigger,
+    # to_trigger_pct, stop, risk_pct, risk_too_wide, adr_pct, vol_ratio, setup_age, led_<w> per
+    # window, avg_traded_value, max_day_move, flag_day_move.
+    table: pd.DataFrame
+    qualified_today: int  # names whose setup qualifies on the as-of session itself
+    windows: list[str] = field(default_factory=list)
+
+
+@dataclass
+class BreakoutResult:
+    as_of: pd.Timestamp
+    # One row per breakout (accepted and rejected). Columns: close, trigger, stop, risk_pct, adr_pct,
+    # vol_ratio, status ("ok" / "too wide"), setup_age, led_<w>, avg_traded_value, max_day_move,
+    # flag_day_move.
+    table: pd.DataFrame
+    ok_count: int
+    rejected_count: int
+    windows: list[str] = field(default_factory=list)
+
+
+@dataclass
+class ScanResults:
+    leaders: LeadersResult
+    watchlist: WatchlistResult
+    breakouts: BreakoutResult
+
+
+def _rows_needed(cfg: MarketConfig) -> int:
+    """Sessions of history the full scan reads (so it can work on a short tail of the panels)."""
+    s = cfg.setup
+    max_lb = max(w.lookback for w in cfg.leaders.windows.values())
+    per_day = max(
+        max_lb + cfg.liquidity.window,
+        s.sma_trend,
+        s.high_window,
+        2 * s.higher_lows_bars,
+        s.volume_avg_window + 1,
+        s.trigger_bars,
+        s.tight_max_days + cfg.liquidity.window,
+    )
+    return per_day + s.leader_lookback_sessions + cfg.breakout.watchlist_memory_sessions + 2
+
+
+def watchlist_from_frames(
+    p: Panels, liq: LiquidityFrames, sf: SetupFrames, cfg: MarketConfig, max_lb: int
+) -> WatchlistResult:
+    """Watchlist on the as-of session t = names that could break out on the NEXT session:
+    their setup qualified on one of the last M sessions (t included; M = watchlist_memory_sessions)
+    and no close since then has been above that day's trigger.
+
+    stop      = low_t (stand-in for the breakout-day low, which SPEC uses as the real stop)
+    risk%     = 100 x (trigger - stop) / trigger; risk_too_wide if risk% > max_risk_vs_adr x ADR%_t
+    to_trigger% = 100 x (trigger / close_t - 1)
+    vol_ratio = volume_t / mean volume of the 20 sessions before t
+    """
+    t = len(p.dates) - 1
+    latest = _latest_setup(sf, p.close, t, cfg.breakout.watchlist_memory_sessions)
+    keep = latest["has_setup"] & ~latest["closed_above"]
+    syms = latest.index[keep]
+    close = p.close.iloc[-1][syms]
+    trig = latest.loc[syms, "trigger"]
+    stop = p.low.iloc[-1][syms]
+    adr = liq.adr_pct.iloc[-1][syms]
+    out = pd.DataFrame(
+        {
+            "close": close,
+            "trigger": trig,
+            "to_trigger_pct": 100 * (trig / close - 1),
+            "stop": stop,
+            "risk_pct": 100 * (trig - stop) / trig,
+            "adr_pct": adr,
+            "vol_ratio": p.volume.iloc[-1][syms] / sf.avg_volume_prior.iloc[-1][syms],
+            "setup_age": latest.loc[syms, "age"].astype(int),
+        }
+    )
+    out["risk_too_wide"] = (out["risk_pct"] > cfg.breakout.max_risk_vs_adr * out["adr_pct"]).astype(bool)
+    windows = list(cfg.leaders.windows)
+    for w in windows:
+        out[f"led_{w}"] = sf.leader_recent[w].iloc[-1][syms].astype(bool)
+    out["avg_traded_value"] = liq.avg_traded_value.iloc[-1][syms]
+    out["max_day_move"] = max_day_move(p.close.iloc[-(max_lb + 1):])[syms]
+    out["flag_day_move"] = (out["max_day_move"] >= cfg.leaders.flag_day_move_multiple).fillna(False).astype(bool)
+    out = out.sort_values(["to_trigger_pct", "risk_pct"], kind="stable")
+    out.index.name = "symbol"
+    return WatchlistResult(
+        as_of=p.dates[-1],
+        table=out,
+        qualified_today=int(sf.qualified.iloc[-1].sum()),
+        windows=windows,
+    )
