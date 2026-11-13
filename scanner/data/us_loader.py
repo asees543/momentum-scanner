@@ -162,6 +162,20 @@ def load_universe(
     return uni
 
 
+TRADINGVIEW_EXCHANGE = {"NASDAQ": "NASDAQ", "NYSE": "NYSE", "NYSE_AMERICAN": "AMEX"}
+
+
+def chart_url(symbol: str, exchange: str | None = None, source_symbol: str | None = None) -> str:
+    """TradingView chart link. TradingView uses the exchange prefix and '.' class notation
+    (NYSE:BRK.B), so prefer the Nasdaq Trader symbol over the Yahoo one (BRK-B)."""
+    from urllib.parse import quote
+
+    tv_symbol = source_symbol or symbol.replace("-", ".")
+    prefix = TRADINGVIEW_EXCHANGE.get(exchange or "")
+    full = f"{prefix}:{tv_symbol}" if prefix else tv_symbol
+    return "https://www.tradingview.com/chart/?symbol=" + quote(full, safe=":.")
+
+
 def make_provider(cfg: MarketConfig) -> YFinanceProvider:
     d = cfg.data
     return YFinanceProvider(
