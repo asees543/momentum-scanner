@@ -88,3 +88,11 @@ breakout:
   watchlist_memory_sessions: 5   # (decision) setup qualified on one of the 5 sessions before the breakout
   min_volume_ratio: 1.5          # (SPEC) volume >= 1.5 x average volume of the 20 sessions before
   max_risk_vs_adr: 1.0           # (SPEC) reject if (close - day low) / close > ADR% (ADR as of the day before)
+
+# Phase 3: alerts (Telegram) and state diffing.
+alerts:
+  min_active_ratio: 0.9          # (assumption) if fewer than 90% as many symbols have a bar as on the last sent
+                                 #   run (e.g. a rate-limited download), send a warning instead of alerts and keep
+                                 #   the old state, so missing names don't come back as "new" the next day
+  baseline_first_run: true       # (assumption) with no state file yet, record today's watchlist as the baseline
+                                 #   and alert only breakouts, instead of listing every watchlist name at once

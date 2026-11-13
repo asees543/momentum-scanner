@@ -155,6 +155,13 @@ class BreakoutConfig(_Strict):
     max_risk_vs_adr: float = Field(1.0, gt=0)
 
 
+class AlertsConfig(_Strict):
+    """Phase 3 alerting: what counts as new, and when not to trust a run."""
+
+    min_active_ratio: float = Field(0.9, gt=0, le=1)  # data-health guard, see us.yaml
+    baseline_first_run: bool = True  # first run records the watchlist instead of alerting all of it
+
+
 class MarketConfig(_Strict):
     market: str
     currency: str
@@ -164,6 +171,7 @@ class MarketConfig(_Strict):
     leaders: LeadersConfig
     setup: SetupConfig
     breakout: BreakoutConfig
+    alerts: AlertsConfig
 
 
 def load_config(market: str, config_dir: Path = CONFIG_DIR) -> MarketConfig:
