@@ -120,6 +120,40 @@ class LeadersConfig(_Strict):
         return self
 
 
+class SetupConfig(_Strict):
+    """Stage 3: orderly consolidation (builds the watchlist). See us.yaml for each rule."""
+
+    leader_lookback_sessions: int = Field(20, ge=1)
+    sma_trend: int = Field(50, ge=1)
+    sma_fast: int = Field(10, ge=1)
+    sma_slow: int = Field(20, ge=1)
+    high_window: int = Field(20, ge=1)
+    max_below_high_pct: float = Field(15, ge=0, lt=100)
+    higher_lows_bars: int = Field(5, ge=1)
+    tight_min_days: int = Field(3, ge=1)
+    tight_max_days: int = Field(5, ge=1)
+    tight_vs_adr: float = Field(1.0, gt=0)
+    dryup_max_volume_ratio: float = Field(0.70, gt=0)
+    volume_avg_window: int = Field(20, ge=1)
+    trigger_bars: int = Field(10, ge=1)
+
+    @model_validator(mode="after")
+    def _check(self) -> SetupConfig:
+        if self.tight_min_days > self.tight_max_days:
+            raise ValueError("tight_min_days must be <= tight_max_days")
+        if self.sma_fast >= self.sma_slow:
+            raise ValueError("sma_fast must be shorter than sma_slow")
+        return self
+
+
+class BreakoutConfig(_Strict):
+    """Stage 4: breakout trigger on a recent watchlist name."""
+
+    watchlist_memory_sessions: int = Field(5, ge=1)
+    min_volume_ratio: float = Field(1.5, gt=0)
+    max_risk_vs_adr: float = Field(1.0, gt=0)
+
+
 class MarketConfig(_Strict):
     market: str
     currency: str
@@ -127,6 +161,8 @@ class MarketConfig(_Strict):
     universe: UniverseConfig
     liquidity: LiquidityConfig
     leaders: LeadersConfig
+    setup: SetupConfig
+    breakout: BreakoutConfig
 
 
 def load_config(market: str, config_dir: Path = CONFIG_DIR) -> MarketConfig:

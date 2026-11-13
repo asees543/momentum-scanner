@@ -64,3 +64,25 @@ leaders:
   sort_by: 3m                      # (assumption) table order: scans passed, then this window's return
   flag_day_move_multiple: 3.0      # (assumption) mark names whose window holds a one-day move >= 3x (or <= 1/3x):
                                    # a real squeeze or an un-adjusted reverse split - check the chart
+
+# Stage 3: orderly consolidation. A leader qualifies on day t when ALL of these hold.
+setup:
+  leader_lookback_sessions: 20   # (decision) leader (and liquid) on any of the last 20 sessions
+  sma_trend: 50                  # (SPEC) close > 50-day SMA
+  sma_fast: 10                   # (SPEC) 10-day SMA > 20-day SMA
+  sma_slow: 20
+  high_window: 20                # (SPEC) close within 15% of the 20-day high (highs, incl. today)
+  max_below_high_pct: 15
+  higher_lows_bars: 5            # (SPEC) lowest low of last 5 bars > lowest low of the 5 before
+  tight_min_days: 3              # (SPEC "3 to 5 days", assumption on reading) average daily range over
+  tight_max_days: 5              #   the last 3, 4 OR 5 days < tight_vs_adr x ADR%
+  tight_vs_adr: 1.0              # (SPEC) "< ADR"
+  dryup_max_volume_ratio: 0.70   # (SPEC) today's volume <= 70% of the average volume
+  volume_avg_window: 20          # (assumption) that average covers the 20 sessions BEFORE today
+  trigger_bars: 10               # (decision) trigger_price = highest high of the last 10 bars
+
+# Stage 4: breakout on a name whose setup qualified recently.
+breakout:
+  watchlist_memory_sessions: 5   # (decision) setup qualified on one of the 5 sessions before the breakout
+  min_volume_ratio: 1.5          # (SPEC) volume >= 1.5 x average volume of the 20 sessions before
+  max_risk_vs_adr: 1.0           # (SPEC) reject if (close - day low) / close > ADR% (ADR as of the day before)
