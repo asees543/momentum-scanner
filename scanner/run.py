@@ -8,6 +8,7 @@
     uv run python -m scanner.run --market us --alert --dry-run    # print the Telegram messages
     uv run --env-file .env python -m scanner.run --market us --alert   # send + save state/us.json
     uv run --env-file .env python -m scanner.run --market us --no-update --send-watchlist   # full list now
+    uv run python -m scanner.run --market india --no-update --quality --check-splits   # data-quality report
 
 Output is information, not investment advice.
 """
@@ -44,6 +45,7 @@ from scanner.notify import (
     move_label,
     short_name,
 )
+from scanner.quality import QualityReport, quality_report, yahoo_split_dates
 from scanner.scans import BreakoutResult, LeadersResult, ScanResults, WatchlistResult, run_scans
 from scanner.state import STATE_DIR, MarketState, diff_results, state_path
 
@@ -74,6 +76,10 @@ def parse_args(argv: list[str] | None) -> argparse.Namespace:
                    help="send the whole current watchlist to Telegram now (state is not touched)")
     p.add_argument("--dry-run", action="store_true",
                    help="with --alert or --send-watchlist: print the messages instead of sending; state is not saved")
+    p.add_argument("--quality", action="store_true",
+                   help="print a data-quality report (jumps, missing days, frozen/circuit streaks) instead of scans")
+    p.add_argument("--check-splits", action="store_true",
+                   help="with --quality: ask Yahoo whether it recorded a split/bonus on each jump date (network)")
     p.add_argument("--state-dir", default=str(STATE_DIR), help=argparse.SUPPRESS)  # tests / experiments
     p.add_argument("-v", "--verbose", action="store_true", help="show info-level logs")
     return p.parse_args(argv)
@@ -385,6 +391,67 @@ def render(res: ScanResults, cfg: MarketConfig, universe: pd.DataFrame, args: ar
     return shown
 
 
+def render_quality(rep: QualityReport, cfg: MarketConfig, names: dict, displays: dict[str, str]) -> dict[str, pd.DataFrame]:
+    def sym(s: str) -> str:
+        return displays.get(s, s)
+
+    def day(d) -> str:
+        return "-" if pd.isna(d) else f"{pd.Timestamp(d):%Y-%m-%d}"
+
+    m = cfg.leaders.flag_day_move_multiple
+    j = rep.jumps
+    console.print(
+        f"[bold]{cfg.market.upper()} data quality[/] · last {rep.window} sessions to {rep.as_of:%Y-%m-%d} · "
+        f"{rep.symbols:,} symbols"
+    )
+    console.print(
+        f"  One-day moves of {move_label(m)} or more: {len(j)} on {j['symbol'].nunique() if len(j) else 0} symbols "
+        f"({int(j['liquid'].sum()) if len(j) else 0} on names that passed liquidity; "
+        f"{int((j['clean_ratio'] != '').sum()) if len(j) else 0} match a clean bonus/split ratio)"
+    )
+    console.print(
+        f"  Missing sessions: {len(rep.missing)} symbols ({int(rep.missing['liquid'].sum()) if len(rep.missing) else 0} liquid) · "
+        f"frozen-price streaks: {len(rep.frozen)} symbols · zero-volume bars: {len(rep.zero_volume)} symbols · "
+        f"no bar on {rep.as_of:%Y-%m-%d}: {len(rep.stale)} symbols"
+    )
+    if len(j):
+        t = _new_table("Largest one-day moves (liquid names first)")
+        for col, just in [("Symbol", "left"), ("Name", "left"), ("Date", "left"), ("Prev", "right"), ("Close", "right"),
+                          ("Move", "right"), ("Clean ratio", "left"), ("Vol after/before", "right"),
+                          ("Yahoo split", "center"), ("Liquid", "center")]:
+            t.add_column(col, justify=just, max_width=28 if col == "Name" else None, no_wrap=True)
+        for _, r in j.head(30).iterrows():
+            t.add_row(sym(r["symbol"]), short_name(names.get(r["symbol"], ""), 26), day(r["date"]),
+                      f"{r['prev_close']:.2f}", f"{r['close']:.2f}", f"{(r['price_ratio'] - 1) * 100:+.0f}%",
+                      r["clean_ratio"] or "-", "-" if pd.isna(r["vol_change"]) else f"{r['vol_change']:.2f}×",
+                      r["yahoo_split"] or "?", "✓" if r["liquid"] else "·")
+        console.print(t)
+    if len(rep.frozen):
+        t = _new_table("Frozen-price streaks (circuit-locked days)")
+        for col in ("Symbol", "Name", "Longest streak", "Frozen days", "Last frozen", "Liquid"):
+            t.add_column(col, justify="left" if col in ("Symbol", "Name", "Last frozen") else "right")
+        for _, r in rep.frozen.head(20).iterrows():
+            t.add_row(sym(r["symbol"]), short_name(names.get(r["symbol"], ""), 26), str(int(r["longest_streak"])),
+                      str(int(r["frozen_days"])), day(r["last_frozen"]), "✓" if r["liquid"] else "·")
+        console.print(t)
+    liquid_missing = rep.missing[rep.missing["liquid"]] if len(rep.missing) else rep.missing
+    if len(liquid_missing):
+        t = _new_table("Missing sessions on liquid names")
+        for col in ("Symbol", "Name", "Missing", "First gap"):
+            t.add_column(col)
+        for _, r in liquid_missing.head(20).iterrows():
+            t.add_row(sym(r["symbol"]), short_name(names.get(r["symbol"], ""), 26), str(int(r["missing_sessions"])),
+                      day(r["first_gap"]))
+        console.print(t)
+    console.print(
+        "[dim]Vol after/before = mean volume of the 5 sessions after the move ÷ the 5 before. An unadjusted "
+        "bonus/split moves price by k and volume by 1/k (e.g. −50% with ~2×). Yahoo split: did Yahoo record a "
+        "split/bonus that day (yes = the price history should already be adjusted).[/]"
+    )
+    return {"quality_jumps": rep.jumps, "quality_missing": rep.missing, "quality_frozen": rep.frozen,
+            "quality_zero_volume": rep.zero_volume, "quality_stale": rep.stale}
+
+
 def write_csv(path: str, shown: dict[str, pd.DataFrame], as_of: pd.Timestamp, names: dict) -> None:
     target = Path(path)
     for scan, table in shown.items():
@@ -476,6 +543,17 @@ def _main(args: argparse.Namespace) -> int:
         if panels.close.empty:
             err_console.print(f"[red]No sessions on or before {args.as_of}.[/]")
             return 1
+    if args.quality:
+        rep = quality_report(panels, cfg, split_lookup=yahoo_split_dates if args.check_splits else None)
+        tables = render_quality(rep, cfg, _names(universe), _displays(universe))
+        render_data_report(report)
+        if args.csv:
+            target = Path(args.csv)
+            for key, table in tables.items():
+                out = target.with_name(f"{target.stem}_{key}{target.suffix or '.csv'}")
+                table.to_csv(out, index=False)
+                console.print(f"[dim]Wrote {len(table)} rows to {out}[/]")
+        return 0
     res = run_scans(panels, cfg, mode=args.mode)
     shown = render(res, cfg, universe, args, report)
     if args.csv:
