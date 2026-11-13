@@ -16,6 +16,8 @@ from scanner.notify import (
     format_warning,
     format_watchlist,
     html_to_text,
+    money,
+    move_label,
     pack,
     short_name,
 )
@@ -80,11 +82,13 @@ def test_new_watchlist_alert_and_wide_marker():
     assert "(wide)" not in text
 
 
-def test_first_run_message_explains_baseline():
+def test_first_run_sends_the_full_watchlist_as_baseline():
     res = scans.run_scans(panels_from({"X": textbook()}), CFG)
     d = diff_results(None, res, "us", CFG.alerts)
     text = "\n".join(format_alerts(d, res, CFG, UNIVERSE, chart_url))
+    assert "📋 <b>First run: full watchlist</b> (1 names" in text
     assert "recorded as the baseline" in text
+    assert "<b>X</b> · X Corp\n31.40 · trig 31.79" in text  # the entry itself is listed
     assert "New on watchlist" not in text
 
 
@@ -233,7 +237,7 @@ def test_full_watchlist_lists_every_name_with_company():
     msgs = format_watchlist(res, CFG, UNIVERSE, chart_url)
     text = "\n".join(msgs)
     assert "<b>US watchlist ·" in text and "2 names, closest to trigger first" in text
-    assert text.index("<b>X</b> · X Corp") < text.index("<b>BRK-B</b> · Berkshire")
+    assert text.index("<b>X</b> · X Corp") < text.index("<b>BRK.B</b> · Berkshire")  # exchange symbol shown
     assert "symbol=NYSE:BRK.B" in text
     assert "not investment advice" in text
 
@@ -266,3 +270,41 @@ def test_wide_breakouts_only_counted_when_switched_off():
     text = "\n".join(format_alerts(d, res, cfg, UNIVERSE, chart_url))
     assert "Breakouts 0 ok, 1 too wide" in text
     assert "stop wider than ADR</b>" not in text
+
+
+# --- money units and the flag label -------------------------------------------------------------
+
+
+@pytest.mark.parametrize(
+    "value, cur, text",
+    [
+        (43_800_000, "USD", "$43.8M"),
+        (1_800_000_000, "USD", "$1.8B"),
+        (244_000, "USD", "$244.0K"),
+        (123_000_000, "INR", "₹12.3 Cr"),  # 12.3 crore
+        (50_000_000, "INR", "₹5.0 Cr"),  # the India turnover floor
+        (4_500_000, "INR", "₹45.0 L"),  # 45 lakh
+        (90_000, "INR", "₹90000"),
+    ],
+)
+def test_money_units(value, cur, text):
+    assert money(value, cur) == text
+
+
+def test_move_label():
+    assert move_label(3.0) == "+200% or −67%"
+    assert move_label(1.3) == "+30% or −23%"
+
+
+def test_flag_note_only_when_a_listed_name_is_flagged():
+    b = textbook()
+    b.set_bar(100, close=b.close[99] * 4)  # a 4x one-day jump inside the 6M window
+    b.set_bar(101, close=b.close[99])  # ...and straight back
+    res = scans.run_scans(panels_from({"X": b}), CFG)
+    msgs = format_watchlist(res, CFG, UNIVERSE, chart_url)
+    text = "\n".join(msgs)
+    assert bool(res.watchlist.table.loc["X", "flag_day_move"])
+    assert "<b>X</b> ⚠ · X Corp" in text
+    assert "⚠ = a one-day move of +200% or −67% or more" in text
+    plain = "\n".join(format_watchlist(scans.run_scans(panels_from({"X": textbook()}), CFG), CFG, UNIVERSE, chart_url))
+    assert "⚠ = a one-day move" not in plain

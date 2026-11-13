@@ -38,14 +38,16 @@ from scanner.notify import (
     format_alerts,
     format_failure,
     format_warning,
+    CURRENCY_SYMBOL,
     format_watchlist,
+    money,
+    move_label,
     short_name,
 )
 from scanner.scans import BreakoutResult, LeadersResult, ScanResults, WatchlistResult, run_scans
 from scanner.state import STATE_DIR, MarketState, diff_results, state_path
 
 MARKETS: dict[str, ModuleType] = {"us": us_loader, "india": india_loader}
-CURRENCY_SYMBOL = {"USD": "$", "INR": "₹"}
 
 console = Console()
 err_console = Console(stderr=True)
@@ -75,16 +77,6 @@ def parse_args(argv: list[str] | None) -> argparse.Namespace:
     p.add_argument("--state-dir", default=str(STATE_DIR), help=argparse.SUPPRESS)  # tests / experiments
     p.add_argument("-v", "--verbose", action="store_true", help="show info-level logs")
     return p.parse_args(argv)
-
-
-def fmt_money(value: float, cur: str) -> str:
-    sym = CURRENCY_SYMBOL.get(cur, "")
-    if pd.isna(value):
-        return "-"
-    for div, suffix in ((1e9, "B"), (1e6, "M"), (1e3, "K")):
-        if abs(value) >= div:
-            return f"{sym}{value / div:.1f}{suffix}"
-    return f"{sym}{value:.0f}"
 
 
 def fmt_pct(value: float) -> str:
@@ -160,8 +152,16 @@ def _names(universe: pd.DataFrame) -> dict[str, str]:
     return dict(zip(universe.get("symbol", []), universe.get("name", [])))
 
 
-def _symbol_cell(sym: str, r: pd.Series) -> str:
-    return f"{sym} [yellow]⚠[/]" if r.get("flag_day_move", False) else sym
+def _displays(universe: pd.DataFrame) -> dict[str, str]:
+    """Yahoo symbol -> the exchange's own symbol (RELIANCE.NS -> RELIANCE, BRK-B -> BRK.B)."""
+    if "source_symbol" not in universe.columns:
+        return {}
+    return {s: d for s, d in zip(universe["symbol"], universe["source_symbol"]) if d}
+
+
+def _symbol_cell(sym: str, r: pd.Series, displays: dict[str, str]) -> str:
+    shown = displays.get(sym, sym)
+    return f"{shown} [yellow]⚠[/]" if r.get("flag_day_move", False) else shown
 
 
 def _leader_marks(r: pd.Series, windows: list[str], prefix: str) -> str:
@@ -172,7 +172,8 @@ def _new_table(title: str) -> Table:
     return Table(title=title, header_style="bold", title_justify="left", pad_edge=False)
 
 
-def render_leaders_table(res: LeadersResult, cfg: MarketConfig, names: dict, window: str | None) -> pd.DataFrame:
+def render_leaders_table(res: LeadersResult, cfg: MarketConfig, names: dict, window: str | None,
+        displays: dict[str, str] | None = None) -> pd.DataFrame:
     table = res.table
     if window:
         table = table[table[f"pass_{window}"]]
@@ -190,14 +191,14 @@ def render_leaders_table(res: LeadersResult, cfg: MarketConfig, names: dict, win
     t.add_column("ADR%", justify="right")
     t.add_column(f"Avg {CURRENCY_SYMBOL.get(cur, cur)}Vol", justify="right")
     for i, (sym, r) in enumerate(table.iterrows(), start=1):
-        cells = [str(i), _symbol_cell(sym, r), short_name(names.get(sym, "")), f"{r['close']:.2f}"]
+        cells = [str(i), _symbol_cell(sym, r, displays or {}), short_name(names.get(sym, "")), f"{r['close']:.2f}"]
         for w in res.windows:
             txt = fmt_pct(r[f"ret_{w}"])
             cells.append(f"[green]{txt}[/]" if r[f"pass_{w}"] else f"[dim]{txt}[/]")
             if res.mode == "rank":
                 cells.append("-" if pd.isna(r[f"rs_{w}"]) else f"{r[f'rs_{w}']:.0f}")
         cells.append(_leader_marks(r, res.windows, "pass_"))
-        cells += [f"{r['adr_pct']:.1f}", fmt_money(r["avg_traded_value"], cur)]
+        cells += [f"{r['adr_pct']:.1f}", money(r["avg_traded_value"], cur)]
         t.add_row(*cells)
     if len(table):
         console.print(t)
@@ -215,7 +216,7 @@ def render_leaders_summary(res: LeadersResult, cfg: MarketConfig, flagged: int |
         f"[dim]As of {res.as_of:%Y-%m-%d} (last complete session) · {res.active_count:,} symbols with data"
         + (f" ({res.stale_count:,} without a bar that day)" if res.stale_count else "")
         + f" · {res.liquid_count:,} pass liquidity (close ≥ {sym}{liq.min_price:g}, "
-        f"{liq.window}d avg {sym}vol ≥ {fmt_money(liq.min_avg_traded_value, cur)}, ADR ≥ {liq.min_adr_pct:g}%)[/]"
+        f"{liq.window}d avg {sym}vol ≥ {money(liq.min_avg_traded_value, cur)}, ADR ≥ {liq.min_adr_pct:g}%)[/]"
     )
     parts = []
     for w in res.windows:
@@ -232,12 +233,13 @@ def render_leaders_summary(res: LeadersResult, cfg: MarketConfig, flagged: int |
     if flagged:
         m = cfg.leaders.flag_day_move_multiple
         console.print(
-            f"[yellow]⚠[/] {flagged} names had a one-day move ≥ {m:g}× (or ≤ 1/{m:g}×) inside the 6M window: "
-            "a real squeeze or a reverse split the data source has not adjusted yet. Check the chart."
+            f"[yellow]⚠[/] {flagged} names had a one-day move of {move_label(m)} or more inside the 6M window: "
+            "a real squeeze, or a split/bonus the data source has not adjusted yet. Check the chart."
         )
 
 
-def render_watchlist(wl: WatchlistResult, cfg: MarketConfig, names: dict, window: str | None) -> pd.DataFrame:
+def render_watchlist(wl: WatchlistResult, cfg: MarketConfig, names: dict, window: str | None,
+        displays: dict[str, str] | None = None) -> pd.DataFrame:
     table = wl.table
     if window:
         table = table[table[f"led_{window}"]]
@@ -261,7 +263,7 @@ def render_watchlist(wl: WatchlistResult, cfg: MarketConfig, names: dict, window
         risk = f"{r['risk_pct']:.1f}"
         t.add_row(
             str(i),
-            _symbol_cell(sym, r),
+            _symbol_cell(sym, r, displays or {}),
             short_name(names.get(sym, "")),
             f"{r['close']:.2f}",
             f"{r['trigger']:.2f}",
@@ -272,7 +274,7 @@ def render_watchlist(wl: WatchlistResult, cfg: MarketConfig, names: dict, window
             f"{r['vol_ratio']:.2f}",
             _leader_marks(r, wl.windows, "led_"),
             "today" if r["setup_age"] == 0 else f"{int(r['setup_age'])}d",
-            fmt_money(r["avg_traded_value"], cur),
+            money(r["avg_traded_value"], cur),
         )
     if len(table):
         console.print(t)
@@ -292,7 +294,8 @@ def render_watchlist(wl: WatchlistResult, cfg: MarketConfig, names: dict, window
     return table
 
 
-def render_breakouts(bo: BreakoutResult, cfg: MarketConfig, names: dict, window: str | None) -> pd.DataFrame:
+def render_breakouts(bo: BreakoutResult, cfg: MarketConfig, names: dict, window: str | None,
+        displays: dict[str, str] | None = None) -> pd.DataFrame:
     table = bo.table
     if window and len(table):
         table = table[table[f"led_{window}"]]
@@ -316,7 +319,7 @@ def render_breakouts(bo: BreakoutResult, cfg: MarketConfig, names: dict, window:
         ok = r["status"] == "ok"
         t.add_row(
             str(i),
-            _symbol_cell(sym, r),
+            _symbol_cell(sym, r, displays or {}),
             short_name(names.get(sym, "")),
             f"{r['close']:.2f}",
             f"{r['trigger']:.2f}",
@@ -327,7 +330,7 @@ def render_breakouts(bo: BreakoutResult, cfg: MarketConfig, names: dict, window:
             "[green]ok[/]" if ok else "[yellow]too wide[/]",
             _leader_marks(r, bo.windows, "led_"),
             f"{int(r['setup_age'])}d ago",
-            fmt_money(r["avg_traded_value"], cur),
+            money(r["avg_traded_value"], cur),
         )
     if len(table):
         console.print(t)
@@ -363,15 +366,16 @@ def render(res: ScanResults, cfg: MarketConfig, universe: pd.DataFrame, args: ar
            report: UpdateReport | None) -> dict[str, pd.DataFrame]:
     """Print the requested scan(s); return the tables shown, keyed by scan name."""
     names = _names(universe)
+    displays = _displays(universe)
     shown: dict[str, pd.DataFrame] = {}
     if args.scan in ("all", "breakouts"):
-        shown["breakouts"] = render_breakouts(res.breakouts, cfg, names, args.window)
+        shown["breakouts"] = render_breakouts(res.breakouts, cfg, names, args.window, displays)
         console.print()
     if args.scan in ("all", "watchlist"):
-        shown["watchlist"] = render_watchlist(res.watchlist, cfg, names, args.window)
+        shown["watchlist"] = render_watchlist(res.watchlist, cfg, names, args.window, displays)
         console.print()
     if args.scan == "leaders":
-        shown["leaders"] = render_leaders_table(res.leaders, cfg, names, args.window)
+        shown["leaders"] = render_leaders_table(res.leaders, cfg, names, args.window, displays)
         render_leaders_summary(res.leaders, cfg, int(shown["leaders"]["flag_day_move"].sum()))
     elif args.scan == "all":
         shown["leaders"] = res.leaders.table

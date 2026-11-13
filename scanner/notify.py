@@ -67,14 +67,36 @@ def _e(text) -> str:
     return html.escape(str(text), quote=False)
 
 
-def _money(value: float, cur: str) -> str:
+# Units per currency, largest first: US dollars in B/M/K; rupees in crore (1 Cr = 10,000,000) and
+# lakh (1 L = 100,000), the units Indian market data is quoted in.
+MONEY_UNITS = {
+    "USD": ((1e9, "B"), (1e6, "M"), (1e3, "K")),
+    "INR": ((1e7, " Cr"), (1e5, " L")),
+}
+
+
+def money(value: float, cur: str) -> str:
+    """$43.8M, ₹12.3 Cr, ₹45.0 L."""
     sym = CURRENCY_SYMBOL.get(cur, "")
     if pd.isna(value):
         return "-"
-    for div, suffix in ((1e9, "B"), (1e6, "M"), (1e3, "K")):
+    for div, suffix in MONEY_UNITS.get(cur, MONEY_UNITS["USD"]):
         if abs(value) >= div:
             return f"{sym}{value / div:.1f}{suffix}"
     return f"{sym}{value:.0f}"
+
+
+def move_label(multiple: float) -> str:
+    """The one-day-move flag threshold in percent: 3.0 -> '+200% or -67%', 1.3 -> '+30% or -23%'.
+    A move of `multiple` up is +(m-1); the same multiple down is a fall of 1 - 1/m."""
+    return f"+{(multiple - 1) * 100:.0f}% or −{(1 - 1 / multiple) * 100:.0f}%"
+
+
+def flag_note(cfg: MarketConfig) -> str:
+    return (
+        f"⚠ = a one-day move of {move_label(cfg.leaders.flag_day_move_multiple)} or more in the last 6 months: "
+        "a real squeeze, or a split/bonus the data source has not adjusted yet. Check the chart."
+    )
 
 
 def _pct(x: float) -> str:
@@ -99,7 +121,7 @@ def _title_line(sym: str, r: pd.Series, name: str) -> str:
 
 def _returns_line(r: pd.Series, windows: list[str], cur: str, url: str) -> str:
     rets = " · ".join(f"{w.upper()} {_pct(r[f'ret_{w}'])}" for w in windows)
-    return f"{rets} · {_money(r['avg_traded_value'], cur)} · <a href=\"{_e(url)}\">chart</a>"
+    return f"{rets} · {money(r['avg_traded_value'], cur)} · <a href=\"{_e(url)}\">chart</a>"
 
 
 def breakout_entry(sym: str, r: pd.Series, windows: list[str], cur: str, url: str, name: str = "") -> str:
@@ -120,8 +142,14 @@ def watchlist_entry(sym: str, r: pd.Series, windows: list[str], cur: str, url: s
 
 
 def _lookups(universe: pd.DataFrame, chart_url: ChartUrlFn):
-    """Per-symbol company name and chart link from the universe table."""
+    """Per-symbol company name, chart link and display symbol from the universe table.
+    The display symbol is the exchange's own (RELIANCE, BRK.B) rather than Yahoo's (RELIANCE.NS, BRK-B)."""
     info = universe.set_index("symbol") if "symbol" in universe.columns and len(universe) else pd.DataFrame()
+
+    def display(sym: str) -> str:
+        if sym in info.index and "source_symbol" in info.columns and info.loc[sym, "source_symbol"]:
+            return str(info.loc[sym, "source_symbol"])
+        return sym
 
     def name(sym: str) -> str:
         if sym in info.index and "name" in info.columns:
@@ -134,7 +162,7 @@ def _lookups(universe: pd.DataFrame, chart_url: ChartUrlFn):
             return chart_url(sym, row.get("exchange"), row.get("source_symbol"))
         return chart_url(sym, None, None)
 
-    return name, url
+    return name, url, display
 
 
 def pack(blocks: list[str], budget: int = MESSAGE_BUDGET) -> list[str]:
@@ -170,7 +198,7 @@ def format_alerts(
     """Messages for a run with status "send"."""
     cur = cfg.currency
     windows = list(cfg.leaders.windows)
-    name, url = _lookups(universe, chart_url)
+    name, url, display = _lookups(universe, chart_url)
 
     lead = results.leaders
     counts = " / ".join(f"{w.upper()} {lead.counts.get(w, 0)}" for w in windows)
@@ -180,27 +208,40 @@ def format_alerts(
         f"Breakouts {len(diff.breakouts)} ok, {diff.rejected_breakouts} too wide · Leaders {counts}"
     )
     blocks = [header]
-    if diff.first_run:
-        blocks.append(
-            f"First run: today's {diff.watchlist_size} watchlist names are recorded as the baseline. "
-            "From the next session, only new names are listed."
-        )
     bo, wl = results.breakouts.table, results.watchlist.table
+    shown: list[pd.Series] = []
+
+    def bo_entries(symbols):
+        shown.extend(bo.loc[s] for s in symbols)
+        return [breakout_entry(display(s), bo.loc[s], windows, cur, url(s), name(s)) for s in symbols]
+
+    def wl_entries(symbols):
+        shown.extend(wl.loc[s] for s in symbols)
+        return [watchlist_entry(display(s), wl.loc[s], windows, cur, url(s), name(s)) for s in symbols]
+
     if diff.breakouts:
         blocks.append("🚀 <b>Breakouts</b>")
-        blocks += [breakout_entry(s, bo.loc[s], windows, cur, url(s), name(s)) for s in diff.breakouts]
+        blocks += bo_entries(diff.breakouts)
     wide = diff.wide_breakouts if cfg.alerts.list_wide_breakouts else []
     if wide:
         blocks.append(
             "⚠️ <b>Breakouts, stop wider than ADR</b>\n"
             "SPEC rejects these: the distance from close to the day's low is more than one average daily range."
         )
-        blocks += [breakout_entry(s, bo.loc[s], windows, cur, url(s), name(s)) for s in wide]
+        blocks += bo_entries(wide)
     if diff.new_watchlist:
         blocks.append("👀 <b>New on watchlist</b> (closest to trigger first)")
-        blocks += [watchlist_entry(s, wl.loc[s], windows, cur, url(s), name(s)) for s in diff.new_watchlist]
+        blocks += wl_entries(diff.new_watchlist)
+    if diff.first_run:
+        blocks.append(
+            f"📋 <b>First run: full watchlist</b> ({diff.watchlist_size} names, closest to trigger first)\n"
+            "These are recorded as the baseline. From the next session, only new names are listed."
+        )
+        blocks += wl_entries(list(wl.index))
     if not diff.breakouts and not wide and not diff.new_watchlist and not diff.first_run:
         blocks.append("Nothing new today.")
+    if any(bool(r.get("flag_day_move", False)) for r in shown):
+        blocks.append(flag_note(cfg))
     blocks.append(DISCLAIMER)
     return pack(blocks)
 
@@ -209,16 +250,20 @@ def format_watchlist(results: ScanResults, cfg: MarketConfig, universe: pd.DataF
     """The whole current watchlist (closest to trigger first), for on-demand sending."""
     wl = results.watchlist
     windows = list(cfg.leaders.windows)
-    name, url = _lookups(universe, chart_url)
+    name, url, display = _lookups(universe, chart_url)
     header = (
         f"<b>{_e(cfg.market.upper())} watchlist · {wl.as_of:%a %d %b %Y}</b>\n"
         f"{len(wl.table)} names, closest to trigger first ({wl.qualified_today} qualified that day, the rest "
         f"within the last {cfg.breakout.watchlist_memory_sessions} sessions and still below their trigger)"
     )
     blocks = [header]
-    blocks += [watchlist_entry(s, wl.table.loc[s], windows, cfg.currency, url(s), name(s)) for s in wl.table.index]
+    blocks += [
+        watchlist_entry(display(s), wl.table.loc[s], windows, cfg.currency, url(s), name(s)) for s in wl.table.index
+    ]
     if wl.table.empty:
         blocks.append("The watchlist is empty.")
+    if len(wl.table) and wl.table["flag_day_move"].any():
+        blocks.append(flag_note(cfg))
     blocks.append(DISCLAIMER)
     return pack(blocks)
 
