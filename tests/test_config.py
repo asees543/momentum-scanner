@@ -28,6 +28,7 @@ def test_us_config_loads_with_spec_defaults():
     assert (st.dryup_max_volume_ratio, st.volume_avg_window, st.trigger_bars) == (0.70, 20, 10)
     assert st.leader_lookback_sessions == 20
     assert st.require_liquid_today is True
+    assert cfg.alerts.list_wide_breakouts is True
     assert (bo.watchlist_memory_sessions, bo.min_volume_ratio, bo.max_risk_vs_adr) == (5, 1.5, 1.0)
 
 

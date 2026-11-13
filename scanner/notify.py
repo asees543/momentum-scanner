@@ -10,6 +10,9 @@ Message layout (Telegram HTML); each entry is three lines so it reads well on a 
     11.41 › trig 10.92 · stop 10.80 · risk 5.3% · ADR 7.3 · vol 1.5×
     1M … · 3M … · 6M … · $11.4M · chart
 
+    ⚠️ Breakouts, stop wider than ADR      (listed when alerts.list_wide_breakouts is on)
+    … same three-line entries …
+
     👀 New on watchlist (closest to trigger first)
     XERS · Xeris Biopharma Holdings
     16.65 · trig 16.88 (+1.4%) · stop 16.35 · risk 3.1% · ADR 5.4
@@ -186,10 +189,17 @@ def format_alerts(
     if diff.breakouts:
         blocks.append("🚀 <b>Breakouts</b>")
         blocks += [breakout_entry(s, bo.loc[s], windows, cur, url(s), name(s)) for s in diff.breakouts]
+    wide = diff.wide_breakouts if cfg.alerts.list_wide_breakouts else []
+    if wide:
+        blocks.append(
+            "⚠️ <b>Breakouts, stop wider than ADR</b>\n"
+            "SPEC rejects these: the distance from close to the day's low is more than one average daily range."
+        )
+        blocks += [breakout_entry(s, bo.loc[s], windows, cur, url(s), name(s)) for s in wide]
     if diff.new_watchlist:
         blocks.append("👀 <b>New on watchlist</b> (closest to trigger first)")
         blocks += [watchlist_entry(s, wl.loc[s], windows, cur, url(s), name(s)) for s in diff.new_watchlist]
-    if not diff.breakouts and not diff.new_watchlist and not diff.first_run:
+    if not diff.breakouts and not wide and not diff.new_watchlist and not diff.first_run:
         blocks.append("Nothing new today.")
     blocks.append(DISCLAIMER)
     return pack(blocks)

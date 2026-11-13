@@ -414,7 +414,8 @@ def alert_flow(res: ScanResults, cfg: MarketConfig, universe: pd.DataFrame, char
         diff.next_state.save(path)
     console.print(
         f"Alerts: {len(messages)} message(s) {'printed' if dry_run else 'sent'} · "
-        f"{len(diff.breakouts)} breakouts, {len(diff.new_watchlist)} new watchlist names"
+        f"{len(diff.breakouts)} breakouts ok, {len(diff.wide_breakouts)} too wide, "
+        f"{len(diff.new_watchlist)} new watchlist names"
         + (" · first run: watchlist recorded as baseline" if diff.first_run else "")
         + (" · dry run, state not saved" if dry_run else f" · state saved to {path}")
     )

@@ -96,3 +96,5 @@ alerts:
                                  #   the old state, so missing names don't come back as "new" the next day
   baseline_first_run: true       # (assumption) with no state file yet, record today's watchlist as the baseline
                                  #   and alert only breakouts, instead of listing every watchlist name at once
+  list_wide_breakouts: true      # (decision) also name breakouts whose stop is wider than 1 ADR, in their own
+                                 #   section. SPEC says reject them; they are listed (marked) so you decide.

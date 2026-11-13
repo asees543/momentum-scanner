@@ -236,3 +236,33 @@ def test_full_watchlist_lists_every_name_with_company():
     assert text.index("<b>X</b> · X Corp") < text.index("<b>BRK-B</b> · Berkshire")
     assert "symbol=NYSE:BRK.B" in text
     assert "not investment advice" in text
+
+
+# --- breakouts whose stop is wider than ADR -----------------------------------------------------
+
+
+def wide_breakout_results():
+    # Close 33.0 with the day's low at 30.0: risk 9.1% > ADR 5.9%, so status "too wide".
+    b = textbook().append(33.0, 33.3, 30.0, 2_000_000)
+    return scans.run_scans(panels_from({"X": b}), CFG)
+
+
+def test_wide_breakout_is_named_in_its_own_section():
+    res = wide_breakout_results()
+    assert res.breakouts.table.loc["X", "status"] == "too wide"
+    d = diff_results(prev_state(), res, "us", CFG.alerts)
+    text = "\n".join(format_alerts(d, res, CFG, UNIVERSE, chart_url))
+    assert "Breakouts 0 ok, 1 too wide" in text
+    assert "⚠️ <b>Breakouts, stop wider than ADR</b>" in text
+    assert "<b>X</b> · X Corp\n33.00 › trig 31.79 · stop 30.00" in text
+    assert "🚀 <b>Breakouts</b>" not in text  # no ok breakouts that day
+    assert "Nothing new today." not in text
+
+
+def test_wide_breakouts_only_counted_when_switched_off():
+    cfg = us_cfg(alerts={"list_wide_breakouts": False})
+    res = wide_breakout_results()
+    d = diff_results(prev_state(), res, "us", cfg.alerts)
+    text = "\n".join(format_alerts(d, res, cfg, UNIVERSE, chart_url))
+    assert "Breakouts 0 ok, 1 too wide" in text
+    assert "stop wider than ADR</b>" not in text

@@ -7,7 +7,8 @@ One JSON file per market, state/<market>.json, committed to the repo by the GitH
       "as_of": "2026-11-12",              # market date of the last run whose alerts were delivered
       "active_count": 5910,               # symbols with a bar that day (data-health baseline)
       "watchlist": {"XERS": {"trigger": 16.88, "first_seen": "2026-11-12"}, ...},
-      "breakouts": ["SGMT"],
+      "breakouts": ["SGMT"],                 # "ok" breakouts (stop within one ADR)
+      "wide_breakouts": [],                  # breakouts whose stop is wider than one ADR
       "updated_at": "2026-11-13T22:07:41+00:00"
     }
 
@@ -17,8 +18,9 @@ Rules (see `diff_results`):
 * fewer than min_active_ratio x the last run's symbols have a bar -> unhealthy: warn, keep old state
 * new watchlist names = on today's watchlist, not on the last SENT watchlist. A name that drops off
   and later returns is new again.
-* breakouts = today's "ok" breakouts. Each breakout belongs to one market date, so all are new
-  once the date has moved on. "too wide" ones are only counted (SPEC: reject the alert).
+* breakouts = today's breakouts, split into "ok" and "too wide" (stop wider than one ADR; SPEC
+  rejects those). Each breakout belongs to one market date, so all are new once the date has moved
+  on. The "too wide" ones are listed in their own section when alerts.list_wide_breakouts is on.
 * no state file yet + baseline_first_run -> record today's watchlist without listing it.
 The caller saves `next_state` only after the messages were delivered.
 """
@@ -51,6 +53,7 @@ class MarketState:
     active_count: int
     watchlist: dict[str, dict] = field(default_factory=dict)
     breakouts: list[str] = field(default_factory=list)
+    wide_breakouts: list[str] = field(default_factory=list)
     updated_at: str = ""
 
     @classmethod
@@ -64,6 +67,7 @@ class MarketState:
             active_count=int(raw["active_count"]),
             watchlist=dict(raw.get("watchlist", {})),
             breakouts=list(raw.get("breakouts", [])),
+            wide_breakouts=list(raw.get("wide_breakouts", [])),
             updated_at=raw.get("updated_at", ""),
         )
 
@@ -85,7 +89,8 @@ class Diff:
     first_run: bool = False
     new_watchlist: list[str] = field(default_factory=list)  # in watchlist-table order
     breakouts: list[str] = field(default_factory=list)  # "ok" breakouts, in breakout-table order
-    rejected_breakouts: int = 0
+    wide_breakouts: list[str] = field(default_factory=list)  # stop wider than one ADR
+    rejected_breakouts: int = 0  # = len(wide_breakouts)
     watchlist_size: int = 0
     next_state: MarketState | None = None
 
@@ -115,6 +120,7 @@ def diff_results(
     wl = results.watchlist.table
     bo = results.breakouts.table
     ok_breakouts = [s for s in bo.index if bo.loc[s, "status"] == "ok"] if len(bo) else []
+    wide_breakouts = [s for s in bo.index if bo.loc[s, "status"] != "ok"] if len(bo) else []
     first_run = prev is None
     prev_wl = prev.watchlist if prev else {}
     if first_run and acfg.baseline_first_run:
@@ -134,6 +140,7 @@ def diff_results(
             for s in wl.index
         },
         breakouts=ok_breakouts,
+        wide_breakouts=wide_breakouts,
         updated_at=(now or datetime.now(timezone.utc)).isoformat(timespec="seconds"),
     )
     return Diff(
@@ -143,7 +150,8 @@ def diff_results(
         first_run=first_run,
         new_watchlist=new_watchlist,
         breakouts=ok_breakouts,
-        rejected_breakouts=len(bo) - len(ok_breakouts),
+        wide_breakouts=wide_breakouts,
+        rejected_breakouts=len(wide_breakouts),
         watchlist_size=len(wl),
         next_state=next_state,
     )

@@ -32,7 +32,8 @@ def test_first_run_records_baseline_and_alerts_only_breakouts():
     assert d.status == "send" and d.first_run
     assert d.new_watchlist == []  # baseline, no flood
     assert d.breakouts == ["C"]
-    assert d.rejected_breakouts == 1
+    assert d.wide_breakouts == ["D"] and d.rejected_breakouts == 1
+    assert d.next_state.wide_breakouts == ["D"]
     assert d.watchlist_size == 2
     assert set(d.next_state.watchlist) == {"A", "B"}
     assert d.next_state.watchlist["A"] == {"trigger": 10.0, "first_seen": "2026-11-12"}
