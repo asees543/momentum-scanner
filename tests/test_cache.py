@@ -227,3 +227,19 @@ def test_panels_drop_stray_holiday_bar_and_keep_gaps_nan():
     assert np.isnan(p.close.loc[d[4], "B"])
     assert p.symbol_frame("A").columns.tolist() == ["date", "open", "high", "low", "close", "volume"]
     assert p.as_of(d[5]).dates.max() == d[5]
+
+
+def test_session_not_yet_published_is_downloaded_again(cache):
+    # A run right after the close: Yahoo has bars only up to yesterday for AAA, but today for BBB.
+    d = SESSIONS
+    market = FakeMarket({"AAA": make_history("AAA", np.full(len(d) - 1, 10.0), d[:-1]),
+                         "BBB": make_history("BBB", np.full(len(d), 10.0), d)})
+    run_update(cache, market, ["AAA", "BBB"], d[-1].date())
+    assert cache.read_meta()["checked"] == {"BBB": d[-1].date().isoformat()}
+    # The retry later that day: Yahoo has now published AAA's bar.
+    market.history["AAA"] = make_history("AAA", np.full(len(d), 10.0), d)
+    market.requests.clear()
+    df, rep = run_update(cache, market, ["AAA", "BBB"], d[-1].date())
+    assert rep.already_current == 1  # BBB skipped, AAA downloaded again
+    assert market.requests[0][0] == ("AAA",)
+    assert df.groupby("symbol")["date"].max().eq(d[-1]).all()

@@ -152,6 +152,16 @@ def find_mismatched(cached: pd.DataFrame, fresh: pd.DataFrame, tolerance_pct: fl
     return sorted(bad | no_overlap)
 
 
+def _reached(fresh: pd.DataFrame, cutoff: date) -> list[str]:
+    """Symbols whose downloaded rows include a bar dated `cutoff`. Only these count as checked for
+    that cutoff: if Yahoo had not published the session yet (or a stock did not trade), the next
+    run the same day downloads them again instead of skipping them."""
+    if fresh.empty:
+        return []
+    last = fresh.groupby("symbol")["date"].max()
+    return sorted(last.index[last >= pd.Timestamp(cutoff)])
+
+
 def update_prices(
     cache: PriceCache,
     provider: PriceProvider,
@@ -167,9 +177,10 @@ def update_prices(
 ) -> tuple[pd.DataFrame, UpdateReport]:
     """Bring the cache up to `cutoff` (last complete session) for `symbols`; return the full cache.
 
-    meta.json keeps, per symbol, the cutoff it was last successfully checked against, so running
-    twice after the same close skips the download (unless refresh=True), and a symbol that failed
-    is retried on the next run. Tracking this per symbol (not one flag for the whole cache) means a
+    meta.json keeps, per symbol, the cutoff it was last successfully checked against (only when the
+    download actually contained a bar for that cutoff), so running twice after the same close skips
+    the download (unless refresh=True), while a symbol that failed, or whose bar Yahoo had not
+    published yet, is downloaded again on the next run. Tracking this per symbol (not one flag for the whole cache) means a
     quick run on a few symbols never makes a later full run skip the rest.
     """
     symbols = list(dict.fromkeys(symbols))
@@ -192,7 +203,7 @@ def update_prices(
         fresh, failed = _collect(provider, new, history_start, cutoff, "new symbols", progress, checkpoint)
         working = _merge(working, fresh)
         report.failed.extend(failed)
-        checked.update({s: cutoff_iso for s in fresh["symbol"].unique()})
+        checked.update({s: cutoff_iso for s in _reached(fresh, cutoff)})
         cache.save(working)
 
     # 2) Known symbols: incremental with overlap check, skipping those already checked for this cutoff.
@@ -211,7 +222,7 @@ def update_prices(
         mismatched = find_mismatched(working, fresh, tolerance_pct)
         fresh_ok = fresh[~fresh["symbol"].isin(mismatched)]
         working = _merge(working, fresh_ok)
-        checked.update({s: cutoff_iso for s in fresh_ok["symbol"].unique()})
+        checked.update({s: cutoff_iso for s in _reached(fresh_ok, cutoff)})
 
         full = sorted(stale | set(mismatched))
         if full:
@@ -221,7 +232,7 @@ def update_prices(
             working = _merge(working, refetched, replace_symbols=got)
             report.full_refetch = got
             report.failed.extend(failed_full)
-            checked.update({s: cutoff_iso for s in got})
+            checked.update({s: cutoff_iso for s in _reached(refetched, cutoff)})
 
     report.failed = sorted(set(report.failed))
     cache.save(working)
