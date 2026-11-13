@@ -106,6 +106,30 @@ def lowest(series: T, n: int) -> T:
     return series.rolling(n, min_periods=n).min()
 
 
+def circuit_locked(high: T, low: T, close: T, min_move_pct: float, max_range_pct: float) -> T:
+    """True on a session that looks frozen at a price band (NSE circuit limit).
+
+    Formula: locked_t = range%_t <= max_range_pct  AND  |close_t / close_{t-1} - 1| x 100 >= min_move_pct
+    i.e. the stock barely traded off one price all day (high ~ low) while closing a band's width
+    away from the prior close. A flat suspended stock (no move) is not "locked". Missing bars -> False.
+    """
+    rng = daily_range_pct(high, low)
+    move = (close / close.shift(1) - 1).abs() * 100
+    return (rng <= max_range_pct) & (move >= min_move_pct)
+
+
+def run_length(mask: T) -> T:
+    """Length of the current streak of True values ending at each bar (0 where False).
+
+    Example: [T, T, F, T, T, T] -> [1, 2, 0, 1, 2, 3]
+    Formula: c = cumulative count of True; subtract c's value at the most recent False.
+    """
+    m = mask.fillna(False).astype(int)
+    c = m.cumsum()
+    reset = c.where(m == 0).ffill().fillna(0)
+    return (c - reset).astype(int)
+
+
 # SPEC.md uses US naming; keep aliases so either name reads naturally.
 dollar_volume = traded_value
 avg_dollar_volume = avg_traded_value

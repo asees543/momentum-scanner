@@ -14,13 +14,13 @@ from __future__ import annotations
 import io
 import logging
 import re
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timezone
 from typing import Callable
 
 import pandas as pd
 
 from scanner.config import MarketConfig, UniverseConfig
-from scanner.data.cache import PriceCache
+from scanner.data.cache import PriceCache, load_cached_universe
 from scanner.data.yfinance_provider import YFinanceProvider
 
 log = logging.getLogger(__name__)
@@ -124,19 +124,7 @@ def load_universe(
     Cached as universe.csv in the market cache dir and refreshed when older than
     `data.universe_max_age_hours`. If the download fails, the cached copy is used with a warning.
     """
-    now = now or datetime.now(timezone.utc)
-    cache = PriceCache(cfg.data.cache_path())
-    meta = cache.read_meta()
-    fetched_at = meta.get("universe_fetched_at")
-    fresh_enough = (
-        fetched_at is not None
-        and cache.universe_path.exists()
-        and now - datetime.fromisoformat(fetched_at) < timedelta(hours=cfg.data.universe_max_age_hours)
-    )
-    if fresh_enough and not force:
-        return pd.read_csv(cache.universe_path, dtype=str, keep_default_na=False)
-
-    try:
+    def build() -> tuple[pd.DataFrame, int]:
         raw = pd.concat(
             [
                 parse_nasdaq_listed(fetch_text(NASDAQ_LISTED_URL)),
@@ -144,22 +132,16 @@ def load_universe(
             ],
             ignore_index=True,
         )
-    except Exception as e:
-        if cache.universe_path.exists():
-            log.warning("universe download failed (%s); using cached list from %s", e, fetched_at)
-            return pd.read_csv(cache.universe_path, dtype=str, keep_default_na=False)
-        raise
+        return filter_universe(raw, cfg.universe), len(raw)
 
-    uni = filter_universe(raw, cfg.universe)[["symbol", "source_symbol", "name", "exchange"]]
-    cache.dir.mkdir(parents=True, exist_ok=True)
-    uni.to_csv(cache.universe_path, index=False)
-    meta = cache.read_meta()
-    meta["universe_fetched_at"] = now.isoformat()
-    meta["universe_raw_count"] = int(len(raw))
-    meta["universe_count"] = int(len(uni))
-    cache.write_meta(meta)
-    log.info("US universe: %d listed rows -> %d common stocks", len(raw), len(uni))
-    return uni
+    return load_cached_universe(
+        PriceCache(cfg.data.cache_path()),
+        cfg.data.universe_max_age_hours,
+        build,
+        now or datetime.now(timezone.utc),
+        force,
+        label="US",
+    )
 
 
 TRADINGVIEW_EXCHANGE = {"NASDAQ": "NASDAQ", "NYSE": "NYSE", "NYSE_AMERICAN": "AMEX"}

@@ -28,7 +28,7 @@ from rich.progress import BarColumn, MofNCompleteColumn, Progress, TextColumn, T
 from rich.table import Table
 
 from scanner.config import ConfigError, MarketConfig, load_config
-from scanner.data import us_loader
+from scanner.data import india_loader, us_loader
 from scanner.data.base import Panels, last_complete_session_date
 from scanner.data.cache import PriceCache, UpdateReport, update_prices
 from scanner.notify import (
@@ -44,7 +44,7 @@ from scanner.notify import (
 from scanner.scans import BreakoutResult, LeadersResult, ScanResults, WatchlistResult, run_scans
 from scanner.state import STATE_DIR, MarketState, diff_results, state_path
 
-MARKETS: dict[str, ModuleType] = {"us": us_loader}
+MARKETS: dict[str, ModuleType] = {"us": us_loader, "india": india_loader}
 CURRENCY_SYMBOL = {"USD": "$", "INR": "₹"}
 
 console = Console()

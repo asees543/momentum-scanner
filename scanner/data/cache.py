@@ -31,6 +31,7 @@ import os
 from dataclasses import dataclass, field
 from datetime import date, datetime, timezone
 from pathlib import Path
+from datetime import timedelta
 from typing import Callable, Sequence
 
 import pandas as pd
@@ -233,3 +234,46 @@ def update_prices(
     )
     cache.write_meta(meta)
     return working, report
+
+
+UNIVERSE_COLUMNS = ["symbol", "source_symbol", "name", "exchange"]
+
+
+def load_cached_universe(
+    cache: PriceCache,
+    max_age_hours: float,
+    build: Callable[[], tuple[pd.DataFrame, int]],
+    now: datetime,
+    force: bool = False,
+    label: str = "",
+) -> pd.DataFrame:
+    """Market universe (columns symbol, source_symbol, name, exchange), cached as universe.csv.
+
+    `build()` downloads and filters the list, returning (universe, raw_row_count). It is called only
+    when the cached copy is older than max_age_hours (or force=True). If it fails, the cached copy is
+    used with a warning; with no cached copy the error propagates.
+    """
+    meta = cache.read_meta()
+    fetched_at = meta.get("universe_fetched_at")
+    fresh_enough = (
+        fetched_at is not None
+        and cache.universe_path.exists()
+        and now - datetime.fromisoformat(fetched_at) < timedelta(hours=max_age_hours)
+    )
+    if fresh_enough and not force:
+        return pd.read_csv(cache.universe_path, dtype=str, keep_default_na=False)
+    try:
+        uni, raw_count = build()
+    except Exception as e:
+        if cache.universe_path.exists():
+            log.warning("universe download failed (%s); using cached list from %s", e, fetched_at)
+            return pd.read_csv(cache.universe_path, dtype=str, keep_default_na=False)
+        raise
+    uni = uni[UNIVERSE_COLUMNS]
+    cache.dir.mkdir(parents=True, exist_ok=True)
+    uni.to_csv(cache.universe_path, index=False)
+    meta = cache.read_meta()
+    meta.update(universe_fetched_at=now.isoformat(), universe_raw_count=int(raw_count), universe_count=int(len(uni)))
+    cache.write_meta(meta)
+    log.info("%s universe: %d listed rows -> %d kept", label, raw_count, len(uni))
+    return uni

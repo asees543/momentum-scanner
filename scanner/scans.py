@@ -42,6 +42,7 @@ class LiquidityFrames:
     liquid: pd.DataFrame  # bool
     avg_traded_value: pd.DataFrame
     adr_pct: pd.DataFrame
+    circuit_stuck: pd.DataFrame | None = None  # bool; None when the rule is off for the market
 
 
 def liquidity_frames(panels: Panels, lcfg: LiquidityConfig) -> LiquidityFrames:
@@ -51,6 +52,10 @@ def liquidity_frames(panels: Panels, lcfg: LiquidityConfig) -> LiquidityFrames:
                AND mean(close x volume over the last `window` bars) >= min_avg_traded_value
                AND ADR%(last `window` bars) >= min_adr_pct
     A missing value (no bar, or less than a full window) compares False, so it is not liquid.
+
+    If exclude_circuit_locked (SPEC India): also NOT stuck at a circuit limit, where
+    stuck_t = some streak of >= circuit_lock_consecutive_days consecutive locked sessions
+              (indicators.circuit_locked) ended within the last circuit_lock_lookback sessions.
     """
     n = lcfg.window
     avg_tv = ind.avg_traded_value(panels.close, panels.volume, n)
@@ -60,13 +65,21 @@ def liquidity_frames(panels: Panels, lcfg: LiquidityConfig) -> LiquidityFrames:
         & (avg_tv >= lcfg.min_avg_traded_value)
         & (adr >= lcfg.min_adr_pct)
     )
-    return LiquidityFrames(liquid=liquid, avg_traded_value=avg_tv, adr_pct=adr)
+    stuck = None
+    if lcfg.exclude_circuit_locked:
+        locked = ind.circuit_locked(
+            panels.high, panels.low, panels.close, lcfg.circuit_lock_min_move_pct, lcfg.circuit_lock_max_range_pct
+        )
+        streak = ind.run_length(locked)
+        stuck = streak.rolling(lcfg.circuit_lock_lookback, min_periods=1).max() >= lcfg.circuit_lock_consecutive_days
+        liquid &= ~stuck
+    return LiquidityFrames(liquid=liquid, avg_traded_value=avg_tv, adr_pct=adr, circuit_stuck=stuck)
 
 
 def liquidity_snapshot(panels: Panels, lcfg: LiquidityConfig) -> pd.DataFrame:
     """Stage 1 on the as-of (last) session, one row per symbol that has a bar that day.
     Columns: close, avg_traded_value, adr_pct, liquid."""
-    p = panels.tail(lcfg.window + 1)
+    p = panels.tail(max(lcfg.window, lcfg.circuit_lock_lookback + 1) + 1)
     liq = liquidity_frames(p, lcfg)
     last_close = p.close.iloc[-1]
     snap = pd.DataFrame(
@@ -138,7 +151,7 @@ def momentum_leaders(
         raise ValueError("no price data")
     mode = mode or leaders.mode
     max_lb = max(w.lookback for w in leaders.windows.values())
-    p = panels.tail(max_lb + lcfg.window + 1)
+    p = panels.tail(max_lb + max(lcfg.window, lcfg.circuit_lock_lookback + 1) + 1)
     liq = liquidity_frames(p, lcfg)
     return leaders_from_frames(p, liq, leader_frames(p, liq, leaders, mode), leaders, mode)
 
@@ -345,7 +358,7 @@ def _rows_needed(cfg: MarketConfig) -> int:
     s = cfg.setup
     max_lb = max(w.lookback for w in cfg.leaders.windows.values())
     per_day = max(
-        max_lb + cfg.liquidity.window,
+        max_lb + max(cfg.liquidity.window, cfg.liquidity.circuit_lock_lookback + 1),
         s.sma_trend,
         s.high_window,
         2 * s.higher_lows_bars,
