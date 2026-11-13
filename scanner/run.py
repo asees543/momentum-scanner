@@ -7,6 +7,7 @@
     uv run python -m scanner.run --market us --symbols NVDA,PLTR,HOOD     # quick dev run
     uv run python -m scanner.run --market us --alert --dry-run    # print the Telegram messages
     uv run --env-file .env python -m scanner.run --market us --alert   # send + save state/us.json
+    uv run --env-file .env python -m scanner.run --market us --no-update --send-watchlist   # full list now
 
 Output is information, not investment advice.
 """
@@ -15,7 +16,6 @@ from __future__ import annotations
 
 import argparse
 import logging
-import re
 import sys
 from datetime import date, datetime, timezone
 from pathlib import Path
@@ -31,7 +31,16 @@ from scanner.config import ConfigError, MarketConfig, load_config
 from scanner.data import us_loader
 from scanner.data.base import Panels, last_complete_session_date
 from scanner.data.cache import PriceCache, UpdateReport, update_prices
-from scanner.notify import NotifyError, PrintNotifier, TelegramNotifier, format_alerts, format_failure, format_warning
+from scanner.notify import (
+    NotifyError,
+    PrintNotifier,
+    TelegramNotifier,
+    format_alerts,
+    format_failure,
+    format_warning,
+    format_watchlist,
+    short_name,
+)
 from scanner.scans import BreakoutResult, LeadersResult, ScanResults, WatchlistResult, run_scans
 from scanner.state import STATE_DIR, MarketState, diff_results, state_path
 
@@ -59,21 +68,13 @@ def parse_args(argv: list[str] | None) -> argparse.Namespace:
                    "out_breakouts.csv, out_watchlist.csv and out_leaders.csv")
     p.add_argument("--alert", action="store_true",
                    help="compare with the last sent state (state/<market>.json) and send what is new via Telegram")
+    p.add_argument("--send-watchlist", action="store_true",
+                   help="send the whole current watchlist to Telegram now (state is not touched)")
     p.add_argument("--dry-run", action="store_true",
-                   help="with --alert: print the messages instead of sending them; state is not saved")
+                   help="with --alert or --send-watchlist: print the messages instead of sending; state is not saved")
     p.add_argument("--state-dir", default=str(STATE_DIR), help=argparse.SUPPRESS)  # tests / experiments
     p.add_argument("-v", "--verbose", action="store_true", help="show info-level logs")
     return p.parse_args(argv)
-
-
-def short_name(name: str) -> str:
-    """'NVIDIA Corporation - Common Stock' -> 'NVIDIA Corporation'."""
-    cut = re.split(
-        r"\s+-\s+|\s+(?:Class [A-Z] )?(?:New )?(?:Common|Ordinary|American Depositary|Depositary|Units?)\b",
-        str(name),
-        maxsplit=1,
-    )[0]
-    return cut.strip(" ,") or str(name)
 
 
 def fmt_money(value: float, cur: str) -> str:
@@ -447,8 +448,8 @@ def _main(args: argparse.Namespace) -> int:
     if args.window and args.window not in cfg.leaders.windows:
         err_console.print(f"[red]--window must be one of {list(cfg.leaders.windows)}[/]")
         return 2
-    if args.dry_run and not args.alert:
-        err_console.print("[red]--dry-run only applies to --alert[/]")
+    if args.dry_run and not (args.alert or args.send_watchlist):
+        err_console.print("[red]--dry-run only applies to --alert or --send-watchlist[/]")
         return 2
     if args.alert and not args.dry_run and (args.symbols or args.limit or args.as_of):
         # A partial universe or a past date would overwrite state/<market>.json with the wrong watchlist.
@@ -474,6 +475,13 @@ def _main(args: argparse.Namespace) -> int:
     shown = render(res, cfg, universe, args, report)
     if args.csv:
         write_csv(args.csv, shown, res.leaders.as_of, _names(universe))
+    if args.send_watchlist:
+        messages = format_watchlist(res, cfg, universe, MARKETS[args.market].chart_url)
+        (PrintNotifier() if args.dry_run else TelegramNotifier.from_env()).send(messages)
+        console.print(
+            f"Full watchlist: {len(res.watchlist.table)} names in {len(messages)} message(s) "
+            + ("printed (dry run)" if args.dry_run else "sent")
+        )
     if args.alert:
         console.print()
         return alert_flow(res, cfg, universe, MARKETS[args.market].chart_url, args.dry_run, Path(args.state_dir))

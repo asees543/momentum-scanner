@@ -52,7 +52,7 @@ def test_three_day_sequence(tmp_path):
     cap = Capture()
     assert flow(results_for(day2), tmp_path, cap) == 0  # next session: breakout alert
     text = "\n".join(cap.sent[0])
-    assert "🚀 <b>Breakouts</b>" in text and "<b>X</b> 33.00" in text
+    assert "🚀 <b>Breakouts</b>" in text and "<b>X</b> · X Corp\n33.00 › trig" in text
     st = MarketState.load(path)
     assert st.breakouts == ["X"] and "X" not in st.watchlist  # closed above trigger: left the watchlist
 
@@ -88,5 +88,5 @@ def test_real_alert_refuses_partial_runs(extra):
     assert main(["--market", "us", "--no-update", "--alert", *extra]) == 2
 
 
-def test_dry_run_requires_alert():
+def test_dry_run_requires_alert_or_send_watchlist():
     assert main(["--market", "us", "--no-update", "--dry-run"]) == 2

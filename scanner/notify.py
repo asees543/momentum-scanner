@@ -1,19 +1,24 @@
 """Alert messages and delivery (Telegram primary; email is optional in SPEC and not built yet).
 
-Message layout (Telegram HTML):
+Message layout (Telegram HTML); each entry is three lines so it reads well on a phone:
 
     US scan · Thu 12 Nov 2026
     Watchlist 64 (15 new) · Breakouts 1 ok, 0 too wide · Leaders 1M 141 / 3M 46 / 6M 22
 
     🚀 Breakouts
-    SGMT 11.41 › trig 10.92 · stop 10.80 · risk 5.3% · ADR 7.3 · vol 1.5×
-       1M … · 3M … · 6M … · $11.4M · chart
+    SGMT · Sagimet Biosciences
+    11.41 › trig 10.92 · stop 10.80 · risk 5.3% · ADR 7.3 · vol 1.5×
+    1M … · 3M … · 6M … · $11.4M · chart
 
     👀 New on watchlist (closest to trigger first)
-    XERS 16.65 · trig 16.88 (+1.4%) · stop 16.35 · risk 3.1% · ADR 5.4
-       1M +63% · 3M +108% · 6M +161% · $43.8M · chart
+    XERS · Xeris Biopharma Holdings
+    16.65 · trig 16.88 (+1.4%) · stop 16.35 · risk 3.1% · ADR 5.4
+    1M +63% · 3M +108% · 6M +161% · $43.8M · chart
 
     Information only, not investment advice.
+
+`format_watchlist` sends the whole current watchlist in the same entry format (on demand;
+it never touches state).
 
 Secrets come from the environment (TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID): `.env` locally via
 `uv run --env-file .env ...`, repository secrets in GitHub Actions. The token is part of every Bot
@@ -73,30 +78,60 @@ def _pct(x: float) -> str:
     return "-" if pd.isna(x) else f"{x * 100:+.0f}%"
 
 
-def _second_line(r: pd.Series, windows: list[str], cur: str, url: str) -> str:
+def short_name(name: str, max_len: int = 32) -> str:
+    """'NVIDIA Corporation - Common Stock' -> 'NVIDIA Corporation' (cut to max_len characters)."""
+    cut = re.split(
+        r"\s+-\s+|\s+(?:Class [A-Z] )?(?:New )?(?:Common|Ordinary|American Depositary|Depositary|Units?)\b",
+        str(name),
+        maxsplit=1,
+    )[0]
+    cut = cut.strip(" ,") or str(name)
+    return cut if len(cut) <= max_len else cut[: max_len - 1].rstrip() + "…"
+
+
+def _title_line(sym: str, r: pd.Series, name: str) -> str:
+    flag = " ⚠" if r.get("flag_day_move", False) else ""
+    return f"<b>{_e(sym)}</b>{flag}" + (f" · {_e(name)}" if name else "")
+
+
+def _returns_line(r: pd.Series, windows: list[str], cur: str, url: str) -> str:
     rets = " · ".join(f"{w.upper()} {_pct(r[f'ret_{w}'])}" for w in windows)
-    return f"   {rets} · {_money(r['avg_traded_value'], cur)} · <a href=\"{_e(url)}\">chart</a>"
+    return f"{rets} · {_money(r['avg_traded_value'], cur)} · <a href=\"{_e(url)}\">chart</a>"
 
 
-def _sym(sym: str, r: pd.Series) -> str:
-    return f"<b>{_e(sym)}</b>" + (" ⚠" if r.get("flag_day_move", False) else "")
-
-
-def breakout_entry(sym: str, r: pd.Series, windows: list[str], cur: str, url: str) -> str:
-    first = (
-        f"{_sym(sym, r)} {r['close']:.2f} › trig {r['trigger']:.2f} · stop {r['stop']:.2f} · "
+def breakout_entry(sym: str, r: pd.Series, windows: list[str], cur: str, url: str, name: str = "") -> str:
+    numbers = (
+        f"{r['close']:.2f} › trig {r['trigger']:.2f} · stop {r['stop']:.2f} · "
         f"risk {r['risk_pct']:.1f}% · ADR {r['adr_pct']:.1f} · vol {r['vol_ratio']:.1f}×"
     )
-    return first + "\n" + _second_line(r, windows, cur, url)
+    return "\n".join([_title_line(sym, r, name), numbers, _returns_line(r, windows, cur, url)])
 
 
-def watchlist_entry(sym: str, r: pd.Series, windows: list[str], cur: str, url: str) -> str:
+def watchlist_entry(sym: str, r: pd.Series, windows: list[str], cur: str, url: str, name: str = "") -> str:
     risk = f"risk {r['risk_pct']:.1f}%" + (" (wide)" if r["risk_too_wide"] else "")
-    first = (
-        f"{_sym(sym, r)} {r['close']:.2f} · trig {r['trigger']:.2f} ({r['to_trigger_pct']:+.1f}%) · "
+    numbers = (
+        f"{r['close']:.2f} · trig {r['trigger']:.2f} ({r['to_trigger_pct']:+.1f}%) · "
         f"stop {r['stop']:.2f} · {risk} · ADR {r['adr_pct']:.1f}"
     )
-    return first + "\n" + _second_line(r, windows, cur, url)
+    return "\n".join([_title_line(sym, r, name), numbers, _returns_line(r, windows, cur, url)])
+
+
+def _lookups(universe: pd.DataFrame, chart_url: ChartUrlFn):
+    """Per-symbol company name and chart link from the universe table."""
+    info = universe.set_index("symbol") if "symbol" in universe.columns and len(universe) else pd.DataFrame()
+
+    def name(sym: str) -> str:
+        if sym in info.index and "name" in info.columns:
+            return short_name(info.loc[sym, "name"])
+        return ""
+
+    def url(sym: str) -> str:
+        if sym in info.index:
+            row = info.loc[sym]
+            return chart_url(sym, row.get("exchange"), row.get("source_symbol"))
+        return chart_url(sym, None, None)
+
+    return name, url
 
 
 def pack(blocks: list[str], budget: int = MESSAGE_BUDGET) -> list[str]:
@@ -132,13 +167,7 @@ def format_alerts(
     """Messages for a run with status "send"."""
     cur = cfg.currency
     windows = list(cfg.leaders.windows)
-    info = universe.set_index("symbol") if "symbol" in universe.columns and len(universe) else pd.DataFrame()
-
-    def url(sym: str) -> str:
-        if sym in info.index:
-            row = info.loc[sym]
-            return chart_url(sym, row.get("exchange"), row.get("source_symbol"))
-        return chart_url(sym, None, None)
+    name, url = _lookups(universe, chart_url)
 
     lead = results.leaders
     counts = " / ".join(f"{w.upper()} {lead.counts.get(w, 0)}" for w in windows)
@@ -156,12 +185,30 @@ def format_alerts(
     bo, wl = results.breakouts.table, results.watchlist.table
     if diff.breakouts:
         blocks.append("🚀 <b>Breakouts</b>")
-        blocks += [breakout_entry(s, bo.loc[s], windows, cur, url(s)) for s in diff.breakouts]
+        blocks += [breakout_entry(s, bo.loc[s], windows, cur, url(s), name(s)) for s in diff.breakouts]
     if diff.new_watchlist:
         blocks.append("👀 <b>New on watchlist</b> (closest to trigger first)")
-        blocks += [watchlist_entry(s, wl.loc[s], windows, cur, url(s)) for s in diff.new_watchlist]
+        blocks += [watchlist_entry(s, wl.loc[s], windows, cur, url(s), name(s)) for s in diff.new_watchlist]
     if not diff.breakouts and not diff.new_watchlist and not diff.first_run:
         blocks.append("Nothing new today.")
+    blocks.append(DISCLAIMER)
+    return pack(blocks)
+
+
+def format_watchlist(results: ScanResults, cfg: MarketConfig, universe: pd.DataFrame, chart_url: ChartUrlFn) -> list[str]:
+    """The whole current watchlist (closest to trigger first), for on-demand sending."""
+    wl = results.watchlist
+    windows = list(cfg.leaders.windows)
+    name, url = _lookups(universe, chart_url)
+    header = (
+        f"<b>{_e(cfg.market.upper())} watchlist · {wl.as_of:%a %d %b %Y}</b>\n"
+        f"{len(wl.table)} names, closest to trigger first ({wl.qualified_today} qualified that day, the rest "
+        f"within the last {cfg.breakout.watchlist_memory_sessions} sessions and still below their trigger)"
+    )
+    blocks = [header]
+    blocks += [watchlist_entry(s, wl.table.loc[s], windows, cfg.currency, url(s), name(s)) for s in wl.table.index]
+    if wl.table.empty:
+        blocks.append("The watchlist is empty.")
     blocks.append(DISCLAIMER)
     return pack(blocks)
 

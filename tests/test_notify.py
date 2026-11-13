@@ -14,8 +14,10 @@ from scanner.notify import (
     format_alerts,
     format_failure,
     format_warning,
+    format_watchlist,
     html_to_text,
     pack,
+    short_name,
 )
 from scanner.state import Diff, MarketState, diff_results
 from tests.synth import panels_from, textbook, us_cfg
@@ -57,7 +59,7 @@ def test_breakout_alert_has_every_spec_field():
     text = "\n".join(msgs)
     row = res.breakouts.table.loc["X"]
     assert "🚀 <b>Breakouts</b>" in text
-    assert "<b>X</b> 33.00 › trig 31.79 · stop 31.90" in text
+    assert "<b>X</b> · X Corp\n33.00 › trig 31.79 · stop 31.90" in text
     assert f"risk {row['risk_pct']:.1f}%" in text and "ADR 5.9" in text and "vol 1.9×" in text
     for w in ("1M", "3M", "6M"):
         assert f"{w} " in text
@@ -73,7 +75,7 @@ def test_new_watchlist_alert_and_wide_marker():
     assert d.new_watchlist == ["X"]
     text = "\n".join(format_alerts(d, res, CFG, UNIVERSE, chart_url))
     assert "👀 <b>New on watchlist</b>" in text
-    assert "<b>X</b> 31.40 · trig 31.79 (+1.2%) · stop 31.02" in text
+    assert "<b>X</b> · X Corp\n31.40 · trig 31.79 (+1.2%) · stop 31.02" in text
     assert "Watchlist 1 (1 new)" in text
     assert "(wide)" not in text
 
@@ -197,3 +199,40 @@ def test_chat_ids_from_updates():
     ]}
     chats = TelegramNotifier(TOKEN, "x", session=FakeSession([FakeResp(200, body)])).chat_ids()
     assert chats == [{"id": 111, "type": "private", "name": "A"}, {"id": -100222, "type": "channel", "name": "Alerts"}]
+
+
+# --- company names and the full watchlist -------------------------------------------------------
+
+
+@pytest.mark.parametrize(
+    "raw, short",
+    [
+        ("NVIDIA Corporation - Common Stock", "NVIDIA Corporation"),
+        ("Agilent Technologies, Inc. Common Stock", "Agilent Technologies, Inc."),
+        ("Ambev S.A. American Depositary Shares (Each representing 1 Common Share)", "Ambev S.A."),
+        ("Berkshire Hathaway Inc. New Common Stock", "Berkshire Hathaway Inc."),
+        ("A Very Long Company Name Holdings International Group plc", "A Very Long Company Name Holdin…"),
+    ],
+)
+def test_short_name(raw, short):
+    assert short_name(raw) == short
+    assert len(short_name(raw)) <= 32
+
+
+def test_entry_without_known_name_shows_ticker_only():
+    res = scans.run_scans(panels_from({"X": textbook()}), CFG)
+    d = diff_results(prev_state(), res, "us", CFG.alerts)
+    text = "\n".join(format_alerts(d, res, CFG, UNIVERSE.iloc[0:0], chart_url))
+    assert "<b>X</b>\n31.40 · trig" in text
+
+
+def test_full_watchlist_lists_every_name_with_company():
+    a, b = textbook(), textbook()
+    b.set_bar(159, close=31.0)  # a bit further from its trigger, so it sorts second
+    res = scans.run_scans(panels_from({"X": a, "BRK-B": b}), CFG)
+    msgs = format_watchlist(res, CFG, UNIVERSE, chart_url)
+    text = "\n".join(msgs)
+    assert "<b>US watchlist ·" in text and "2 names, closest to trigger first" in text
+    assert text.index("<b>X</b> · X Corp") < text.index("<b>BRK-B</b> · Berkshire")
+    assert "symbol=NYSE:BRK.B" in text
+    assert "not investment advice" in text
