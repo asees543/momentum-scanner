@@ -5,6 +5,8 @@
     uv run python -m scanner.run --market us --scan watchlist --window 1m
     uv run python -m scanner.run --market us --no-update --as-of 2026-10-30
     uv run python -m scanner.run --market us --symbols NVDA,PLTR,HOOD     # quick dev run
+    uv run python -m scanner.run --market us --alert --dry-run    # print the Telegram messages
+    uv run --env-file .env python -m scanner.run --market us --alert   # send + save state/us.json
 
 Output is information, not investment advice.
 """
@@ -29,7 +31,9 @@ from scanner.config import ConfigError, MarketConfig, load_config
 from scanner.data import us_loader
 from scanner.data.base import Panels, last_complete_session_date
 from scanner.data.cache import PriceCache, UpdateReport, update_prices
+from scanner.notify import NotifyError, PrintNotifier, TelegramNotifier, format_alerts, format_failure, format_warning
 from scanner.scans import BreakoutResult, LeadersResult, ScanResults, WatchlistResult, run_scans
+from scanner.state import STATE_DIR, MarketState, diff_results, state_path
 
 MARKETS: dict[str, ModuleType] = {"us": us_loader}
 CURRENCY_SYMBOL = {"USD": "$", "INR": "₹"}
@@ -53,6 +57,11 @@ def parse_args(argv: list[str] | None) -> argparse.Namespace:
     p.add_argument("--limit", type=int, help="only the first N universe symbols, alphabetically (dev)")
     p.add_argument("--csv", help="also write the table(s) to CSV; with --scan all, out.csv becomes "
                    "out_breakouts.csv, out_watchlist.csv and out_leaders.csv")
+    p.add_argument("--alert", action="store_true",
+                   help="compare with the last sent state (state/<market>.json) and send what is new via Telegram")
+    p.add_argument("--dry-run", action="store_true",
+                   help="with --alert: print the messages instead of sending them; state is not saved")
+    p.add_argument("--state-dir", default=str(STATE_DIR), help=argparse.SUPPRESS)  # tests / experiments
     p.add_argument("-v", "--verbose", action="store_true", help="show info-level logs")
     return p.parse_args(argv)
 
@@ -382,8 +391,49 @@ def write_csv(path: str, shown: dict[str, pd.DataFrame], as_of: pd.Timestamp, na
         console.print(f"[dim]Wrote {len(out)} rows to {out_path}[/]")
 
 
+def alert_flow(res: ScanResults, cfg: MarketConfig, universe: pd.DataFrame, chart_url, dry_run: bool,
+               state_dir: Path = STATE_DIR, notifier=None) -> int:
+    """Diff today's results against the last SENT state, deliver, then save the new state.
+    State is saved only after delivery succeeded, and never on a dry run."""
+    path = state_path(cfg.market, state_dir)
+    prev = MarketState.load(path)
+    diff = diff_results(prev, res, cfg.market, cfg.alerts)
+    if diff.status == "skip_same_day":
+        console.print(f"[dim]Alerts: {diff.reason}; nothing sent.[/]")
+        return 0
+    if notifier is None:
+        notifier = PrintNotifier() if dry_run else TelegramNotifier.from_env()
+    if diff.status in ("refuse_older", "unhealthy"):
+        notifier.send([format_warning(cfg.market, diff)])
+        err_console.print(f"[red]Alerts not sent: {diff.reason}[/]")
+        return 1
+    messages = format_alerts(diff, res, cfg, universe, chart_url)
+    notifier.send(messages)
+    if not dry_run:
+        diff.next_state.save(path)
+    console.print(
+        f"Alerts: {len(messages)} message(s) {'printed' if dry_run else 'sent'} · "
+        f"{len(diff.breakouts)} breakouts, {len(diff.new_watchlist)} new watchlist names"
+        + (" · first run: watchlist recorded as baseline" if diff.first_run else "")
+        + (" · dry run, state not saved" if dry_run else f" · state saved to {path}")
+    )
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
+    try:
+        return _main(args)
+    except Exception as e:
+        if args.alert and not args.dry_run:
+            try:  # best effort: tell the chat the scheduled run broke
+                TelegramNotifier.from_env().send([format_failure(args.market, f"{type(e).__name__}: {e}")])
+            except NotifyError:
+                pass
+        raise
+
+
+def _main(args: argparse.Namespace) -> int:
     logging.basicConfig(
         level=logging.INFO if args.verbose else logging.WARNING,
         format="%(message)s",
@@ -396,6 +446,13 @@ def main(argv: list[str] | None = None) -> int:
         return 2
     if args.window and args.window not in cfg.leaders.windows:
         err_console.print(f"[red]--window must be one of {list(cfg.leaders.windows)}[/]")
+        return 2
+    if args.dry_run and not args.alert:
+        err_console.print("[red]--dry-run only applies to --alert[/]")
+        return 2
+    if args.alert and not args.dry_run and (args.symbols or args.limit or args.as_of):
+        # A partial universe or a past date would overwrite state/<market>.json with the wrong watchlist.
+        err_console.print("[red]--alert with --symbols/--limit/--as-of is only allowed with --dry-run[/]")
         return 2
 
     try:
@@ -417,6 +474,9 @@ def main(argv: list[str] | None = None) -> int:
     shown = render(res, cfg, universe, args, report)
     if args.csv:
         write_csv(args.csv, shown, res.leaders.as_of, _names(universe))
+    if args.alert:
+        console.print()
+        return alert_flow(res, cfg, universe, MARKETS[args.market].chart_url, args.dry_run, Path(args.state_dir))
     return 0
 
 
