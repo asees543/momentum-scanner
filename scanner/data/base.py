@@ -126,6 +126,10 @@ class Panels:
             fields[c].index.name = "date"
         return cls(**fields)
 
+    def tail(self, n: int) -> Panels:
+        """Last n sessions only (cheaper maths when a scan needs just the recent window)."""
+        return Panels(**{c: getattr(self, c).iloc[-n:] for c in OHLCV_COLUMNS})
+
     def as_of(self, when: date | pd.Timestamp) -> Panels:
         """Panels truncated to dates <= `when` (point-in-time view, no lookahead)."""
         ts = pd.Timestamp(when)
