@@ -1,0 +1,17 @@
+Symbol|Security Name|Market Category|Test Issue|Financial Status|Round Lot Size|ETF|NextShares
+AACG|ATA Creativity Global - American Depositary Shares, each representing two common shares|S|N|D|100|N|N
+AAPL|Apple Inc. - Common Stock|Q|N|N|40|N|N
+NVDA|NVIDIA Corporation - Common Stock|Q|N|N|100|N|N
+ZYN|PTL LTD - Class A Ordinary Shares|S|N|N|100|N|N
+AAAP|Pacer Barings CLO Market Flex ETF|G|N|N|100|Y|N
+AACIW|Armada Acquisition Corp. III - Warrant|G|N|N|100|N|N
+AACIU|Armada Acquisition Corp. III - Units|G|N|N|100|N|N
+AACPR|Apogee Acquisition Corp - Rights|G|N|N|100|N|N
+ACGLN|Arch Capital Group Ltd. - Depositary Shares, each Representing a 1/1,000th Interest in a 4.550% Non-Cumulative Preferred Share, Series G|Q|N|N|100|N|N
+ZAZZT|Tick Pilot Test Stock Class A Common Stock|G|Y|N|100|N|N
+ADAMG|Adamas Trust, Inc. - 9.125% Senior Notes Due 2030|Q|N|N|100|N|N
+PFBC|Preferred Bank - Common Stock|Q|N|N|100|N|N
+OBAI|Our Bond, Inc. - Common Stock|G|N|D|100|N|N
+BLUWU|Blue Water Acquisition Corp. III - Unit.|G|N|N|100|N|N
+CHSCN|CHS Inc - Preferred Class B Series 2 Reset Rate|Q|N|N|100|N|N
+File Creation Time: 1113202612:11|||||||

@@ -1,0 +1,22 @@
+ACT Symbol|Security Name|Exchange|CQS Symbol|ETF|Round Lot Size|Test Issue|NASDAQ Symbol
+A|Agilent Technologies, Inc. Common Stock|N|A|N|100|N|A
+AA|Alcoa Corporation Common Stock |N|AA|N|100|N|AA
+AAC.U|Ares Acquisition Corporation III Units, each consisting of one Class A ordinary share and one-tenth of one redeemable warrant|N|AAC.U|N|100|N|AAC=
+AAC.W|Ares Acquisition Corporation III Redeemable warrants, each whole warrant exercisable for one Class A ordinary share at an exercise price of $11.50|N|AAC.WS|N|100|N|AAC+
+ABR$D|Arbor Realty Trust 6.375% Series D Cumulative Redeemable Preferred Stock, Liquidation Preference $25.00 per Share|N|ABRpD|N|100|N|ABR-D
+AGM.A|Federal Agricultural Mortgage Corporation Common Stock|N|AGM.A|N|100|N|AGM.A
+AHL$E|Aspen Insurance Holdings Limited Depositary Shares, each representing a 1/1000th interest in a share of 5.625% Perpetual Non-Cumulative Preference Shares|N|AHLpE|N|100|N|AHL-E
+BRK.B|Berkshire Hathaway Inc. New Common Stock|N|BRK.B|N|40|N|BRK.B
+AAA|Alternative Access First Priority CLO Bond ETF|P|AAA|Y|100|N|AAA
+AMUB|ETRACS Alerian MLP Index ETN Series B due July 18, 2042|P|AMUB|N|100|N|AMUB
+AAAA|Amplius Aggressive Asset Allocation ETF|Z|AAAA|Y|100|N|AAAA
+AIIA.R|AI Infrastructure Acquisition Corp. Rights, each entitling the holder to receive one-fifth (1/5) of one Class A Ordinary Share|N|AIIAr|N|100|N|AIIA^
+ABEV|Ambev S.A. American Depositary Shares (Each representing 1 Common Share)|N|ABEV|N|100|N|ABEV
+ACCS|ACCESS Newswire Inc. Common Stock|A|ACCS|N|100|N|ACCS
+ABXL|Abacus Global Management, Inc. 9.875% Fixed Rate Senior Notes due 2028|N|ABXL|N|100|N|ABXL
+ET|Energy Transfer LP Common Units|N|ET|N|100|N|ET
+ZZZTX|TXSE Test Stk 5 Common Stock|F|ZZZTX|N|40|Y|ZZZTX
+RLX|RLX Technology Inc. American Depositary Shares, each representing the right to receive one (1) Class A ordinary share|N|RLX|N|100|N|RLX
+BNS|Bank Nova Scotia Halifax Pfd 3 Ordinary Shares|N|BNS|N|100|N|BNS
+OZ|Belpointe PREP, LLC Class A Units|A|OZ|N|100|N|OZ
+File Creation Time: 1113202612:11||||||

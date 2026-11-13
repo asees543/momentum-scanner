@@ -28,19 +28,17 @@ universe:
   # Class shares such as BRK.B or AGM.A are kept.
   exclude_symbol_patterns:
     - '\$'
-    - '\.(U|W|WS|R|RT|WI)$'
+    - '\.(?:U|W|WS|R|RT|WI)$'
   # (assumption) Case-insensitive regexes on the security name for non-common-stock issues.
   # ADRs ("American Depositary Shares") are KEPT; depositary shares of preferreds are caught by "preferred".
   exclude_name_patterns:
     - '\bwarrants?\b'
-    - '\bunits?\b'
-    - '\brights?\b'
-    - '\bpreferred\b'
+    - '(?<!common )(?<!class a )\bunits?\b\.?(?:\s*,\s*each|\s*$)'   # SPAC units ("... - Units", "Units, each consisting of"); MLP/LLC common units kept
+    - '\brights?\b(?!\s+to\s+receive)'   # ADR names say "the right to receive"; keep those
+    - '\bpreferred\s+(?:stock|shares?|units?|securities|class|series)\b'   # not "Preferred Bank"
     - '\bpreference shares?\b'
-    - '\bpfd\b'
     - '\bnotes?\b'
     - '\bdebentures?\b'
-    - '\bbonds?\b'
     - '\bperpetual\b'
     - '\bpercent\b'
     - '%'
