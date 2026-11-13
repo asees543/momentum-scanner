@@ -82,3 +82,18 @@ def test_setup_rejects_inverted_tight_days(tmp_path):
 
     with pytest.raises(ConfigError, match="tight_min_days"):
         load_config("us", _write_variant(tmp_path, mutate))
+
+
+def test_india_config_loads_with_spec_values():
+    cfg = load_config("india")
+    assert cfg.market == "india" and cfg.currency == "INR"
+    assert cfg.universe.exchanges == ["NSE"] and cfg.universe.series == ["EQ"]
+    assert cfg.liquidity.min_price == 100
+    assert cfg.liquidity.min_avg_traded_value == 5 * 10**7  # Rs 5 crore
+    assert cfg.liquidity.min_adr_pct == 4.0
+    assert cfg.liquidity.exclude_circuit_locked is True
+    assert cfg.leaders.mode == "rank" and cfg.leaders.rank_top_pct == 7
+    assert cfg.leaders.flag_day_move_multiple == 1.3
+    assert cfg.data.timezone == "Asia/Kolkata" and cfg.data.close_time.hour == 15
+    assert cfg.alerts.list_wide_breakouts is True
+    assert load_config("us").liquidity.exclude_circuit_locked is False

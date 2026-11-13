@@ -1,0 +1,78 @@
+# India (NSE) configuration. Every threshold the scans use lives here, not in code.
+# Values marked (SPEC) come from SPEC.md; (decision) = the user's choice; (assumption) = Claude's default.
+
+market: india
+currency: INR
+
+data:
+  provider: yfinance               # Yahoo ".NS" tickers, which come split- and bonus-adjusted (SPEC)
+  history_years: 5                 # (decision, same as US)
+  adjustment: split                # Yahoo .NS prices are adjusted for splits and bonuses
+  cache_dir: data/cache/india
+  batch_size: 100                  # (assumption)
+  batch_pause_seconds: 1.0         # (assumption)
+  max_retries: 3                   # (assumption)
+  incremental_overlap_bars: 150    # (assumption) covers the 6M window, so a late bonus/split adjustment is caught
+  revision_tolerance_pct: 0.5      # (assumption)
+  universe_max_age_hours: 20       # (assumption)
+  timezone: Asia/Kolkata
+  market_close: "15:30"            # NSE close
+  close_buffer_minutes: 30         # (assumption) bars dated today are ignored until 16:00 IST
+
+universe:
+  exchanges: [NSE]
+  series: [EQ]                     # (SPEC) NSE equity list, series EQ only
+  exclude_etfs: true               # NSE's equity list has no ETFs; kept for symmetry
+  exclude_test_issues: true
+  exclude_symbol_patterns: []
+  exclude_name_patterns: []
+
+liquidity:
+  min_price: 100                   # (SPEC) Rs 100
+  min_avg_traded_value: 50000000   # (SPEC) 20-day average turnover >= Rs 5 crore (5 x 1,00,00,000)
+  min_adr_pct: 4.0                 # (SPEC) Indian large and mid caps often have lower ADR
+  window: 20                       # (SPEC)
+  exclude_circuit_locked: true     # (SPEC) exclude stocks stuck at circuit limits for consecutive days
+  circuit_lock_min_move_pct: 1.9   # (assumption) NSE's smallest price band is 2%
+  circuit_lock_max_range_pct: 0.1  # (assumption) high/low within 0.1% = the stock never traded off the band
+  circuit_lock_consecutive_days: 2 # (assumption) "consecutive days" = 2 or more in a row...
+  circuit_lock_lookback: 10        # (assumption) ...anywhere in the last 10 sessions
+
+leaders:
+  mode: rank                       # (SPEC) prefer relative-strength rank for India
+  rank_top_pct: 7                  # (SPEC)
+  windows:                         # fixed-mode multiples only matter if mode is switched to fixed
+    1m: {lookback: 22, min_multiple: 1.25}    # (assumption: same as US)
+    3m: {lookback: 67, min_multiple: 1.50}
+    6m: {lookback: 126, min_multiple: 2.50}
+  target_count: [25, 75]           # (SPEC)
+  sort_by: 3m                      # (assumption)
+  flag_day_move_multiple: 1.3      # (decision: flag only) NSE caps daily moves at 20%, so a one-day move of
+                                   #   +30% or -23% or more almost always means an unadjusted bonus/split or
+                                   #   bad data. Marked with a warning, not excluded.
+
+setup:                             # same rules as US (SPEC Stage 3)
+  leader_lookback_sessions: 20     # (decision)
+  require_liquid_today: true       # (decision)
+  sma_trend: 50                    # (SPEC)
+  sma_fast: 10                     # (SPEC)
+  sma_slow: 20
+  high_window: 20                  # (SPEC)
+  max_below_high_pct: 15
+  higher_lows_bars: 5              # (SPEC)
+  tight_min_days: 3                # (SPEC "3 to 5 days")
+  tight_max_days: 5
+  tight_vs_adr: 1.0                # (SPEC)
+  dryup_max_volume_ratio: 0.70     # (SPEC)
+  volume_avg_window: 20            # (assumption) the 20 sessions before today
+  trigger_bars: 10                 # (decision)
+
+breakout:                          # same rules as US (SPEC Stage 4)
+  watchlist_memory_sessions: 5     # (decision)
+  min_volume_ratio: 1.5            # (SPEC)
+  max_risk_vs_adr: 1.0             # (SPEC)
+
+alerts:
+  min_active_ratio: 0.9            # (assumption)
+  baseline_first_run: true         # (assumption) the first run sends the full watchlist and records it
+  list_wide_breakouts: true        # (decision) name breakouts whose stop is wider than ADR too

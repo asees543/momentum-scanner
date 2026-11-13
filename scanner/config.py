@@ -71,7 +71,8 @@ class DataConfig(_Strict):
 
 
 class UniverseConfig(_Strict):
-    exchanges: list[Literal["NASDAQ", "NYSE", "NYSE_AMERICAN"]] = Field(min_length=1)
+    exchanges: list[Literal["NASDAQ", "NYSE", "NYSE_AMERICAN", "NSE"]] = Field(min_length=1)
+    series: list[str] = []  # NSE only: series to keep (e.g. EQ); empty = not applicable
     exclude_etfs: bool = True
     exclude_test_issues: bool = True
     exclude_symbol_patterns: list[str] = []
@@ -95,6 +96,15 @@ class LiquidityConfig(_Strict):
     min_avg_traded_value: float = Field(ge=0)
     min_adr_pct: float = Field(ge=0)
     window: int = Field(20, ge=1)
+    # Circuit-limit lock (SPEC India): a day "locked" at a price band traded in a range of at most
+    # circuit_lock_max_range_pct while closing at least circuit_lock_min_move_pct from the prior close.
+    # A stock locked on circuit_lock_consecutive_days consecutive sessions within the last
+    # circuit_lock_lookback sessions fails Stage 1.
+    exclude_circuit_locked: bool = False
+    circuit_lock_min_move_pct: float = Field(1.9, gt=0)
+    circuit_lock_max_range_pct: float = Field(0.1, ge=0)
+    circuit_lock_consecutive_days: int = Field(2, ge=1)
+    circuit_lock_lookback: int = Field(10, ge=1)
 
 
 class WindowConfig(_Strict):

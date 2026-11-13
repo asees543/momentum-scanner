@@ -52,6 +52,7 @@ liquidity:
   min_avg_traded_value: 3000000    # (SPEC) 20-day average of close x volume, in USD ("dollar volume")
   min_adr_pct: 5.0                 # (SPEC)
   window: 20                       # (SPEC) days for both averages above
+  exclude_circuit_locked: false    # US exchanges have no daily price bands (India rule, see india.yaml)
 
 leaders:
   mode: fixed                      # (SPEC) fixed | rank
