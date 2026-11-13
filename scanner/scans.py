@@ -139,10 +139,15 @@ def momentum_leaders(
     mode = mode or leaders.mode
     max_lb = max(w.lookback for w in leaders.windows.values())
     p = panels.tail(max_lb + lcfg.window + 1)
-    as_of = p.dates[-1]
     liq = liquidity_frames(p, lcfg)
-    lf = leader_frames(p, liq, leaders, mode)
+    return leaders_from_frames(p, liq, leader_frames(p, liq, leaders, mode), leaders, mode)
 
+
+def leaders_from_frames(
+    p: Panels, liq: LiquidityFrames, lf: LeaderFrames, leaders: LeadersConfig, mode: Literal["fixed", "rank"]
+) -> LeadersResult:
+    """Read the leaders table off the last row of precomputed frames."""
+    max_lb = max(w.lookback for w in leaders.windows.values())
     last_close = p.close.iloc[-1]
     active = last_close.notna()
     liquid_now = liq.liquid.iloc[-1] & active
@@ -173,7 +178,7 @@ def momentum_leaders(
     out.index.name = "symbol"
 
     return LeadersResult(
-        as_of=as_of,
+        as_of=p.dates[-1],
         mode=mode,
         table=out,
         counts=counts,
@@ -374,4 +379,84 @@ def watchlist_from_frames(
         table=out,
         qualified_today=int(sf.qualified.iloc[-1].sum()),
         windows=windows,
+    )
+
+
+# --- Stage 4: breakout trigger ----------------------------------------------------------------
+
+
+def breakouts_from_frames(
+    p: Panels, liq: LiquidityFrames, sf: SetupFrames, cfg: MarketConfig, max_lb: int
+) -> BreakoutResult:
+    """Breakouts on the as-of session t (SPEC Stage 4):
+
+    eligible  : setup qualified on some day s in t-M..t-1 (the most recent such s is used,
+                M = watchlist_memory_sessions) and no close on s+1..t-1 was above trigger_s,
+                so only the FIRST close above the trigger counts
+    breakout  : close_t > trigger_s  AND  volume_t >= 1.5 x mean volume of the 20 sessions before t
+    stop      = low_t (the breakout day's low)
+    risk%     = 100 x (close_t - stop) / close_t
+    status    = "too wide" if risk% > max_risk_vs_adr x ADR%_(t-1), else "ok". ADR is taken from the
+                day before so the breakout bar's own wide range cannot loosen the rule.
+    """
+    windows = list(cfg.leaders.windows)
+    t = len(p.dates) - 1
+    bcfg = cfg.breakout
+    if t < 1:
+        empty = pd.DataFrame(columns=["close", "trigger", "stop", "risk_pct", "adr_pct", "vol_ratio", "status"])
+        return BreakoutResult(as_of=p.dates[-1], table=empty, ok_count=0, rejected_count=0, windows=windows)
+
+    latest = _latest_setup(sf, p.close, t - 1, bcfg.watchlist_memory_sessions)
+    eligible = latest["has_setup"] & ~latest["closed_above"]
+    close_t = p.close.iloc[-1]
+    vol_t = p.volume.iloc[-1]
+    avg_vol = sf.avg_volume_prior.iloc[-1]
+    trig = latest["trigger"]
+    hit = eligible & (close_t > trig) & (vol_t >= bcfg.min_volume_ratio * avg_vol)
+    syms = hit.index[hit.fillna(False).astype(bool)]
+
+    stop = p.low.iloc[-1][syms]
+    out = pd.DataFrame(
+        {
+            "close": close_t[syms],
+            "trigger": trig[syms],
+            "stop": stop,
+            "risk_pct": 100 * (close_t[syms] - stop) / close_t[syms],
+            "adr_pct": liq.adr_pct.iloc[-2][syms],
+            "vol_ratio": vol_t[syms] / avg_vol[syms],
+            "setup_age": (latest.loc[syms, "age"] + 1).astype(int),  # sessions from setup day to breakout
+        }
+    )
+    too_wide = out["risk_pct"] > bcfg.max_risk_vs_adr * out["adr_pct"]
+    out["status"] = np.where(too_wide, "too wide", "ok")
+    for w in windows:
+        out[f"led_{w}"] = sf.leader_recent[w].iloc[-1][syms].astype(bool)
+    out["avg_traded_value"] = liq.avg_traded_value.iloc[-1][syms]
+    out["max_day_move"] = max_day_move(p.close.iloc[-(max_lb + 1):])[syms]
+    out["flag_day_move"] = (out["max_day_move"] >= cfg.leaders.flag_day_move_multiple).fillna(False).astype(bool)
+    out = out.sort_values(["status", "vol_ratio"], ascending=[True, False], kind="stable")  # "ok" first
+    out.index.name = "symbol"
+    return BreakoutResult(
+        as_of=p.dates[-1],
+        table=out,
+        ok_count=int((out["status"] == "ok").sum()),
+        rejected_count=int((out["status"] != "ok").sum()),
+        windows=windows,
+    )
+
+
+def run_scans(panels: Panels, cfg: MarketConfig, mode: Literal["fixed", "rank"] | None = None) -> ScanResults:
+    """All stages on the as-of (last) session of `panels`, sharing one set of frames."""
+    if panels.close.empty:
+        raise ValueError("no price data")
+    mode = mode or cfg.leaders.mode
+    max_lb = max(w.lookback for w in cfg.leaders.windows.values())
+    p = panels.tail(_rows_needed(cfg))
+    liq = liquidity_frames(p, cfg.liquidity)
+    lf = leader_frames(p, liq, cfg.leaders, mode)
+    sf = setup_frames(p, liq, lf, cfg.setup)
+    return ScanResults(
+        leaders=leaders_from_frames(p, liq, lf, cfg.leaders, mode),
+        watchlist=watchlist_from_frames(p, liq, sf, cfg, max_lb),
+        breakouts=breakouts_from_frames(p, liq, sf, cfg, max_lb),
     )
