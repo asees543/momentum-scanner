@@ -24,6 +24,10 @@ uv run python -m scanner.run --market us         # update cache; print breakouts
 uv run python -m scanner.run --market us --scan leaders                  # full leaders table
 uv run python -m scanner.run --market us --no-update --as-of 2026-10-30   # cached data, past session
 uv run python -m scanner.run --market us --symbols NVDA,PLTR             # quick dev run
+uv run python -m scanner.run --market us --alert --dry-run               # print Telegram alerts, save nothing
+uv run --env-file .env python -m scanner.run --market us --alert         # send alerts, save state/us.json
+uv run --env-file .env python -m scanner.notify --chat-id                # find TELEGRAM_CHAT_ID
+uv run --env-file .env python -m scanner.notify --test                   # send a test message
 ```
 
 Other CLI flags: `--scan all|leaders|watchlist|breakouts`, `--window 1m|3m|6m`, `--mode fixed|rank`, `--refresh` (re-run today's incremental update), `--limit N`, `--csv PATH`, `-v`.
@@ -43,3 +47,6 @@ Data flows: universe loader → `PriceProvider` → parquet cache (long format) 
 - **Partial bars**: `last_complete_session_date` drops today's bar until market close + `close_buffer_minutes` in the exchange time zone from config.
 - **Config** (`scanner/config.py`): strict pydantic models (`extra="forbid"`), so a misspelled YAML key is an error, not a silent default.
 - **US universe filter**: Nasdaq Trader `nasdaqlisted`/`otherlisted`, keeping NASDAQ/NYSE/NYSE American and dropping ETFs, test issues and the regex patterns in `us.yaml`. The name regexes were tuned against the real files; `tests/fixtures/*_sample.txt` pins real false-positive cases (e.g. "Preferred Bank", ADRs with "right to receive", MLP "Common Units"). Re-check against the live files when changing patterns.
+- **Alerts** (`scanner/state.py`, `scanner/notify.py`): `state/<market>.json` (committed, one file per market) records the last *sent* run. "New" means on today's watchlist but not on the last sent one, plus today's "ok" breakouts. The same market date skips silently (holidays, reruns), an older date is refused, and fewer than `alerts.min_active_ratio` × last run's active symbols triggers a warning with no state change. The first run records a baseline. State is saved only after Telegram delivery succeeds, never on `--dry-run`. A real `--alert` run refuses `--symbols/--limit/--as-of`. The bot token is part of every Bot API URL, so `TelegramNotifier.scrub` removes it from all error text; keep it that way.
+- **GitHub Actions** (`.github/workflows/scan-us.yml`): cron 22:00 UTC Mon–Fri. The price cache lives in the Actions cache (new key per run, restore newest); `state/us.json` is committed back by github-actions[bot]. Manual dispatch defaults to dry run. Secrets: `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`. The repo is public: never commit `.env`, tokens or cache files.
+
