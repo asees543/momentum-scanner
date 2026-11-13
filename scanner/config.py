@@ -124,6 +124,7 @@ class SetupConfig(_Strict):
     """Stage 3: orderly consolidation (builds the watchlist). See us.yaml for each rule."""
 
     leader_lookback_sessions: int = Field(20, ge=1)
+    require_liquid_today: bool = True  # Stage 1 must also pass on the setup / watchlist day
     sma_trend: int = Field(50, ge=1)
     sma_fast: int = Field(10, ge=1)
     sma_slow: int = Field(20, ge=1)

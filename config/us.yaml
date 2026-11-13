@@ -68,6 +68,8 @@ leaders:
 # Stage 3: orderly consolidation. A leader qualifies on day t when ALL of these hold.
 setup:
   leader_lookback_sessions: 20   # (decision) leader (and liquid) on any of the last 20 sessions
+  require_liquid_today: true     # (decision) Stage 1 (price, avg $vol, ADR >= 5%) must also pass on the day
+                                 #   itself; drops acquisition-pinned names whose ADR collapsed (SLN, BRZE)
   sma_trend: 50                  # (SPEC) close > 50-day SMA
   sma_fast: 10                   # (SPEC) 10-day SMA > 20-day SMA
   sma_slow: 20

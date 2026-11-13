@@ -203,7 +203,7 @@ class SetupFrames:
     """Stage 3 on every session (date x symbol)."""
 
     qualified: pd.DataFrame  # bool: every rule below holds
-    structure: pd.DataFrame  # bool: leader, trend, sma_order and near_high hold (the base is intact)
+    structure: pd.DataFrame  # bool: liquid, leader, trend, sma_order and near_high hold (base intact)
     trigger: pd.DataFrame  # highest high of the last `trigger_bars` bars
     conditions: dict[str, pd.DataFrame]  # each rule on its own (bool), for inspection and tests
     leader_recent: dict[str, pd.DataFrame]  # per window: leader on any of the last N sessions
@@ -213,6 +213,8 @@ class SetupFrames:
 def setup_frames(panels: Panels, liq: LiquidityFrames, lf: LeaderFrames, scfg: SetupConfig) -> SetupFrames:
     """Stage 3 "orderly consolidation" rules (SPEC), evaluated on every session t:
 
+    liquid     : Stage 1 passes on day t itself (price, average traded value, ADR%), if
+                 require_liquid_today; otherwise always True
     leader     : passed a leaders window (and was liquid) on any of the last N sessions (N = 20)
     trend      : close_t > SMA50_t
     sma_order  : SMA10_t > SMA20_t
@@ -241,7 +243,9 @@ def setup_frames(panels: Panels, liq: LiquidityFrames, lf: LeaderFrames, scfg: S
         tight |= rng.rolling(k, min_periods=k).mean() < scfg.tight_vs_adr * liq.adr_pct
     avg_vol = ind.prior_mean(v, scfg.volume_avg_window)
 
+    liquid_today = liq.liquid if scfg.require_liquid_today else pd.DataFrame(True, index=c.index, columns=c.columns)
     conditions = {
+        "liquid": liquid_today,
         "leader": leader_any,
         "trend": c > ind.sma(c, scfg.sma_trend),
         "sma_order": ind.sma(c, scfg.sma_fast) > ind.sma(c, scfg.sma_slow),
@@ -250,7 +254,10 @@ def setup_frames(panels: Panels, liq: LiquidityFrames, lf: LeaderFrames, scfg: S
         "tight": tight,
         "dryup": v <= scfg.dryup_max_volume_ratio * avg_vol,
     }
-    structure = conditions["leader"] & conditions["trend"] & conditions["sma_order"] & conditions["near_high"]
+    structure = (
+        conditions["liquid"] & conditions["leader"] & conditions["trend"]
+        & conditions["sma_order"] & conditions["near_high"]
+    )
     qualified = structure & conditions["higher_lows"] & conditions["tight"] & conditions["dryup"]
     return SetupFrames(
         qualified=qualified,
@@ -267,8 +274,8 @@ def _watch_state(sf: SetupFrames, close: pd.DataFrame, end: int, memory: int) ->
 
     on_watchlist = the setup qualified on some day s among the last `memory` sessions (end included)
                    AND no close on s+1..end was above trigger_s
-                   AND the structural rules (leader, close > SMA50, SMA10 > SMA20, within 15% of the
-                       20-day high) still hold on day `end`
+                   AND the structural rules (Stage 1 liquid, leader, close > SMA50, SMA10 > SMA20,
+                       within 15% of the 20-day high) still hold on day `end`
     The noisy day-to-day rules (higher lows, tight range, volume dry-up) may lapse after day s; a
     broken base (e.g. a drop below the 50-day SMA) removes the name at once.
     A breakout on day t requires on_watchlist at t-1.

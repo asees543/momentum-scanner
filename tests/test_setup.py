@@ -1,6 +1,7 @@
 """Stage 3 consolidation setup and the watchlist, on synthetic series (tests/synth.py).
 
 Textbook setup, bar 159 (hand-checked):
+  liquid      close 31.4 >= $1; 20-day avg close x volume ~ $32M >= $3M; ADR% 5.875 >= 5
   leader      3M: 31.4 / close 67 bars ago (20.0) = 1.57 >= 1.5, liquid that day
   trend       SMA50 ~ 25.9 < 31.4
   sma_order   SMA10 ~ 31.05 > SMA20 ~ 30.6
@@ -21,7 +22,7 @@ from tests.synth import Bars, frames, panels_from, textbook, us_cfg
 
 CFG = us_cfg()
 MAX_LB = 126
-RULES = ["leader", "trend", "sma_order", "near_high", "higher_lows", "tight", "dryup"]
+RULES = ["liquid", "leader", "trend", "sma_order", "near_high", "higher_lows", "tight", "dryup"]
 
 
 def last_conditions(sf, sym="X"):
@@ -213,3 +214,25 @@ def test_broken_base_drops_off_even_within_memory():
     assert bool(sf.qualified["X"].iloc[156])
     assert not bool(sf.conditions["near_high"]["X"].iloc[159])
     assert "X" not in wl.table.index
+
+
+def collapsed_adr() -> "Bars":
+    """Textbook, but the 10-bar base trades in a 1.5% range: ADR on bar 159 falls to
+    (10 x 8 + 10 x 1.5) / 20 = 4.75 < 5, like a stock pinned to an acquisition price."""
+    b = textbook()
+    for i in range(150, 160):
+        b.set_bar(i, range_pct=1.5)
+    return b
+
+
+def test_stage1_must_pass_on_the_day_itself():
+    wl, sf = watchlist({"X": collapsed_adr()})
+    assert only_failing(sf) == ["liquid"]  # every other rule, including "leader", still holds
+    assert bool(sf.conditions["leader"]["X"].iloc[-1])
+    assert "X" not in wl.table.index
+
+
+def test_stage1_today_can_be_switched_off():
+    wl, sf = watchlist({"X": collapsed_adr()}, us_cfg(setup={"require_liquid_today": False}))
+    assert last_conditions(sf)["liquid"]
+    assert "X" in wl.table.index
