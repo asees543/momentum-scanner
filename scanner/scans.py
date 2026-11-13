@@ -24,8 +24,8 @@ class LeadersResult:
     as_of: pd.Timestamp
     mode: Literal["fixed", "rank"]
     # One row per liquid symbol that passed at least one window, sorted for display.
-    # Columns: close, ret_<w>, pass_<w> (and rs_<w> in rank mode) per window, adr_pct,
-    # avg_traded_value, n_passed.
+    # Columns: close, ret_<w>, pass_<w> (and rs_<w> in rank mode) per window, max_day_move,
+    # flag_day_move, adr_pct, avg_traded_value, n_passed.
     table: pd.DataFrame
     counts: dict[str, int]  # window -> number of symbols passing that window
     active_count: int  # symbols with a bar on the as-of date
@@ -110,6 +110,14 @@ def momentum_leaders(
             passed = (rs > 100 - leaders.rank_top_pct).fillna(False)
         out[f"pass_{name}"] = passed.astype(bool)
         counts[name] = int(passed.sum())
+
+    # Data-quality flag. Largest one-day move inside the longest window, as a multiple >= 1:
+    #   max_day_move = max over days of max(close_t / close_{t-1}, close_{t-1} / close_t)
+    # A 10x overnight jump is either a genuine squeeze or a reverse split the data source has not
+    # adjusted for yet (price x k, share volume / k). Either way the return is worth a chart check.
+    day_ratio = (close / close.shift(1))[liquid]
+    out["max_day_move"] = pd.concat([day_ratio.max(), 1 / day_ratio.min()], axis=1).max(axis=1)
+    out["flag_day_move"] = (out["max_day_move"] >= leaders.flag_day_move_multiple).fillna(False).astype(bool)
 
     out["adr_pct"] = snap.loc[liquid, "adr_pct"]
     out["avg_traded_value"] = snap.loc[liquid, "avg_traded_value"]

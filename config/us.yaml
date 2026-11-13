@@ -12,7 +12,8 @@ data:
   batch_size: 100                  # (assumption) tickers per yfinance request
   batch_pause_seconds: 1.0         # (assumption) politeness delay between batches
   max_retries: 3                   # (assumption) per batch, with exponential backoff
-  incremental_overlap_bars: 10     # (assumption) bars re-downloaded on each update to detect splits/revisions
+  incremental_overlap_bars: 150    # (assumption) bars re-downloaded and compared on each update. Covers the
+                                   # 126-bar 6M window, so a split Yahoo records LATE still triggers a re-download.
   revision_tolerance_pct: 0.5      # (assumption) overlap close mismatch above this => re-download full history
   universe_max_age_hours: 20       # (assumption) re-fetch the symbol list when older than this
   timezone: America/New_York
@@ -61,3 +62,5 @@ leaders:
     6m: {lookback: 126, min_multiple: 2.50}   # (SPEC)
   target_count: [25, 75]           # (SPEC) CLI warns when a scan lands outside this range
   sort_by: 3m                      # (assumption) table order: scans passed, then this window's return
+  flag_day_move_multiple: 3.0      # (assumption) mark names whose window holds a one-day move >= 3x (or <= 1/3x):
+                                   # a real squeeze or an un-adjusted reverse split - check the chart

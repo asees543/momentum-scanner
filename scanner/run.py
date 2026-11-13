@@ -168,7 +168,8 @@ def render(res: LeadersResult, cfg: MarketConfig, universe: pd.DataFrame, args: 
     t.add_column(f"Avg {CURRENCY_SYMBOL.get(cur, cur)}Vol", justify="right")
 
     for i, (sym, r) in enumerate(table.iterrows(), start=1):
-        cells = [str(i), sym, short_name(names.get(sym, "")), f"{r['close']:.2f}"]
+        shown = f"{sym} [yellow]⚠[/]" if r["flag_day_move"] else sym
+        cells = [str(i), shown, short_name(names.get(sym, "")), f"{r['close']:.2f}"]
         for w in res.windows:
             txt = fmt_pct(r[f"ret_{w}"])
             cells.append(f"[green]{txt}[/]" if r[f"pass_{w}"] else f"[dim]{txt}[/]")
@@ -203,6 +204,13 @@ def render(res: LeadersResult, cfg: MarketConfig, universe: pd.DataFrame, args: 
         else f"top {cfg.leaders.rank_top_pct:g}% by return"
     )
     console.print(f"Per scan: {' · '.join(parts)}  [dim](target {lo}–{hi}; {rule})[/]")
+    n_flag = int(table["flag_day_move"].sum()) if len(table) else 0
+    if n_flag:
+        m = cfg.leaders.flag_day_move_multiple
+        console.print(
+            f"[yellow]⚠[/] {n_flag} names had a one-day move ≥ {m:g}× (or ≤ 1/{m:g}×) inside the window: "
+            "a real squeeze or a reverse split the data source has not adjusted yet. Check the chart."
+        )
     if report is not None:
         msg = (
             f"[dim]Data: {report.new_symbols:,} new, {report.incremental:,} updated, "

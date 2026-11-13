@@ -20,6 +20,7 @@ LEAD = LeadersConfig(
     },
     target_count=(25, 75),
     sort_by="3m",
+    flag_day_move_multiple=3.0,
 )
 
 
@@ -145,3 +146,21 @@ def test_empty_panels_raise():
     e = pd.DataFrame()
     with pytest.raises(ValueError):
         momentum_leaders(Panels(e, e, e, e, e), LIQ, LEAD)
+
+
+def test_one_day_jump_is_flagged():
+    # Looks like an un-adjusted 1:10 reverse split: 0.20 -> 2.00 overnight, 10 bars ago.
+    c = np.r_[np.full(L - 10, 0.20), np.full(10, 2.00)]
+    p = build({"JUMP": {"close": c, "shares": 50_000_000}, "EDGE": {"close": path({0: 125.0, 22: 100.0})}})
+    t = momentum_leaders(p, LIQ, LEAD).table
+    assert t.loc["JUMP", "max_day_move"] == pytest.approx(10.0)
+    assert bool(t.loc["JUMP", "flag_day_move"])
+    assert not bool(t.loc["EDGE", "flag_day_move"])
+
+
+def test_one_day_crash_is_flagged_too():
+    c = np.r_[np.full(L - 40, 10.0), np.full(10, 2.0), np.linspace(2.0, 4.0, 30)]
+    p = build({"DROP": {"close": c, "shares": 5_000_000}})
+    t = momentum_leaders(p, LIQ, LEAD).table
+    assert t.loc["DROP", "max_day_move"] == pytest.approx(5.0)
+    assert bool(t.loc["DROP", "flag_day_move"])

@@ -108,6 +108,7 @@ class LeadersConfig(_Strict):
     windows: dict[str, WindowConfig] = Field(min_length=1)
     target_count: tuple[int, int] = (25, 75)
     sort_by: str  # window name whose return orders rows (after number of scans passed)
+    flag_day_move_multiple: float = Field(3.0, gt=1)  # data-quality flag, see us.yaml
 
     @model_validator(mode="after")
     def _check(self) -> LeadersConfig:
