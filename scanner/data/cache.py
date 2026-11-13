@@ -79,7 +79,7 @@ class UpdateReport:
     incremental: int = 0
     full_refetch: list[str] = field(default_factory=list)  # split/revision detected or no overlap
     failed: list[str] = field(default_factory=list)  # nothing returned; old rows (if any) kept
-    skipped_up_to_date: bool = False
+    already_current: int = 0  # known symbols skipped: already checked against this cutoff
     cutoff: date | None = None
 
 
@@ -164,11 +164,19 @@ def update_prices(
     progress: ProgressFn | None = None,
     now: datetime | None = None,
 ) -> tuple[pd.DataFrame, UpdateReport]:
-    """Bring the cache up to `cutoff` (last complete session) for `symbols`; return the full cache."""
+    """Bring the cache up to `cutoff` (last complete session) for `symbols`; return the full cache.
+
+    meta.json keeps, per symbol, the cutoff it was last successfully checked against, so running
+    twice after the same close skips the download (unless refresh=True), and a symbol that failed
+    is retried on the next run. Tracking this per symbol (not one flag for the whole cache) means a
+    quick run on a few symbols never makes a later full run skip the rest.
+    """
     symbols = list(dict.fromkeys(symbols))
+    cutoff_iso = cutoff.isoformat()
     report = UpdateReport(requested=len(symbols), cutoff=cutoff)
     working = cache.load()
     meta = cache.read_meta()
+    checked: dict[str, str] = dict(meta.get("checked", {}))
 
     have = set(working["symbol"].unique())
     new = [s for s in symbols if s not in have]
@@ -183,18 +191,18 @@ def update_prices(
         fresh, failed = _collect(provider, new, history_start, cutoff, "new symbols", progress, checkpoint)
         working = _merge(working, fresh)
         report.failed.extend(failed)
+        checked.update({s: cutoff_iso for s in fresh["symbol"].unique()})
         cache.save(working)
 
-    # 2) Known symbols: incremental with overlap check (skipped if already done for this cutoff).
-    already_current = meta.get("complete_through") == cutoff.isoformat()
-    if existing and already_current and not refresh:
-        report.skipped_up_to_date = True
-    elif existing:
+    # 2) Known symbols: incremental with overlap check, skipping those already checked for this cutoff.
+    todo = existing if refresh else [s for s in existing if checked.get(s) != cutoff_iso]
+    report.already_current = len(existing) - len(todo)
+    if todo:
         cal = trading_calendar(working)
         start_ts = cal[-overlap_bars] if len(cal) >= overlap_bars else cal[0]
-        last_seen = working[working["symbol"].isin(existing)].groupby("symbol")["date"].max()
-        stale = sorted(last_seen.index[last_seen < start_ts])
-        incremental = [s for s in existing if s not in set(stale)]
+        last_seen = working[working["symbol"].isin(todo)].groupby("symbol")["date"].max()
+        stale = set(last_seen.index[last_seen < start_ts])
+        incremental = [s for s in todo if s not in stale]
         report.incremental = len(incremental)
 
         fresh, failed = _collect(provider, incremental, start_ts.date(), cutoff, "update", progress)
@@ -202,8 +210,9 @@ def update_prices(
         mismatched = find_mismatched(working, fresh, tolerance_pct)
         fresh_ok = fresh[~fresh["symbol"].isin(mismatched)]
         working = _merge(working, fresh_ok)
+        checked.update({s: cutoff_iso for s in fresh_ok["symbol"].unique()})
 
-        full = sorted(set(stale) | set(mismatched))
+        full = sorted(stale | set(mismatched))
         if full:
             log.info("full re-download for %d symbols (split/revision/stale): %s", len(full), full[:20])
             refetched, failed_full = _collect(provider, full, history_start, cutoff, "re-download", progress)
@@ -211,20 +220,16 @@ def update_prices(
             working = _merge(working, refetched, replace_symbols=got)
             report.full_refetch = got
             report.failed.extend(failed_full)
+            checked.update({s: cutoff_iso for s in got})
 
     report.failed = sorted(set(report.failed))
     cache.save(working)
-    attempted = report.new_symbols + report.incremental + len(report.full_refetch)
     meta.update(
         updated_at=(now or datetime.now(timezone.utc)).isoformat(),
         provider=getattr(provider, "name", "unknown"),
         history_start=history_start.isoformat(),
+        last_cutoff=cutoff_iso,
+        checked=checked,
     )
-    # Only mark the session as done if most downloads worked; after a rate-limited run the next
-    # run should try the incremental update again instead of skipping it.
-    if attempted == 0 or len(report.failed) <= 0.5 * attempted:
-        meta["complete_through"] = cutoff.isoformat()
-    else:
-        log.warning("%d of %d downloads failed; not marking %s complete", len(report.failed), attempted, cutoff)
     cache.write_meta(meta)
     return working, report

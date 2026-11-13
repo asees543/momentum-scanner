@@ -60,7 +60,7 @@ def test_first_run_downloads_full_history_and_saves(cache):
     assert rep.new_symbols == 1 and not rep.failed
     assert len(df) == len(d)
     assert len(cache.load()) == len(d)
-    assert cache.read_meta()["complete_through"] == d[-1].date().isoformat()
+    assert cache.read_meta()["checked"] == {"AAA": d[-1].date().isoformat()}
     assert market.requests[0][1] == date(2021, 1, 1)  # full history from history_start
 
 
@@ -118,9 +118,23 @@ def test_same_cutoff_skips_known_symbols_unless_refresh(cache):
     run_update(cache, market, ["AAA"], d[-1].date())
     market.requests.clear()
     _, rep = run_update(cache, market, ["AAA"], d[-1].date())
-    assert rep.skipped_up_to_date and market.requests == []
+    assert rep.already_current == 1 and market.requests == []
     _, rep = run_update(cache, market, ["AAA"], d[-1].date(), refresh=True)
-    assert not rep.skipped_up_to_date and len(market.requests) == 1
+    assert rep.already_current == 0 and len(market.requests) == 1
+
+
+def test_partial_run_does_not_make_full_run_skip_other_symbols(cache):
+    d = SESSIONS
+    market = FakeMarket({s: make_history(s, np.full(len(d) - 1, 10.0), d[:-1]) for s in "ABC"})
+    run_update(cache, market, list("ABC"), d[-2].date())  # day 1: full run
+    for s in "ABC":
+        market.history[s] = make_history(s, np.full(len(d), 10.0), d)
+    run_update(cache, market, ["A"], d[-1].date())  # day 2: quick run on one symbol
+    market.requests.clear()
+    df, rep = run_update(cache, market, list("ABC"), d[-1].date())  # day 2: full run
+    assert rep.already_current == 1  # only A
+    assert sorted(market.requests[0][0]) == ["B", "C"]
+    assert df.groupby("symbol")["date"].max().eq(d[-1]).all()
 
 
 def test_failed_symbol_keeps_cached_rows(cache):
@@ -134,13 +148,20 @@ def test_failed_symbol_keeps_cached_rows(cache):
     assert (df["symbol"] == "BBB").sum() == len(d)
 
 
-def test_mostly_failed_run_is_not_marked_complete(cache):
+def test_failed_symbols_are_retried_next_run(cache):
     d = SESSIONS[:-5]
+    full = {s: make_history(s, np.full(len(SESSIONS), 10.0), SESSIONS) for s in "ABC"}
     market = FakeMarket({s: make_history(s, np.full(len(d), 10.0), d) for s in "ABC"})
     run_update(cache, market, list("ABC"), d[-1].date())
-    market.history = {}  # everything fails (e.g. rate-limited)
-    run_update(cache, market, list("ABC"), SESSIONS[-1].date())
-    assert cache.read_meta()["complete_through"] == d[-1].date().isoformat()
+    market.history = {"A": full["A"]}  # B and C fail (e.g. rate-limited)
+    _, rep = run_update(cache, market, list("ABC"), SESSIONS[-1].date())
+    assert rep.failed == ["B", "C"]
+    market.history = full
+    market.requests.clear()
+    df, rep = run_update(cache, market, list("ABC"), SESSIONS[-1].date())
+    assert rep.already_current == 1 and not rep.failed
+    assert sorted(market.requests[0][0]) == ["B", "C"]
+    assert df.groupby("symbol")["date"].max().eq(SESSIONS[-1]).all()
 
 
 def test_stale_symbol_without_overlap_gets_full_redownload(cache):
