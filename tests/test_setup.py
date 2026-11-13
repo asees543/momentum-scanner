@@ -32,7 +32,7 @@ def last_conditions(sf, sym="X"):
 def watchlist(bars_by_symbol, cfg=CFG):
     p = panels_from(bars_by_symbol)
     liq, lf, sf = frames(p, cfg)
-    return scans.watchlist_from_frames(p, liq, sf, cfg, MAX_LB), sf
+    return scans.watchlist_from_frames(p, liq, lf, sf, cfg, MAX_LB), sf
 
 
 def test_textbook_setup_qualifies_on_every_rule():
@@ -56,6 +56,8 @@ def test_textbook_watchlist_row():
     assert not row["risk_too_wide"]
     assert row["vol_ratio"] == pytest.approx(0.6 / 1.095)
     assert row["led_3m"] and row["led_1m"] and not row["led_6m"]
+    assert row["ret_3m"] == pytest.approx(31.4 / 20.0 - 1)  # close 67 bars ago was 20.0
+    assert row["ret_1m"] == pytest.approx(31.4 / (20 + 0.4 * 18) - 1)  # bar 137 on the run-up
     assert wl.qualified_today == 1
 
 
@@ -201,7 +203,7 @@ def test_watchlist_is_point_in_time():
     b = textbook()
     p = panels_from({"X": b}).as_of(panels_from({"X": b}).dates[-2])  # stop at bar 158
     liq, lf, sf = frames(p, CFG)
-    wl = scans.watchlist_from_frames(p, liq, sf, CFG, MAX_LB)
+    wl = scans.watchlist_from_frames(p, liq, lf, sf, CFG, MAX_LB)
     assert wl.as_of == p.dates[-1]
     assert wl.table.loc["X", "stop"] == pytest.approx(b.low[158])
     assert wl.table.loc["X", "trigger"] == pytest.approx(b.high[149:159].max())  # bar 159 unseen

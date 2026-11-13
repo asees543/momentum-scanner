@@ -314,8 +314,8 @@ def _latest_setup(sf: SetupFrames, close: pd.DataFrame, end: int, memory: int) -
 class WatchlistResult:
     as_of: pd.Timestamp
     # One row per watchlist symbol, closest to its trigger first. Columns: close, trigger,
-    # to_trigger_pct, stop, risk_pct, risk_too_wide, adr_pct, vol_ratio, setup_age, led_<w> per
-    # window, avg_traded_value, max_day_move, flag_day_move.
+    # to_trigger_pct, stop, risk_pct, risk_too_wide, adr_pct, vol_ratio, setup_age, ret_<w> and
+    # led_<w> per window, avg_traded_value, max_day_move, flag_day_move.
     table: pd.DataFrame
     qualified_today: int  # names whose setup qualifies on the as-of session itself
     windows: list[str] = field(default_factory=list)
@@ -325,8 +325,8 @@ class WatchlistResult:
 class BreakoutResult:
     as_of: pd.Timestamp
     # One row per breakout (accepted and rejected). Columns: close, trigger, stop, risk_pct, adr_pct,
-    # vol_ratio, status ("ok" / "too wide"), setup_age, led_<w>, avg_traded_value, max_day_move,
-    # flag_day_move.
+    # vol_ratio, status ("ok" / "too wide"), setup_age, ret_<w>, led_<w>, avg_traded_value,
+    # max_day_move, flag_day_move.
     table: pd.DataFrame
     ok_count: int
     rejected_count: int
@@ -357,7 +357,7 @@ def _rows_needed(cfg: MarketConfig) -> int:
 
 
 def watchlist_from_frames(
-    p: Panels, liq: LiquidityFrames, sf: SetupFrames, cfg: MarketConfig, max_lb: int
+    p: Panels, liq: LiquidityFrames, lf: LeaderFrames, sf: SetupFrames, cfg: MarketConfig, max_lb: int
 ) -> WatchlistResult:
     """Watchlist on the as-of session t = names that could break out on the NEXT session
     (see _watch_state: setup within the last M sessions, still below its trigger, base intact).
@@ -389,6 +389,7 @@ def watchlist_from_frames(
     out["risk_too_wide"] = (out["risk_pct"] > cfg.breakout.max_risk_vs_adr * out["adr_pct"]).astype(bool)
     windows = list(cfg.leaders.windows)
     for w in windows:
+        out[f"ret_{w}"] = lf.returns[w].iloc[-1][syms]  # return over the window as of today
         out[f"led_{w}"] = sf.leader_recent[w].iloc[-1][syms].astype(bool)
     out["avg_traded_value"] = liq.avg_traded_value.iloc[-1][syms]
     out["max_day_move"] = max_day_move(p.close.iloc[-(max_lb + 1):])[syms]
@@ -407,7 +408,7 @@ def watchlist_from_frames(
 
 
 def breakouts_from_frames(
-    p: Panels, liq: LiquidityFrames, sf: SetupFrames, cfg: MarketConfig, max_lb: int
+    p: Panels, liq: LiquidityFrames, lf: LeaderFrames, sf: SetupFrames, cfg: MarketConfig, max_lb: int
 ) -> BreakoutResult:
     """Breakouts on the as-of session t (SPEC Stage 4):
 
@@ -451,6 +452,7 @@ def breakouts_from_frames(
     too_wide = out["risk_pct"] > bcfg.max_risk_vs_adr * out["adr_pct"]
     out["status"] = np.where(too_wide, "too wide", "ok")
     for w in windows:
+        out[f"ret_{w}"] = lf.returns[w].iloc[-1][syms]  # return over the window as of today
         out[f"led_{w}"] = sf.leader_recent[w].iloc[-1][syms].astype(bool)
     out["avg_traded_value"] = liq.avg_traded_value.iloc[-1][syms]
     out["max_day_move"] = max_day_move(p.close.iloc[-(max_lb + 1):])[syms]
@@ -478,6 +480,6 @@ def run_scans(panels: Panels, cfg: MarketConfig, mode: Literal["fixed", "rank"] 
     sf = setup_frames(p, liq, lf, cfg.setup)
     return ScanResults(
         leaders=leaders_from_frames(p, liq, lf, cfg.leaders, mode),
-        watchlist=watchlist_from_frames(p, liq, sf, cfg, max_lb),
-        breakouts=breakouts_from_frames(p, liq, sf, cfg, max_lb),
+        watchlist=watchlist_from_frames(p, liq, lf, sf, cfg, max_lb),
+        breakouts=breakouts_from_frames(p, liq, lf, sf, cfg, max_lb),
     )
