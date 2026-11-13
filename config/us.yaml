@@ -1,0 +1,64 @@
+# US market configuration. Every threshold the scans use lives here, not in code.
+# Values marked (SPEC) come from SPEC.md; values marked (assumption) are Claude's defaults - tune freely.
+
+market: us
+currency: USD
+
+data:
+  provider: yfinance
+  history_years: 5                 # (decision) first download depth; also feeds the Phase 5 backtest
+  adjustment: split                # (decision) split-adjusted only, no dividend adjustment
+  cache_dir: data/cache/us
+  batch_size: 100                  # (assumption) tickers per yfinance request
+  batch_pause_seconds: 1.0         # (assumption) politeness delay between batches
+  max_retries: 3                   # (assumption) per batch, with exponential backoff
+  incremental_overlap_bars: 10     # (assumption) bars re-downloaded on each update to detect splits/revisions
+  revision_tolerance_pct: 0.5      # (assumption) overlap close mismatch above this => re-download full history
+  universe_max_age_hours: 20       # (assumption) re-fetch the symbol list when older than this
+  timezone: America/New_York
+  market_close: "16:00"
+  close_buffer_minutes: 30         # (assumption) bars dated today are ignored until close + buffer
+
+universe:
+  exchanges: [NASDAQ, NYSE, NYSE_AMERICAN]   # (SPEC) NYSE Arca, Cboe BZX, IEX excluded
+  exclude_etfs: true                          # (SPEC)
+  exclude_test_issues: true                   # (SPEC)
+  # (assumption) Regexes on the Nasdaq Trader symbol: '$' marks a preferred,
+  # '.U' / '.W' / '.WS' / '.R' / '.RT' / '.WI' mark units, warrants, rights, when-issued.
+  # Class shares such as BRK.B or AGM.A are kept.
+  exclude_symbol_patterns:
+    - '\$'
+    - '\.(U|W|WS|R|RT|WI)$'
+  # (assumption) Case-insensitive regexes on the security name for non-common-stock issues.
+  # ADRs ("American Depositary Shares") are KEPT; depositary shares of preferreds are caught by "preferred".
+  exclude_name_patterns:
+    - '\bwarrants?\b'
+    - '\bunits?\b'
+    - '\brights?\b'
+    - '\bpreferred\b'
+    - '\bpreference shares?\b'
+    - '\bpfd\b'
+    - '\bnotes?\b'
+    - '\bdebentures?\b'
+    - '\bbonds?\b'
+    - '\bperpetual\b'
+    - '\bpercent\b'
+    - '%'
+    - '\bfixed[- ]to[- ]floating\b'
+    - '\bsubordinated\b'
+    - '\bETN\b'
+
+liquidity:
+  min_price: 1.0                   # (SPEC) many people use a higher floor
+  min_avg_traded_value: 3000000    # (SPEC) 20-day average of close x volume, in USD ("dollar volume")
+  min_adr_pct: 5.0                 # (SPEC)
+  window: 20                       # (SPEC) days for both averages above
+
+leaders:
+  mode: fixed                      # (SPEC) fixed | rank
+  rank_top_pct: 7                  # (SPEC) rank mode keeps the top 7% by return
+  windows:
+    1m: {lookback: 22, min_multiple: 1.25}    # (SPEC) close >= 1.25 x close 22 bars ago
+    3m: {lookback: 67, min_multiple: 1.50}    # (SPEC)
+    6m: {lookback: 126, min_multiple: 2.50}   # (SPEC)
+  target_count: [25, 75]           # (SPEC) CLI warns when a scan lands outside this range

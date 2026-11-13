@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+*.egg-info/
+
+# Secrets
+.env
+
+# Market-data cache and run outputs (Phase 3 decides whether the cache is committed or kept in the Actions cache)
+# (leading slash: only the top-level folder, not the scanner/data package)
+/data/
+/*.csv
+
+# OS / editors
+.DS_Store
+.idea/
+.vscode/
+
+# Claude Code per-user settings
+.claude/settings.local.json
