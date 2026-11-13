@@ -60,3 +60,4 @@ leaders:
     3m: {lookback: 67, min_multiple: 1.50}    # (SPEC)
     6m: {lookback: 126, min_multiple: 2.50}   # (SPEC)
   target_count: [25, 75]           # (SPEC) CLI warns when a scan lands outside this range
+  sort_by: 3m                      # (assumption) table order: scans passed, then this window's return

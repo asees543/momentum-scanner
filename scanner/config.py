@@ -107,12 +107,15 @@ class LeadersConfig(_Strict):
     rank_top_pct: float = Field(gt=0, le=100)
     windows: dict[str, WindowConfig] = Field(min_length=1)
     target_count: tuple[int, int] = (25, 75)
+    sort_by: str  # window name whose return orders rows (after number of scans passed)
 
     @model_validator(mode="after")
-    def _target_order(self) -> LeadersConfig:
+    def _check(self) -> LeadersConfig:
         lo, hi = self.target_count
         if lo > hi:
             raise ValueError(f"target_count low ({lo}) > high ({hi})")
+        if self.sort_by not in self.windows:
+            raise ValueError(f"sort_by {self.sort_by!r} is not one of the windows {list(self.windows)}")
         return self
 
 
