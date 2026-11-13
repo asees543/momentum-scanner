@@ -1,0 +1,397 @@
+{
+  "active_count": 5745,
+  "as_of": "2026-11-13",
+  "breakouts": [],
+  "market": "us",
+  "updated_at": "2026-11-13T21:42:04+00:00",
+  "watchlist": {
+    "AEYE": {
+      "first_seen": "2026-11-13",
+      "trigger": 14.45
+    },
+    "AGL": {
+      "first_seen": "2026-11-13",
+      "trigger": 127.0
+    },
+    "ALGT": {
+      "first_seen": "2026-11-13",
+      "trigger": 98.7
+    },
+    "AMC": {
+      "first_seen": "2026-11-13",
+      "trigger": 3.77
+    },
+    "AMPL": {
+      "first_seen": "2026-11-13",
+      "trigger": 18.85
+    },
+    "AMRC": {
+      "first_seen": "2026-11-13",
+      "trigger": 28.61
+    },
+    "APP": {
+      "first_seen": "2026-11-13",
+      "trigger": 413.88
+    },
+    "APPN": {
+      "first_seen": "2026-11-13",
+      "trigger": 56.38
+    },
+    "ARHS": {
+      "first_seen": "2026-11-13",
+      "trigger": 15.17
+    },
+    "ASTL": {
+      "first_seen": "2026-11-13",
+      "trigger": 5.865
+    },
+    "ASUR": {
+      "first_seen": "2026-11-13",
+      "trigger": 10.5
+    },
+    "BHC": {
+      "first_seen": "2026-11-13",
+      "trigger": 8.56
+    },
+    "BLMN": {
+      "first_seen": "2026-11-13",
+      "trigger": 11.28
+    },
+    "BMI": {
+      "first_seen": "2026-11-13",
+      "trigger": 166.86
+    },
+    "BOBS": {
+      "first_seen": "2026-11-13",
+      "trigger": 21.75
+    },
+    "CDNA": {
+      "first_seen": "2026-11-13",
+      "trigger": 90.05
+    },
+    "CHPT": {
+      "first_seen": "2026-11-13",
+      "trigger": 12.97
+    },
+    "CLMB": {
+      "first_seen": "2026-11-13",
+      "trigger": 44.89
+    },
+    "CLVT": {
+      "first_seen": "2026-11-13",
+      "trigger": 2.46
+    },
+    "CNXC": {
+      "first_seen": "2026-11-13",
+      "trigger": 33.39
+    },
+    "DBVT": {
+      "first_seen": "2026-11-13",
+      "trigger": 12.09
+    },
+    "DIN": {
+      "first_seen": "2026-11-13",
+      "trigger": 37.76
+    },
+    "ENOV": {
+      "first_seen": "2026-11-13",
+      "trigger": 29.89
+    },
+    "ESAB": {
+      "first_seen": "2026-11-13",
+      "trigger": 90.51
+    },
+    "EVER": {
+      "first_seen": "2026-11-13",
+      "trigger": 31.2
+    },
+    "EVGO": {
+      "first_seen": "2026-11-13",
+      "trigger": 1.95
+    },
+    "EWTX": {
+      "first_seen": "2026-11-13",
+      "trigger": 48.78
+    },
+    "FLGT": {
+      "first_seen": "2026-11-13",
+      "trigger": 27.41
+    },
+    "FNKO": {
+      "first_seen": "2026-11-13",
+      "trigger": 7.475
+    },
+    "FTFT": {
+      "first_seen": "2026-11-13",
+      "trigger": 4.71
+    },
+    "FUN": {
+      "first_seen": "2026-11-13",
+      "trigger": 11.59
+    },
+    "FWRG": {
+      "first_seen": "2026-11-13",
+      "trigger": 14.105
+    },
+    "GDYN": {
+      "first_seen": "2026-11-13",
+      "trigger": 14.14
+    },
+    "GKOS": {
+      "first_seen": "2026-11-13",
+      "trigger": 255.185
+    },
+    "GMAB": {
+      "first_seen": "2026-11-13",
+      "trigger": 59.97
+    },
+    "HRI": {
+      "first_seen": "2026-11-13",
+      "trigger": 175.47
+    },
+    "IBTA": {
+      "first_seen": "2026-11-13",
+      "trigger": 66.39
+    },
+    "JMKE": {
+      "first_seen": "2026-11-13",
+      "trigger": 21.16
+    },
+    "KD": {
+      "first_seen": "2026-11-13",
+      "trigger": 18.02
+    },
+    "KIDS": {
+      "first_seen": "2026-11-13",
+      "trigger": 34.53
+    },
+    "KLRA": {
+      "first_seen": "2026-11-13",
+      "trigger": 14.89
+    },
+    "KNSA": {
+      "first_seen": "2026-11-13",
+      "trigger": 99.31
+    },
+    "KOD": {
+      "first_seen": "2026-11-13",
+      "trigger": 112.31
+    },
+    "KRMN": {
+      "first_seen": "2026-11-13",
+      "trigger": 47.54
+    },
+    "KYMR": {
+      "first_seen": "2026-11-13",
+      "trigger": 142.92
+    },
+    "LION": {
+      "first_seen": "2026-11-13",
+      "trigger": 14.52
+    },
+    "LQDA": {
+      "first_seen": "2026-11-13",
+      "trigger": 59.49
+    },
+    "LUNG": {
+      "first_seen": "2026-11-13",
+      "trigger": 3.165
+    },
+    "LYNX": {
+      "first_seen": "2026-11-13",
+      "trigger": 15.5
+    },
+    "MAX": {
+      "first_seen": "2026-11-13",
+      "trigger": 15.99
+    },
+    "MAZE": {
+      "first_seen": "2026-11-13",
+      "trigger": 37.41
+    },
+    "MIR": {
+      "first_seen": "2026-11-13",
+      "trigger": 19.67
+    },
+    "MTW": {
+      "first_seen": "2026-11-13",
+      "trigger": 25.31
+    },
+    "NBTX": {
+      "first_seen": "2026-11-13",
+      "trigger": 33.353
+    },
+    "OABI": {
+      "first_seen": "2026-11-13",
+      "trigger": 5.45
+    },
+    "ONT": {
+      "first_seen": "2026-11-13",
+      "trigger": 24.15
+    },
+    "ORKA": {
+      "first_seen": "2026-11-13",
+      "trigger": 113.24
+    },
+    "PLAY": {
+      "first_seen": "2026-11-13",
+      "trigger": 9.16
+    },
+    "PRCH": {
+      "first_seen": "2026-11-13",
+      "trigger": 22.36
+    },
+    "PRG": {
+      "first_seen": "2026-11-13",
+      "trigger": 41.02
+    },
+    "PSIG": {
+      "first_seen": "2026-11-13",
+      "trigger": 5.45
+    },
+    "PTLO": {
+      "first_seen": "2026-11-13",
+      "trigger": 7.228
+    },
+    "QXO": {
+      "first_seen": "2026-11-13",
+      "trigger": 14.12
+    },
+    "REPL": {
+      "first_seen": "2026-11-13",
+      "trigger": 23.54
+    },
+    "RLMD": {
+      "first_seen": "2026-11-13",
+      "trigger": 4.6
+    },
+    "RYTM": {
+      "first_seen": "2026-11-13",
+      "trigger": 117.84
+    },
+    "SEZL": {
+      "first_seen": "2026-11-13",
+      "trigger": 178.55
+    },
+    "SG": {
+      "first_seen": "2026-11-13",
+      "trigger": 13.89
+    },
+    "SGHT": {
+      "first_seen": "2026-11-13",
+      "trigger": 11.595
+    },
+    "SGMT": {
+      "first_seen": "2026-11-13",
+      "trigger": 11.44
+    },
+    "SIBN": {
+      "first_seen": "2026-11-13",
+      "trigger": 25.92
+    },
+    "SMPL": {
+      "first_seen": "2026-11-13",
+      "trigger": 13.57
+    },
+    "SRTA": {
+      "first_seen": "2026-11-13",
+      "trigger": 6.195
+    },
+    "SRZN": {
+      "first_seen": "2026-11-13",
+      "trigger": 33.75
+    },
+    "STGW": {
+      "first_seen": "2026-11-13",
+      "trigger": 12.26
+    },
+    "TANH": {
+      "first_seen": "2026-11-13",
+      "trigger": 46.32
+    },
+    "TBCH": {
+      "first_seen": "2026-11-13",
+      "trigger": 17.49
+    },
+    "TBI": {
+      "first_seen": "2026-11-13",
+      "trigger": 13.59
+    },
+    "TDOC": {
+      "first_seen": "2026-11-13",
+      "trigger": 9.79
+    },
+    "TIC": {
+      "first_seen": "2026-11-13",
+      "trigger": 11.7
+    },
+    "TKNO": {
+      "first_seen": "2026-11-13",
+      "trigger": 9.34
+    },
+    "TRAX": {
+      "first_seen": "2026-11-13",
+      "trigger": 54.78
+    },
+    "TREE": {
+      "first_seen": "2026-11-13",
+      "trigger": 40.8
+    },
+    "TRUP": {
+      "first_seen": "2026-11-13",
+      "trigger": 38.87
+    },
+    "UIS": {
+      "first_seen": "2026-11-13",
+      "trigger": 2.98
+    },
+    "ULCC": {
+      "first_seen": "2026-11-13",
+      "trigger": 8.53
+    },
+    "VLRS": {
+      "first_seen": "2026-11-13",
+      "trigger": 8.85
+    },
+    "VNCE": {
+      "first_seen": "2026-11-13",
+      "trigger": 13.9
+    },
+    "VRDN": {
+      "first_seen": "2026-11-13",
+      "trigger": 31.63
+    },
+    "VYX": {
+      "first_seen": "2026-11-13",
+      "trigger": 10.84
+    },
+    "WGO": {
+      "first_seen": "2026-11-13",
+      "trigger": 35.12
+    },
+    "WING": {
+      "first_seen": "2026-11-13",
+      "trigger": 179.09
+    },
+    "WOOF": {
+      "first_seen": "2026-11-13",
+      "trigger": 3.315
+    },
+    "XERS": {
+      "first_seen": "2026-11-13",
+      "trigger": 16.88
+    },
+    "XMTR": {
+      "first_seen": "2026-11-13",
+      "trigger": 127.49
+    },
+    "XNCR": {
+      "first_seen": "2026-11-13",
+      "trigger": 40.6
+    },
+    "YOU": {
+      "first_seen": "2026-11-13",
+      "trigger": 66.2
+    }
+  }
+}
