@@ -178,6 +178,37 @@ class AlertsConfig(_Strict):
     catch_up_max_sessions: int = Field(5, ge=0)  # report breakouts of up to this many missed sessions
 
 
+class BacktestConfig(_Strict):
+    """Phase 5 point-in-time backtest. See config/<market>.yaml for which values are assumptions."""
+
+    benchmark: str  # Yahoo symbol: SPY (S&P 500) / ^NSEI (Nifty 50)
+    cost_pct_per_side: float = Field(0.05, ge=0)  # commissions, fees, taxes per buy or sell, in %
+    slippage_pct_per_side: float = Field(0.10, ge=0)  # in %
+    forward_days: list[int] = Field(default_factory=lambda: [5, 10, 20], min_length=1)
+    # SPEC exits: stop at the breakout-day low; sell a fraction after N days; trail the rest below an SMA.
+    partial_fractions: list[float] = Field(default_factory=lambda: [1 / 3, 1 / 2], min_length=1)
+    partial_after_days: list[int] = Field(default_factory=lambda: [3, 5], min_length=1)
+    trail_sma: list[int] = Field(default_factory=lambda: [10, 20], min_length=1)
+    headline_partial_fraction: float
+    headline_partial_after_days: int
+    headline_trail_sma: int
+    risk_per_trade_pct: float = Field(0.5, gt=0)  # equity curve: % of equity risked per trade
+    max_position_pct: float = Field(25, gt=0)  # equity curve: cap on one position's size, % of equity
+    max_positions: int = Field(10, ge=1)  # equity curve: concurrent open trades
+
+    @model_validator(mode="after")
+    def _check(self) -> BacktestConfig:
+        if not any(abs(self.headline_partial_fraction - f) < 1e-6 for f in self.partial_fractions):
+            raise ValueError("headline_partial_fraction must be one of partial_fractions")
+        if self.headline_partial_after_days not in self.partial_after_days:
+            raise ValueError("headline_partial_after_days must be one of partial_after_days")
+        if self.headline_trail_sma not in self.trail_sma:
+            raise ValueError("headline_trail_sma must be one of trail_sma")
+        if any(not 0 < f < 1 for f in self.partial_fractions):
+            raise ValueError("partial_fractions must be between 0 and 1")
+        return self
+
+
 class MarketConfig(_Strict):
     market: str
     currency: str
@@ -188,6 +219,7 @@ class MarketConfig(_Strict):
     setup: SetupConfig
     breakout: BreakoutConfig
     alerts: AlertsConfig
+    backtest: BacktestConfig
 
 
 def load_config(market: str, config_dir: Path = CONFIG_DIR) -> MarketConfig:

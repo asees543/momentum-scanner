@@ -82,3 +82,19 @@ alerts:
   list_wide_breakouts: true        # (decision) name breakouts whose stop is wider than ADR too
   catch_up_max_sessions: 5         # (assumption) if sessions were missed since the last sent alert (outage, late data),
                                    #   also report their breakouts, dated, for up to this many sessions
+
+# Phase 5: point-in-time backtest (python -m scanner.backtest --market india).
+backtest:
+  benchmark: "^NSEI"          # (SPEC) Nifty 50 index
+  cost_pct_per_side: 0.15         # (assumption) STT, exchange and other charges per buy or sell (delivery), in %
+  slippage_pct_per_side: 0.10      # (assumption) per buy or sell, in %
+  forward_days: [5, 10, 20]        # (SPEC) forward-return horizons, in sessions after entry
+  partial_fractions: [0.3333333333, 0.5]   # (SPEC) "sell a third to half..."
+  partial_after_days: [3, 5]       # (SPEC) "...after 3-5 days"
+  trail_sma: [10, 20]              # (SPEC) "trail the rest below the 10 or 20-day SMA"
+  headline_partial_fraction: 0.3333333333  # (assumption) headline variant, fixed BEFORE seeing results;
+  headline_partial_after_days: 3   #   all 8 combinations are reported next to it
+  headline_trail_sma: 10
+  risk_per_trade_pct: 0.5          # (assumption) equity curve: risk 0.5% of equity per trade...
+  max_position_pct: 25             # (assumption) ...with no position above 25% of equity...
+  max_positions: 10                # (assumption) ...and at most 10 open at once

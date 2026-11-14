@@ -100,3 +100,20 @@ def test_india_config_loads_with_spec_values():
     assert cfg.data.latest_day_fallback == "nse_bhavcopy"
     assert load_config("us").data.latest_day_fallback == "none"
     assert load_config("us").liquidity.exclude_circuit_locked is False
+
+
+def test_backtest_config():
+    us, india = load_config("us").backtest, load_config("india").backtest
+    assert us.benchmark == "SPY" and india.benchmark == "^NSEI"
+    assert us.forward_days == [5, 10, 20]
+    assert us.partial_after_days == [3, 5] and us.trail_sma == [10, 20]
+    assert (us.headline_partial_after_days, us.headline_trail_sma) == (3, 10)
+    assert abs(us.headline_partial_fraction - 1 / 3) < 1e-6
+
+
+def test_backtest_headline_must_be_in_the_grid(tmp_path):
+    def mutate(raw):
+        raw["backtest"]["headline_trail_sma"] = 50
+
+    with pytest.raises(ConfigError, match="headline_trail_sma"):
+        load_config("us", _write_variant(tmp_path, mutate))
