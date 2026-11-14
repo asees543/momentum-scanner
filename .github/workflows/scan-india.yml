@@ -1,0 +1,92 @@
+name: scan-india
+
+on:
+  schedule:
+    # NSE closes 15:30 IST = 10:00 UTC. 12:30 UTC = 18:00 IST (SPEC). The 14:00 UTC run is the retry:
+    # if Yahoo had not published the day yet, it sends the alerts; if the first run already did, the
+    # same market date makes it skip silently.
+    # Market holidays need no special case: no new bar -> the run skips silently.
+    - cron: "30 12 * * 1-5"
+    - cron: "0 14 * * 1-5"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Print the alerts in the log instead of sending them (state is not saved)"
+        type: boolean
+        default: true
+      full_watchlist:
+        description: "Instead: send the whole current watchlist to Telegram now (ignores dry run; state unchanged)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write # commit state/india.json
+
+concurrency:
+  group: scan-india
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+
+      # setup-uv publishes only full version tags (there is no moving "v10" tag).
+      - uses: astral-sh/setup-uv@v10.3.3
+        with:
+          enable-cache: true
+
+      # Prices live in the Actions cache (too big to commit daily). Each run saves a new entry
+      # and restores the newest one; if it was evicted, the scan re-downloads 5 years (~6 min).
+      - name: Restore price cache
+        uses: actions/cache/restore@v6
+        with:
+          path: data/cache/india
+          key: prices-india-${{ github.run_id }}
+          restore-keys: prices-india-
+
+      - name: Install dependencies
+        run: uv sync --frozen
+
+      - name: Scan and alert
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run }}
+          FULL_WATCHLIST: ${{ github.event_name == 'workflow_dispatch' && inputs.full_watchlist }}
+          COLUMNS: "160"
+        run: |
+          if [ "$FULL_WATCHLIST" = "true" ]; then
+            uv run python -m scanner.run --market india --scan watchlist --send-watchlist
+          elif [ "$DRY_RUN" = "true" ]; then
+            uv run python -m scanner.run --market india --alert --dry-run
+          else
+            uv run python -m scanner.run --market india --alert
+          fi
+
+      - name: Save price cache
+        if: always()
+        uses: actions/cache/save@v6
+        with:
+          path: data/cache/india
+          key: prices-india-${{ github.run_id }}
+
+      # state/india.json records what was already sent. Committing it keeps alerts from repeating and
+      # the daily commit keeps GitHub from disabling the schedule after 60 days without activity.
+      - name: Commit alert state
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add state/india.json 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "state unchanged"
+            exit 0
+          fi
+          git commit -m "Update India alert state for $(jq -r .as_of state/india.json)"
+          for attempt in 1 2 3; do
+            git pull --rebase && git push && exit 0
+            sleep 5
+          done
+          exit 1
