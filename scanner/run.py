@@ -45,6 +45,7 @@ from scanner.notify import (
     move_label,
     short_name,
 )
+from scanner.dashboard import SITE_DATA, snapshot, write_snapshot
 from scanner.quality import QualityReport, quality_report, yahoo_split_dates
 from scanner.scans import BreakoutResult, LeadersResult, ScanResults, WatchlistResult, missed_breakouts, run_scans
 from scanner.state import STATE_DIR, MarketState, diff_results, state_path
@@ -81,6 +82,7 @@ def parse_args(argv: list[str] | None) -> argparse.Namespace:
     p.add_argument("--check-splits", action="store_true",
                    help="with --quality: ask Yahoo whether it recorded a split/bonus on each jump date (network)")
     p.add_argument("--state-dir", default=str(STATE_DIR), help=argparse.SUPPRESS)  # tests / experiments
+    p.add_argument("--site-data-dir", default=str(SITE_DATA), help=argparse.SUPPRESS)
     p.add_argument("-v", "--verbose", action="store_true", help="show info-level logs")
     return p.parse_args(argv)
 
@@ -581,8 +583,13 @@ def _main(args: argparse.Namespace) -> int:
         )
     if args.alert:
         console.print()
-        return alert_flow(res, cfg, universe, MARKETS[args.market].chart_url, args.dry_run, Path(args.state_dir),
-                          panels=panels, mode=args.mode)
+        rc = alert_flow(res, cfg, universe, MARKETS[args.market].chart_url, args.dry_run, Path(args.state_dir),
+                        panels=panels, mode=args.mode)
+        if rc == 0 and not args.dry_run:
+            # Dashboard data for GitHub Pages; deterministic, so an unchanged day leaves the file unchanged.
+            path = write_snapshot(snapshot(res, cfg, universe, MARKETS[args.market].chart_url), Path(args.site_data_dir))
+            console.print(f"[dim]Dashboard data written to {path}[/]")
+        return rc
     return 0
 
 
