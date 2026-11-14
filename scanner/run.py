@@ -31,7 +31,7 @@ from rich.table import Table
 from scanner.config import ConfigError, MarketConfig, load_config
 from scanner.data import india_loader, us_loader
 from scanner.data.base import Panels, last_complete_session_date
-from scanner.data.cache import PriceCache, UpdateReport, update_prices
+from scanner.data.cache import PriceCache, UpdateReport, fill_missing_sessions, update_prices
 from scanner.notify import (
     NotifyError,
     PrintNotifier,
@@ -149,6 +149,11 @@ def load_data(cfg: MarketConfig, args: argparse.Namespace) -> tuple[pd.DataFrame
             refresh=args.refresh,
             progress=ProgressReporter(progress),
             now=now,
+        )
+    fetcher = getattr(market, "latest_day_fetcher", None)
+    if cfg.data.latest_day_fallback != "none" and fetcher is not None:
+        prices, report.filled = fill_missing_sessions(
+            cache, prices, symbols, cutoff, fetcher(cfg), cfg.data.fallback_max_days
         )
     prices = prices[prices["symbol"].isin(symbols)]
     return universe, prices, report
@@ -360,6 +365,9 @@ def render_data_report(report: UpdateReport | None) -> None:
         + (f", {report.already_current:,} already current" if report.already_current else "")
         + "[/]"
     )
+    for day, n in report.filled.items():
+        console.print(f"[dim]  {day}: {n:,} symbols filled from the exchange's end-of-day file "
+                      "(the price provider had not published that session yet)[/]")
     if report.full_refetch:
         console.print(f"[dim]  re-downloaded: {', '.join(report.full_refetch[:15])}"
                       + (" …" if len(report.full_refetch) > 15 else "") + "[/]")

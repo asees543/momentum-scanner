@@ -41,6 +41,10 @@ class DataConfig(_Strict):
     timezone: str
     market_close: str
     close_buffer_minutes: int = Field(30, ge=0)
+    # When the price provider has not published the newest sessions yet, fill them from another
+    # source. "nse_bhavcopy" = NSE's official end-of-day file (India). "none" = wait for the provider.
+    latest_day_fallback: Literal["none", "nse_bhavcopy"] = "none"
+    fallback_max_days: int = Field(5, ge=1)  # look back at most this many calendar days for missing sessions
 
     @field_validator("timezone")
     @classmethod

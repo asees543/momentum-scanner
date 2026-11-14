@@ -20,7 +20,8 @@ from urllib.parse import quote
 import pandas as pd
 
 from scanner.config import MarketConfig, UniverseConfig
-from scanner.data.cache import PriceCache, load_cached_universe
+from scanner.data import nse_bhavcopy
+from scanner.data.cache import DayFetcher, PriceCache, load_cached_universe
 from scanner.data.us_loader import FetchText, _http_get_text
 from scanner.data.yfinance_provider import YFinanceProvider
 
@@ -94,3 +95,9 @@ def chart_url(symbol: str, exchange: str | None = None, source_symbol: str | Non
 def make_provider(cfg: MarketConfig) -> YFinanceProvider:
     d = cfg.data
     return YFinanceProvider(batch_size=d.batch_size, pause_seconds=d.batch_pause_seconds, max_retries=d.max_retries)
+
+
+def latest_day_fetcher(cfg: MarketConfig) -> DayFetcher:
+    """Per-session fetcher for sessions Yahoo has not published yet: NSE's end-of-day file."""
+    series = list(cfg.universe.series) or ["EQ"]
+    return lambda day: nse_bhavcopy.fetch_bhavcopy(day, series)

@@ -18,6 +18,10 @@ data:
   timezone: Asia/Kolkata
   market_close: "15:30"            # NSE close
   close_buffer_minutes: 30         # (assumption) bars dated today are ignored until 16:00 IST
+  latest_day_fallback: nse_bhavcopy  # (decision) Yahoo's daily NSE bars arrive a day or more late; take the newest
+                                   #   sessions from NSE's own end-of-day file until Yahoo has them (matched Yahoo
+                                   #   exactly on 2026-11-12 for all 604 liquid stocks)
+  fallback_max_days: 5             # (assumption) how many calendar days back to look for missing sessions
 
 universe:
   exchanges: [NSE]

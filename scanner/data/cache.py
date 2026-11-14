@@ -82,6 +82,7 @@ class UpdateReport:
     failed: list[str] = field(default_factory=list)  # nothing returned; old rows (if any) kept
     already_current: int = 0  # known symbols skipped: already checked against this cutoff
     cutoff: date | None = None
+    filled: dict[str, int] = field(default_factory=dict)  # session -> symbols filled from the fallback source
 
 
 def trading_calendar(df: pd.DataFrame, min_coverage: float = 0.5) -> pd.DatetimeIndex:
@@ -288,3 +289,55 @@ def load_cached_universe(
     cache.write_meta(meta)
     log.info("%s universe: %d listed rows -> %d kept", label, raw_count, len(uni))
     return uni
+
+
+DayFetcher = Callable[[date], "pd.DataFrame | None"]  # long rows for one session, None = no session
+
+
+def fill_missing_sessions(
+    cache: PriceCache,
+    prices: pd.DataFrame,
+    symbols: Sequence[str],
+    cutoff: date,
+    fetch_day: DayFetcher,
+    max_days: int,
+) -> tuple[pd.DataFrame, dict[str, int]]:
+    """Fill sessions the price provider has not published yet from a second source.
+
+    Starting the day after the market's latest session in the cache (trading_calendar of `symbols`)
+    and going up to `cutoff` (weekdays only, at most `max_days` calendar days back from the cutoff),
+    ask `fetch_day` for each day. None/empty = no session (holiday) or not published: skipped.
+    Rows are added only for `symbols` that have no bar that day, so nothing the provider already
+    gave is overwritten. The provider's own rows replace these later (fresh downloads win).
+    A failing fetch is logged and ends the fill; the run continues with what it has.
+    Returns (prices, {session iso date: symbols filled}).
+    """
+    universe = set(symbols)
+    sub = prices[prices["symbol"].isin(universe)]
+    cal = trading_calendar(sub)
+    if not len(cal) or cal[-1].date() >= cutoff:
+        return prices, {}
+    first = max(cal[-1].date() + timedelta(days=1), cutoff - timedelta(days=max_days - 1))
+    days = [first + timedelta(days=i) for i in range((cutoff - first).days + 1)]
+    filled: dict[str, int] = {}
+    for day in (d for d in days if d.weekday() < 5):
+        try:
+            rows = fetch_day(day)
+        except Exception as e:
+            log.warning("fallback source failed for %s (%s); continuing without it", day, e)
+            break
+        if rows is None or rows.empty:
+            continue
+        have = set(sub.loc[sub["date"] == pd.Timestamp(day), "symbol"])
+        rows = rows[rows["symbol"].isin(universe) & ~rows["symbol"].isin(have)]
+        if rows.empty:
+            continue
+        prices = _merge(prices, rows)
+        filled[day.isoformat()] = int(rows["symbol"].nunique())
+    if filled:
+        cache.save(prices)
+        meta = cache.read_meta()
+        meta.setdefault("filled_from_fallback", {}).update(filled)
+        cache.write_meta(meta)
+        log.info("filled from fallback source: %s", filled)
+    return prices, filled
