@@ -76,7 +76,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add state/us.json 2>/dev/null || true
+          git add state/us.json site/data/us.json 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "state unchanged"
             exit 0
@@ -87,3 +87,35 @@ jobs:
             sleep 5
           done
           exit 1
+
+  # Rebuild the dashboard (GitHub Pages) from the latest main, which now has this market's fresh
+  # site/data/us.json and the other market's last one. Real runs only.
+  publish:
+    needs: scan
+    if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && !inputs.dry_run && !inputs.full_watchlist)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: main
+      - uses: astral-sh/setup-uv@v10.3.3
+        with:
+          enable-cache: true
+      - run: uv sync --frozen
+      - run: uv run python -m scanner.dashboard --out _site
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+      - id: deploy
+        uses: actions/deploy-pages@v5
