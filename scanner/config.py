@@ -195,6 +195,7 @@ class BacktestConfig(_Strict):
     risk_per_trade_pct: float = Field(0.5, gt=0)  # equity curve: % of equity risked per trade
     max_position_pct: float = Field(25, gt=0)  # equity curve: cap on one position's size, % of equity
     max_positions: int = Field(10, ge=1)  # equity curve: concurrent open trades
+    min_risk_pct: float = Field(1.0, gt=0)  # stops closer than this are treated as this far for R and sizing
 
     @model_validator(mode="after")
     def _check(self) -> BacktestConfig:

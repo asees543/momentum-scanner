@@ -157,3 +157,24 @@ def test_events_on_textbook_breakout_match_live_scan():
     # synthetic bars open at their close (33.0), above the trigger: a buy-stop fills at the open
     assert row["entry_a"] == pytest.approx(max(row["open"], row["trigger"])) == 33.0
     assert bt.verify_against_live(p, cfg, ev, [p.dates[160], p.dates[159]]) == []
+
+
+def test_equity_curve_never_levers_up_and_floors_tiny_stops():
+    o, h, lo, c = flat_then(np.full(N - 11, 100.0))
+    p = panel(o, h, lo, c)
+    cfg = load_config("us").backtest
+    # five same-day trades with a 0.1% stop: without the 1% floor each would want 500% of equity;
+    # with it each wants 50%, capped at 25%; cash then runs out after four (4 x 25% = 100%)
+    many = pd.concat([trade(stop=99.9).assign(symbol=f"S{i}") for i in range(5)], ignore_index=True)
+    sim = many.assign(ret=0.02, r_multiple=0.0, exit_row=20, days=10, open=False)
+    curve, stats = bt.equity_curve(sim, p, cfg)
+    assert stats["taken"] == 4 and stats["skipped_full"] == 1
+    assert curve.iloc[-1] == pytest.approx(100 * (1 + 4 * 0.25 * 0.02))
+
+
+def test_r_multiple_uses_the_risk_floor():
+    o, h, lo, c = flat_then(np.full(N - 11, 100.0))
+    lo[12] = 99.0
+    res = bt.simulate(trade(stop=99.95), panel(o, h, lo, c), RULE, cost_pct=0, min_risk_pct=1.0).iloc[0]
+    assert res["ret"] == pytest.approx(99.95 / 100 - 1)
+    assert res["r_multiple"] == pytest.approx((99.95 / 100 - 1) / 0.01)  # divided by the 1% floor, not 0.05%
