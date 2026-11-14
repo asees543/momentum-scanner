@@ -99,3 +99,5 @@ alerts:
                                  #   and alert only breakouts, instead of listing every watchlist name at once
   list_wide_breakouts: true      # (decision) also name breakouts whose stop is wider than 1 ADR, in their own
                                  #   section. SPEC says reject them; they are listed (marked) so you decide.
+  catch_up_max_sessions: 5         # (assumption) if sessions were missed since the last sent alert (outage, late data),
+                                   #   also report their breakouts, dated, for up to this many sessions

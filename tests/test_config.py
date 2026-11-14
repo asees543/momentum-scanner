@@ -29,6 +29,7 @@ def test_us_config_loads_with_spec_defaults():
     assert st.leader_lookback_sessions == 20
     assert st.require_liquid_today is True
     assert cfg.alerts.list_wide_breakouts is True
+    assert cfg.alerts.catch_up_max_sessions == 5
     assert (bo.watchlist_memory_sessions, bo.min_volume_ratio, bo.max_risk_vs_adr) == (5, 1.5, 1.0)
 
 
@@ -96,4 +97,6 @@ def test_india_config_loads_with_spec_values():
     assert cfg.leaders.flag_day_move_multiple == 1.3
     assert cfg.data.timezone == "Asia/Kolkata" and cfg.data.close_time.hour == 15
     assert cfg.alerts.list_wide_breakouts is True
+    assert cfg.data.latest_day_fallback == "nse_bhavcopy"
+    assert load_config("us").data.latest_day_fallback == "none"
     assert load_config("us").liquidity.exclude_circuit_locked is False

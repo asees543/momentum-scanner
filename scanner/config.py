@@ -175,6 +175,7 @@ class AlertsConfig(_Strict):
     min_active_ratio: float = Field(0.9, gt=0, le=1)  # data-health guard, see us.yaml
     baseline_first_run: bool = True  # first run records the watchlist instead of alerting all of it
     list_wide_breakouts: bool = True  # also name breakouts whose stop is wider than ADR (own section)
+    catch_up_max_sessions: int = Field(5, ge=0)  # report breakouts of up to this many missed sessions
 
 
 class MarketConfig(_Strict):

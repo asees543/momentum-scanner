@@ -80,3 +80,5 @@ alerts:
   min_active_ratio: 0.9            # (assumption)
   baseline_first_run: true         # (assumption) the first run sends the full watchlist and records it
   list_wide_breakouts: true        # (decision) name breakouts whose stop is wider than ADR too
+  catch_up_max_sessions: 5         # (assumption) if sessions were missed since the last sent alert (outage, late data),
+                                   #   also report their breakouts, dated, for up to this many sessions

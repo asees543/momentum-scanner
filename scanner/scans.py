@@ -496,3 +496,25 @@ def run_scans(panels: Panels, cfg: MarketConfig, mode: Literal["fixed", "rank"] 
         watchlist=watchlist_from_frames(p, liq, lf, sf, cfg, max_lb),
         breakouts=breakouts_from_frames(p, liq, lf, sf, cfg, max_lb),
     )
+
+
+def missed_breakouts(
+    panels: Panels,
+    cfg: MarketConfig,
+    after: pd.Timestamp,
+    before: pd.Timestamp,
+    max_sessions: int,
+    mode: Literal["fixed", "rank"] | None = None,
+) -> tuple[list[tuple[pd.Timestamp, BreakoutResult]], int]:
+    """Breakouts on sessions strictly between `after` (the last alerted session) and `before` (today),
+    each evaluated point-in-time with panels.as_of(session). Only the most recent `max_sessions` are
+    checked. Returns ([(session, breakouts) for sessions that had any], number of sessions skipped
+    because of the limit)."""
+    sessions = [d for d in panels.dates if pd.Timestamp(after) < d < pd.Timestamp(before)]
+    skipped = max(0, len(sessions) - max_sessions)
+    found = []
+    for d in sessions[skipped:]:
+        bo = run_scans(panels.as_of(d), cfg, mode).breakouts
+        if len(bo.table):
+            found.append((d, bo))
+    return found, skipped

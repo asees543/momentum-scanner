@@ -93,6 +93,10 @@ class Diff:
     rejected_breakouts: int = 0  # = len(wide_breakouts)
     watchlist_size: int = 0
     next_state: MarketState | None = None
+    # Filled by the caller: breakouts on sessions missed since the last sent run, oldest first,
+    # and how many older missed sessions were not checked (alerts.catch_up_max_sessions).
+    catch_up: list = field(default_factory=list)  # [(session Timestamp, BreakoutResult)]
+    catch_up_skipped: int = 0
 
 
 def diff_results(

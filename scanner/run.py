@@ -46,7 +46,7 @@ from scanner.notify import (
     short_name,
 )
 from scanner.quality import QualityReport, quality_report, yahoo_split_dates
-from scanner.scans import BreakoutResult, LeadersResult, ScanResults, WatchlistResult, run_scans
+from scanner.scans import BreakoutResult, LeadersResult, ScanResults, WatchlistResult, missed_breakouts, run_scans
 from scanner.state import STATE_DIR, MarketState, diff_results, state_path
 
 MARKETS: dict[str, ModuleType] = {"us": us_loader, "india": india_loader}
@@ -472,12 +472,17 @@ def write_csv(path: str, shown: dict[str, pd.DataFrame], as_of: pd.Timestamp, na
 
 
 def alert_flow(res: ScanResults, cfg: MarketConfig, universe: pd.DataFrame, chart_url, dry_run: bool,
-               state_dir: Path = STATE_DIR, notifier=None) -> int:
+               state_dir: Path = STATE_DIR, notifier=None, panels: Panels | None = None, mode=None) -> int:
     """Diff today's results against the last SENT state, deliver, then save the new state.
-    State is saved only after delivery succeeded, and never on a dry run."""
+    State is saved only after delivery succeeded, and never on a dry run.
+    With `panels`, breakouts on sessions missed since the last sent run are reported too (catch-up)."""
     path = state_path(cfg.market, state_dir)
     prev = MarketState.load(path)
     diff = diff_results(prev, res, cfg.market, cfg.alerts)
+    if diff.status == "send" and prev is not None and panels is not None and cfg.alerts.catch_up_max_sessions:
+        diff.catch_up, diff.catch_up_skipped = missed_breakouts(
+            panels, cfg, pd.Timestamp(prev.as_of), res.leaders.as_of, cfg.alerts.catch_up_max_sessions, mode
+        )
     if diff.status == "skip_same_day":
         console.print(f"[dim]Alerts: {diff.reason}; nothing sent.[/]")
         return 0
@@ -495,6 +500,7 @@ def alert_flow(res: ScanResults, cfg: MarketConfig, universe: pd.DataFrame, char
         f"Alerts: {len(messages)} message(s) {'printed' if dry_run else 'sent'} · "
         f"{len(diff.breakouts)} breakouts ok, {len(diff.wide_breakouts)} too wide, "
         f"{len(diff.new_watchlist)} new watchlist names"
+        + (f" · caught up {len(diff.catch_up)} missed session(s) with breakouts" if diff.catch_up else "")
         + (" · first run: watchlist recorded as baseline" if diff.first_run else "")
         + (" · dry run, state not saved" if dry_run else f" · state saved to {path}")
     )
@@ -575,7 +581,8 @@ def _main(args: argparse.Namespace) -> int:
         )
     if args.alert:
         console.print()
-        return alert_flow(res, cfg, universe, MARKETS[args.market].chart_url, args.dry_run, Path(args.state_dir))
+        return alert_flow(res, cfg, universe, MARKETS[args.market].chart_url, args.dry_run, Path(args.state_dir),
+                          panels=panels, mode=args.mode)
     return 0
 
 

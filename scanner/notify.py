@@ -229,6 +229,24 @@ def format_alerts(
             "SPEC rejects these: the distance from close to the day's low is more than one average daily range."
         )
         blocks += bo_entries(wide)
+    for session, missed in diff.catch_up:
+        t = missed.table
+        ok = [s for s in t.index if t.loc[s, "status"] == "ok"]
+        wide_m = [s for s in t.index if t.loc[s, "status"] != "ok"] if cfg.alerts.list_wide_breakouts else []
+        if not ok and not wide_m:
+            continue
+        blocks.append(
+            f"⏪ <b>Breakouts on {session:%a %d %b}</b> (a session the earlier runs missed)"
+            + (f"\n{len(ok)} ok, {len(wide_m)} with stop wider than ADR" if wide_m else "")
+        )
+        shown.extend(t.loc[s] for s in ok + wide_m)
+        blocks += [breakout_entry(display(s), t.loc[s], windows, cur, url(s), name(s)) for s in ok]
+        blocks += [
+            breakout_entry(display(s), t.loc[s], windows, cur, url(s), name(s)).replace("</b>", "</b> (wide)", 1)
+            for s in wide_m
+        ]
+    if diff.catch_up_skipped:
+        blocks.append(f"⏪ {diff.catch_up_skipped} earlier missed session(s) were not checked.")
     if diff.new_watchlist:
         blocks.append("👀 <b>New on watchlist</b> (closest to trigger first)")
         blocks += wl_entries(diff.new_watchlist)
@@ -238,7 +256,7 @@ def format_alerts(
             "These are recorded as the baseline. From the next session, only new names are listed."
         )
         blocks += wl_entries(list(wl.index))
-    if not diff.breakouts and not wide and not diff.new_watchlist and not diff.first_run:
+    if not diff.breakouts and not wide and not diff.new_watchlist and not diff.first_run and not diff.catch_up:
         blocks.append("Nothing new today.")
     if any(bool(r.get("flag_day_move", False)) for r in shown):
         blocks.append(flag_note(cfg))

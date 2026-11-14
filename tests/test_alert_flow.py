@@ -90,3 +90,44 @@ def test_real_alert_refuses_partial_runs(extra):
 
 def test_dry_run_requires_alert_or_send_watchlist():
     assert main(["--market", "us", "--no-update", "--dry-run"]) == 2
+
+
+# --- catch-up: sessions missed since the last sent run ------------------------------------------
+
+
+def breakout_then_quiet():
+    b = textbook().append(33.0, 33.3, 31.9, 2_000_000)  # bar 160: breakout
+    return b.append(33.2, 33.5, 32.9, 1_200_000)  # bar 161: quiet day above the trigger
+
+
+def test_missed_breakouts_finds_the_skipped_session():
+    p = panels_from({"X": breakout_then_quiet()})
+    found, skipped = scans.missed_breakouts(p, CFG, p.dates[159], p.dates[161], max_sessions=5)
+    assert skipped == 0
+    assert [d for d, _ in found] == [p.dates[160]]
+    assert found[0][1].table.loc["X", "status"] == "ok"
+    found, skipped = scans.missed_breakouts(p, CFG, p.dates[159], p.dates[161], max_sessions=0)
+    assert found == [] and skipped == 1
+
+
+def test_alert_after_a_missed_session_reports_its_breakout(tmp_path):
+    bars = breakout_then_quiet()
+    p = panels_from({"X": bars})
+    flow(scans.run_scans(p.as_of(p.dates[159]), CFG), tmp_path, Capture())  # last sent run: bar 159
+    cap = Capture()
+    rc = alert_flow(scans.run_scans(p, CFG), CFG, UNIVERSE, chart_url, False, tmp_path, cap, panels=p)
+    assert rc == 0
+    text = "\n".join(cap.sent[0])
+    assert f"⏪ <b>Breakouts on {p.dates[160]:%a %d %b}</b>" in text
+    assert "<b>X</b> · X Corp\n33.00 › trig 31.79 · stop 31.90" in text
+    assert "Nothing new today." not in text
+    assert MarketState.load(state_path("us", tmp_path)).as_of == p.dates[161].date()
+
+
+def test_no_catch_up_section_when_nothing_was_missed(tmp_path):
+    bars = breakout_then_quiet()
+    p = panels_from({"X": bars})
+    flow(scans.run_scans(p.as_of(p.dates[160]), CFG), tmp_path, Capture())  # last sent run: bar 160
+    cap = Capture()
+    alert_flow(scans.run_scans(p, CFG), CFG, UNIVERSE, chart_url, False, tmp_path, cap, panels=p)
+    assert "⏪" not in "\n".join(cap.sent[0])
