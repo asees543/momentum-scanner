@@ -93,22 +93,25 @@ def test_build_trades_models():
     p = panel(o, h, lo, c)
     ev = pd.DataFrame([
         {"date": DATES[5], "symbol": "X", "row": 5, "trigger": 99.5, "open": 99, "high": 101, "low": 98, "close": 100.5,
-         "entry_a": 99.5, "stop": 98.0, "status": "ok", "vol_ratio": 2.0, "adr_prev": 5, "setup_age": 1, "flag_day_move": False},
+         "entry_a": 99.5, "stop": 98.0, "prev_low": 97.0, "status": "ok", "vol_ratio": 2.0, "adr_prev": 5, "setup_age": 1, "flag_day_move": False},
         {"date": DATES[10], "symbol": "X", "row": 10, "trigger": 99.0, "open": 100, "high": 101, "low": 96, "close": 98,
-         "entry_a": 100.0, "stop": 96.0, "status": "failed", "vol_ratio": 0.8, "adr_prev": 5, "setup_age": 2, "flag_day_move": False},
+         "entry_a": 100.0, "stop": 96.0, "prev_low": 97.0, "status": "failed", "vol_ratio": 0.8, "adr_prev": 5, "setup_age": 2, "flag_day_move": False},
     ])
     a = bt.build_trades(ev, p, "A")
     assert a["entry"].tolist() == [99.5, 100.0]  # gap above the trigger fills at the open
     assert a["stop_from"].tolist() == [6, 11] and a["group"].tolist() == ["ok", "failed"]
+    # A sizes on the previous day's low (known when the buy-stop is placed), not the breakout day's low
+    assert a["risk_pct"].tolist() == pytest.approx([100 * (99.5 - 97.0) / 99.5, 100 * (100.0 - 97.0) / 100.0])
     b = bt.build_trades(ev, p, "B")
     assert len(b) == 1 and b.iloc[0]["entry"] == o[6] and b.iloc[0]["entry_row"] == 6  # failed one never in B
+    assert b.iloc[0]["risk_pct"] == pytest.approx(100 * (o[6] - 98.0) / o[6])  # B: breakout-day low, known by then
 
 
 def test_model_b_skips_a_gap_below_the_stop():
     o, h, lo, c = flat_then(np.full(N - 11, 100.0))
     o[11] = 95.0
     ev = pd.DataFrame([{"date": DATES[10], "symbol": "X", "row": 10, "trigger": 99.0, "open": 100, "high": 101,
-                        "low": 96.0, "close": 100, "entry_a": 100.0, "stop": 96.0, "status": "ok", "vol_ratio": 2.0,
+                        "low": 96.0, "close": 100, "entry_a": 100.0, "stop": 96.0, "prev_low": 97.0, "status": "ok", "vol_ratio": 2.0,
                         "adr_prev": 5, "setup_age": 1, "flag_day_move": False}])
     assert bt.build_trades(ev, panel(o, h, lo, c), "B").empty
 
@@ -178,3 +181,33 @@ def test_r_multiple_uses_the_risk_floor():
     res = bt.simulate(trade(stop=99.95), panel(o, h, lo, c), RULE, cost_pct=0, min_risk_pct=1.0).iloc[0]
     assert res["ret"] == pytest.approx(99.95 / 100 - 1)
     assert res["r_multiple"] == pytest.approx((99.95 / 100 - 1) / 0.01)  # divided by the 1% floor, not 0.05%
+
+
+# --- Model C: buy-stop, failed breakouts sold at that day's close -------------------------------
+
+
+def test_model_c_sells_a_failed_fill_at_the_entry_day_close():
+    o, h, lo, c = flat_then(np.full(N - 11, 100.0))
+    c[10] = 98.5  # closed back below the 99.0 trigger
+    tr = trade("A", entry=99.0, stop=97.0).assign(model="C", group="failed")
+    res = bt.simulate(tr, panel(o, h, lo, c), RULE, cost_pct=0).iloc[0]
+    assert res["exit_row"] == 10 and res["days"] == 0
+    assert res["ret"] == pytest.approx(98.5 / 99.0 - 1)
+
+
+def test_model_c_keeps_a_confirmed_fill_like_model_a():
+    path = np.r_[102, 104, 106, 107, 98, np.full(N - 16, 98.0)]
+    o, h, lo, c = flat_then(path)
+    a = bt.simulate(trade("A"), panel(o, h, lo, c), RULE, 0).iloc[0]
+    cc = bt.simulate(trade("A").assign(model="C"), panel(o, h, lo, c), RULE, 0).iloc[0]  # group "ok"
+    assert cc["ret"] == pytest.approx(a["ret"]) and cc["exit_row"] == a["exit_row"]
+
+
+def test_build_trades_model_c_has_model_a_entries():
+    o, h, lo, c = flat_then(np.full(N - 11, 100.0))
+    ev = pd.DataFrame([{"date": DATES[10], "symbol": "X", "row": 10, "trigger": 99.0, "open": 100, "high": 101,
+                        "low": 96.0, "close": 98, "entry_a": 100.0, "stop": 96.0, "prev_low": 97.0, "status": "failed",
+                        "vol_ratio": 0.8, "adr_prev": 5, "setup_age": 1, "flag_day_move": False}])
+    a, cc = bt.build_trades(ev, panel(o, h, lo, c), "A"), bt.build_trades(ev, panel(o, h, lo, c), "C")
+    assert cc["model"].tolist() == ["C"]
+    pd.testing.assert_frame_equal(a.drop(columns="model"), cc.drop(columns="model"))

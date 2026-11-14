@@ -9,7 +9,8 @@ value on day t depends only on data up to t. `verify_against_live` re-runs the l
 truncated data (panels.as_of(day)) and checks the signals match.
 
 Two entry models (user decision: compare both):
-  A  buy-stop at the trigger, placed from the evening watchlist. On day t, a name on day t-1's
+  A  buy-stop at the trigger, placed from the evening watchlist. Position size and R use the stop
+     known when the order is placed (the previous day's low, as on the watchlist). On day t, a name on day t-1's
      watchlist whose high reaches its trigger is bought at max(open_t, trigger) (a gap above the
      trigger fills at the open). This includes triggers that then FAIL: a close back below the
      trigger, or not enough volume. Stop = day t's low, active from day t+1 (daily bars can't show
@@ -17,6 +18,10 @@ Two entry models (user decision: compare both):
   B  next-day open after the end-of-day breakout alert: each confirmed breakout on day t (close >
      trigger and volume >= 1.5x average; status "ok" or "too wide") is bought at open_{t+1}. Stop =
      day t's low, active from t+1. Skipped if open_{t+1} is already at or below the stop.
+
+  C  like A, but a fill whose breakout fails (closes at/below the trigger, or under the volume
+     threshold) is sold at that day's close; confirmed fills continue with the normal exits. Slightly
+     optimistic: in practice the decision is made minutes before the close, with nearly-final volume.
 
 Exits (SPEC): stop at the breakout-day low (filled at the stop, or at the open if a day gaps below
 it); sell `fraction` at the close N sessions after entry; trail the rest out at the first close below
@@ -53,7 +58,7 @@ from scanner.scans import (
 )
 
 EVENT_COLUMNS = [
-    "date", "symbol", "row", "trigger", "open", "high", "low", "close", "entry_a", "stop", "status",
+    "date", "symbol", "row", "trigger", "open", "high", "low", "close", "entry_a", "stop", "prev_low", "status",
     "vol_ratio", "adr_prev", "setup_age", "flag_day_move",
 ]
 
@@ -120,7 +125,7 @@ def trigger_events(hf: HistoryFrames, cfg: MarketConfig) -> pd.DataFrame:
         for k, j in enumerate(idx):
             rows.append(
                 (p.dates[t], symbols[j], t, trig[k], open_t[k], h[t, j], low_t[k], close_t[k],
-                 max(open_t[k], trig[k]), low_t[k], status[k], v[t, j] / avg_vol[t, j], adr[t - 1, j],
+                 max(open_t[k], trig[k]), low_t[k], lo[t - 1, j], status[k], v[t, j] / avg_vol[t, j], adr[t - 1, j],
                  int(age[k]), bool(flagged[t, j]))
             )
     return pd.DataFrame(rows, columns=EVENT_COLUMNS)
@@ -152,23 +157,31 @@ TRADE_COLUMNS = [
 ]
 
 
-def build_trades(events: pd.DataFrame, panels: Panels, model: Literal["A", "B"]) -> pd.DataFrame:
-    """Entries for one model (see module docstring). risk_pct = (entry - stop) / entry x 100."""
+def build_trades(events: pd.DataFrame, panels: Panels, model: Literal["A", "B", "C"]) -> pd.DataFrame:
+    """Entries for one model (see module docstring).
+
+    risk_pct (used for R multiples and position sizing) must be known when the order is placed:
+      A, C: (entry - previous day's low) / entry x 100. The previous low is the watchlist stop; the
+            breakout day's own low is only known at the close, after a buy-stop has filled.
+      B:    (entry - breakout day's low) / entry x 100, known before the next open.
+    Exits always use `stop` = the breakout day's low (SPEC), active from the session after it."""
     col = {s: i for i, s in enumerate(panels.symbols)}
     o = panels.open.to_numpy()
     rows = []
     last = len(panels.dates) - 1
     for e in events.itertuples(index=False):
         j = col[e.symbol]
-        if model == "A":
+        if model in ("A", "C"):
             entry_row, entry, stop_from = e.row, e.entry_a, e.row + 1
+            planned_stop = e.prev_low
         else:
             if e.status == "failed" or e.row >= last:
                 continue
             entry_row, entry, stop_from = e.row + 1, o[e.row + 1, j], e.row + 1
             if not np.isfinite(entry) or entry <= e.stop:
                 continue  # gapped to or below the stop before we could buy: skipped
-        risk = 100 * (entry - e.stop) / entry
+            planned_stop = e.stop
+        risk = 100 * (entry - planned_stop) / entry if np.isfinite(planned_stop) else np.nan
         rows.append((model, e.symbol, j, e.date, entry_row, panels.dates[entry_row], entry, e.stop, stop_from,
                      e.status, risk if risk > 0 else np.nan, e.vol_ratio, e.flag_day_move))
     return pd.DataFrame(rows, columns=TRADE_COLUMNS)
@@ -209,7 +222,10 @@ def simulate(trades: pd.DataFrame, panels: Panels, rule: ExitRule, cost_pct: flo
         j, e, entry, stop = tr.col, tr.entry_row, tr.entry, tr.stop
         remaining, proceeds, partial_done, exit_row, still_open = 1.0, 0.0, False, None, False
         last_close = c[e, j]
-        for d in range(tr.stop_from, n):
+        if tr.model == "C" and tr.group == "failed":
+            # Model C: the breakout failed by the close, so the whole position is sold at that close.
+            proceeds, remaining, exit_row = c[e, j], 0.0, e
+        for d in range(tr.stop_from, n) if remaining > 0 else ():
             if not np.isfinite(c[d, j]):
                 continue
             last_close = c[d, j]
@@ -289,8 +305,8 @@ def equity_curve(sim: pd.DataFrame, panels: Panels, cfg_bt, start_equity: float 
     equity: no leverage), at most max_positions open. P&L is booked on the exit day (open trades at the
     end of the data at their last close), so drawdowns while a trade is open are not shown."""
     trades = sim.dropna(subset=["risk_pct"])
-    if len(trades) and (trades["model"] == "A").all():
-        # Model A: which buy-stops fill first within a day is unknown and the day's volume comes after
+    if len(trades) and trades["model"].isin(["A", "C"]).all():
+        # Models A/C: which buy-stops fill first within a day is unknown and the day's volume comes after
         # the fill, so same-day fills are taken in a fixed random order (seeded, repeatable).
         order = np.random.default_rng(11).permutation(len(trades))
         trades = trades.assign(_prio=order).sort_values(["entry_row", "_prio"])
@@ -375,15 +391,19 @@ def _stats_row(label: str, s: dict) -> list[str]:
 
 STATS_HEADER = ["Group", "Trades", "Win rate", "Avg win", "Avg loss", "Mean / trade", "Mean R", "Median R",
                 "Profit factor", "Median days"]
-GROUPS = {"A": ["all", "ok", "too wide", "failed"], "B": ["all", "ok", "too wide"]}
+GROUPS = {"A": ["all", "ok", "too wide", "failed"], "B": ["all", "ok", "too wide"], "C": ["all", "ok", "too wide", "failed"]}
 # Model A's groups depend on the breakout day's close and volume, which aren't known when a buy-stop
 # fills: they explain results but can't be traded. Model B's groups are known before the next open.
 HINDSIGHT = "†"
 
 
 def _label(m: str, g: str) -> str:
-    return f"{m} · {g}" + (f" {HINDSIGHT}" if m == "A" and g != "all" else "")
-MODEL_NAME = {"A": "A · buy-stop at the trigger (breakout-day entry)", "B": "B · next-day open after the alert"}
+    return f"{m} · {g}" + (f" {HINDSIGHT}" if m in ("A", "C") and g != "all" else "")
+MODEL_NAME = {
+    "A": "A · buy-stop at the trigger (breakout-day entry)",
+    "B": "B · next-day open after the alert",
+    "C": "C · buy-stop at the trigger, failed breakouts sold at that day's close",
+}
 
 
 def _group(df: pd.DataFrame, g: str) -> pd.DataFrame:
@@ -411,7 +431,7 @@ def run_backtest(panels: Panels, cfg: MarketConfig, bench: pd.DataFrame, univers
     cost = b.cost_pct_per_side + b.slippage_pct_per_side
     rules = [ExitRule(f, n, k) for f, n, k in itertools.product(b.partial_fractions, b.partial_after_days, b.trail_sma)]
     headline = ExitRule(b.headline_partial_fraction, b.headline_partial_after_days, b.headline_trail_sma)
-    trades = {m: build_trades(events, panels, m) for m in ("A", "B")}
+    trades = {m: build_trades(events, panels, m) for m in ("A", "B", "C")}
     sims = {(m, r): simulate(trades[m], panels, r, cost, b.min_risk_pct) for m in trades for r in rules}
     head = {m: forward_returns(sims[(m, next(r for r in rules if r == headline))], panels, bench, b.forward_days)
             for m in trades}
@@ -439,6 +459,9 @@ def run_backtest(panels: Panels, cfg: MarketConfig, bench: pd.DataFrame, univers
         f"- **{MODEL_NAME['A']}**: every day a name from the previous evening's watchlist traded up to its trigger; "
         "bought at the trigger (or the open if it gapped above). Includes triggers that **failed** (closed back below "
         "the trigger or without 1.5× volume), because a buy-stop fills on those too. Stop = that day's low, from the next day.",
+        f"- **{MODEL_NAME['C']}**: Model A's entries, but a fill that hasn't confirmed by the close (closed at or "
+        "below the trigger, or under 1.5× volume) is sold at that close; confirmed ones continue with the normal exits. "
+        "Slightly optimistic: in practice you decide minutes before the close.",
         f"- **{MODEL_NAME['B']}**: every confirmed breakout (ok or too wide), bought at the next open; skipped if "
         "that open was already at or below the stop.",
         f"- Exits (SPEC): stop at the breakout-day low; sell part after N days; trail the rest below an SMA. "
@@ -450,9 +473,12 @@ def run_backtest(panels: Panels, cfg: MarketConfig, bench: pd.DataFrame, univers
         "names among them) are missing from free data, so results are **better than reality**.",
         "- **Universe look-ahead.** Today's lists also decide which tickers count as common stock in the past.",
         "- **Data quality.** Unadjusted splits/bonuses create fake moves; results are also shown without ⚠-flagged names.",
-        f"- **{HINDSIGHT} Hindsight groups.** Model A's split into ok / too wide / failed uses the breakout day's close "
+        f"- **{HINDSIGHT} Hindsight groups.** Models A and C split into ok / too wide / failed using the breakout day's close "
         "and volume, which aren't known when a buy-stop fills. Those rows explain where A's results come from but "
-        "can't be traded; **only “A · all” is a tradeable strategy**. Model B's groups are known before its entry.",
+        "can't be traded; **only “A · all” and “C · all” are tradeable strategies**. Model B's groups are known before its entry.",
+        "- **Position size and R use only what's known at entry.** For the buy-stop models (A, C) that is the previous "
+        "day's low (the watchlist stop); the breakout day's low is only known after the fill. (A first version sized on "
+        "the day's low and showed C at +53% a year; that was look-ahead.) Exits still use the breakout day's low.",
         f"- **R multiples** use a minimum stop distance of {b.min_risk_pct:g}%: a few near-zero stops otherwise "
         "dominate the average. Median R is shown next to it.",
         "- **Daily bars.** They can't show whether the day's low came before or after a buy-stop filled; Model A's stop "
@@ -466,7 +492,7 @@ def run_backtest(panels: Panels, cfg: MarketConfig, bench: pd.DataFrame, univers
         _md_table(
             ["", "Count"],
             [
-                ["Trigger touches (Model A fills)", f"{len(trades['A']):,}"],
+                ["Trigger touches (Model A and C fills)", f"{len(trades['A']):,}"],
                 ["…of which ok breakouts", f"{int((events['status'] == 'ok').sum()):,}"],
                 ["…of which too wide (stop > 1 ADR)", f"{int((events['status'] == 'too wide').sum()):,}"],
                 ["…of which failed (no confirmed close)", f"{int((events['status'] == 'failed').sum()):,}"],
@@ -495,7 +521,7 @@ def run_backtest(panels: Panels, cfg: MarketConfig, bench: pd.DataFrame, univers
     lines.append(_md_table(hdr, rows))
 
     lines += ["", f"## Trade simulation: headline exit ({headline.label})", ""]
-    for m in ("A", "B"):
+    for m in ("A", "C", "B"):
         sim = sims[(m, headline)]
         lines += [f"**{MODEL_NAME[m]}**", "",
                   _md_table(STATS_HEADER, [_stats_row(_label(m, g), trade_stats(_group(sim, g))) for g in GROUPS[m]]), ""]
@@ -505,15 +531,15 @@ def run_backtest(panels: Panels, cfg: MarketConfig, bench: pd.DataFrame, univers
     rows = []
     for r in rules:
         cells = [("★ " if r == headline else "") + r.label]
-        for m, g in (("A", "all"), ("B", "all"), ("B", "ok")):
+        for m, g in (("A", "all"), ("C", "all"), ("B", "all"), ("B", "ok")):
             s = trade_stats(_group(sims[(m, r)], g))
             cells += [_pct(s.get("mean_ret"), 2) if s.get("trades") else "–", _num(s.get("profit_factor"))]
         rows.append(cells)
-    lines.append(_md_table(["Exit", "A all: mean", "PF", "B all: mean", "PF", "B ok: mean", "PF"], rows))
+    lines.append(_md_table(["Exit", "A all: mean", "PF", "C all: mean", "PF", "B all: mean", "PF", "B ok: mean", "PF"], rows))
 
     lines += ["", "## By year (headline exit)", ""]
     rows = []
-    for m, g in (("A", "all"), ("B", "all"), ("B", "ok")):
+    for m, g in (("A", "all"), ("C", "all"), ("B", "all"), ("B", "ok")):
         sim = _group(sims[(m, headline)], g)
         for year, t in sim.groupby(sim["entry_date"].dt.year):
             s = trade_stats(t)
@@ -524,7 +550,7 @@ def run_backtest(panels: Panels, cfg: MarketConfig, bench: pd.DataFrame, univers
     lines += ["", "## Without ⚠-flagged names (headline exit)", "",
               "Names whose 6-month window had a one-day move beyond the flag threshold (possible unadjusted split/bonus).", ""]
     rows = []
-    for m in ("A", "B"):
+    for m in ("A", "C", "B"):
         for g in GROUPS[m]:
             sim = _group(sims[(m, headline)], g)
             clean = sim[~sim["flag_day_move"]]
@@ -534,11 +560,11 @@ def run_backtest(panels: Panels, cfg: MarketConfig, bench: pd.DataFrame, univers
     lines += ["", "## Equity curve (headline exit, realized)", "",
               f"Risking {b.risk_per_trade_pct:g}% of equity per trade (stop distance at least {b.min_risk_pct:g}%; no "
               f"position above {b.max_position_pct:g}% of equity; never more than 100% invested), at most "
-              f"{b.max_positions} open. Model A takes same-day fills in a fixed random order (the day's volume is only "
+              f"{b.max_positions} open. Models A and C take same-day fills in a fixed random order (the day's volume is only "
               "known after the fill); Model B by volume. P&L is counted when a trade closes, so drawdowns while "
               "trades are open are not shown. Only tradeable groups are listed.", ""]
     rows = []
-    for m, g in (("A", "all"), ("B", "all"), ("B", "ok")):
+    for m, g in (("A", "all"), ("C", "all"), ("B", "all"), ("B", "ok")):
         curve, cs = equity_curve(_group(sims[(m, headline)], g), panels, b)
         rows.append([f"{m} · {g}", f"{cs['taken']:,}", f"{cs['skipped_full']:,}", _pct(cs["cagr"]), _pct(cs["max_drawdown"])])
     bc = bench["close"].reindex(panels.dates[hf.first_row:]).dropna()
@@ -547,7 +573,7 @@ def run_backtest(panels: Panels, cfg: MarketConfig, bench: pd.DataFrame, univers
     lines.append(_md_table(["Model · group", "Trades taken", "Skipped (full or no cash)", "CAGR", "Max drawdown"], rows))
     lines.append("")
 
-    all_trades = pd.concat([head["A"], head["B"]], ignore_index=True)
+    all_trades = pd.concat([head["A"], head["B"], sims[("C", headline)]], ignore_index=True)
     return BacktestResult(cfg.market, "\n".join(lines), all_trades, problems)
 
 
