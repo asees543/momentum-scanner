@@ -1,0 +1,338 @@
+{
+  "active_count": 2391,
+  "as_of": "2026-11-13",
+  "breakouts": [],
+  "market": "india",
+  "updated_at": "2026-11-14T17:19:10+00:00",
+  "watchlist": {
+    "AARTIDRUGS.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 527.5
+    },
+    "ACUTAAS.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 4045.3
+    },
+    "AEROPLANE.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 252.0
+    },
+    "AGIIL.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 319.5
+    },
+    "ATHERENERG.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 1958.0
+    },
+    "AWFIS.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 292.9
+    },
+    "BBL.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 2789.0
+    },
+    "BHAGERIA.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 407.8
+    },
+    "BLUSPRING.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 172.03
+    },
+    "BOROLTD.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 334.0
+    },
+    "BSOFT.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 345.6
+    },
+    "CEMPRO.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 1414.3
+    },
+    "CHEMPLASTS.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 255.0
+    },
+    "CNL.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 1550.2
+    },
+    "CPPLUS.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 4418.6001
+    },
+    "DALMIASUG.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 502.1
+    },
+    "DIACABS.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 398.5
+    },
+    "ENGINERSIN.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 323.65
+    },
+    "ENTERO.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 2137.6001
+    },
+    "FAZE3Q.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 585.0
+    },
+    "FSL.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 319.0
+    },
+    "GANESHCP.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 197.99
+    },
+    "GRWRHITECH.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 8079.5
+    },
+    "GYFTR.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 225.0
+    },
+    "ICIL.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 560.0
+    },
+    "IGIL.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 453.65
+    },
+    "INDIACEM.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 355.45
+    },
+    "INDOMIM.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 1301.2
+    },
+    "INFOBEAN.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 174.73
+    },
+    "IOLCP.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 214.85
+    },
+    "KISSHT.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 381.6
+    },
+    "KITEX.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 146.97
+    },
+    "KRISHANA.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 254.0
+    },
+    "KROSS.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 316.0
+    },
+    "LALITHAA.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 378.95
+    },
+    "LUMAXTECH.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 2503.0
+    },
+    "MACPOWER.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 2450.0
+    },
+    "MARATHON.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 443.0
+    },
+    "MARSONS.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 166.23
+    },
+    "MBEL.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 304.8
+    },
+    "MENONBE.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 375.85
+    },
+    "MOBIKWIK.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 237.26
+    },
+    "MRPL.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 188.5
+    },
+    "NELCAST.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 172.38
+    },
+    "NEOGEN.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 2875.0
+    },
+    "NILKAMAL.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 2241.0
+    },
+    "OPTIEMUS.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 840.7
+    },
+    "ORIENTELEC.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 207.69
+    },
+    "PARAGMILK.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 336.99
+    },
+    "PDSL.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 424.9
+    },
+    "PGIL.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 1413.3
+    },
+    "PPLPHARMA.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 250.4
+    },
+    "PRINCEPIPE.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 325.9
+    },
+    "RAMKY.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 409.85
+    },
+    "RATNAVEER.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 389.9
+    },
+    "ROLEXRINGS.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 220.0
+    },
+    "RUBICON.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 1777.9
+    },
+    "SAKAR.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 1085.0
+    },
+    "SAMBHV.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 178.9
+    },
+    "SANSERA.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 4844.0
+    },
+    "SAREGAMA.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 671.0
+    },
+    "SATIN.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 273.49
+    },
+    "SGFIN.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 744.0
+    },
+    "SGMART.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 950.0
+    },
+    "SHRINGARMS.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 329.15
+    },
+    "SHYAMMETL.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 1347.0
+    },
+    "SKMEGGPROD.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 245.25
+    },
+    "SMSPHARMA.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 535.0
+    },
+    "SPECTRUM.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 4695.2002
+    },
+    "SSWL.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 577.25
+    },
+    "SUDEEPPHRM.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 1257.3
+    },
+    "SYMBIOTEC.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 1655.0
+    },
+    "SYNGENE.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 453.8
+    },
+    "TECHNOCRAF.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 568.3
+    },
+    "TFCILTD.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 172.0
+    },
+    "THELEELA.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 706.7
+    },
+    "UTTAMSUGAR.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 387.9
+    },
+    "VRLLOG.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 348.25
+    },
+    "WELSPUNLIV.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 267.42
+    },
+    "WESTLIFE.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 696.5
+    },
+    "WHEELS.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 2549.0
+    },
+    "ZENSARTECH.NS": {
+      "first_seen": "2026-11-13",
+      "trigger": 582.0
+    }
+  },
+  "wide_breakouts": []
+}
