@@ -1,6 +1,6 @@
 # Backtest · INDIA
 
-Generated 2026-11-14 by `python -m scanner.backtest --market india`. **Information only, not investment advice. Paper trade before using real money.**
+Generated 2026-11-15 by `python -m scanner.backtest --market india`. **Information only, not investment advice. Paper trade before using real money.**
 
 ## Setup
 
@@ -140,7 +140,7 @@ Names whose 6-month window had a one-day move beyond the flag threshold (possibl
 
 ## Equity curve (headline exit, realized)
 
-Risking 0.5% of equity per trade (stop distance at least 1%; no position above 25% of equity; never more than 100% invested), at most 10 open. Models A and C take same-day fills in a fixed random order (the day's volume is only known after the fill); Model B by volume. P&L is counted when a trade closes, so drawdowns while trades are open are not shown. Only tradeable groups are listed.
+Risking 0.5% of equity per trade (stop distance at least 1%; no position above 25% of equity; never more than 100% invested), at most 10 open. Models A and C take same-day fills in a fixed random order (the day's volume is only known after the fill); Model B by volume. P&L is counted when a trade closes, so drawdowns while trades are open are not shown. Every curve and the benchmark start on the first signal day. Only tradeable groups are listed.
 
 | Model · group | Trades taken | Skipped (full or no cash) | CAGR | Max drawdown |
 |---|---|---|---|---|
@@ -149,3 +149,32 @@ Risking 0.5% of equity per trade (stop distance at least 1%; no position above 2
 | B · all | 813 | 287 | -18.0% | -59.4% |
 | B · ok | 357 | 19 | -9.2% | -36.7% |
 | ^NSEI buy and hold | – | – | +10.1% | -15.8% |
+
+## Market filter test (^NSEI above its 50-day average)
+
+**Rule, fixed before running:** take a trade only if ^NSEI closed above its 50-day simple moving average on the session before entry, the last close known when the order is placed (A and C: the evening the buy-stop is set from the watchlist; B: the breakout evening). No other averages or filters were tried.
+
+**Pass mark, also fixed before running:** after costs, a positive mean return per trade **and** an equity-curve CAGR above ^NSEI buy and hold over the same period. Headline exit only.
+
+The filter was on for 62% of sessions. Trades below are split by whether the filter allowed them; the *removed* rows are what the filter avoided.
+
+| Group | Trades | Win rate | Avg win | Avg loss | Mean / trade | Mean R | Median R | Profit factor | Median days |
+|---|---|---|---|---|---|---|---|---|---|
+| A · all · kept | 4,045 | 23% | +8.5% | -3.8% | -0.94% | -0.21 | -0.58 | 0.68 | 3 |
+| A · all · removed | 1,808 | 28% | +7.6% | -3.9% | -0.68% | -0.12 | -0.53 | 0.76 | 3 |
+| C · all · kept | 4,045 | 26% | +4.2% | -2.5% | -0.72% | -0.16 | -0.25 | 0.61 | 0 |
+| C · all · removed | 1,808 | 28% | +4.2% | -2.6% | -0.70% | -0.13 | -0.24 | 0.62 | 0 |
+| B · all · kept | 766 | 28% | +8.3% | -5.3% | -1.51% | -0.27 | -0.62 | 0.61 | 5 |
+| B · all · removed | 334 | 32% | +8.9% | -5.2% | -0.68% | -0.09 | -0.47 | 0.81 | 5 |
+| B · ok · kept | 259 | 23% | +7.4% | -4.2% | -1.54% | -0.41 | -1.08 | 0.52 | 2 |
+| B · ok · removed | 117 | 28% | +10.2% | -4.2% | -0.13% | 0.01 | -1.06 | 0.96 | 3 |
+
+Equity curve with the filter (same sizing rules as above):
+
+| Model · group | Trades taken | Mean / trade | CAGR | Max drawdown | Pass mark |
+|---|---|---|---|---|---|
+| A · all · filtered | 1,383 | -0.94% | -30.1% | -81.5% | **fail** |
+| C · all · filtered | 2,449 | -0.72% | -33.2% | -84.0% | **fail** |
+| B · all · filtered | 608 | -1.51% | -16.8% | -56.9% | **fail** |
+| B · ok · filtered | 250 | -1.54% | -10.5% | -40.5% | **fail** |
+| ^NSEI buy and hold | – | – | +10.1% | -15.8% | – |

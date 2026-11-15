@@ -119,3 +119,6 @@ backtest:
   max_positions: 10                # (assumption) ...and at most 10 open at once
   min_risk_pct: 1.0                # (assumption) stops closer than 1% count as 1% for R and sizing: a few
                                    #   near-zero stops otherwise dominate average R (found in the first run)
+  market_filter_sma: 50            # (assumption) market filter test (user asked 2026-11-15): only take a trade if
+                                   #   the benchmark closed above its 50-day SMA the session before entry. Rule and
+                                   #   pass mark fixed BEFORE running; no other lengths tried. Reported separately.

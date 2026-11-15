@@ -211,3 +211,52 @@ def test_build_trades_model_c_has_model_a_entries():
     a, cc = bt.build_trades(ev, panel(o, h, lo, c), "A"), bt.build_trades(ev, panel(o, h, lo, c), "C")
     assert cc["model"].tolist() == ["C"]
     pd.testing.assert_frame_equal(a.drop(columns="model"), cc.drop(columns="model"))
+
+
+# --- market filter test --------------------------------------------------------------------------
+
+
+def test_market_filter_hand_computed():
+    # SMA3 of 10, 11, 12, 11, 9, 13: -, -, 11, 11.33, 10.67, 11 -> above it on rows 2 (12) and 5 (13) only
+    bench_dates = DATES[:6]
+    close = pd.Series([10, 11, 12, 11, 9, 13.0], index=bench_dates)
+    on = bt.market_filter(close, DATES[:6], 3)
+    assert on.tolist() == [False, False, True, False, False, True]
+
+
+def test_market_filter_carries_forward_on_days_the_benchmark_did_not_trade():
+    close = pd.Series([10, 11, 12.0], index=DATES[[1, 2, 3]])  # nothing on row 0 or 4
+    on = bt.market_filter(close, DATES[:5], 2)
+    # SMA2: -, 10.5, 11.5 -> on at rows 2 and 3; row 0 precedes the data (off); row 4 keeps row 3's value
+    assert on.tolist() == [False, False, True, True, True]
+
+
+def test_tag_market_filter_uses_the_close_before_entry():
+    on = np.array([False, True, False, True, False])
+    a = pd.concat([trade("A", entry_row=r) for r in (0, 1, 2, 4)], ignore_index=True)
+    tagged = bt.tag_market_filter(a, on)
+    # entry row 0 has no previous close (off); row 1 -> on[0]; row 2 -> on[1]; row 4 -> on[3]
+    assert tagged["market_ok"].tolist() == [False, False, True, True]
+    # Model B enters the session after the breakout, so its order day (the breakout) is also entry_row - 1
+    b = bt.tag_market_filter(trade("B", entry_row=2), on)
+    assert bool(b["market_ok"].iloc[0]) is True
+    assert bt.tag_market_filter(trade().iloc[:0], on)["market_ok"].tolist() == []
+
+
+def test_equity_curve_can_start_before_the_first_trade():
+    o, h, lo, c = flat_then(np.full(N - 11, 100.0))
+    sim = trade().assign(ret=0.10, r_multiple=2.0, exit_row=20, days=10, open=False)
+    curve, _ = bt.equity_curve(sim, panel(o, h, lo, c), load_config("us").backtest, start_row=3)
+    assert curve.index[0] == DATES[3] and curve.iloc[0] == 100.0 and curve.iloc[-1] == pytest.approx(101.0)
+
+
+def test_market_filter_pass_mark():
+    assert bt.market_filter_passes(0.002, 0.20, 0.16)
+    assert not bt.market_filter_passes(-0.001, 0.20, 0.16)  # losing per trade
+    assert not bt.market_filter_passes(0.002, 0.10, 0.16)  # behind the index
+    assert not bt.market_filter_passes(np.nan, np.nan, 0.16)  # no trades
+
+
+def test_market_filter_configured_for_both_markets():
+    assert load_config("us").backtest.market_filter_sma == 50
+    assert load_config("india").backtest.market_filter_sma == 50

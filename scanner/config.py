@@ -196,6 +196,9 @@ class BacktestConfig(_Strict):
     max_position_pct: float = Field(25, gt=0)  # equity curve: cap on one position's size, % of equity
     max_positions: int = Field(10, ge=1)  # equity curve: concurrent open trades
     min_risk_pct: float = Field(1.0, gt=0)  # stops closer than this are treated as this far for R and sizing
+    # Market filter test: only take a trade if the benchmark closed above its n-day SMA on the session
+    # before entry (the last close known when the order is placed). None = not tested.
+    market_filter_sma: int | None = Field(None, ge=2)
 
     @model_validator(mode="after")
     def _check(self) -> BacktestConfig:

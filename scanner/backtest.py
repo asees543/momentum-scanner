@@ -27,6 +27,11 @@ Exits (SPEC): stop at the breakout-day low (filled at the stop, or at the open i
 it); sell `fraction` at the close N sessions after entry; trail the rest out at the first close below
 the k-day SMA after that. Still open at the end of the data = valued at the last close, marked open.
 Costs: entry x (1 + c), exit x (1 - c), c = (cost + slippage) % per side.
+
+Market filter test (backtest.market_filter_sma, user's request after the first results): the same trades,
+kept only when the benchmark closed above its n-day SMA on the session before entry. The rule and its
+pass mark were fixed before the filtered results were seen, and it is reported as its own section so
+the unfiltered results stay unchanged.
 """
 
 from __future__ import annotations
@@ -187,6 +192,26 @@ def build_trades(events: pd.DataFrame, panels: Panels, model: Literal["A", "B", 
     return pd.DataFrame(rows, columns=TRADE_COLUMNS)
 
 
+def market_filter(bench_close: pd.Series, dates: pd.DatetimeIndex, sma_n: int) -> np.ndarray:
+    """Market filter (user's test, rule fixed before running): True on day t when the benchmark closed
+    above its n-day simple moving average that day:
+        on_t = close_t > SMA_n_t,   SMA_n_t = mean of the benchmark's last n closes (full window only).
+    Computed on the benchmark's own sessions, then carried forward onto the scan calendar (a scan day the
+    benchmark didn't trade keeps the previous session's value: causal). False until n closes exist."""
+    s = bench_close.dropna().sort_index()
+    on = (s > ind.sma(s, sma_n)).astype(float)  # NaN SMA compares False
+    return on.reindex(dates, method="ffill").fillna(0.0).to_numpy() > 0
+
+
+def tag_market_filter(trades: pd.DataFrame, on: np.ndarray) -> pd.DataFrame:
+    """market_ok = filter value on the session before entry (entry_row - 1), the last close known when the
+    order is placed. Model A/C: the watchlist evening, when the buy-stop for the next day is set. Model B:
+    the breakout evening, before buying at the next open. Both are entry_row - 1."""
+    rows = trades["entry_row"].to_numpy(dtype=int) - 1
+    ok = (rows >= 0) & on[np.clip(rows, 0, None)] if len(rows) else np.zeros(0, dtype=bool)
+    return trades.assign(market_ok=ok)
+
+
 @dataclass(frozen=True)
 class ExitRule:
     fraction: float  # sold at the close N sessions after entry
@@ -298,12 +323,15 @@ def trade_stats(t: pd.DataFrame) -> dict:
     }
 
 
-def equity_curve(sim: pd.DataFrame, panels: Panels, cfg_bt, start_equity: float = 100.0) -> tuple[pd.Series, dict]:
+def equity_curve(sim: pd.DataFrame, panels: Panels, cfg_bt, start_equity: float = 100.0,
+                 start_row: int | None = None) -> tuple[pd.Series, dict]:
     """Realized equity when risking risk_per_trade_pct of equity per trade:
         position = equity x risk_per_trade_pct / max(stop distance %, min_risk_pct),
     capped at max_position_pct of equity and at the cash left (open positions never exceed 100% of
     equity: no leverage), at most max_positions open. P&L is booked on the exit day (open trades at the
-    end of the data at their last close), so drawdowns while a trade is open are not shown."""
+    end of the data at their last close), so drawdowns while a trade is open are not shown.
+    The curve starts at start_row (default: the first entry), so curves that should be compared with
+    each other and with the benchmark can be given the same start date."""
     trades = sim.dropna(subset=["risk_pct"])
     if len(trades) and trades["model"].isin(["A", "C"]).all():
         # Models A/C: which buy-stops fill first within a day is unknown and the day's volume comes after
@@ -313,10 +341,11 @@ def equity_curve(sim: pd.DataFrame, panels: Panels, cfg_bt, start_equity: float 
     else:
         # Model B: the breakout day's volume is known before the next open.
         trades = trades.sort_values(["entry_row", "vol_ratio"], ascending=[True, False])
-    return _realized_curve(trades, panels, cfg_bt, start_equity)
+    return _realized_curve(trades, panels, cfg_bt, start_equity, start_row)
 
 
-def _realized_curve(trades: pd.DataFrame, panels: Panels, cfg_bt, start_equity: float) -> tuple[pd.Series, dict]:
+def _realized_curve(trades: pd.DataFrame, panels: Panels, cfg_bt, start_equity: float,
+                    start_row: int | None = None) -> tuple[pd.Series, dict]:
     n = len(panels.dates)
     equity = start_equity
     curve = np.full(n, np.nan)
@@ -345,7 +374,7 @@ def _realized_curve(trades: pd.DataFrame, panels: Panels, cfg_bt, start_equity: 
             taken += 1
         curve[d] = equity
     s = pd.Series(curve, index=panels.dates).dropna()
-    first = trades["entry_row"].min() if len(trades) else 0
+    first = start_row if start_row is not None else (trades["entry_row"].min() if len(trades) else 0)
     s = s.iloc[first:] if len(s) > first else s
     return s, {"taken": taken, "skipped_full": skipped, **curve_stats(s)}
 
@@ -432,6 +461,9 @@ def run_backtest(panels: Panels, cfg: MarketConfig, bench: pd.DataFrame, univers
     rules = [ExitRule(f, n, k) for f, n, k in itertools.product(b.partial_fractions, b.partial_after_days, b.trail_sma)]
     headline = ExitRule(b.headline_partial_fraction, b.headline_partial_after_days, b.headline_trail_sma)
     trades = {m: build_trades(events, panels, m) for m in ("A", "B", "C")}
+    filter_on = market_filter(bench["close"], panels.dates, b.market_filter_sma) if b.market_filter_sma else None
+    if filter_on is not None:
+        trades = {m: tag_market_filter(t, filter_on) for m, t in trades.items()}
     sims = {(m, r): simulate(trades[m], panels, r, cost, b.min_risk_pct) for m in trades for r in rules}
     head = {m: forward_returns(sims[(m, next(r for r in rules if r == headline))], panels, bench, b.forward_days)
             for m in trades}
@@ -562,10 +594,12 @@ def run_backtest(panels: Panels, cfg: MarketConfig, bench: pd.DataFrame, univers
               f"position above {b.max_position_pct:g}% of equity; never more than 100% invested), at most "
               f"{b.max_positions} open. Models A and C take same-day fills in a fixed random order (the day's volume is only "
               "known after the fill); Model B by volume. P&L is counted when a trade closes, so drawdowns while "
-              "trades are open are not shown. Only tradeable groups are listed.", ""]
+              "trades are open are not shown. Every curve and the benchmark start on the first signal day. "
+              "Only tradeable groups are listed.", ""]
     rows = []
-    for m, g in (("A", "all"), ("C", "all"), ("B", "all"), ("B", "ok")):
-        curve, cs = equity_curve(_group(sims[(m, headline)], g), panels, b)
+    tradeable = (("A", "all"), ("C", "all"), ("B", "all"), ("B", "ok"))
+    for m, g in tradeable:
+        curve, cs = equity_curve(_group(sims[(m, headline)], g), panels, b, start_row=hf.first_row)
         rows.append([f"{m} · {g}", f"{cs['taken']:,}", f"{cs['skipped_full']:,}", _pct(cs["cagr"]), _pct(cs["max_drawdown"])])
     bc = bench["close"].reindex(panels.dates[hf.first_row:]).dropna()
     bs = curve_stats(bc)
@@ -573,8 +607,53 @@ def run_backtest(panels: Panels, cfg: MarketConfig, bench: pd.DataFrame, univers
     lines.append(_md_table(["Model · group", "Trades taken", "Skipped (full or no cash)", "CAGR", "Max drawdown"], rows))
     lines.append("")
 
+    if filter_on is not None:
+        lines += _market_filter_section(sims, headline, panels, hf.first_row, b, filter_on, bs, tradeable)
+
     all_trades = pd.concat([head["A"], head["B"], sims[("C", headline)]], ignore_index=True)
     return BacktestResult(cfg.market, "\n".join(lines), all_trades, problems)
+
+
+def market_filter_passes(mean_ret: float, cagr: float, bench_cagr: float) -> bool:
+    """Pass mark for the market filter test, fixed before running: after costs, a positive mean return per
+    trade AND an equity-curve CAGR above the benchmark's buy and hold over the same period."""
+    return bool(np.isfinite(mean_ret) and np.isfinite(cagr) and mean_ret > 0 and cagr > bench_cagr)
+
+
+def _market_filter_section(sims: dict, headline: ExitRule, panels: Panels, first_row: int, b, filter_on: np.ndarray,
+                           bench_stats: dict, tradeable) -> list[str]:
+    n = b.market_filter_sma
+    share_on = filter_on[first_row:].mean()
+    lines = [
+        f"## Market filter test ({b.benchmark} above its {n}-day average)", "",
+        f"**Rule, fixed before running:** take a trade only if {b.benchmark} closed above its {n}-day simple moving "
+        "average on the session before entry, the last close known when the order is placed (A and C: the evening "
+        "the buy-stop is set from the watchlist; B: the breakout evening). No other averages or filters were tried.",
+        "",
+        "**Pass mark, also fixed before running:** after costs, a positive mean return per trade **and** an "
+        f"equity-curve CAGR above {b.benchmark} buy and hold over the same period. Headline exit only.",
+        "",
+        f"The filter was on for {_plain_pct(share_on)} of sessions. Trades below are split by whether the filter "
+        "allowed them; the *removed* rows are what the filter avoided.", "",
+    ]
+    rows = []
+    for m, g in tradeable:
+        sim = _group(sims[(m, headline)], g)
+        rows.append(_stats_row(f"{m} · {g} · kept", trade_stats(sim[sim["market_ok"]])))
+        rows.append(_stats_row(f"{m} · {g} · removed", trade_stats(sim[~sim["market_ok"]])))
+    lines += [_md_table(STATS_HEADER, rows), "", "Equity curve with the filter (same sizing rules as above):", ""]
+    rows = []
+    for m, g in tradeable:
+        sim = _group(sims[(m, headline)], g)
+        kept = sim[sim["market_ok"]]
+        _, cs = equity_curve(kept, panels, b, start_row=first_row)
+        mean = trade_stats(kept).get("mean_ret", np.nan)
+        verdict = "pass" if market_filter_passes(mean, cs["cagr"], bench_stats["cagr"]) else "fail"
+        rows.append([f"{m} · {g} · filtered", f"{cs['taken']:,}", _pct(mean, 2), _pct(cs["cagr"]),
+                     _pct(cs["max_drawdown"]), f"**{verdict}**"])
+    rows.append([f"{b.benchmark} buy and hold", "–", "–", _pct(bench_stats["cagr"]), _pct(bench_stats["max_drawdown"]), "–"])
+    lines += [_md_table(["Model · group", "Trades taken", "Mean / trade", "CAGR", "Max drawdown", "Pass mark"], rows), ""]
+    return lines
 
 
 def load_benchmark(symbol: str, start: date) -> pd.DataFrame:

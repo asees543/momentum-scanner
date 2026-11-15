@@ -1,6 +1,6 @@
 # Backtest · US
 
-Generated 2026-11-14 by `python -m scanner.backtest --market us`. **Information only, not investment advice. Paper trade before using real money.**
+Generated 2026-11-15 by `python -m scanner.backtest --market us`. **Information only, not investment advice. Paper trade before using real money.**
 
 ## Setup
 
@@ -140,7 +140,7 @@ Names whose 6-month window had a one-day move beyond the flag threshold (possibl
 
 ## Equity curve (headline exit, realized)
 
-Risking 0.5% of equity per trade (stop distance at least 1%; no position above 25% of equity; never more than 100% invested), at most 10 open. Models A and C take same-day fills in a fixed random order (the day's volume is only known after the fill); Model B by volume. P&L is counted when a trade closes, so drawdowns while trades are open are not shown. Only tradeable groups are listed.
+Risking 0.5% of equity per trade (stop distance at least 1%; no position above 25% of equity; never more than 100% invested), at most 10 open. Models A and C take same-day fills in a fixed random order (the day's volume is only known after the fill); Model B by volume. P&L is counted when a trade closes, so drawdowns while trades are open are not shown. Every curve and the benchmark start on the first signal day. Only tradeable groups are listed.
 
 | Model · group | Trades taken | Skipped (full or no cash) | CAGR | Max drawdown |
 |---|---|---|---|---|
@@ -149,3 +149,32 @@ Risking 0.5% of equity per trade (stop distance at least 1%; no position above 2
 | B · all | 848 | 314 | -5.7% | -38.9% |
 | B · ok | 424 | 10 | -4.4% | -32.2% |
 | SPY buy and hold | – | – | +16.2% | -19.0% |
+
+## Market filter test (SPY above its 50-day average)
+
+**Rule, fixed before running:** take a trade only if SPY closed above its 50-day simple moving average on the session before entry, the last close known when the order is placed (A and C: the evening the buy-stop is set from the watchlist; B: the breakout evening). No other averages or filters were tried.
+
+**Pass mark, also fixed before running:** after costs, a positive mean return per trade **and** an equity-curve CAGR above SPY buy and hold over the same period. Headline exit only.
+
+The filter was on for 73% of sessions. Trades below are split by whether the filter allowed them; the *removed* rows are what the filter avoided.
+
+| Group | Trades | Win rate | Avg win | Avg loss | Mean / trade | Mean R | Median R | Profit factor | Median days |
+|---|---|---|---|---|---|---|---|---|---|
+| A · all · kept | 9,812 | 26% | +12.2% | -4.9% | -0.51% | -0.10 | -0.50 | 0.86 | 2 |
+| A · all · removed | 1,550 | 27% | +10.4% | -4.9% | -0.89% | -0.13 | -0.48 | 0.76 | 2 |
+| C · all · kept | 9,812 | 39% | +4.4% | -3.1% | -0.17% | -0.06 | -0.12 | 0.91 | 0 |
+| C · all · removed | 1,550 | 39% | +3.9% | -2.8% | -0.25% | -0.05 | -0.10 | 0.85 | 0 |
+| B · all · kept | 1,033 | 32% | +14.0% | -7.3% | -0.51% | -0.08 | -0.56 | 0.90 | 5 |
+| B · all · removed | 129 | 33% | +10.3% | -9.0% | -2.67% | -0.05 | -0.65 | 0.56 | 3 |
+| B · ok · kept | 393 | 27% | +15.7% | -5.7% | +0.18% | -0.09 | -1.03 | 1.04 | 2 |
+| B · ok · removed | 41 | 27% | +12.1% | -5.6% | -0.84% | -0.20 | -1.04 | 0.79 | 2 |
+
+Equity curve with the filter (same sizing rules as above):
+
+| Model · group | Trades taken | Mean / trade | CAGR | Max drawdown | Pass mark |
+|---|---|---|---|---|---|
+| A · all · filtered | 1,776 | -0.51% | -33.4% | -83.8% | **fail** |
+| C · all · filtered | 4,491 | -0.17% | -37.4% | -87.8% | **fail** |
+| B · all · filtered | 745 | -0.51% | -2.6% | -35.2% | **fail** |
+| B · ok · filtered | 385 | +0.18% | -3.7% | -29.8% | **fail** |
+| SPY buy and hold | – | – | +16.2% | -19.0% | – |
