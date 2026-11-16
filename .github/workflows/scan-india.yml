@@ -2,6 +2,8 @@ name: scan-india
 
 on:
   schedule:
+    # BACKUP ONLY. The primary trigger is cron-job.org calling workflow_dispatch at 18:00 IST, which
+    # usually starts within seconds (docs/external-scheduler.md). Whichever run comes second skips silently.
     # NSE closes 15:30 IST = 10:00 UTC. 12:41 UTC = 18:11 IST (SPEC: "around 12:30 UTC"). The 14:17 UTC
     # (19:47 IST) run is the retry: if the first run didn't send (late data, or GitHub delayed or dropped
     # it), it sends the alerts; if the first run already did, the same market date makes it skip silently.

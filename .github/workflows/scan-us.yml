@@ -2,6 +2,8 @@ name: scan-us
 
 on:
   schedule:
+    # BACKUP ONLY. The primary trigger is cron-job.org calling workflow_dispatch at 17:00 New York time,
+    # which usually starts within seconds (docs/external-scheduler.md). Whichever run comes second skips silently.
     # 22:23 UTC Mon-Fri = 17:23 EST / 18:23 EDT, after the 16:00 New York close in both DST states
     # (SPEC: "for example 22:00 UTC"). Odd minute on purpose: GitHub delays scheduled runs most at the
     # top of the hour and other round times (the 22:00 run on 2026-11-13 started 4 hours late).
