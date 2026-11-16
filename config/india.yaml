@@ -103,3 +103,17 @@ backtest:
   market_filter_sma: 50            # (assumption) market filter test (user asked 2026-11-15): only take a trade if
                                    #   the benchmark closed above its 50-day SMA the session before entry. Rule and
                                    #   pass mark fixed BEFORE running; no other lengths tried. Reported separately.
+
+# Study set: past trigger touches to look through and practise on (python -m scanner.study -> study/<market>.html).
+# These only choose which past examples are shown and how much chart; they are not trading rules.
+# The page embeds price history, so study/ is gitignored and never published.
+study:
+  winners: 60                      # (assumption) biggest winners: top N trigger touches by trade return
+  failures: 60                     # (assumption) random triggers that failed to confirm by the close
+  confirmed_losers: 40             # (assumption) random confirmed breakouts that still lost money
+  random: 100                      # (assumption) random sample of ALL trigger touches: the realistic mix
+  bars_before: 130                 # (assumption) sessions charted before the trigger day (6M window + base)
+  bars_after: 60                   # (assumption) sessions charted from the trigger day on
+  min_bars_after: 20               # (assumption) skip triggers with fewer sessions of data after them
+  winner_spacing: 20               # (assumption) biggest winners: one card per symbol within 20 sessions
+  seed: 7                          # (assumption) fixed, so the same cards come out until the data changes

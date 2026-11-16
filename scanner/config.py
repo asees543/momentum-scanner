@@ -213,6 +213,21 @@ class BacktestConfig(_Strict):
         return self
 
 
+class StudyConfig(_Strict):
+    """Study set of past trigger touches (python -m scanner.study). Every value here is an assumption:
+    they only decide which past examples are shown and how much of the chart, not any trading rule."""
+
+    winners: int = Field(60, ge=0)  # biggest winners: top N trigger touches by trade return (headline exit)
+    failures: int = Field(60, ge=0)  # random triggers that failed to confirm by the close
+    confirmed_losers: int = Field(40, ge=0)  # random confirmed breakouts that still lost money
+    random: int = Field(100, ge=0)  # random sample of ALL trigger touches: the realistic mix
+    bars_before: int = Field(130, ge=20)  # sessions charted before the trigger day
+    bars_after: int = Field(60, ge=5)  # sessions charted from the trigger day on (more if the exit is later)
+    min_bars_after: int = Field(20, ge=1)  # skip triggers with fewer sessions of data after them
+    winner_spacing: int = Field(20, ge=0)  # biggest winners: one card per symbol within this many sessions
+    seed: int = 7  # fixed, so the same cards come out until the data changes
+
+
 class MarketConfig(_Strict):
     market: str
     currency: str
@@ -224,6 +239,7 @@ class MarketConfig(_Strict):
     breakout: BreakoutConfig
     alerts: AlertsConfig
     backtest: BacktestConfig
+    study: StudyConfig
 
 
 def load_config(market: str, config_dir: Path = CONFIG_DIR) -> MarketConfig:

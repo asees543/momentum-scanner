@@ -24,3 +24,6 @@ __pycache__/
 # Built dashboard (published by GitHub Actions)
 /_site/
 .claude/launch.json
+
+# Study set pages (python -m scanner.study): they embed price history, so they stay local
+/study/
