@@ -2,9 +2,11 @@ name: scan-us
 
 on:
   schedule:
-    # 22:00 UTC Mon-Fri = 17:00 EST / 18:00 EDT, after the 16:00 New York close in both DST states.
+    # 22:23 UTC Mon-Fri = 17:23 EST / 18:23 EDT, after the 16:00 New York close in both DST states
+    # (SPEC: "for example 22:00 UTC"). Odd minute on purpose: GitHub delays scheduled runs most at the
+    # top of the hour and other round times (the 22:00 run on 2026-11-13 started 4 hours late).
     # Market holidays need no special case: no new bar -> the run skips silently.
-    - cron: "0 22 * * 1-5"
+    - cron: "23 22 * * 1-5"
   workflow_dispatch:
     inputs:
       dry_run:

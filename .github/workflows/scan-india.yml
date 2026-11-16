@@ -2,12 +2,14 @@ name: scan-india
 
 on:
   schedule:
-    # NSE closes 15:30 IST = 10:00 UTC. 12:30 UTC = 18:00 IST (SPEC). The 14:00 UTC run is the retry:
-    # if Yahoo had not published the day yet, it sends the alerts; if the first run already did, the
-    # same market date makes it skip silently.
+    # NSE closes 15:30 IST = 10:00 UTC. 12:41 UTC = 18:11 IST (SPEC: "around 12:30 UTC"). The 14:17 UTC
+    # (19:47 IST) run is the retry: if the first run didn't send (late data, or GitHub delayed or dropped
+    # it), it sends the alerts; if the first run already did, the same market date makes it skip silently.
+    # Odd minutes on purpose: GitHub delays (and under heavy load drops) scheduled runs, worst at the top
+    # of the hour and other round times. On 2026-11-16 the 12:30 run hadn't started 25 minutes later.
     # Market holidays need no special case: no new bar -> the run skips silently.
-    - cron: "30 12 * * 1-5"
-    - cron: "0 14 * * 1-5"
+    - cron: "41 12 * * 1-5"
+    - cron: "17 14 * * 1-5"
   workflow_dispatch:
     inputs:
       dry_run:
