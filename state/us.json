@@ -1,37 +1,33 @@
 {
-  "active_count": 5791,
-  "as_of": "2026-11-16",
+  "active_count": 5777,
+  "as_of": "2026-11-17",
   "breakouts": [],
   "market": "us",
-  "updated_at": "2026-11-16T22:05:53+00:00",
+  "updated_at": "2026-11-17T22:07:15+00:00",
   "watchlist": {
-    "AEYE": {
-      "first_seen": "2026-11-13",
-      "trigger": 14.45
-    },
     "AGL": {
       "first_seen": "2026-11-13",
       "trigger": 127.0
+    },
+    "AHCO": {
+      "first_seen": "2026-11-17",
+      "trigger": 7.995
+    },
+    "ALEC": {
+      "first_seen": "2026-11-17",
+      "trigger": 2.84
     },
     "ALGT": {
       "first_seen": "2026-11-13",
       "trigger": 98.7
     },
-    "AMC": {
-      "first_seen": "2026-11-13",
-      "trigger": 3.77
-    },
-    "AMPL": {
-      "first_seen": "2026-11-13",
-      "trigger": 18.85
-    },
-    "AMRC": {
-      "first_seen": "2026-11-13",
-      "trigger": 28.61
-    },
     "APPN": {
       "first_seen": "2026-11-13",
       "trigger": 56.38
+    },
+    "ARDT": {
+      "first_seen": "2026-11-17",
+      "trigger": 18.57
     },
     "ARHS": {
       "first_seen": "2026-11-13",
@@ -41,17 +37,13 @@
       "first_seen": "2026-11-13",
       "trigger": 5.865
     },
-    "AVLN": {
-      "first_seen": "2026-11-16",
-      "trigger": 31.87
-    },
     "AXGN": {
       "first_seen": "2026-11-16",
       "trigger": 59.72
     },
     "BHC": {
       "first_seen": "2026-11-13",
-      "trigger": 8.56
+      "trigger": 8.57
     },
     "BKSY": {
       "first_seen": "2026-11-16",
@@ -77,9 +69,17 @@
       "first_seen": "2026-11-13",
       "trigger": 2.46
     },
+    "CMCO": {
+      "first_seen": "2026-11-17",
+      "trigger": 22.14
+    },
     "CNXC": {
       "first_seen": "2026-11-13",
       "trigger": 33.93
+    },
+    "DCTH": {
+      "first_seen": "2026-11-17",
+      "trigger": 22.51
     },
     "DIN": {
       "first_seen": "2026-11-13",
@@ -97,21 +97,21 @@
       "first_seen": "2026-11-13",
       "trigger": 31.2
     },
-    "EVGO": {
-      "first_seen": "2026-11-13",
-      "trigger": 1.92
-    },
     "EWTX": {
       "first_seen": "2026-11-13",
       "trigger": 48.78
+    },
+    "FIGS": {
+      "first_seen": "2026-11-17",
+      "trigger": 23.765
     },
     "FLGT": {
       "first_seen": "2026-11-13",
       "trigger": 27.41
     },
-    "FNKO": {
-      "first_seen": "2026-11-13",
-      "trigger": 7.475
+    "FUN": {
+      "first_seen": "2026-11-17",
+      "trigger": 12.31
     },
     "FWRG": {
       "first_seen": "2026-11-13",
@@ -125,10 +125,6 @@
       "first_seen": "2026-11-13",
       "trigger": 255.185
     },
-    "GMAB": {
-      "first_seen": "2026-11-13",
-      "trigger": 59.97
-    },
     "HRI": {
       "first_seen": "2026-11-13",
       "trigger": 175.47
@@ -136,6 +132,10 @@
     "IBTA": {
       "first_seen": "2026-11-13",
       "trigger": 66.39
+    },
+    "JACK": {
+      "first_seen": "2026-11-17",
+      "trigger": 15.19
     },
     "JMKE": {
       "first_seen": "2026-11-13",
@@ -161,33 +161,17 @@
       "first_seen": "2026-11-13",
       "trigger": 142.92
     },
-    "LION": {
-      "first_seen": "2026-11-13",
-      "trigger": 14.52
+    "LMRI": {
+      "first_seen": "2026-11-17",
+      "trigger": 16.62
     },
     "LQDA": {
       "first_seen": "2026-11-13",
       "trigger": 59.5
     },
-    "LUNG": {
-      "first_seen": "2026-11-13",
-      "trigger": 3.165
-    },
-    "MAX": {
-      "first_seen": "2026-11-13",
-      "trigger": 15.99
-    },
     "MAZE": {
       "first_seen": "2026-11-13",
       "trigger": 37.41
-    },
-    "MIR": {
-      "first_seen": "2026-11-13",
-      "trigger": 19.67
-    },
-    "MTW": {
-      "first_seen": "2026-11-13",
-      "trigger": 25.31
     },
     "NVRI": {
       "first_seen": "2026-11-16",
@@ -213,21 +197,17 @@
       "first_seen": "2026-11-13",
       "trigger": 41.02
     },
-    "PSIG": {
-      "first_seen": "2026-11-13",
-      "trigger": 5.45
+    "PRKS": {
+      "first_seen": "2026-11-17",
+      "trigger": 43.84
     },
     "PTLO": {
       "first_seen": "2026-11-13",
       "trigger": 7.228
     },
-    "QXO": {
-      "first_seen": "2026-11-13",
-      "trigger": 14.12
-    },
-    "REPL": {
-      "first_seen": "2026-11-13",
-      "trigger": 23.54
+    "REZI": {
+      "first_seen": "2026-11-17",
+      "trigger": 23.75
     },
     "RYTM": {
       "first_seen": "2026-11-13",
@@ -257,10 +237,6 @@
       "first_seen": "2026-11-13",
       "trigger": 13.57
     },
-    "SRTA": {
-      "first_seen": "2026-11-13",
-      "trigger": 6.195
-    },
     "SRZN": {
       "first_seen": "2026-11-13",
       "trigger": 33.75
@@ -271,7 +247,7 @@
     },
     "TANH": {
       "first_seen": "2026-11-13",
-      "trigger": 46.32
+      "trigger": 48.9804
     },
     "TBCH": {
       "first_seen": "2026-11-13",
@@ -285,21 +261,21 @@
       "first_seen": "2026-11-13",
       "trigger": 9.79
     },
-    "TREE": {
-      "first_seen": "2026-11-13",
-      "trigger": 40.8
+    "TIC": {
+      "first_seen": "2026-11-17",
+      "trigger": 11.7
     },
     "TRUP": {
       "first_seen": "2026-11-13",
       "trigger": 38.87
     },
-    "UIS": {
-      "first_seen": "2026-11-13",
-      "trigger": 2.98
-    },
     "ULCC": {
       "first_seen": "2026-11-13",
       "trigger": 8.53
+    },
+    "VCEL": {
+      "first_seen": "2026-11-17",
+      "trigger": 59.75
     },
     "VLRS": {
       "first_seen": "2026-11-13",
@@ -324,10 +300,6 @@
     "XMTR": {
       "first_seen": "2026-11-13",
       "trigger": 127.49
-    },
-    "XNCR": {
-      "first_seen": "2026-11-13",
-      "trigger": 40.6
     }
   },
   "wide_breakouts": []
