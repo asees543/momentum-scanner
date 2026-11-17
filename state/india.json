@@ -1,11 +1,11 @@
 {
-  "active_count": 2400,
-  "as_of": "2026-11-16",
+  "active_count": 2401,
+  "as_of": "2026-11-17",
   "breakouts": [
-    "SGMART.NS"
+    "MOTILALOFS.NS"
   ],
   "market": "india",
-  "updated_at": "2026-11-16T12:47:23+00:00",
+  "updated_at": "2026-11-17T12:32:39+00:00",
   "watchlist": {
     "63MOONS.NS": {
       "first_seen": "2026-11-16",
@@ -23,17 +23,17 @@
       "first_seen": "2026-11-13",
       "trigger": 252.0
     },
-    "AGIIL.NS": {
-      "first_seen": "2026-11-13",
-      "trigger": 319.5
+    "APLLTD.NS": {
+      "first_seen": "2026-11-17",
+      "trigger": 1075.0
     },
     "ATHERENERG.NS": {
       "first_seen": "2026-11-13",
-      "trigger": 1958.0
+      "trigger": 2021.5
     },
     "AWFIS.NS": {
       "first_seen": "2026-11-13",
-      "trigger": 292.9
+      "trigger": 298.98
     },
     "BBL.NS": {
       "first_seen": "2026-11-13",
@@ -41,11 +41,15 @@
     },
     "BHAGERIA.NS": {
       "first_seen": "2026-11-13",
-      "trigger": 407.8
+      "trigger": 402.9
     },
     "BLUSPRING.NS": {
       "first_seen": "2026-11-13",
       "trigger": 172.03
+    },
+    "BOROLTD.NS": {
+      "first_seen": "2026-11-17",
+      "trigger": 346.95
     },
     "BSOFT.NS": {
       "first_seen": "2026-11-13",
@@ -75,6 +79,10 @@
       "first_seen": "2026-11-13",
       "trigger": 398.5
     },
+    "EMCURE.NS": {
+      "first_seen": "2026-11-17",
+      "trigger": 2397.5
+    },
     "ENGINERSIN.NS": {
       "first_seen": "2026-11-13",
       "trigger": 323.65
@@ -85,7 +93,11 @@
     },
     "FAZE3Q.NS": {
       "first_seen": "2026-11-13",
-      "trigger": 585.0
+      "trigger": 594.9
+    },
+    "FRONTSP.NS": {
+      "first_seen": "2026-11-17",
+      "trigger": 1671.8
     },
     "GANESHCP.NS": {
       "first_seen": "2026-11-13",
@@ -95,25 +107,17 @@
       "first_seen": "2026-11-13",
       "trigger": 8079.5
     },
-    "GYFTR.NS": {
-      "first_seen": "2026-11-13",
-      "trigger": 225.0
-    },
     "HEGAM.NS": {
       "first_seen": "2026-11-16",
       "trigger": 317.4
     },
     "ICIL.NS": {
       "first_seen": "2026-11-13",
-      "trigger": 560.0
+      "trigger": 562.65
     },
     "IGIL.NS": {
       "first_seen": "2026-11-13",
       "trigger": 453.65
-    },
-    "INDIACEM.NS": {
-      "first_seen": "2026-11-13",
-      "trigger": 355.45
     },
     "INDOMIM.NS": {
       "first_seen": "2026-11-13",
@@ -139,10 +143,6 @@
       "first_seen": "2026-11-13",
       "trigger": 254.0
     },
-    "KROSS.NS": {
-      "first_seen": "2026-11-13",
-      "trigger": 316.0
-    },
     "KSHINTL.NS": {
       "first_seen": "2026-11-16",
       "trigger": 1097.0
@@ -154,6 +154,10 @@
     "MACPOWER.NS": {
       "first_seen": "2026-11-13",
       "trigger": 2450.0
+    },
+    "MANAKCOAT.NS": {
+      "first_seen": "2026-11-17",
+      "trigger": 184.81
     },
     "MARATHON.NS": {
       "first_seen": "2026-11-13",
@@ -173,15 +177,11 @@
     },
     "MENONBE.NS": {
       "first_seen": "2026-11-13",
-      "trigger": 375.85
+      "trigger": 389.9
     },
     "MOBIKWIK.NS": {
       "first_seen": "2026-11-13",
       "trigger": 237.26
-    },
-    "MOTILALOFS.NS": {
-      "first_seen": "2026-11-16",
-      "trigger": 1238.0
     },
     "MRPL.NS": {
       "first_seen": "2026-11-13",
@@ -203,10 +203,6 @@
       "first_seen": "2026-11-13",
       "trigger": 840.7
     },
-    "ORIENTELEC.NS": {
-      "first_seen": "2026-11-13",
-      "trigger": 207.69
-    },
     "PDSL.NS": {
       "first_seen": "2026-11-13",
       "trigger": 424.9
@@ -221,7 +217,7 @@
     },
     "PPLPHARMA.NS": {
       "first_seen": "2026-11-13",
-      "trigger": 250.4
+      "trigger": 253.9
     },
     "PRINCEPIPE.NS": {
       "first_seen": "2026-11-13",
@@ -243,6 +239,10 @@
       "first_seen": "2026-11-13",
       "trigger": 220.0
     },
+    "ROSSTECH.NS": {
+      "first_seen": "2026-11-17",
+      "trigger": 1603.5
+    },
     "RUBICON.NS": {
       "first_seen": "2026-11-13",
       "trigger": 1777.9
@@ -257,27 +257,31 @@
     },
     "SAREGAMA.NS": {
       "first_seen": "2026-11-13",
-      "trigger": 671.0
+      "trigger": 685.0
     },
     "SATIN.NS": {
       "first_seen": "2026-11-13",
       "trigger": 273.49
     },
-    "SGFIN.NS": {
-      "first_seen": "2026-11-13",
-      "trigger": 744.0
+    "SGMART.NS": {
+      "first_seen": "2026-11-17",
+      "trigger": 1028.0
     },
     "SHADOWFAX.NS": {
       "first_seen": "2026-11-16",
       "trigger": 297.8
     },
-    "SHRINGARMS.NS": {
-      "first_seen": "2026-11-13",
-      "trigger": 329.15
-    },
     "SIMPLEXINF.NS": {
       "first_seen": "2026-11-16",
       "trigger": 308.6
+    },
+    "SKMEGGPROD.NS": {
+      "first_seen": "2026-11-17",
+      "trigger": 245.25
+    },
+    "SKYGOLD.NS": {
+      "first_seen": "2026-11-17",
+      "trigger": 1078.0
     },
     "SMSPHARMA.NS": {
       "first_seen": "2026-11-13",
@@ -289,11 +293,15 @@
     },
     "SSWL.NS": {
       "first_seen": "2026-11-13",
-      "trigger": 577.25
+      "trigger": 588.8
     },
     "SUDEEPPHRM.NS": {
       "first_seen": "2026-11-13",
       "trigger": 1257.3
+    },
+    "SUNTV.NS": {
+      "first_seen": "2026-11-17",
+      "trigger": 672.0
     },
     "SURAKSHA.NS": {
       "first_seen": "2026-11-16",
@@ -301,7 +309,7 @@
     },
     "SYMBIOTEC.NS": {
       "first_seen": "2026-11-13",
-      "trigger": 1655.0
+      "trigger": 1664.9
     },
     "SYNGENE.NS": {
       "first_seen": "2026-11-13",
@@ -315,13 +323,9 @@
       "first_seen": "2026-11-16",
       "trigger": 4719.0
     },
-    "TECHNOCRAF.NS": {
-      "first_seen": "2026-11-13",
-      "trigger": 568.3
-    },
-    "TFCILTD.NS": {
-      "first_seen": "2026-11-13",
-      "trigger": 172.0
+    "TGVSL.NS": {
+      "first_seen": "2026-11-17",
+      "trigger": 137.87
     },
     "THELEELA.NS": {
       "first_seen": "2026-11-13",
@@ -333,7 +337,7 @@
     },
     "TIPSMUSIC.NS": {
       "first_seen": "2026-11-16",
-      "trigger": 828.95
+      "trigger": 834.5
     },
     "UNIMECH.NS": {
       "first_seen": "2026-11-16",
@@ -365,6 +369,6 @@
     }
   },
   "wide_breakouts": [
-    "BOROLTD.NS"
+    "SGFIN.NS"
   ]
 }
