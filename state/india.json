@@ -1,15 +1,13 @@
 {
-  "active_count": 2401,
-  "as_of": "2026-11-17",
-  "breakouts": [
-    "MOTILALOFS.NS"
-  ],
+  "active_count": 2397,
+  "as_of": "2026-11-18",
+  "breakouts": [],
   "market": "india",
-  "updated_at": "2026-11-17T12:32:39+00:00",
+  "updated_at": "2026-11-18T12:32:48+00:00",
   "watchlist": {
     "63MOONS.NS": {
       "first_seen": "2026-11-16",
-      "trigger": 981.85
+      "trigger": 965.0
     },
     "AARTIDRUGS.NS": {
       "first_seen": "2026-11-13",
@@ -22,6 +20,18 @@
     "AEROPLANE.NS": {
       "first_seen": "2026-11-13",
       "trigger": 252.0
+    },
+    "AGIIL.NS": {
+      "first_seen": "2026-11-18",
+      "trigger": 326.18
+    },
+    "AJMERA.NS": {
+      "first_seen": "2026-11-18",
+      "trigger": 146.3
+    },
+    "ALICON.NS": {
+      "first_seen": "2026-11-18",
+      "trigger": 1018.0
     },
     "APLLTD.NS": {
       "first_seen": "2026-11-17",
@@ -38,10 +48,6 @@
     "BBL.NS": {
       "first_seen": "2026-11-13",
       "trigger": 2789.0
-    },
-    "BHAGERIA.NS": {
-      "first_seen": "2026-11-13",
-      "trigger": 402.9
     },
     "BLUSPRING.NS": {
       "first_seen": "2026-11-13",
@@ -61,7 +67,7 @@
     },
     "CHEMPLASTS.NS": {
       "first_seen": "2026-11-13",
-      "trigger": 255.0
+      "trigger": 259.78
     },
     "CNL.NS": {
       "first_seen": "2026-11-13",
@@ -71,6 +77,10 @@
       "first_seen": "2026-11-13",
       "trigger": 4418.6001
     },
+    "CUPID.NS": {
+      "first_seen": "2026-11-18",
+      "trigger": 393.0
+    },
     "DALMIASUG.NS": {
       "first_seen": "2026-11-13",
       "trigger": 502.1
@@ -79,9 +89,9 @@
       "first_seen": "2026-11-13",
       "trigger": 398.5
     },
-    "EMCURE.NS": {
-      "first_seen": "2026-11-17",
-      "trigger": 2397.5
+    "EIMCOELECO.NS": {
+      "first_seen": "2026-11-18",
+      "trigger": 2740.0
     },
     "ENGINERSIN.NS": {
       "first_seen": "2026-11-13",
@@ -91,57 +101,53 @@
       "first_seen": "2026-11-13",
       "trigger": 2137.6001
     },
-    "FAZE3Q.NS": {
-      "first_seen": "2026-11-13",
-      "trigger": 594.9
+    "FIEMIND.NS": {
+      "first_seen": "2026-11-18",
+      "trigger": 2247.3
     },
     "FRONTSP.NS": {
       "first_seen": "2026-11-17",
       "trigger": 1671.8
     },
-    "GANESHCP.NS": {
-      "first_seen": "2026-11-13",
-      "trigger": 197.99
-    },
     "GRWRHITECH.NS": {
       "first_seen": "2026-11-13",
       "trigger": 8079.5
     },
-    "HEGAM.NS": {
-      "first_seen": "2026-11-16",
-      "trigger": 317.4
-    },
-    "ICIL.NS": {
-      "first_seen": "2026-11-13",
-      "trigger": 562.65
+    "GYFTR.NS": {
+      "first_seen": "2026-11-18",
+      "trigger": 233.99
     },
     "IGIL.NS": {
       "first_seen": "2026-11-13",
       "trigger": 453.65
     },
-    "INDOMIM.NS": {
-      "first_seen": "2026-11-13",
-      "trigger": 1301.2
-    },
     "INFOBEAN.NS": {
       "first_seen": "2026-11-13",
       "trigger": 174.73
+    },
+    "IXIGO.NS": {
+      "first_seen": "2026-11-18",
+      "trigger": 179.57
     },
     "JYOTICNC.NS": {
       "first_seen": "2026-11-16",
       "trigger": 1110.2
     },
-    "KISSHT.NS": {
-      "first_seen": "2026-11-13",
-      "trigger": 381.6
-    },
     "KITEX.NS": {
       "first_seen": "2026-11-13",
       "trigger": 146.97
     },
+    "KOPRAN.NS": {
+      "first_seen": "2026-11-18",
+      "trigger": 294.0
+    },
     "KRISHANA.NS": {
       "first_seen": "2026-11-13",
-      "trigger": 254.0
+      "trigger": 254.99
+    },
+    "KROSS.NS": {
+      "first_seen": "2026-11-18",
+      "trigger": 316.0
     },
     "KSHINTL.NS": {
       "first_seen": "2026-11-16",
@@ -167,29 +173,21 @@
       "first_seen": "2026-11-13",
       "trigger": 166.23
     },
-    "MBAPL.NS": {
-      "first_seen": "2026-11-16",
-      "trigger": 202.63
-    },
     "MBEL.NS": {
       "first_seen": "2026-11-13",
       "trigger": 304.8
     },
-    "MENONBE.NS": {
-      "first_seen": "2026-11-13",
-      "trigger": 389.9
+    "MMFL.NS": {
+      "first_seen": "2026-11-18",
+      "trigger": 703.0
     },
     "MOBIKWIK.NS": {
       "first_seen": "2026-11-13",
-      "trigger": 237.26
+      "trigger": 235.0
     },
     "MRPL.NS": {
       "first_seen": "2026-11-13",
       "trigger": 188.5
-    },
-    "NELCAST.NS": {
-      "first_seen": "2026-11-13",
-      "trigger": 172.38
     },
     "NEOGEN.NS": {
       "first_seen": "2026-11-13",
@@ -203,6 +201,10 @@
       "first_seen": "2026-11-13",
       "trigger": 840.7
     },
+    "PARAGMILK.NS": {
+      "first_seen": "2026-11-18",
+      "trigger": 351.0
+    },
     "PDSL.NS": {
       "first_seen": "2026-11-13",
       "trigger": 424.9
@@ -210,10 +212,6 @@
     "PERMAGN.NS": {
       "first_seen": "2026-11-16",
       "trigger": 1279.0
-    },
-    "PGIL.NS": {
-      "first_seen": "2026-11-13",
-      "trigger": 1413.3
     },
     "PPLPHARMA.NS": {
       "first_seen": "2026-11-13",
@@ -235,6 +233,10 @@
       "first_seen": "2026-11-13",
       "trigger": 389.9
     },
+    "RAYMOND.NS": {
+      "first_seen": "2026-11-18",
+      "trigger": 1237.8
+    },
     "ROLEXRINGS.NS": {
       "first_seen": "2026-11-13",
       "trigger": 220.0
@@ -253,11 +255,11 @@
     },
     "SANSERA.NS": {
       "first_seen": "2026-11-13",
-      "trigger": 4844.0
+      "trigger": 4849.8999
     },
     "SAREGAMA.NS": {
       "first_seen": "2026-11-13",
-      "trigger": 685.0
+      "trigger": 693.4
     },
     "SATIN.NS": {
       "first_seen": "2026-11-13",
@@ -265,19 +267,11 @@
     },
     "SGMART.NS": {
       "first_seen": "2026-11-17",
-      "trigger": 1028.0
-    },
-    "SHADOWFAX.NS": {
-      "first_seen": "2026-11-16",
-      "trigger": 297.8
+      "trigger": 1047.75
     },
     "SIMPLEXINF.NS": {
       "first_seen": "2026-11-16",
       "trigger": 308.6
-    },
-    "SKMEGGPROD.NS": {
-      "first_seen": "2026-11-17",
-      "trigger": 245.25
     },
     "SKYGOLD.NS": {
       "first_seen": "2026-11-17",
@@ -299,10 +293,6 @@
       "first_seen": "2026-11-13",
       "trigger": 1257.3
     },
-    "SUNTV.NS": {
-      "first_seen": "2026-11-17",
-      "trigger": 672.0
-    },
     "SURAKSHA.NS": {
       "first_seen": "2026-11-16",
       "trigger": 384.0
@@ -318,6 +308,10 @@
     "TANLA.NS": {
       "first_seen": "2026-11-16",
       "trigger": 738.95
+    },
+    "TASTYBITE.NS": {
+      "first_seen": "2026-11-18",
+      "trigger": 11750.0
     },
     "TCPLPACK.NS": {
       "first_seen": "2026-11-16",
@@ -349,11 +343,11 @@
     },
     "VRLLOG.NS": {
       "first_seen": "2026-11-13",
-      "trigger": 348.25
+      "trigger": 350.3
     },
     "WELSPUNLIV.NS": {
       "first_seen": "2026-11-13",
-      "trigger": 267.42
+      "trigger": 267.5
     },
     "WESTLIFE.NS": {
       "first_seen": "2026-11-13",
@@ -366,9 +360,15 @@
     "ZENSARTECH.NS": {
       "first_seen": "2026-11-13",
       "trigger": 582.0
+    },
+    "ZOTA.NS": {
+      "first_seen": "2026-11-18",
+      "trigger": 1349.0
     }
   },
   "wide_breakouts": [
-    "SGFIN.NS"
+    "FAZE3Q.NS",
+    "PGIL.NS",
+    "SUNTV.NS"
   ]
 }
