@@ -41,13 +41,15 @@ from scanner.notify import (
     format_warning,
     CURRENCY_SYMBOL,
     format_watchlist,
+    jack_rule_text,
     money,
     move_label,
     short_name,
 )
 from scanner.dashboard import SITE_DATA, snapshot, write_snapshot
 from scanner.quality import QualityReport, quality_report, yahoo_split_dates
-from scanner.scans import BreakoutResult, LeadersResult, ScanResults, WatchlistResult, missed_breakouts, run_scans
+from scanner.scans import (BreakoutResult, JackResult, LeadersResult, ScanResults, WatchlistResult,
+                          missed_breakouts, run_scans)
 from scanner.state import STATE_DIR, MarketState, diff_results, state_path
 
 MARKETS: dict[str, ModuleType] = {"us": us_loader, "india": india_loader}
@@ -59,8 +61,8 @@ err_console = Console(stderr=True)
 def parse_args(argv: list[str] | None) -> argparse.Namespace:
     p = argparse.ArgumentParser(prog="python -m scanner.run", description=__doc__.split("\n\n")[0])
     p.add_argument("--market", default="us", choices=sorted(MARKETS))
-    p.add_argument("--scan", default="all", choices=["all", "leaders", "watchlist", "breakouts"],
-                   help="what to print (default: breakouts, watchlist and leader counts)")
+    p.add_argument("--scan", default="all", choices=["all", "leaders", "watchlist", "breakouts", "both"],
+                   help="what to print (default: breakouts, watchlist, names on both screens and leader counts)")
     p.add_argument("--window", help="only names that are leaders in this window (e.g. 1m, 3m, 6m); for the "
                    "watchlist and breakouts: a leader in that window during the setup lookback")
     p.add_argument("--mode", choices=["fixed", "rank"], help="override leaders.mode from the config")
@@ -307,6 +309,35 @@ def render_watchlist(wl: WatchlistResult, cfg: MarketConfig, names: dict, window
     return table
 
 
+def render_both(jk: JackResult, cfg: MarketConfig, names: dict, displays: dict[str, str] | None = None) -> pd.DataFrame:
+    """Names on one of our lists that also pass the other trader's screener (cfg.jack)."""
+    cur = cfg.currency
+    t = _new_table(f"{cfg.market.upper()} on both screens · {jk.as_of:%Y-%m-%d}")
+    for col, kw in (("#", {"justify": "right", "style": "dim"}), ("Symbol", {"style": "bold"}),
+                    ("Name", {"max_width": 24, "no_wrap": True, "overflow": "ellipsis"}), ("Ours", {}),
+                    ("Close", {"justify": "right"}), ("Trigger", {"justify": "right"}), ("Stop", {"justify": "right"})):
+        t.add_column(col, **kw)
+    for w in jk.windows:
+        t.add_column(w.upper(), justify="right")
+    t.add_column("ADR%", justify="right")
+    t.add_column(f"Avg {CURRENCY_SYMBOL.get(cur, cur)}Vol", justify="right")
+    for i, (sym, r) in enumerate(jk.table.iterrows(), start=1):
+        t.add_row(
+            str(i), _symbol_cell(sym, r, displays or {}), short_name(names.get(sym, "")), r["ours"],
+            f"{r['close']:.2f}", "-" if pd.isna(r["trigger"]) else f"{r['trigger']:.2f}",
+            "-" if pd.isna(r["stop"]) else f"{r['stop']:.2f}",
+            *[fmt_pct(r[f"ret_{w}"]) for w in jk.windows], f"{r['adr_pct']:.1f}", money(r["avg_traded_value"], cur),
+        )
+    if len(jk.table):
+        console.print(t)
+    console.print(
+        f"On both screens: {len(jk.table)} names ({jk.passing_jack} pass the other screener alone, "
+        f"{jk.ours_count} are on our lists)"
+    )
+    console.print(f"[dim]Other screener: {jack_rule_text(cfg)}. Avg value is over its {cfg.jack.adv_window} days.[/]")
+    return jk.table
+
+
 def render_breakouts(bo: BreakoutResult, cfg: MarketConfig, names: dict, window: str | None,
         displays: dict[str, str] | None = None) -> pd.DataFrame:
     table = bo.table
@@ -389,6 +420,9 @@ def render(res: ScanResults, cfg: MarketConfig, universe: pd.DataFrame, args: ar
         console.print()
     if args.scan in ("all", "watchlist"):
         shown["watchlist"] = render_watchlist(res.watchlist, cfg, names, args.window, displays)
+        console.print()
+    if args.scan in ("all", "both") and res.jack is not None:
+        shown["both"] = render_both(res.jack, cfg, names, displays)
         console.print()
     if args.scan == "leaders":
         shown["leaders"] = render_leaders_table(res.leaders, cfg, names, args.window, displays)

@@ -117,3 +117,18 @@ study:
   min_bars_after: 20               # (assumption) skip triggers with fewer sessions of data after them
   winner_spacing: 20               # (assumption) biggest winners: one card per symbol within 20 sessions
   seed: 7                          # (assumption) fixed, so the same cards come out until the data changes
+
+# Jack Corsellis's screener (filters read off the user's screenshot of it, 2026-11-20). A name "passes both
+# screens" when it is on our leaders list, watchlist or breakouts AND passes these. Shown as its own section
+# on the dashboard and in the alert message.
+jack:
+  ema_fast: 21                     # (user screenshot) price above the 21-day EMA
+  sma_mid: 50                      # (user screenshot) price above the 50-day SMA
+  sma_long: 200                    # (user screenshot) price above the 200-day SMA
+  adr_window: 20                   # (user screenshot) 20-day ADR %
+  min_adr_pct: 4.0                 # (user screenshot) ADR greater than 4%
+  adv_window: 50                   # (user screenshot) 50-day average turnover
+  min_avg_traded_value: 1200000000 # (assumption) Rs 120 crore. The screenshot's 250M is in dollars; at about Rs 88 per
+                                   #   dollar that is Rs 2,200 crore, which no name in our liquid India list reaches.
+                                   #   Instead the same RANK: 250M is the top 10.5% of the liquid US names (2026-11-13
+                                   #   data), and the top 10.5% of the liquid India names starts at about Rs 119 crore

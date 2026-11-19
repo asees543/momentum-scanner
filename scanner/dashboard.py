@@ -22,7 +22,7 @@ import numpy as np
 import pandas as pd
 
 from scanner.config import PROJECT_ROOT, MarketConfig
-from scanner.notify import money, short_name
+from scanner.notify import jack_rule_text, money, short_name
 from scanner.scans import ScanResults
 
 SITE_DATA = PROJECT_ROOT / "site" / "data"
@@ -56,6 +56,7 @@ def snapshot(res: ScanResults, cfg: MarketConfig, universe: pd.DataFrame, chart_
         return {w: _f(r[f"ret_{w}"], 4) for w in windows}
 
     wl, bo, lead = res.watchlist.table, res.breakouts.table, res.leaders
+    jk = res.jack
     return {
         "market": cfg.market,
         "title": MARKET_TITLE.get(cfg.market, cfg.market.upper()),
@@ -87,6 +88,19 @@ def snapshot(res: ScanResults, cfg: MarketConfig, universe: pd.DataFrame, chart_
              "flag": bool(r["flag_day_move"])}
             for s, r in wl.iterrows()
         ],
+        # Names on one of our lists that also pass the other trader's screener (None where not computed).
+        "jack": None if jk is None else {
+            "rule": jack_rule_text(cfg),
+            "passing": jk.passing_jack,
+            "ours": jk.ours_count,
+            "items": [
+                {**meta(s), "ours": r["ours"], "close": _f(r["close"]), "trigger": _f(r["trigger"]),
+                 "stop": _f(r["stop"]), "adr_pct": _f(r["adr_pct"]), "returns": rets(r),
+                 "avg_value": money(r["avg_traded_value"], cfg.currency), "avg_value_raw": _f(r["avg_traded_value"], 0),
+                 "flag": bool(r["flag_day_move"])}
+                for s, r in jk.table.iterrows()
+            ],
+        },
     }
 
 
@@ -275,6 +289,38 @@ def _watchlist_table(snap: dict) -> str:
             + "</tr></thead><tbody>" + "".join(body) + "</tbody></table></div>")
 
 
+def _jack_panel(snap: dict) -> str:
+    jk = snap.get("jack")
+    if jk is None:  # a snapshot written before this section existed
+        return ""
+    ws = snap["windows"]
+    if jk["items"]:
+        head = ["Symbol", "Name", "Ours", "Close", "Trigger", "Stop", "ADR %"] + [w.upper() for w in ws] + ["Avg value"]
+        body = []
+        for r in jk["items"]:
+            badge = f'<span class="badge {"ok" if r["ours"] != "leader" else ""}">{r["ours"]}</span>'
+            body.append(
+                "<tr>" + _sym_cell(r) + f'<td class="name">{html.escape(r["name"])}</td>'
+                + f'<td class="l" data-v="{r["ours"]}">{badge}</td>'
+                + f'<td data-v="{r["close"]}">{_num(r["close"])}</td>'
+                + f'<td data-v="{r["trigger"] or 0}">{_num(r["trigger"])}</td><td data-v="{r["stop"] or 0}">{_num(r["stop"])}</td>'
+                + f'<td data-v="{r["adr_pct"]}">{_num(r["adr_pct"], "{:.1f}")}</td>'
+                + "".join(_ret(r["returns"].get(w)) for w in ws)
+                + f'<td data-v="{r.get("avg_value_raw") or 0}">{html.escape(r["avg_value"])}</td></tr>'
+            )
+        table = ('<div class="scroll"><table class="sortable"><thead><tr>' + _header(head)
+                 + "</tr></thead><tbody>" + "".join(body) + "</tbody></table></div>")
+    else:
+        table = f'<p class="note">None on this session. {jk["passing"]} names pass the other screener alone.</p>'
+    return (
+        f'<div class="panel"><h2>On both screens ({len(jk["items"])})</h2>{table}'
+        f'<p class="note">On one of our lists (breakout, watchlist or today\'s leaders) <b>and</b> passing Jack '
+        f"Corsellis's screener: {html.escape(jk['rule'])}. {jk['passing']} names pass that screener alone; {jk['ours']} are on our "
+        "lists. Filters read from a screenshot of their screener; the table shows the strongest list a name is on. "
+        "The average value is over the screener's 50 days, not our 20.</p></div>"
+    )
+
+
 def _market_section(snap: dict, has_report: bool, first: bool) -> str:
     s = snap["summary"]
     day = datetime.strptime(snap["as_of"], "%Y-%m-%d").strftime("%a %d %b %Y")
@@ -291,6 +337,7 @@ def _market_section(snap: dict, has_report: bool, first: bool) -> str:
     return (
         f'<section class="market" id="{snap["market"]}"{"" if first else " hidden"}>'
         f'<div class="panel"><div class="chips">' + "".join(f'<span class="chip">{c}</span>' for c in chips) + "</div>" + report + "</div>"
+        + _jack_panel(snap)
         + f'<div class="panel"><h2>Breakouts</h2>{_breakouts_table(snap)}'
         + '<p class="note">Close above the trigger on at least 1.5× average volume, from a name on the previous '
           "session's watchlist. Stop = the breakout day's low. “stop &gt; ADR” = the stop is more than one average "

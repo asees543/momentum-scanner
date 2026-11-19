@@ -57,6 +57,17 @@ def sma(series: T, n: int) -> T:
     return series.rolling(n, min_periods=n).mean()
 
 
+def ema(series: T, n: int) -> T:
+    """Exponential moving average (the usual charting-package definition).
+
+    Formula: EMA_t = a x x_t + (1 - a) x EMA_(t-1),  a = 2 / (n + 1),  seeded with EMA_0 = x_0
+    The seed's weight shrinks by (1 - a) each bar (0.909 for n = 21: under 1e-12 after 300 bars), so after
+    a few hundred bars it no longer matters. The first n - 1 bars are NaN (not a full window yet), like `sma`.
+    """
+    _check_window(n)
+    return series.ewm(span=n, adjust=False, min_periods=n).mean()
+
+
 def traded_value(close: T, volume: T) -> T:
     """Value traded per bar in the market's currency: close x volume.
 

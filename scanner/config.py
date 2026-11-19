@@ -228,6 +228,21 @@ class StudyConfig(_Strict):
     seed: int = 7  # fixed, so the same cards come out until the data changes
 
 
+class JackConfig(_Strict):
+    """Jack Corsellis's screener filters, copied from the user's screenshot of it (2026-11-20): close above
+    the 21-day EMA, 50-day SMA and 200-day SMA, 20-day ADR above a floor, 50-day average dollar volume
+    above a floor. A name "passes both screens" when it is on our leaders list, watchlist or breakouts
+    AND passes these. Every comparison is strict (above, not at-or-above), as the screener words it."""
+
+    ema_fast: int = Field(ge=2)  # close > this EMA
+    sma_mid: int = Field(ge=2)  # close > this SMA
+    sma_long: int = Field(ge=2)  # close > this SMA
+    adr_window: int = Field(ge=2)  # ADR% averaging window
+    min_adr_pct: float = Field(ge=0)  # ADR% above this
+    adv_window: int = Field(ge=2)  # average dollar volume window
+    min_avg_traded_value: float = Field(gt=0)  # 50-day average of close x volume above this (USD / INR)
+
+
 class MarketConfig(_Strict):
     market: str
     currency: str
@@ -240,6 +255,7 @@ class MarketConfig(_Strict):
     alerts: AlertsConfig
     backtest: BacktestConfig
     study: StudyConfig
+    jack: JackConfig
 
 
 def load_config(market: str, config_dir: Path = CONFIG_DIR) -> MarketConfig:

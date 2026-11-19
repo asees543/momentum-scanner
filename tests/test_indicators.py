@@ -78,6 +78,21 @@ def test_sma_nan_inside_window_gives_nan():
     assert out.iloc[4] == pytest.approx(4.0)
 
 
+def test_ema_hand_computed():
+    # n = 3 -> a = 2 / 4 = 0.5, seeded with the first value: 1, 1.5, 2.25, 3.125; the first n - 1 bars are NaN
+    out = ind.ema(s([1, 2, 3, 4]), 3)
+    assert out.iloc[:2].isna().all()
+    assert out.iloc[2:].tolist() == pytest.approx([2.25, 3.125])
+
+
+def test_ema_seed_fades_and_panels_work():
+    # a different first value changes the EMA by its gap x (1 - a)^k, a = 2/22: after 300 bars about 90 x 3e-13
+    a, b = np.r_[100.0, np.full(300, 50.0)], np.r_[10.0, np.full(300, 50.0)]
+    assert abs(ind.ema(s(a), 21).iloc[-1] - ind.ema(s(b), 21).iloc[-1]) < 1e-9
+    panel = pd.DataFrame({"X": [1.0, 2.0, 3.0, 4.0], "Y": [4.0, 3.0, 2.0, 1.0]})
+    assert ind.ema(panel, 3)["Y"].iloc[-1] == pytest.approx(1.875)  # 4, 3.5, 2.75, 1.875
+
+
 # --- traded value / dollar volume ---------------------------------------------------------------
 
 

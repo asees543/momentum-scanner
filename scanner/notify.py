@@ -141,6 +141,26 @@ def watchlist_entry(sym: str, r: pd.Series, windows: list[str], cur: str, url: s
     return "\n".join([_title_line(sym, r, name), numbers, _returns_line(r, windows, cur, url)])
 
 
+def jack_rule_text(cfg: MarketConfig) -> str:
+    """The other screener's filters in words, e.g. 'above 21 EMA, 50 & 200 SMA, ADR above 4%, 50-day value above $250.0M'. Plain text: escape it for HTML."""
+    j = cfg.jack
+    return (
+        f"above {j.ema_fast} EMA, {j.sma_mid} & {j.sma_long} SMA, ADR above {j.min_adr_pct:g}%, "
+        f"{j.adv_window}-day value above {money(j.min_avg_traded_value, cfg.currency)}"
+    )
+
+
+def jack_entry(sym: str, r: pd.Series, windows: list[str], cur: str, url: str, name: str = "") -> str:
+    """One name on both screens: where it is on our lists, then the usual numbers."""
+    if r["ours"] == "leader":
+        numbers = f"leader · {r['close']:.2f} · ADR {r['adr_pct']:.1f}"
+    else:
+        numbers = (
+            f"{r['ours']} · {r['close']:.2f} · trig {r['trigger']:.2f} · stop {r['stop']:.2f} · ADR {r['adr_pct']:.1f}"
+        )
+    return "\n".join([_title_line(sym, r, name), numbers, _returns_line(r, windows, cur, url)])
+
+
 def _lookups(universe: pd.DataFrame, chart_url: ChartUrlFn):
     """Per-symbol company name, chart link and display symbol from the universe table.
     The display symbol is the exchange's own (RELIANCE, BRK.B) rather than Yahoo's (RELIANCE.NS, BRK-B)."""
@@ -258,6 +278,16 @@ def format_alerts(
         blocks += wl_entries(list(wl.index))
     if not diff.breakouts and not wide and not diff.new_watchlist and not diff.first_run and not diff.catch_up:
         blocks.append("Nothing new today.")
+    jk = results.jack
+    if jk is not None:
+        # All names on both screens, every day (not only new ones): a short list, and the point is to see it.
+        label = f"🎯 <b>On both screens</b> (ours and Corsellis's: {_e(jack_rule_text(cfg))})"
+        if jk.table.empty:
+            blocks.append(f"{label}\nNone today. {jk.passing_jack} names pass their screen alone.")
+        else:
+            blocks.append(f"{label}\n{len(jk.table)} of {jk.passing_jack} names that pass their screen are on our lists.")
+            shown.extend(jk.table.loc[s] for s in jk.table.index)
+            blocks += [jack_entry(display(s), jk.table.loc[s], windows, cur, url(s), name(s)) for s in jk.table.index]
     if any(bool(r.get("flag_day_move", False)) for r in shown):
         blocks.append(flag_note(cfg))
     blocks.append(DISCLAIMER)

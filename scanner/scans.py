@@ -16,7 +16,7 @@ import numpy as np
 import pandas as pd
 
 from scanner import indicators as ind
-from scanner.config import BreakoutConfig, LeadersConfig, LiquidityConfig, MarketConfig, SetupConfig
+from scanner.config import BreakoutConfig, JackConfig, LeadersConfig, LiquidityConfig, MarketConfig, SetupConfig
 from scanner.data.base import Panels
 
 
@@ -347,10 +347,27 @@ class BreakoutResult:
 
 
 @dataclass
+class JackResult:
+    """Names that are on one of our lists (breakout, watchlist or leader today) AND pass the other trader's
+    screener (cfg.jack)."""
+
+    as_of: pd.Timestamp
+    # One row per name passing both, breakouts first, then watchlist, then leaders, each by the sort window's
+    # return. Columns: ours ("breakout" / "watchlist" / "leader", the strongest of our lists it is on), close,
+    # trigger and stop (NaN for a leader that is not on the watchlist), ret_<w>, flag_day_move, adr_pct
+    # (the screener's ADR window) and avg_traded_value (its average-value window, NOT our 20-day one).
+    table: pd.DataFrame
+    passing_jack: int  # symbols passing the screener's filters alone
+    ours_count: int  # symbols on at least one of our lists
+    windows: list[str] = field(default_factory=list)
+
+
+@dataclass
 class ScanResults:
     leaders: LeadersResult
     watchlist: WatchlistResult
     breakouts: BreakoutResult
+    jack: JackResult | None = None  # None where the screen was not computed (hand-built results in tests)
 
 
 def _rows_needed(cfg: MarketConfig) -> int:
@@ -481,6 +498,59 @@ def breakouts_from_frames(
     )
 
 
+OURS_ORDER = {"breakout": 0, "watchlist": 1, "leader": 2}
+
+
+def jack_pass(panels: Panels, j: JackConfig) -> pd.DataFrame:
+    """The other trader's screener on the as-of (last) session, one row per symbol.
+
+    passes_t = close_t > EMA(ema_fast)_t AND close_t > SMA(sma_mid)_t AND close_t > SMA(sma_long)_t
+               AND ADR%(adr_window)_t > min_adr_pct AND mean(close x volume over adv_window)_t > min_avg_traded_value
+    Every comparison is strict (the screener says "above" and "greater than"); a missing value (no bar
+    today, or less than a full window) fails. Columns: passes (bool), adr_pct, avg_traded_value.
+    Only the last row is needed, so the frames are computed on a tail of the longest window plus 5 x ema_fast
+    bars (305 for the shipped settings), over which the EMA's seed weight fades below 1e-12.
+    """
+    p = panels.tail(max(j.sma_long, j.sma_mid, j.adr_window, j.adv_window) + 5 * j.ema_fast)
+    c = p.close
+    last = c.iloc[-1]
+    adr = ind.adr_pct(p.high, p.low, j.adr_window).iloc[-1]
+    adv = ind.avg_traded_value(c, p.volume, j.adv_window).iloc[-1]
+    passes = (
+        (last > ind.ema(c, j.ema_fast).iloc[-1])
+        & (last > ind.sma(c, j.sma_mid).iloc[-1])
+        & (last > ind.sma(c, j.sma_long).iloc[-1])
+        & (adr > j.min_adr_pct)
+        & (adv > j.min_avg_traded_value)
+    )
+    return pd.DataFrame({"passes": passes.fillna(False).astype(bool), "adr_pct": adr, "avg_traded_value": adv})
+
+
+def jack_screen(panels: Panels, cfg: MarketConfig, leaders: LeadersResult, watchlist: WatchlistResult,
+                breakouts: BreakoutResult) -> JackResult:
+    """Our results intersected with the other trader's screener (`jack_pass`): the names on one of our lists
+    (breakout, watchlist, or a leader today) that also pass it."""
+    jp = jack_pass(panels, cfg.jack)
+    windows = list(cfg.leaders.windows)
+    cols = ["ours", "close", "trigger", "stop"] + [f"ret_{w}" for w in windows] + ["flag_day_move"]
+    parts = [
+        df.assign(ours=name).reindex(columns=cols)
+        for name, df in (("breakout", breakouts.table), ("watchlist", watchlist.table), ("leader", leaders.table))
+        if len(df)
+    ]
+    ours = pd.concat(parts) if parts else pd.DataFrame(columns=cols)
+    ours = ours[~ours.index.duplicated(keep="first")]  # a name on several lists keeps the strongest one
+    both = ours[ours.index.isin(jp.index[jp["passes"]])].copy()
+    both["flag_day_move"] = both["flag_day_move"].fillna(False).astype(bool)
+    both["adr_pct"], both["avg_traded_value"] = jp.loc[both.index, "adr_pct"], jp.loc[both.index, "avg_traded_value"]
+    sort_col = f"ret_{cfg.leaders.sort_by}"
+    both = both.assign(_o=both["ours"].map(OURS_ORDER)).sort_values(["_o", sort_col], ascending=[True, False], kind="stable")
+    both = both.drop(columns="_o")
+    both.index.name = "symbol"
+    return JackResult(as_of=panels.dates[-1], table=both, passing_jack=int(jp["passes"].sum()),
+                      ours_count=len(ours), windows=windows)
+
+
 def run_scans(panels: Panels, cfg: MarketConfig, mode: Literal["fixed", "rank"] | None = None) -> ScanResults:
     """All stages on the as-of (last) session of `panels`, sharing one set of frames."""
     if panels.close.empty:
@@ -491,11 +561,10 @@ def run_scans(panels: Panels, cfg: MarketConfig, mode: Literal["fixed", "rank"] 
     liq = liquidity_frames(p, cfg.liquidity)
     lf = leader_frames(p, liq, cfg.leaders, mode)
     sf = setup_frames(p, liq, lf, cfg.setup)
-    return ScanResults(
-        leaders=leaders_from_frames(p, liq, lf, cfg.leaders, mode),
-        watchlist=watchlist_from_frames(p, liq, lf, sf, cfg, max_lb),
-        breakouts=breakouts_from_frames(p, liq, lf, sf, cfg, max_lb),
-    )
+    leaders = leaders_from_frames(p, liq, lf, cfg.leaders, mode)
+    watchlist = watchlist_from_frames(p, liq, lf, sf, cfg, max_lb)
+    breakouts = breakouts_from_frames(p, liq, lf, sf, cfg, max_lb)
+    return ScanResults(leaders, watchlist, breakouts, jack_screen(panels, cfg, leaders, watchlist, breakouts))
 
 
 def missed_breakouts(
