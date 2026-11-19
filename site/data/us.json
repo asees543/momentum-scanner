@@ -1,428 +1,29 @@
 {
- "as_of": "2026-11-18",
- "breakouts": [
-  {
-   "adr_pct": 5.01,
-   "avg_value": "$24.0M",
-   "chart": "https://www.tradingview.com/chart/?symbol=NYSE:DIN",
-   "close": 38.86,
-   "flag": false,
-   "name": "Dine Brands Global, Inc.",
-   "returns": {
-    "1m": 0.2024,
-    "3m": 0.1005,
-    "6m": 0.2975
-   },
-   "risk_pct": 4.43,
-   "setup_age": 1,
-   "status": "ok",
-   "stop": 37.14,
-   "symbol": "DIN",
-   "trigger": 37.76,
-   "vol_ratio": 1.53
-  }
- ],
+ "as_of": "2026-11-19",
+ "breakouts": [],
  "currency": "USD",
  "market": "us",
  "summary": {
-  "breakouts_ok": 1,
+  "breakouts_ok": 0,
   "breakouts_wide": 0,
   "leaders": {
-   "1m": 135,
-   "3m": 37,
-   "6m": 20
+   "1m": 96,
+   "3m": 32,
+   "6m": 17
   },
-  "liquid": 1209,
-  "qualified_today": 33,
-  "symbols_with_data": 5914,
-  "watchlist": 75
+  "liquid": 1227,
+  "qualified_today": 19,
+  "symbols_with_data": 5773,
+  "watchlist": 66
  },
  "title": "US",
  "watchlist": [
   {
-   "adr_pct": 6.11,
-   "avg_value": "$29.5M",
-   "avg_value_raw": 29517879.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NYSE:PRG",
-   "close": 40.73,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "PROG Holdings, Inc.",
-   "returns": {
-    "1m": 0.3211,
-    "3m": -0.0443,
-    "6m": 0.2068
-   },
-   "risk_pct": 5.44,
-   "risk_wide": false,
-   "setup_age": 2,
-   "stop": 38.79,
-   "symbol": "PRG",
-   "to_trigger_pct": 0.71,
-   "trigger": 41.02,
-   "vol_ratio": 0.94
-  },
-  {
-   "adr_pct": 5.11,
-   "avg_value": "$49.5M",
-   "avg_value_raw": 49511353.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:VCEL",
-   "close": 58.65,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Vericel Corporation",
-   "returns": {
-    "1m": 0.4528,
-    "3m": 0.3269,
-    "6m": 0.6568
-   },
-   "risk_pct": 3.35,
-   "risk_wide": false,
-   "setup_age": 1,
-   "stop": 57.75,
-   "symbol": "VCEL",
-   "to_trigger_pct": 1.88,
-   "trigger": 59.75,
-   "vol_ratio": 0.88
-  },
-  {
-   "adr_pct": 6.44,
-   "avg_value": "$11.1M",
-   "avg_value_raw": 11115224.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NYSE:ONT",
-   "close": 23.92,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": true,
-    "6m": false
-   },
-   "name": "Onterris, Inc.",
-   "returns": {
-    "1m": 0.7308,
-    "3m": 0.3575,
-    "6m": 0.5294
-   },
-   "risk_pct": 6.16,
-   "risk_wide": false,
-   "setup_age": 0,
-   "stop": 22.93,
-   "symbol": "ONT",
-   "to_trigger_pct": 2.15,
-   "trigger": 24.43,
-   "vol_ratio": 0.64
-  },
-  {
-   "adr_pct": 5.43,
-   "avg_value": "$356.7M",
-   "avg_value_raw": 356744602.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:CHTR",
-   "close": 139.19,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Charter Communications, Inc.",
-   "returns": {
-    "1m": 0.2827,
-    "3m": -0.0978,
-    "6m": -0.0375
-   },
-   "risk_pct": 4.98,
-   "risk_wide": false,
-   "setup_age": 0,
-   "stop": 135.5,
-   "symbol": "CHTR",
-   "to_trigger_pct": 2.45,
-   "trigger": 142.6,
-   "vol_ratio": 0.69
-  },
-  {
-   "adr_pct": 6.34,
-   "avg_value": "$6.0M",
-   "avg_value_raw": 6009360.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:JACK",
-   "close": 14.79,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Jack In The Box Inc.",
-   "returns": {
-    "1m": 0.2254,
-    "3m": -0.1315,
-    "6m": 0.3241
-   },
-   "risk_pct": 15.08,
-   "risk_wide": true,
-   "setup_age": 1,
-   "stop": 12.9,
-   "symbol": "JACK",
-   "to_trigger_pct": 2.7,
-   "trigger": 15.19,
-   "vol_ratio": 1.19
-  },
-  {
-   "adr_pct": 6.91,
-   "avg_value": "$26.6M",
-   "avg_value_raw": 26624428.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:BLMN",
-   "close": 10.98,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Bloomin' Brands, Inc.",
-   "returns": {
-    "1m": 0.1035,
-    "3m": 0.0408,
-    "6m": 0.3969
-   },
-   "risk_pct": 7.89,
-   "risk_wide": true,
-   "setup_age": 3,
-   "stop": 10.39,
-   "symbol": "BLMN",
-   "to_trigger_pct": 2.73,
-   "trigger": 11.28,
-   "vol_ratio": 0.9
-  },
-  {
-   "adr_pct": 10.79,
-   "avg_value": "$4.8M",
-   "avg_value_raw": 4793500.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:TTEC",
-   "close": 3.19,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": true,
-    "6m": false
-   },
-   "name": "TTEC Holdings, Inc.",
-   "returns": {
-    "1m": 0.9691,
-    "3m": 1.019,
-    "6m": 0.276
-   },
-   "risk_pct": 6.51,
-   "risk_wide": false,
-   "setup_age": 0,
-   "stop": 3.09,
-   "symbol": "TTEC",
-   "to_trigger_pct": 3.45,
-   "trigger": 3.3,
-   "vol_ratio": 0.36
-  },
-  {
-   "adr_pct": 5.6,
-   "avg_value": "$47.7M",
-   "avg_value_raw": 47701197.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:ALGT",
-   "close": 95.4,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Allegiant Travel Company",
-   "returns": {
-    "1m": 0.4387,
-    "3m": 0.1125,
-    "6m": 0.2375
-   },
-   "risk_pct": 8.45,
-   "risk_wide": true,
-   "setup_age": 2,
-   "stop": 90.36,
-   "symbol": "ALGT",
-   "to_trigger_pct": 3.46,
-   "trigger": 98.7,
-   "vol_ratio": 0.97
-  },
-  {
-   "adr_pct": 8.29,
-   "avg_value": "$55.1M",
-   "avg_value_raw": 55133565.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NYSE:FUN",
-   "close": 11.81,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Six Flags Entertainment Corporation",
-   "returns": {
-    "1m": 0.4212,
-    "3m": -0.2799,
-    "6m": -0.3965
-   },
-   "risk_pct": 13.24,
-   "risk_wide": true,
-   "setup_age": 1,
-   "stop": 10.68,
-   "symbol": "FUN",
-   "to_trigger_pct": 4.23,
-   "trigger": 12.31,
-   "vol_ratio": 0.76
-  },
-  {
-   "adr_pct": 5.94,
-   "avg_value": "$23.2M",
-   "avg_value_raw": 23228221.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NYSE:BOBS",
-   "close": 20.85,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Bob's Discount Furniture, Inc.",
-   "returns": {
-    "1m": 0.3744,
-    "3m": 0.102,
-    "6m": 0.7419
-   },
-   "risk_pct": 10.34,
-   "risk_wide": true,
-   "setup_age": 1,
-   "stop": 19.5,
-   "symbol": "BOBS",
-   "to_trigger_pct": 4.32,
-   "trigger": 21.75,
-   "vol_ratio": 1.26
-  },
-  {
-   "adr_pct": 8.78,
-   "avg_value": "$31.7M",
-   "avg_value_raw": 31710006.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:ULCC",
-   "close": 8.16,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Frontier Group Holdings, Inc.",
-   "returns": {
-    "1m": 0.7711,
-    "3m": 0.2205,
-    "6m": 0.7409
-   },
-   "risk_pct": 9.73,
-   "risk_wide": true,
-   "setup_age": 3,
-   "stop": 7.7,
-   "symbol": "ULCC",
-   "to_trigger_pct": 4.47,
-   "trigger": 8.53,
-   "vol_ratio": 1.21
-  },
-  {
-   "adr_pct": 5.34,
-   "avg_value": "$80.4M",
-   "avg_value_raw": 80398072.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:KNSA",
-   "close": 95.05,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Kiniksa Pharmaceuticals International,…",
-   "returns": {
-    "1m": 0.1959,
-    "3m": 0.2384,
-    "6m": 0.7511
-   },
-   "risk_pct": 4.98,
-   "risk_wide": false,
-   "setup_age": 0,
-   "stop": 94.36,
-   "symbol": "KNSA",
-   "to_trigger_pct": 4.48,
-   "trigger": 99.31,
-   "vol_ratio": 0.36
-  },
-  {
-   "adr_pct": 5.19,
-   "avg_value": "$10.3M",
-   "avg_value_raw": 10287766.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:GLIBK",
-   "close": 27.8,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Liberty Capital Corporation",
-   "returns": {
-    "1m": 0.3554,
-    "3m": 0.0412,
-    "6m": 0.1156
-   },
-   "risk_pct": 7.67,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 26.86,
-   "symbol": "GLIBK",
-   "to_trigger_pct": 4.64,
-   "trigger": 29.09,
-   "vol_ratio": 0.69
-  },
-  {
-   "adr_pct": 5.74,
-   "avg_value": "$109.6M",
-   "avg_value_raw": 109584781.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:AXGN",
-   "close": 56.95,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Axogen, Inc.",
-   "returns": {
-    "1m": 0.6161,
-    "3m": 0.1687,
-    "6m": 0.334
-   },
-   "risk_pct": 7.9,
-   "risk_wide": true,
-   "setup_age": 1,
-   "stop": 55.0,
-   "symbol": "AXGN",
-   "to_trigger_pct": 4.86,
-   "trigger": 59.72,
-   "vol_ratio": 0.99
-  },
-  {
-   "adr_pct": 5.26,
-   "avg_value": "$78.8M",
-   "avg_value_raw": 78797806.0,
+   "adr_pct": 5.32,
+   "avg_value": "$83.4M",
+   "avg_value_raw": 83350377.0,
    "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:VRDN",
-   "close": 30.12,
+   "close": 31.44,
    "flag": false,
    "leader": {
     "1m": true,
@@ -431,106 +32,160 @@
    },
    "name": "Viridian Therapeutics, Inc.",
    "returns": {
-    "1m": 0.4481,
-    "3m": 0.3641,
-    "6m": 0.7085
+    "1m": 0.4017,
+    "3m": 0.3616,
+    "6m": 0.7773
    },
-   "risk_pct": 6.43,
+   "risk_pct": 5.41,
    "risk_wide": true,
-   "setup_age": 0,
-   "stop": 29.59,
+   "setup_age": 1,
+   "stop": 29.92,
    "symbol": "VRDN",
-   "to_trigger_pct": 5.01,
+   "to_trigger_pct": 0.6,
    "trigger": 31.63,
-   "vol_ratio": 0.52
+   "vol_ratio": 1.42
   },
   {
-   "adr_pct": 5.87,
-   "avg_value": "$9.1M",
-   "avg_value_raw": 9149132.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:CLMB",
-   "close": 42.65,
+   "adr_pct": 5.67,
+   "avg_value": "$49.8M",
+   "avg_value_raw": 49763665.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:ALGT",
+   "close": 97.07,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "Allegiant Travel Company",
+   "returns": {
+    "1m": 0.4062,
+    "3m": 0.1515,
+    "6m": 0.1927
+   },
+   "risk_pct": 6.48,
+   "risk_wide": true,
+   "setup_age": 3,
+   "stop": 92.3,
+   "symbol": "ALGT",
+   "to_trigger_pct": 1.68,
+   "trigger": 98.7,
+   "vol_ratio": 1.38
+  },
+  {
+   "adr_pct": 5.21,
+   "avg_value": "$43.8M",
+   "avg_value_raw": 43801827.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NYSE:BHC",
+   "close": 8.56,
    "flag": false,
    "leader": {
     "1m": true,
     "3m": true,
     "6m": false
    },
-   "name": "Climb Global Solutions, Inc.",
+   "name": "Bausch Health Companies Inc.",
    "returns": {
-    "1m": 0.3382,
-    "3m": 0.496,
-    "6m": 1.0927
+    "1m": 0.3333,
+    "3m": 0.3009,
+    "6m": 0.5706
    },
-   "risk_pct": 7.43,
-   "risk_wide": true,
-   "setup_age": 3,
-   "stop": 41.56,
-   "symbol": "CLMB",
-   "to_trigger_pct": 5.25,
-   "trigger": 44.89,
-   "vol_ratio": 1.11
-  },
-  {
-   "adr_pct": 5.25,
-   "avg_value": "$3.5M",
-   "avg_value_raw": 3500491.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:ASUR",
-   "close": 10.39,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Asure Software Inc",
-   "returns": {
-    "1m": 0.4759,
-    "3m": 0.2267,
-    "6m": 0.1888
-   },
-   "risk_pct": 5.94,
-   "risk_wide": true,
+   "risk_pct": 3.45,
+   "risk_wide": false,
    "setup_age": 0,
-   "stop": 10.29,
-   "symbol": "ASUR",
-   "to_trigger_pct": 5.29,
-   "trigger": 10.94,
-   "vol_ratio": 0.7
-  },
-  {
-   "adr_pct": 5.17,
-   "avg_value": "$12.6M",
-   "avg_value_raw": 12626010.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:MNKD",
-   "close": 4.07,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "MannKind Corporation",
-   "returns": {
-    "1m": 0.3172,
-    "3m": 0.0571,
-    "6m": 0.2523
-   },
-   "risk_pct": 6.06,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 4.03,
-   "symbol": "MNKD",
-   "to_trigger_pct": 5.41,
-   "trigger": 4.29,
+   "stop": 8.55,
+   "symbol": "BHC",
+   "to_trigger_pct": 3.39,
+   "trigger": 8.85,
    "vol_ratio": 0.63
   },
   {
-   "adr_pct": 7.1,
-   "avg_value": "$128.1M",
-   "avg_value_raw": 128092311.0,
+   "adr_pct": 8.17,
+   "avg_value": "$55.1M",
+   "avg_value_raw": 55145077.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NYSE:FUN",
+   "close": 11.88,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "Six Flags Entertainment Corporation",
+   "returns": {
+    "1m": 0.5115,
+    "3m": -0.2385,
+    "6m": -0.3976
+   },
+   "risk_pct": 5.93,
+   "risk_wide": false,
+   "setup_age": 0,
+   "stop": 11.58,
+   "symbol": "FUN",
+   "to_trigger_pct": 3.62,
+   "trigger": 12.31,
+   "vol_ratio": 0.58
+  },
+  {
+   "adr_pct": 6.3,
+   "avg_value": "$11.2M",
+   "avg_value_raw": 11241360.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NYSE:ONT",
+   "close": 23.35,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": true,
+    "6m": false
+   },
+   "name": "Onterris, Inc.",
+   "returns": {
+    "1m": 0.6643,
+    "3m": 0.4557,
+    "6m": 0.4816
+   },
+   "risk_pct": 5.26,
+   "risk_wide": false,
+   "setup_age": 1,
+   "stop": 23.15,
+   "symbol": "ONT",
+   "to_trigger_pct": 4.65,
+   "trigger": 24.43,
+   "vol_ratio": 0.97
+  },
+  {
+   "adr_pct": 6.07,
+   "avg_value": "$29.9M",
+   "avg_value_raw": 29886773.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NYSE:PRG",
+   "close": 39.14,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "PROG Holdings, Inc.",
+   "returns": {
+    "1m": 0.2658,
+    "3m": -0.0716,
+    "6m": 0.1684
+   },
+   "risk_pct": 4.68,
+   "risk_wide": false,
+   "setup_age": 3,
+   "stop": 39.1,
+   "symbol": "PRG",
+   "to_trigger_pct": 4.8,
+   "trigger": 41.02,
+   "vol_ratio": 0.74
+  },
+  {
+   "adr_pct": 7.13,
+   "avg_value": "$125.2M",
+   "avg_value_raw": 125160356.0,
    "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:LQDA",
-   "close": 56.4,
+   "close": 56.63,
    "flag": false,
    "leader": {
     "1m": true,
@@ -539,403 +194,25 @@
    },
    "name": "Liquidia Corporation",
    "returns": {
-    "1m": 0.6525,
-    "3m": -0.2423,
-    "6m": -0.0869
+    "1m": 0.5579,
+    "3m": -0.2712,
+    "6m": -0.0862
    },
-   "risk_pct": 6.22,
-   "risk_wide": false,
+   "risk_pct": 8.59,
+   "risk_wide": true,
    "setup_age": 0,
-   "stop": 55.8,
+   "stop": 54.39,
    "symbol": "LQDA",
-   "to_trigger_pct": 5.5,
+   "to_trigger_pct": 5.07,
    "trigger": 59.5,
-   "vol_ratio": 0.43
-  },
-  {
-   "adr_pct": 6.25,
-   "avg_value": "$27.5M",
-   "avg_value_raw": 27524722.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NYSE:VYX",
-   "close": 10.27,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "NCR Voyix Corporation",
-   "returns": {
-    "1m": 0.3218,
-    "3m": 0.2586,
-    "6m": 0.5873
-   },
-   "risk_pct": 10.42,
-   "risk_wide": true,
-   "setup_age": 3,
-   "stop": 9.71,
-   "symbol": "VYX",
-   "to_trigger_pct": 5.55,
-   "trigger": 10.84,
-   "vol_ratio": 0.85
-  },
-  {
-   "adr_pct": 5.3,
-   "avg_value": "$88.8M",
-   "avg_value_raw": 88755488.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:ACHC",
-   "close": 37.59,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Acadia Healthcare Company, Inc.",
-   "returns": {
-    "1m": 0.2455,
-    "3m": 0.2193,
-    "6m": 0.5617
-   },
-   "risk_pct": 6.41,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 37.15,
-   "symbol": "ACHC",
-   "to_trigger_pct": 5.61,
-   "trigger": 39.7,
-   "vol_ratio": 0.6
-  },
-  {
-   "adr_pct": 8.28,
-   "avg_value": "$98.5M",
-   "avg_value_raw": 98457920.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:XMTR",
-   "close": 120.48,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Xometry, Inc.",
-   "returns": {
-    "1m": 0.3173,
-    "3m": 0.2516,
-    "6m": 0.3126
-   },
-   "risk_pct": 9.11,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 115.87,
-   "symbol": "XMTR",
-   "to_trigger_pct": 5.82,
-   "trigger": 127.49,
-   "vol_ratio": 0.69
-  },
-  {
-   "adr_pct": 6.17,
-   "avg_value": "$58.1M",
-   "avg_value_raw": 58141808.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:APPN",
-   "close": 54.06,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": true,
-    "6m": true
-   },
-   "name": "Appian Corporation",
-   "returns": {
-    "1m": 0.2786,
-    "3m": 0.5267,
-    "6m": 1.5333
-   },
-   "risk_pct": 7.56,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 52.93,
-   "symbol": "APPN",
-   "to_trigger_pct": 5.92,
-   "trigger": 57.26,
-   "vol_ratio": 0.59
-  },
-  {
-   "adr_pct": 5.18,
-   "avg_value": "$15.4M",
-   "avg_value_raw": 15441811.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:TRUP",
-   "close": 36.68,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Trupanion, Inc.",
-   "returns": {
-    "1m": 0.3338,
-    "3m": 0.1987,
-    "6m": 0.6764
-   },
-   "risk_pct": 7.25,
-   "risk_wide": true,
-   "setup_age": 3,
-   "stop": 36.05,
-   "symbol": "TRUP",
-   "to_trigger_pct": 5.97,
-   "trigger": 38.87,
-   "vol_ratio": 0.87
-  },
-  {
-   "adr_pct": 5.22,
-   "avg_value": "$7.5M",
-   "avg_value_raw": 7511308.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NYSE:VLRS",
-   "close": 8.33,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Controladora Vuela Compania de Aviacion…",
-   "returns": {
-    "1m": 0.4167,
-    "3m": 0.0571,
-    "6m": 0.247
-   },
-   "risk_pct": 7.23,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 8.21,
-   "symbol": "VLRS",
-   "to_trigger_pct": 6.24,
-   "trigger": 8.85,
-   "vol_ratio": 0.54
-  },
-  {
-   "adr_pct": 8.19,
-   "avg_value": "$8.1M",
-   "avg_value_raw": 8145465.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:SRZN",
-   "close": 31.74,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": true,
-    "6m": false
-   },
-   "name": "Surrozen, Inc.",
-   "returns": {
-    "1m": 0.3314,
-    "3m": 0.3247,
-    "6m": 0.1734
-   },
-   "risk_pct": 11.85,
-   "risk_wide": true,
-   "setup_age": 3,
-   "stop": 29.75,
-   "symbol": "SRZN",
-   "to_trigger_pct": 6.33,
-   "trigger": 33.75,
-   "vol_ratio": 1.15
-  },
-  {
-   "adr_pct": 7.02,
-   "avg_value": "$60.2M",
-   "avg_value_raw": 60245851.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NYSE:SG",
-   "close": 13.06,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": true,
-    "6m": false
-   },
-   "name": "Sweetgreen, Inc.",
-   "returns": {
-    "1m": 0.2829,
-    "3m": 1.0796,
-    "6m": 0.4495
-   },
-   "risk_pct": 12.46,
-   "risk_wide": true,
-   "setup_age": 1,
-   "stop": 12.16,
-   "symbol": "SG",
-   "to_trigger_pct": 6.36,
-   "trigger": 13.89,
-   "vol_ratio": 1.21
-  },
-  {
-   "adr_pct": 5.83,
-   "avg_value": "$88.9M",
-   "avg_value_raw": 88870045.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NYSE:BMI",
-   "close": 156.45,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Badger Meter, Inc.",
-   "returns": {
-    "1m": 0.2391,
-    "3m": 0.1959,
-    "6m": 0.3252
-   },
-   "risk_pct": 9.22,
-   "risk_wide": true,
-   "setup_age": 2,
-   "stop": 151.48,
-   "symbol": "BMI",
-   "to_trigger_pct": 6.65,
-   "trigger": 166.86,
-   "vol_ratio": 0.38
-  },
-  {
-   "adr_pct": 5.61,
-   "avg_value": "$11.0M",
-   "avg_value_raw": 10977150.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NYSE:NVRI",
-   "close": 23.77,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Enviri Corporation",
-   "returns": {
-    "1m": 0.2265,
-    "3m": 0.1544,
-    "6m": 0.2171
-   },
-   "risk_pct": 7.44,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 23.51,
-   "symbol": "NVRI",
-   "to_trigger_pct": 6.86,
-   "trigger": 25.4,
    "vol_ratio": 0.5
   },
   {
-   "adr_pct": 5.4,
-   "avg_value": "$8.1M",
-   "avg_value_raw": 8087407.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:TBCH",
-   "close": 16.35,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Turtle Beach Corporation",
-   "returns": {
-    "1m": 0.0528,
-    "3m": 0.2824,
-    "6m": 0.5266
-   },
-   "risk_pct": 7.66,
-   "risk_wide": true,
-   "setup_age": 3,
-   "stop": 16.15,
-   "symbol": "TBCH",
-   "to_trigger_pct": 6.97,
-   "trigger": 17.49,
-   "vol_ratio": 0.74
-  },
-  {
-   "adr_pct": 5.96,
-   "avg_value": "$3.7M",
-   "avg_value_raw": 3685287.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:PLTK",
-   "close": 2.57,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Playtika Holding Corp.",
-   "returns": {
-    "1m": 0.2415,
-    "3m": 0.0239,
-    "6m": -0.2636
-   },
-   "risk_pct": 7.45,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 2.55,
-   "symbol": "PLTK",
-   "to_trigger_pct": 7.0,
-   "trigger": 2.75,
-   "vol_ratio": 0.56
-  },
-  {
-   "adr_pct": 5.65,
-   "avg_value": "$2.0B",
-   "avg_value_raw": 1980193238.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:APP",
-   "close": 390.91,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Applovin Corporation",
-   "returns": {
-    "1m": 0.4525,
-    "3m": 0.2393,
-    "6m": -0.1895
-   },
-   "risk_pct": 7.32,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 388.11,
-   "symbol": "APP",
-   "to_trigger_pct": 7.13,
-   "trigger": 418.77,
-   "vol_ratio": 0.48
-  },
-  {
-   "adr_pct": 9.02,
-   "avg_value": "$8.8M",
-   "avg_value_raw": 8774478.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:TLS",
-   "close": 7.41,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": true,
-    "6m": false
-   },
-   "name": "Telos Corporation",
-   "returns": {
-    "1m": 0.7727,
-    "3m": 0.6322,
-    "6m": 0.5833
-   },
-   "risk_pct": 12.63,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 6.95,
-   "symbol": "TLS",
-   "to_trigger_pct": 7.35,
-   "trigger": 7.95,
-   "vol_ratio": 0.63
-  },
-  {
-   "adr_pct": 5.67,
-   "avg_value": "$435.8M",
-   "avg_value_raw": 435797213.0,
+   "adr_pct": 5.72,
+   "avg_value": "$436.8M",
+   "avg_value_raw": 436793869.0,
    "chart": "https://www.tradingview.com/chart/?symbol=NYSE:GKOS",
-   "close": 233.08,
+   "close": 238.1,
    "flag": false,
    "leader": {
     "1m": true,
@@ -944,295 +221,133 @@
    },
    "name": "Glaukos Corporation",
    "returns": {
-    "1m": 0.396,
-    "3m": 0.2631,
-    "6m": 0.6206
+    "1m": 0.3729,
+    "3m": 0.2827,
+    "6m": 0.7126
    },
-   "risk_pct": 7.36,
+   "risk_pct": 7.58,
    "risk_wide": true,
    "setup_age": 0,
-   "stop": 232.16,
+   "stop": 231.61,
    "symbol": "GKOS",
-   "to_trigger_pct": 7.52,
+   "to_trigger_pct": 5.25,
    "trigger": 250.61,
-   "vol_ratio": 0.59
+   "vol_ratio": 0.38
   },
   {
-   "adr_pct": 6.03,
-   "avg_value": "$26.4M",
-   "avg_value_raw": 26359790.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:SMPL",
-   "close": 12.61,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "The Simply Good Foods Company",
-   "returns": {
-    "1m": 0.1464,
-    "3m": 0.1149,
-    "6m": 0.1279
-   },
-   "risk_pct": 8.99,
-   "risk_wide": true,
-   "setup_age": 1,
-   "stop": 12.35,
-   "symbol": "SMPL",
-   "to_trigger_pct": 7.61,
-   "trigger": 13.57,
-   "vol_ratio": 0.75
-  },
-  {
-   "adr_pct": 5.88,
-   "avg_value": "$4.2M",
-   "avg_value_raw": 4175613.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:SGHT",
-   "close": 10.77,
+   "adr_pct": 9.14,
+   "avg_value": "$9.2M",
+   "avg_value_raw": 9164173.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:TLS",
+   "close": 7.55,
    "flag": false,
    "leader": {
     "1m": true,
     "3m": true,
     "6m": false
    },
-   "name": "Sight Sciences, Inc.",
+   "name": "Telos Corporation",
    "returns": {
-    "1m": 0.3039,
-    "3m": 0.3231,
-    "6m": 1.216
+    "1m": 0.712,
+    "3m": 0.7198,
+    "6m": 0.6064
    },
-   "risk_pct": 9.96,
-   "risk_wide": true,
+   "risk_pct": 6.91,
+   "risk_wide": false,
    "setup_age": 1,
-   "stop": 10.44,
-   "symbol": "SGHT",
-   "to_trigger_pct": 7.66,
-   "trigger": 11.6,
-   "vol_ratio": 0.83
-  },
-  {
-   "adr_pct": 5.26,
-   "avg_value": "$37.6M",
-   "avg_value_raw": 37572504.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NYSE:REZI",
-   "close": 22.06,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Resideo Technologies, Inc.",
-   "returns": {
-    "1m": 0.3289,
-    "3m": 0.0761,
-    "6m": 0.0958
-   },
-   "risk_pct": 10.88,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 21.17,
-   "symbol": "REZI",
-   "to_trigger_pct": 7.66,
-   "trigger": 23.75,
-   "vol_ratio": 0.64
+   "stop": 7.41,
+   "symbol": "TLS",
+   "to_trigger_pct": 5.36,
+   "trigger": 7.95,
+   "vol_ratio": 0.93
   },
   {
    "adr_pct": 5.8,
-   "avg_value": "$41.4M",
-   "avg_value_raw": 41397245.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:PRCH",
-   "close": 20.76,
+   "avg_value": "$110.9M",
+   "avg_value_raw": 110898813.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:AXGN",
+   "close": 56.35,
    "flag": false,
    "leader": {
     "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "Axogen, Inc.",
+   "returns": {
+    "1m": 0.5579,
+    "3m": 0.1465,
+    "6m": 0.3641
+   },
+   "risk_pct": 6.13,
+   "risk_wide": true,
+   "setup_age": 0,
+   "stop": 56.06,
+   "symbol": "AXGN",
+   "to_trigger_pct": 5.98,
+   "trigger": 59.72,
+   "vol_ratio": 0.5
+  },
+  {
+   "adr_pct": 5.23,
+   "avg_value": "$3.2M",
+   "avg_value_raw": 3170497.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:AOUT",
+   "close": 18.54,
+   "flag": false,
+   "leader": {
+    "1m": false,
     "3m": true,
     "6m": false
    },
-   "name": "Porch Group, Inc.",
+   "name": "American Outdoor Brands, Inc.",
    "returns": {
-    "1m": 0.1762,
-    "3m": 0.1945,
-    "6m": 1.1314
+    "1m": 0.0375,
+    "3m": 0.5297,
+    "6m": 0.9193
    },
-   "risk_pct": 8.68,
+   "risk_pct": 6.47,
    "risk_wide": true,
    "setup_age": 0,
-   "stop": 20.42,
-   "symbol": "PRCH",
-   "to_trigger_pct": 7.71,
-   "trigger": 22.36,
-   "vol_ratio": 0.53
+   "stop": 18.38,
+   "symbol": "AOUT",
+   "to_trigger_pct": 5.99,
+   "trigger": 19.65,
+   "vol_ratio": 0.59
   },
   {
-   "adr_pct": 5.65,
-   "avg_value": "$29.6M",
-   "avg_value_raw": 29638701.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NYSE:PRKS",
-   "close": 40.54,
+   "adr_pct": 5.32,
+   "avg_value": "$80.7M",
+   "avg_value_raw": 80662507.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:KNSA",
+   "close": 93.54,
    "flag": false,
    "leader": {
     "1m": true,
     "3m": false,
     "6m": false
    },
-   "name": "United Parks & Resorts Inc.",
+   "name": "Kiniksa Pharmaceuticals International,…",
    "returns": {
-    "1m": 0.2559,
-    "3m": -0.0977,
-    "6m": 0.169
+    "1m": 0.1246,
+    "3m": 0.1813,
+    "6m": 0.7434
    },
-   "risk_pct": 11.51,
-   "risk_wide": true,
-   "setup_age": 1,
-   "stop": 38.8,
-   "symbol": "PRKS",
-   "to_trigger_pct": 8.14,
-   "trigger": 43.84,
-   "vol_ratio": 0.75
-  },
-  {
-   "adr_pct": 7.66,
-   "avg_value": "$9.0M",
-   "avg_value_raw": 8969632.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NYSE:BGS",
-   "close": 3.59,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "B&G Foods, Inc.",
-   "returns": {
-    "1m": 0.6318,
-    "3m": -0.0083,
-    "6m": -0.1222
-   },
-   "risk_pct": 8.74,
+   "risk_pct": 6.3,
    "risk_wide": true,
    "setup_age": 0,
-   "stop": 3.55,
-   "symbol": "BGS",
-   "to_trigger_pct": 8.36,
-   "trigger": 3.89,
-   "vol_ratio": 0.62
+   "stop": 93.05,
+   "symbol": "KNSA",
+   "to_trigger_pct": 6.17,
+   "trigger": 99.31,
+   "vol_ratio": 0.48
   },
   {
-   "adr_pct": 5.65,
-   "avg_value": "$18.6M",
-   "avg_value_raw": 18619553.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:AHCO",
-   "close": 7.37,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": true,
-    "6m": false
-   },
-   "name": "AdaptHealth Corp.",
-   "returns": {
-    "1m": 0.2534,
-    "3m": 0.2685,
-    "6m": -0.2968
-   },
-   "risk_pct": 8.88,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 7.28,
-   "symbol": "AHCO",
-   "to_trigger_pct": 8.48,
-   "trigger": 7.99,
-   "vol_ratio": 0.57
-  },
-  {
-   "adr_pct": 10.39,
-   "avg_value": "$4.1M",
-   "avg_value_raw": 4115515.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:ICMB",
-   "close": 1.06,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Investcorp Credit Management BDC, Inc.",
-   "returns": {
-    "1m": 0.7152,
-    "3m": 0.2634,
-    "6m": -0.2148
-   },
-   "risk_pct": 14.77,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 0.98,
-   "symbol": "ICMB",
-   "to_trigger_pct": 8.49,
-   "trigger": 1.15,
-   "vol_ratio": 0.17
-  },
-  {
-   "adr_pct": 6.47,
-   "avg_value": "$27.6M",
-   "avg_value_raw": 27604524.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:GDYN",
-   "close": 13.01,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": true,
-    "6m": false
-   },
-   "name": "Grid Dynamics Holdings, Inc.",
-   "returns": {
-    "1m": 0.6082,
-    "3m": 0.6787,
-    "6m": 0.8272
-   },
-   "risk_pct": 8.49,
-   "risk_wide": true,
-   "setup_age": 4,
-   "stop": 12.94,
-   "symbol": "GDYN",
-   "to_trigger_pct": 8.69,
-   "trigger": 14.14,
-   "vol_ratio": 1.1
-  },
-  {
-   "adr_pct": 5.89,
-   "avg_value": "$9.1M",
-   "avg_value_raw": 9105712.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:FLGT",
-   "close": 25.13,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Fulgent Genetics, Inc.",
-   "returns": {
-    "1m": 0.2502,
-    "3m": 0.354,
-    "6m": 0.5314
-   },
-   "risk_pct": 13.02,
-   "risk_wide": true,
-   "setup_age": 3,
-   "stop": 23.84,
-   "symbol": "FLGT",
-   "to_trigger_pct": 9.07,
-   "trigger": 27.41,
-   "vol_ratio": 1.02
-  },
-  {
-   "adr_pct": 5.92,
-   "avg_value": "$13.0M",
-   "avg_value_raw": 12977440.0,
+   "adr_pct": 6.01,
+   "avg_value": "$12.7M",
+   "avg_value_raw": 12714807.0,
    "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:KIDS",
-   "close": 31.65,
+   "close": 32.51,
    "flag": false,
    "leader": {
     "1m": true,
@@ -1241,79 +356,295 @@
    },
    "name": "OrthoPediatrics Corp.",
    "returns": {
-    "1m": 0.4367,
-    "3m": 0.2762,
-    "6m": 0.7108
+    "1m": 0.3834,
+    "3m": 0.3162,
+    "6m": 0.764
    },
-   "risk_pct": 8.95,
+   "risk_pct": 10.92,
    "risk_wide": true,
-   "setup_age": 2,
-   "stop": 31.44,
+   "setup_age": 3,
+   "stop": 30.76,
    "symbol": "KIDS",
-   "to_trigger_pct": 9.1,
+   "to_trigger_pct": 6.21,
    "trigger": 34.53,
-   "vol_ratio": 0.36
+   "vol_ratio": 0.47
   },
   {
-   "adr_pct": 5.79,
-   "avg_value": "$30.7M",
-   "avg_value_raw": 30740448.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:ARHS",
-   "close": 13.81,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": true,
-    "6m": true
-   },
-   "name": "Arhaus, Inc.",
-   "returns": {
-    "1m": 0.35,
-    "3m": 0.4077,
-    "6m": 1.3055
-   },
-   "risk_pct": 13.38,
-   "risk_wide": true,
-   "setup_age": 1,
-   "stop": 13.14,
-   "symbol": "ARHS",
-   "to_trigger_pct": 9.85,
-   "trigger": 15.17,
-   "vol_ratio": 0.84
-  },
-  {
-   "adr_pct": 5.89,
-   "avg_value": "$22.8M",
-   "avg_value_raw": 22755431.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:SIBN",
-   "close": 23.54,
+   "adr_pct": 5.18,
+   "avg_value": "$3.6M",
+   "avg_value_raw": 3601035.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:ASUR",
+   "close": 10.27,
    "flag": false,
    "leader": {
     "1m": true,
     "3m": false,
     "6m": false
    },
-   "name": "SI-BONE, Inc.",
+   "name": "Asure Software Inc",
    "returns": {
-    "1m": 0.1974,
-    "3m": 0.2435,
-    "6m": 0.5884
+    "1m": 0.4404,
+    "3m": 0.2373,
+    "6m": 0.1684
    },
-   "risk_pct": 12.31,
+   "risk_pct": 7.68,
    "risk_wide": true,
-   "setup_age": 2,
-   "stop": 22.73,
-   "symbol": "SIBN",
-   "to_trigger_pct": 10.11,
-   "trigger": 25.92,
+   "setup_age": 1,
+   "stop": 10.1,
+   "symbol": "ASUR",
+   "to_trigger_pct": 6.52,
+   "trigger": 10.94,
+   "vol_ratio": 0.75
+  },
+  {
+   "adr_pct": 5.48,
+   "avg_value": "$11.3M",
+   "avg_value_raw": 11295122.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NYSE:NVRI",
+   "close": 23.74,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "Enviri Corporation",
+   "returns": {
+    "1m": 0.1906,
+    "3m": 0.1353,
+    "6m": 0.1966
+   },
+   "risk_pct": 7.52,
+   "risk_wide": true,
+   "setup_age": 1,
+   "stop": 23.49,
+   "symbol": "NVRI",
+   "to_trigger_pct": 6.99,
+   "trigger": 25.4,
+   "vol_ratio": 1.18
+  },
+  {
+   "adr_pct": 5.4,
+   "avg_value": "$359.8M",
+   "avg_value_raw": 359829025.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:CHTR",
+   "close": 133.18,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "Charter Communications, Inc.",
+   "returns": {
+    "1m": 0.2104,
+    "3m": -0.0758,
+    "6m": -0.1056
+   },
+   "risk_pct": 7.03,
+   "risk_wide": true,
+   "setup_age": 1,
+   "stop": 132.58,
+   "symbol": "CHTR",
+   "to_trigger_pct": 7.07,
+   "trigger": 142.6,
+   "vol_ratio": 0.89
+  },
+  {
+   "adr_pct": 6.01,
+   "avg_value": "$9.3M",
+   "avg_value_raw": 9285321.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:CLMB",
+   "close": 41.89,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": true,
+    "6m": false
+   },
+   "name": "Climb Global Solutions, Inc.",
+   "returns": {
+    "1m": 0.3405,
+    "3m": 0.5047,
+    "6m": 1.0207
+   },
+   "risk_pct": 7.02,
+   "risk_wide": true,
+   "setup_age": 4,
+   "stop": 41.74,
+   "symbol": "CLMB",
+   "to_trigger_pct": 7.16,
+   "trigger": 44.89,
+   "vol_ratio": 0.74
+  },
+  {
+   "adr_pct": 8.42,
+   "avg_value": "$32.8M",
+   "avg_value_raw": 32752326.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:ULCC",
+   "close": 7.94,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "Frontier Group Holdings, Inc.",
+   "returns": {
+    "1m": 0.6204,
+    "3m": 0.2504,
+    "6m": 0.627
+   },
+   "risk_pct": 7.97,
+   "risk_wide": false,
+   "setup_age": 4,
+   "stop": 7.85,
+   "symbol": "ULCC",
+   "to_trigger_pct": 7.43,
+   "trigger": 8.53,
    "vol_ratio": 1.17
   },
   {
-   "adr_pct": 5.55,
-   "avg_value": "$20.2M",
-   "avg_value_raw": 20175998.0,
+   "adr_pct": 5.02,
+   "avg_value": "$10.2M",
+   "avg_value_raw": 10167137.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:GLIBK",
+   "close": 26.94,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "Liberty Capital Corporation",
+   "returns": {
+    "1m": 0.3215,
+    "3m": 0.0538,
+    "6m": 0.0444
+   },
+   "risk_pct": 8.44,
+   "risk_wide": true,
+   "setup_age": 1,
+   "stop": 26.64,
+   "symbol": "GLIBK",
+   "to_trigger_pct": 7.96,
+   "trigger": 29.09,
+   "vol_ratio": 0.75
+  },
+  {
+   "adr_pct": 5.15,
+   "avg_value": "$81.3M",
+   "avg_value_raw": 81270320.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NYSE:BMI",
+   "close": 154.54,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "Badger Meter, Inc.",
+   "returns": {
+    "1m": 0.1979,
+    "3m": 0.2008,
+    "6m": 0.2853
+   },
+   "risk_pct": 8.22,
+   "risk_wide": true,
+   "setup_age": 3,
+   "stop": 153.14,
+   "symbol": "BMI",
+   "to_trigger_pct": 7.97,
+   "trigger": 166.86,
+   "vol_ratio": 0.37
+  },
+  {
+   "adr_pct": 5.31,
+   "avg_value": "$24.2M",
+   "avg_value_raw": 24222379.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NYSE:DIN",
+   "close": 36.59,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "Dine Brands Global, Inc.",
+   "returns": {
+    "1m": 0.1377,
+    "3m": 0.0457,
+    "6m": 0.2068
+   },
+   "risk_pct": 7.79,
+   "risk_wide": true,
+   "setup_age": 0,
+   "stop": 36.56,
+   "symbol": "DIN",
+   "to_trigger_pct": 8.36,
+   "trigger": 39.65,
+   "vol_ratio": 0.53
+  },
+  {
+   "adr_pct": 5.14,
+   "avg_value": "$15.7M",
+   "avg_value_raw": 15683237.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:TRUP",
+   "close": 35.87,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "Trupanion, Inc.",
+   "returns": {
+    "1m": 0.2472,
+    "3m": 0.1961,
+    "6m": 0.6416
+   },
+   "risk_pct": 10.65,
+   "risk_wide": true,
+   "setup_age": 4,
+   "stop": 34.73,
+   "symbol": "TRUP",
+   "to_trigger_pct": 8.36,
+   "trigger": 38.87,
+   "vol_ratio": 0.97
+  },
+  {
+   "adr_pct": 5.08,
+   "avg_value": "$12.9M",
+   "avg_value_raw": 12946069.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:MNKD",
+   "close": 3.95,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "MannKind Corporation",
+   "returns": {
+    "1m": 0.2742,
+    "3m": 0.0128,
+    "6m": 0.1934
+   },
+   "risk_pct": 9.44,
+   "risk_wide": true,
+   "setup_age": 1,
+   "stop": 3.88,
+   "symbol": "MNKD",
+   "to_trigger_pct": 8.61,
+   "trigger": 4.29,
+   "vol_ratio": 1.22
+  },
+  {
+   "adr_pct": 5.43,
+   "avg_value": "$20.7M",
+   "avg_value_raw": 20681492.0,
    "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:EVER",
-   "close": 28.33,
+   "close": 28.67,
    "flag": false,
    "leader": {
     "1m": true,
@@ -1322,700 +653,160 @@
    },
    "name": "EverQuote, Inc.",
    "returns": {
-    "1m": 0.2761,
-    "3m": 0.1601,
-    "6m": 0.5142
+    "1m": 0.2619,
+    "3m": 0.2123,
+    "6m": 0.5389
    },
-   "risk_pct": 12.5,
+   "risk_pct": 9.87,
    "risk_wide": true,
-   "setup_age": 1,
-   "stop": 27.3,
+   "setup_age": 2,
+   "stop": 28.12,
    "symbol": "EVER",
-   "to_trigger_pct": 10.13,
+   "to_trigger_pct": 8.82,
    "trigger": 31.2,
-   "vol_ratio": 0.78
+   "vol_ratio": 1.27
   },
   {
-   "adr_pct": 5.77,
-   "avg_value": "$45.4M",
-   "avg_value_raw": 45404769.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NYSE:ENOV",
-   "close": 27.1,
+   "adr_pct": 5.87,
+   "avg_value": "$23.1M",
+   "avg_value_raw": 23073423.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:SIBN",
+   "close": 23.75,
    "flag": false,
    "leader": {
     "1m": true,
     "3m": false,
     "6m": false
    },
-   "name": "Enovis Corporation",
+   "name": "SI-BONE, Inc.",
    "returns": {
-    "1m": 0.3639,
-    "3m": 0.0399,
-    "6m": 0.0242
+    "1m": 0.1563,
+    "3m": 0.2707,
+    "6m": 0.6036
    },
-   "risk_pct": 11.29,
+   "risk_pct": 10.34,
    "risk_wide": true,
-   "setup_age": 1,
-   "stop": 26.51,
-   "symbol": "ENOV",
-   "to_trigger_pct": 10.3,
-   "trigger": 29.89,
-   "vol_ratio": 0.48
+   "setup_age": 3,
+   "stop": 23.24,
+   "symbol": "SIBN",
+   "to_trigger_pct": 9.14,
+   "trigger": 25.92,
+   "vol_ratio": 0.77
   },
   {
-   "adr_pct": 9.59,
-   "avg_value": "$4.6M",
-   "avg_value_raw": 4617860.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:ALEC",
-   "close": 2.57,
+   "adr_pct": 5.85,
+   "avg_value": "$4.3M",
+   "avg_value_raw": 4276847.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:SGHT",
+   "close": 10.62,
    "flag": false,
    "leader": {
     "1m": true,
     "3m": true,
     "6m": false
    },
-   "name": "Alector, Inc.",
+   "name": "Sight Sciences, Inc.",
    "returns": {
-    "1m": 0.3179,
-    "3m": 0.3112,
-    "6m": 0.2123
+    "1m": 0.232,
+    "3m": 0.2888,
+    "6m": 1.0661
    },
-   "risk_pct": 11.62,
+   "risk_pct": 11.08,
    "risk_wide": true,
-   "setup_age": 1,
-   "stop": 2.51,
-   "symbol": "ALEC",
-   "to_trigger_pct": 10.51,
-   "trigger": 2.84,
-   "vol_ratio": 1.09
-  },
-  {
-   "adr_pct": 5.95,
-   "avg_value": "$18.0M",
-   "avg_value_raw": 17951190.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NYSE:MAX",
-   "close": 14.16,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "MediaAlpha, Inc.",
-   "returns": {
-    "1m": 0.2531,
-    "3m": 0.0752,
-    "6m": 0.6938
-   },
-   "risk_pct": 11.37,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 13.9,
-   "symbol": "MAX",
-   "to_trigger_pct": 10.73,
-   "trigger": 15.68,
-   "vol_ratio": 0.64
-  },
-  {
-   "adr_pct": 5.81,
-   "avg_value": "$627.9M",
-   "avg_value_raw": 627855019.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NYSE:U",
-   "close": 48.96,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Unity Software Inc.",
-   "returns": {
-    "1m": 0.2065,
-    "3m": 0.0586,
-    "6m": 0.8666
-   },
-   "risk_pct": 9.95,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 48.86,
-   "symbol": "U",
-   "to_trigger_pct": 10.84,
-   "trigger": 54.26,
-   "vol_ratio": 0.56
-  },
-  {
-   "adr_pct": 5.8,
-   "avg_value": "$25.6M",
-   "avg_value_raw": 25583087.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:FWRG",
-   "close": 12.72,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "First Watch Restaurant Group, Inc.",
-   "returns": {
-    "1m": 0.0461,
-    "3m": 0.0,
-    "6m": 0.1595
-   },
-   "risk_pct": 9.96,
-   "risk_wide": true,
-   "setup_age": 4,
-   "stop": 12.7,
-   "symbol": "FWRG",
-   "to_trigger_pct": 10.89,
-   "trigger": 14.1,
-   "vol_ratio": 0.78
-  },
-  {
-   "adr_pct": 5.78,
-   "avg_value": "$83.4M",
-   "avg_value_raw": 83390214.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NYSE:FIGS",
-   "close": 21.4,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": true,
-    "6m": false
-   },
-   "name": "FIGS, Inc.",
-   "returns": {
-    "1m": 0.1003,
-    "3m": 0.4568,
-    "6m": 0.7584
-   },
-   "risk_pct": 12.06,
-   "risk_wide": true,
-   "setup_age": 1,
-   "stop": 20.9,
-   "symbol": "FIGS",
-   "to_trigger_pct": 11.05,
-   "trigger": 23.76,
-   "vol_ratio": 0.74
-  },
-  {
-   "adr_pct": 5.7,
-   "avg_value": "$66.9M",
-   "avg_value_raw": 66934896.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NYSE:KD",
-   "close": 15.63,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Kyndryl Holdings, Inc.",
-   "returns": {
-    "1m": 0.177,
-    "3m": 0.1868,
-    "6m": 0.2885
-   },
-   "risk_pct": 10.44,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 15.57,
-   "symbol": "KD",
-   "to_trigger_pct": 11.26,
-   "trigger": 17.39,
-   "vol_ratio": 0.46
-  },
-  {
-   "adr_pct": 6.54,
-   "avg_value": "$14.7M",
-   "avg_value_raw": 14694385.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:PTLO",
-   "close": 6.49,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": true,
-    "6m": false
-   },
-   "name": "Portillo's Inc.",
-   "returns": {
-    "1m": 0.3987,
-    "3m": 0.2578,
-    "6m": 0.6641
-   },
-   "risk_pct": 11.01,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 6.43,
-   "symbol": "PTLO",
-   "to_trigger_pct": 11.37,
-   "trigger": 7.23,
-   "vol_ratio": 0.64
-  },
-  {
-   "adr_pct": 8.89,
-   "avg_value": "$3.1M",
-   "avg_value_raw": 3094474.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:VNCE",
-   "close": 12.47,
-   "flag": false,
-   "leader": {
-    "1m": false,
-    "3m": true,
-    "6m": true
-   },
-   "name": "Vince Holding Corp.",
-   "returns": {
-    "1m": 0.0444,
-    "3m": 0.9794,
-    "6m": 1.9068
-   },
-   "risk_pct": 13.96,
-   "risk_wide": true,
-   "setup_age": 1,
-   "stop": 11.96,
-   "symbol": "VNCE",
-   "to_trigger_pct": 11.47,
-   "trigger": 13.9,
+   "setup_age": 2,
+   "stop": 10.31,
+   "symbol": "SGHT",
+   "to_trigger_pct": 9.18,
+   "trigger": 11.6,
    "vol_ratio": 0.92
   },
   {
-   "adr_pct": 6.5,
-   "avg_value": "$107.1M",
-   "avg_value_raw": 107138570.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NYSE:HRI",
-   "close": 157.38,
+   "adr_pct": 5.23,
+   "avg_value": "$7.6M",
+   "avg_value_raw": 7632760.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NYSE:VLRS",
+   "close": 8.09,
    "flag": false,
    "leader": {
     "1m": true,
     "3m": false,
     "6m": false
    },
-   "name": "Herc Holdings Inc.",
+   "name": "Controladora Vuela Compania de Aviacion…",
    "returns": {
-    "1m": 0.2645,
-    "3m": -0.093,
-    "6m": 0.1867
+    "1m": 0.4293,
+    "3m": 0.0645,
+    "6m": 0.1624
    },
-   "risk_pct": 11.33,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 155.59,
-   "symbol": "HRI",
-   "to_trigger_pct": 11.49,
-   "trigger": 175.47,
-   "vol_ratio": 0.43
-  },
-  {
-   "adr_pct": 5.13,
-   "avg_value": "$21.5M",
-   "avg_value_raw": 21538209.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NYSE:WGO",
-   "close": 31.48,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Winnebago Industries, Inc.",
-   "returns": {
-    "1m": 0.3886,
-    "3m": -0.0022,
-    "6m": 0.0792
-   },
-   "risk_pct": 13.33,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 30.44,
-   "symbol": "WGO",
-   "to_trigger_pct": 11.56,
-   "trigger": 35.12,
-   "vol_ratio": 0.5
-  },
-  {
-   "adr_pct": 5.45,
-   "avg_value": "$24.7M",
-   "avg_value_raw": 24692500.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:STGW",
-   "close": 10.95,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Stagwell Inc.",
-   "returns": {
-    "1m": 0.2235,
-    "3m": 0.2007,
-    "6m": 0.7605
-   },
-   "risk_pct": 10.97,
+   "risk_pct": 9.1,
    "risk_wide": true,
    "setup_age": 1,
-   "stop": 10.91,
-   "symbol": "STGW",
-   "to_trigger_pct": 11.96,
-   "trigger": 12.26,
-   "vol_ratio": 0.71
+   "stop": 8.05,
+   "symbol": "VLRS",
+   "to_trigger_pct": 9.39,
+   "trigger": 8.85,
+   "vol_ratio": 0.72
   },
   {
-   "adr_pct": 6.49,
-   "avg_value": "$14.1M",
-   "avg_value_raw": 14099827.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:TREE",
-   "close": 36.44,
+   "adr_pct": 6.13,
+   "avg_value": "$3.7M",
+   "avg_value_raw": 3720534.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:PLTK",
+   "close": 2.51,
    "flag": false,
    "leader": {
     "1m": true,
     "3m": false,
     "6m": false
    },
-   "name": "LendingTree, Inc.",
+   "name": "Playtika Holding Corp.",
    "returns": {
-    "1m": 0.4358,
-    "3m": 0.1181,
-    "6m": -0.022
+    "1m": 0.2067,
+    "3m": 0.1106,
+    "6m": -0.2725
    },
-   "risk_pct": 16.52,
+   "risk_pct": 11.82,
    "risk_wide": true,
-   "setup_age": 3,
-   "stop": 34.06,
-   "symbol": "TREE",
-   "to_trigger_pct": 11.96,
-   "trigger": 40.8,
-   "vol_ratio": 1.12
+   "setup_age": 1,
+   "stop": 2.42,
+   "symbol": "PLTK",
+   "to_trigger_pct": 9.56,
+   "trigger": 2.75,
+   "vol_ratio": 0.79
   },
   {
-   "adr_pct": 6.04,
-   "avg_value": "$28.9M",
-   "avg_value_raw": 28852840.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:CNXC",
-   "close": 30.27,
+   "adr_pct": 5.59,
+   "avg_value": "$24.4M",
+   "avg_value_raw": 24407775.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NYSE:BOBS",
+   "close": 19.82,
    "flag": false,
    "leader": {
     "1m": true,
     "3m": false,
     "6m": false
    },
-   "name": "Concentrix Corporation",
+   "name": "Bob's Discount Furniture, Inc.",
    "returns": {
-    "1m": 0.0726,
-    "3m": 0.236,
-    "6m": 0.2157
+    "1m": 0.3048,
+    "3m": 0.0807,
+    "6m": 0.7057
    },
-   "risk_pct": 12.0,
+   "risk_pct": 10.02,
    "risk_wide": true,
    "setup_age": 2,
-   "stop": 29.86,
-   "symbol": "CNXC",
-   "to_trigger_pct": 12.09,
-   "trigger": 33.93,
-   "vol_ratio": 0.7
+   "stop": 19.57,
+   "symbol": "BOBS",
+   "to_trigger_pct": 9.74,
+   "trigger": 21.75,
+   "vol_ratio": 1.38
   },
   {
-   "adr_pct": 7.56,
-   "avg_value": "$92.8M",
-   "avg_value_raw": 92756922.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:SEZL",
-   "close": 158.58,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Sezzle Inc.",
-   "returns": {
-    "1m": 0.2384,
-    "3m": 0.2297,
-    "6m": 0.5113
-   },
-   "risk_pct": 13.95,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 153.65,
-   "symbol": "SEZL",
-   "to_trigger_pct": 12.59,
-   "trigger": 178.55,
-   "vol_ratio": 0.51
-  },
-  {
-   "adr_pct": 6.72,
-   "avg_value": "$10.4M",
-   "avg_value_raw": 10387848.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:CMCO",
-   "close": 19.66,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Columbus McKinnon Corporation",
-   "returns": {
-    "1m": 0.3466,
-    "3m": 0.0213,
-    "6m": 0.3806
-   },
-   "risk_pct": 12.87,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 19.29,
-   "symbol": "CMCO",
-   "to_trigger_pct": 12.61,
-   "trigger": 22.14,
-   "vol_ratio": 0.66
-  },
-  {
-   "adr_pct": 5.47,
-   "avg_value": "$31.8M",
-   "avg_value_raw": 31834296.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:CERT",
-   "close": 11.18,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": true,
-    "6m": true
-   },
-   "name": "Certara, Inc.",
-   "returns": {
-    "1m": 0.1831,
-    "3m": 0.3975,
-    "6m": 1.394
-   },
-   "risk_pct": 12.77,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 11.0,
-   "symbol": "CERT",
-   "to_trigger_pct": 12.79,
-   "trigger": 12.61,
-   "vol_ratio": 0.63
-  },
-  {
-   "adr_pct": 5.76,
-   "avg_value": "$91.2M",
-   "avg_value_raw": 91230862.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NYSE:MIR",
-   "close": 17.43,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Mirion Technologies, Inc.",
-   "returns": {
-    "1m": 0.1674,
-    "3m": 0.0969,
-    "6m": -0.0338
-   },
-   "risk_pct": 15.33,
-   "risk_wide": true,
-   "setup_age": 2,
-   "stop": 16.66,
-   "symbol": "MIR",
-   "to_trigger_pct": 12.85,
-   "trigger": 19.67,
-   "vol_ratio": 0.94
-  },
-  {
-   "adr_pct": 6.51,
-   "avg_value": "$10.4M",
-   "avg_value_raw": 10372759.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:SGMT",
-   "close": 10.11,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": true,
-    "6m": false
-   },
-   "name": "Sagimet Biosciences Inc.",
-   "returns": {
-    "1m": 0.1411,
-    "3m": -0.0417,
-    "6m": 0.5203
-   },
-   "risk_pct": 14.25,
-   "risk_wide": true,
-   "setup_age": 3,
-   "stop": 9.81,
-   "symbol": "SGMT",
-   "to_trigger_pct": 13.16,
-   "trigger": 11.44,
-   "vol_ratio": 0.9
-  },
-  {
-   "adr_pct": 5.28,
-   "avg_value": "$61.4M",
-   "avg_value_raw": 61439936.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NYSE:JMKE",
-   "close": 18.59,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Jersey Mike's Subs Inc.",
-   "returns": {
-    "1m": 0.0497,
-    "3m": -0.1611,
-    "6m": null
-   },
-   "risk_pct": 12.43,
-   "risk_wide": true,
-   "setup_age": 1,
-   "stop": 18.53,
-   "symbol": "JMKE",
-   "to_trigger_pct": 13.82,
-   "trigger": 21.16,
-   "vol_ratio": 0.58
-  },
-  {
-   "adr_pct": 8.62,
-   "avg_value": "$9.0M",
-   "avg_value_raw": 9029521.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NYSE:CLVT",
-   "close": 2.16,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Clarivate Plc",
-   "returns": {
-    "1m": 0.2273,
-    "3m": 0.1192,
-    "6m": -0.122
-   },
-   "risk_pct": 16.06,
-   "risk_wide": true,
-   "setup_age": 1,
-   "stop": 2.07,
-   "symbol": "CLVT",
-   "to_trigger_pct": 13.89,
-   "trigger": 2.46,
-   "vol_ratio": 0.91
-  },
-  {
-   "adr_pct": 5.58,
-   "avg_value": "$15.2M",
-   "avg_value_raw": 15247812.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:DCTH",
-   "close": 19.7,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Delcath Systems, Inc.",
-   "returns": {
-    "1m": 0.3709,
-    "3m": 0.1775,
-    "6m": 0.7542
-   },
-   "risk_pct": 14.66,
-   "risk_wide": true,
-   "setup_age": 1,
-   "stop": 19.21,
-   "symbol": "DCTH",
-   "to_trigger_pct": 14.26,
-   "trigger": 22.51,
-   "vol_ratio": 0.74
-  },
-  {
-   "adr_pct": 5.39,
-   "avg_value": "$87.2M",
-   "avg_value_raw": 87199186.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NYSE:ESAB",
-   "close": 79.09,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "ESAB Corporation",
-   "returns": {
-    "1m": 0.226,
-    "3m": -0.0674,
-    "6m": -0.126
-   },
-   "risk_pct": 14.24,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 77.62,
-   "symbol": "ESAB",
-   "to_trigger_pct": 14.44,
-   "trigger": 90.51,
-   "vol_ratio": 0.47
-  },
-  {
-   "adr_pct": 6.74,
-   "avg_value": "$83.1M",
-   "avg_value_raw": 83055964.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:KOD",
-   "close": 97.81,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": true,
-    "6m": true
-   },
-   "name": "Kodiak Sciences Inc",
-   "returns": {
-    "1m": 0.0707,
-    "3m": 1.3654,
-    "6m": 1.7004
-   },
-   "risk_pct": 14.9,
-   "risk_wide": true,
-   "setup_age": 4,
-   "stop": 95.58,
-   "symbol": "KOD",
-   "to_trigger_pct": 14.82,
-   "trigger": 112.31,
-   "vol_ratio": 0.88
-  },
-  {
-   "adr_pct": 6.25,
-   "avg_value": "$229.6M",
-   "avg_value_raw": 229599215.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:WING",
-   "close": 155.79,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Wingstop Inc.",
-   "returns": {
-    "1m": 0.1736,
-    "3m": 0.2353,
-    "6m": 0.2159
-   },
-   "risk_pct": 19.24,
-   "risk_wide": true,
-   "setup_age": 3,
-   "stop": 144.63,
-   "symbol": "WING",
-   "to_trigger_pct": 14.96,
-   "trigger": 179.09,
-   "vol_ratio": 0.92
-  },
-  {
-   "adr_pct": 8.06,
-   "avg_value": "$3.2M",
-   "avg_value_raw": 3249127.0,
+   "adr_pct": 8.16,
+   "avg_value": "$3.3M",
+   "avg_value_raw": 3314038.0,
    "chart": "https://www.tradingview.com/chart/?symbol=NYSE:UIS",
-   "close": 2.59,
+   "close": 2.71,
    "flag": false,
    "leader": {
     "1m": true,
@@ -2024,45 +815,990 @@
    },
    "name": "Unisys Corporation",
    "returns": {
-    "1m": 0.1562,
-    "3m": -0.0944,
-    "6m": -0.1279
+    "1m": 0.2207,
+    "3m": -0.0321,
+    "6m": -0.0557
    },
-   "risk_pct": 18.79,
+   "risk_pct": 14.09,
    "risk_wide": true,
-   "setup_age": 3,
-   "stop": 2.42,
+   "setup_age": 4,
+   "stop": 2.56,
    "symbol": "UIS",
-   "to_trigger_pct": 15.06,
+   "to_trigger_pct": 9.96,
    "trigger": 2.98,
-   "vol_ratio": 1.25
+   "vol_ratio": 0.91
   },
   {
-   "adr_pct": 5.67,
-   "avg_value": "$3.7M",
-   "avg_value_raw": 3673004.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NYSE:TBI",
-   "close": 11.8,
+   "adr_pct": 7.98,
+   "avg_value": "$8.1M",
+   "avg_value_raw": 8109620.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:SRZN",
+   "close": 30.67,
    "flag": false,
    "leader": {
     "1m": true,
     "3m": true,
     "6m": false
    },
-   "name": "TrueBlue, Inc.",
+   "name": "Surrozen, Inc.",
    "returns": {
-    "1m": 0.4479,
-    "3m": 0.1535,
-    "6m": 1.1691
+    "1m": 0.22,
+    "3m": 0.2897,
+    "6m": 0.1322
    },
-   "risk_pct": 14.57,
+   "risk_pct": 11.13,
+   "risk_wide": true,
+   "setup_age": 4,
+   "stop": 30.0,
+   "symbol": "SRZN",
+   "to_trigger_pct": 10.04,
+   "trigger": 33.75,
+   "vol_ratio": 0.32
+  },
+  {
+   "adr_pct": 6.64,
+   "avg_value": "$6.1M",
+   "avg_value_raw": 6116996.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:JACK",
+   "close": 13.8,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "Jack In The Box Inc.",
+   "returns": {
+    "1m": 0.1424,
+    "3m": -0.193,
+    "6m": 0.2159
+   },
+   "risk_pct": 10.96,
+   "risk_wide": true,
+   "setup_age": 2,
+   "stop": 13.52,
+   "symbol": "JACK",
+   "to_trigger_pct": 10.07,
+   "trigger": 15.19,
+   "vol_ratio": 1.22
+  },
+  {
+   "adr_pct": 7.03,
+   "avg_value": "$26.8M",
+   "avg_value_raw": 26797733.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:BLMN",
+   "close": 10.23,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "Bloomin' Brands, Inc.",
+   "returns": {
+    "1m": -0.0106,
+    "3m": -0.043,
+    "6m": 0.32
+   },
+   "risk_pct": 9.53,
+   "risk_wide": true,
+   "setup_age": 4,
+   "stop": 10.2,
+   "symbol": "BLMN",
+   "to_trigger_pct": 10.26,
+   "trigger": 11.28,
+   "vol_ratio": 1.0
+  },
+  {
+   "adr_pct": 5.63,
+   "avg_value": "$18.6M",
+   "avg_value_raw": 18564968.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:AHCO",
+   "close": 7.25,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": true,
+    "6m": false
+   },
+   "name": "AdaptHealth Corp.",
+   "returns": {
+    "1m": 0.1885,
+    "3m": 0.2478,
+    "6m": -0.3115
+   },
+   "risk_pct": 10.69,
+   "risk_wide": true,
+   "setup_age": 0,
+   "stop": 7.14,
+   "symbol": "AHCO",
+   "to_trigger_pct": 10.28,
+   "trigger": 7.99,
+   "vol_ratio": 0.63
+  },
+  {
+   "adr_pct": 5.79,
+   "avg_value": "$2.0B",
+   "avg_value_raw": 2006887620.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:APP",
+   "close": 379.02,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "Applovin Corporation",
+   "returns": {
+    "1m": 0.3911,
+    "3m": 0.2149,
+    "6m": -0.2199
+   },
+   "risk_pct": 9.89,
+   "risk_wide": true,
+   "setup_age": 0,
+   "stop": 377.33,
+   "symbol": "APP",
+   "to_trigger_pct": 10.49,
+   "trigger": 418.77,
+   "vol_ratio": 0.56
+  },
+  {
+   "adr_pct": 5.91,
+   "avg_value": "$9.2M",
+   "avg_value_raw": 9171409.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:FLGT",
+   "close": 24.78,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "Fulgent Genetics, Inc.",
+   "returns": {
+    "1m": 0.2189,
+    "3m": 0.328,
+    "6m": 0.4258
+   },
+   "risk_pct": 10.11,
+   "risk_wide": true,
+   "setup_age": 4,
+   "stop": 24.64,
+   "symbol": "FLGT",
+   "to_trigger_pct": 10.61,
+   "trigger": 27.41,
+   "vol_ratio": 0.7
+  },
+  {
+   "adr_pct": 7.46,
+   "avg_value": "$14.8M",
+   "avg_value_raw": 14785586.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:AVLN",
+   "close": 28.7,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "Avalyn Pharma Inc.",
+   "returns": {
+    "1m": 0.1652,
+    "3m": -0.2497,
+    "6m": 0.0102
+   },
+   "risk_pct": 15.25,
    "risk_wide": true,
    "setup_age": 3,
-   "stop": 11.61,
-   "symbol": "TBI",
+   "stop": 27.01,
+   "symbol": "AVLN",
+   "to_trigger_pct": 11.05,
+   "trigger": 31.87,
+   "vol_ratio": 0.84
+  },
+  {
+   "adr_pct": 5.68,
+   "avg_value": "$30.2M",
+   "avg_value_raw": 30204001.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NYSE:PRKS",
+   "close": 39.23,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "United Parks & Resorts Inc.",
+   "returns": {
+    "1m": 0.2352,
+    "3m": -0.1174,
+    "6m": 0.0861
+   },
+   "risk_pct": 12.18,
+   "risk_wide": true,
+   "setup_age": 2,
+   "stop": 38.5,
+   "symbol": "PRKS",
+   "to_trigger_pct": 11.75,
+   "trigger": 43.84,
+   "vol_ratio": 1.37
+  },
+  {
+   "adr_pct": 5.87,
+   "avg_value": "$41.2M",
+   "avg_value_raw": 41222625.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:PRCH",
+   "close": 19.96,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": true,
+    "6m": false
+   },
+   "name": "Porch Group, Inc.",
+   "returns": {
+    "1m": 0.0979,
+    "3m": 0.1909,
+    "6m": 1.0493
+   },
+   "risk_pct": 10.96,
+   "risk_wide": true,
+   "setup_age": 0,
+   "stop": 19.91,
+   "symbol": "PRCH",
+   "to_trigger_pct": 12.02,
+   "trigger": 22.36,
+   "vol_ratio": 0.65
+  },
+  {
+   "adr_pct": 5.36,
+   "avg_value": "$38.0M",
+   "avg_value_raw": 38012235.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NYSE:REZI",
+   "close": 21.19,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "Resideo Technologies, Inc.",
+   "returns": {
+    "1m": 0.2414,
+    "3m": 0.0266,
+    "6m": 0.0496
+   },
+   "risk_pct": 11.2,
+   "risk_wide": true,
+   "setup_age": 1,
+   "stop": 21.09,
+   "symbol": "REZI",
+   "to_trigger_pct": 12.08,
+   "trigger": 23.75,
+   "vol_ratio": 0.7
+  },
+  {
+   "adr_pct": 6.45,
+   "avg_value": "$56.3M",
+   "avg_value_raw": 56255542.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:APPN",
+   "close": 50.97,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": true,
+    "6m": true
+   },
+   "name": "Appian Corporation",
+   "returns": {
+    "1m": 0.1451,
+    "3m": 0.46,
+    "6m": 1.4111
+   },
+   "risk_pct": 11.11,
+   "risk_wide": true,
+   "setup_age": 1,
+   "stop": 50.9,
+   "symbol": "APPN",
+   "to_trigger_pct": 12.34,
+   "trigger": 57.26,
+   "vol_ratio": 1.0
+  },
+  {
+   "adr_pct": 5.86,
+   "avg_value": "$18.1M",
+   "avg_value_raw": 18050528.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NYSE:MAX",
+   "close": 13.84,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "MediaAlpha, Inc.",
+   "returns": {
+    "1m": 0.1739,
+    "3m": 0.0906,
+    "6m": 0.6735
+   },
+   "risk_pct": 13.39,
+   "risk_wide": true,
+   "setup_age": 1,
+   "stop": 13.58,
+   "symbol": "MAX",
+   "to_trigger_pct": 13.29,
+   "trigger": 15.68,
+   "vol_ratio": 0.71
+  },
+  {
+   "adr_pct": 6.1,
+   "avg_value": "$26.3M",
+   "avg_value_raw": 26315599.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:SMPL",
+   "close": 11.97,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "The Simply Good Foods Company",
+   "returns": {
+    "1m": 0.0892,
+    "3m": 0.1042,
+    "6m": 0.0319
+   },
+   "risk_pct": 12.64,
+   "risk_wide": true,
+   "setup_age": 2,
+   "stop": 11.85,
+   "symbol": "SMPL",
+   "to_trigger_pct": 13.37,
+   "trigger": 13.57,
+   "vol_ratio": 0.82
+  },
+  {
+   "adr_pct": 5.58,
+   "avg_value": "$65.8M",
+   "avg_value_raw": 65839548.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NYSE:KD",
+   "close": 15.33,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "Kyndryl Holdings, Inc.",
+   "returns": {
+    "1m": 0.1037,
+    "3m": 0.2052,
+    "6m": 0.2701
+   },
+   "risk_pct": 12.87,
+   "risk_wide": true,
+   "setup_age": 1,
+   "stop": 15.15,
+   "symbol": "KD",
+   "to_trigger_pct": 13.44,
+   "trigger": 17.39,
+   "vol_ratio": 0.67
+  },
+  {
+   "adr_pct": 10.32,
+   "avg_value": "$4.1M",
+   "avg_value_raw": 4146264.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:ICMB",
+   "close": 1.01,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "Investcorp Credit Management BDC, Inc.",
+   "returns": {
+    "1m": 0.616,
+    "3m": 0.2198,
+    "6m": -0.2681
+   },
+   "risk_pct": 13.83,
+   "risk_wide": true,
+   "setup_age": 0,
+   "stop": 0.99,
+   "symbol": "ICMB",
+   "to_trigger_pct": 13.86,
+   "trigger": 1.15,
+   "vol_ratio": 0.16
+  },
+  {
+   "adr_pct": 5.85,
+   "avg_value": "$45.0M",
+   "avg_value_raw": 45048516.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NYSE:ENOV",
+   "close": 26.23,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "Enovis Corporation",
+   "returns": {
+    "1m": 0.2678,
+    "3m": 0.0602,
+    "6m": 0.0667
+   },
+   "risk_pct": 13.13,
+   "risk_wide": true,
+   "setup_age": 2,
+   "stop": 25.97,
+   "symbol": "ENOV",
+   "to_trigger_pct": 13.95,
+   "trigger": 29.89,
+   "vol_ratio": 0.43
+  },
+  {
+   "adr_pct": 5.45,
+   "avg_value": "$35.3M",
+   "avg_value_raw": 35260057.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:AMPL",
+   "close": 16.54,
+   "flag": false,
+   "leader": {
+    "1m": false,
+    "3m": true,
+    "6m": true
+   },
+   "name": "Amplitude, Inc.",
+   "returns": {
+    "1m": 0.0535,
+    "3m": 0.3117,
+    "6m": 1.5368
+   },
+   "risk_pct": 12.63,
+   "risk_wide": true,
+   "setup_age": 4,
+   "stop": 16.47,
+   "symbol": "AMPL",
+   "to_trigger_pct": 13.97,
+   "trigger": 18.85,
+   "vol_ratio": 1.03
+  },
+  {
+   "adr_pct": 7.14,
+   "avg_value": "$61.0M",
+   "avg_value_raw": 60982500.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NYSE:SG",
+   "close": 12.18,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": true,
+    "6m": false
+   },
+   "name": "Sweetgreen, Inc.",
+   "returns": {
+    "1m": 0.1415,
+    "3m": 1.0714,
+    "6m": 0.3563
+   },
+   "risk_pct": 12.56,
+   "risk_wide": true,
+   "setup_age": 2,
+   "stop": 12.15,
+   "symbol": "SG",
+   "to_trigger_pct": 14.04,
+   "trigger": 13.89,
+   "vol_ratio": 0.82
+  },
+  {
+   "adr_pct": 6.36,
+   "avg_value": "$27.6M",
+   "avg_value_raw": 27566293.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NYSE:VYX",
+   "close": 9.49,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "NCR Voyix Corporation",
+   "returns": {
+    "1m": 0.1461,
+    "3m": 0.2325,
+    "6m": 0.4898
+   },
+   "risk_pct": 12.55,
+   "risk_wide": true,
+   "setup_age": 4,
+   "stop": 9.48,
+   "symbol": "VYX",
+   "to_trigger_pct": 14.23,
+   "trigger": 10.84,
+   "vol_ratio": 0.92
+  },
+  {
+   "adr_pct": 8.74,
+   "avg_value": "$99.6M",
+   "avg_value_raw": 99583993.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:XMTR",
+   "close": 111.39,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "Xometry, Inc.",
+   "returns": {
+    "1m": 0.1896,
+    "3m": 0.2414,
+    "6m": 0.282
+   },
+   "risk_pct": 13.14,
+   "risk_wide": true,
+   "setup_age": 1,
+   "stop": 110.74,
+   "symbol": "XMTR",
+   "to_trigger_pct": 14.45,
+   "trigger": 127.49,
+   "vol_ratio": 0.86
+  },
+  {
+   "adr_pct": 5.81,
+   "avg_value": "$91.8M",
+   "avg_value_raw": 91814770.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NYSE:MIR",
+   "close": 17.18,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "Mirion Technologies, Inc.",
+   "returns": {
+    "1m": 0.1273,
+    "3m": 0.0915,
+    "6m": -0.0244
+   },
+   "risk_pct": 12.81,
+   "risk_wide": true,
+   "setup_age": 3,
+   "stop": 17.15,
+   "symbol": "MIR",
+   "to_trigger_pct": 14.49,
+   "trigger": 19.67,
+   "vol_ratio": 0.61
+  },
+  {
+   "adr_pct": 6.58,
+   "avg_value": "$36.9M",
+   "avg_value_raw": 36943165.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:ETON",
+   "close": 61.36,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": true,
+    "6m": false
+   },
+   "name": "Eton Pharmaceuticals, Inc.",
+   "returns": {
+    "1m": 0.2226,
+    "3m": -0.006,
+    "6m": 0.7531
+   },
+   "risk_pct": 13.55,
+   "risk_wide": true,
+   "setup_age": 0,
+   "stop": 61.07,
+   "symbol": "ETON",
+   "to_trigger_pct": 15.12,
+   "trigger": 70.64,
+   "vol_ratio": 0.62
+  },
+  {
+   "adr_pct": 5.67,
+   "avg_value": "$90.4M",
+   "avg_value_raw": 90375734.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:ACHC",
+   "close": 34.47,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "Acadia Healthcare Company, Inc.",
+   "returns": {
+    "1m": 0.0967,
+    "3m": 0.149,
+    "6m": 0.4974
+   },
+   "risk_pct": 13.83,
+   "risk_wide": true,
+   "setup_age": 1,
+   "stop": 34.21,
+   "symbol": "ACHC",
    "to_trigger_pct": 15.17,
-   "trigger": 13.59,
-   "vol_ratio": 0.81
+   "trigger": 39.7,
+   "vol_ratio": 0.74
+  },
+  {
+   "adr_pct": 6.74,
+   "avg_value": "$10.3M",
+   "avg_value_raw": 10324354.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:CMCO",
+   "close": 19.14,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "Columbus McKinnon Corporation",
+   "returns": {
+    "1m": 0.3292,
+    "3m": 0.0031,
+    "6m": 0.3056
+   },
+   "risk_pct": 14.3,
+   "risk_wide": true,
+   "setup_age": 0,
+   "stop": 18.98,
+   "symbol": "CMCO",
+   "to_trigger_pct": 15.67,
+   "trigger": 22.14,
+   "vol_ratio": 0.6
+  },
+  {
+   "adr_pct": 7.71,
+   "avg_value": "$9.1M",
+   "avg_value_raw": 9097169.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NYSE:BGS",
+   "close": 3.36,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "B&G Foods, Inc.",
+   "returns": {
+    "1m": 0.5342,
+    "3m": -0.0261,
+    "6m": -0.2094
+   },
+   "risk_pct": 14.39,
+   "risk_wide": true,
+   "setup_age": 0,
+   "stop": 3.33,
+   "symbol": "BGS",
+   "to_trigger_pct": 15.77,
+   "trigger": 3.89,
+   "vol_ratio": 0.66
+  },
+  {
+   "adr_pct": 6.34,
+   "avg_value": "$99.9M",
+   "avg_value_raw": 99926844.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:ORKA",
+   "close": 97.57,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "Oruka Therapeutics, Inc.",
+   "returns": {
+    "1m": 0.2337,
+    "3m": -0.1339,
+    "6m": 0.6625
+   },
+   "risk_pct": 15.13,
+   "risk_wide": true,
+   "setup_age": 4,
+   "stop": 96.11,
+   "symbol": "ORKA",
+   "to_trigger_pct": 16.06,
+   "trigger": 113.24,
+   "vol_ratio": 0.94
+  },
+  {
+   "adr_pct": 5.94,
+   "avg_value": "$636.0M",
+   "avg_value_raw": 635996941.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NYSE:U",
+   "close": 46.7,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "Unity Software Inc.",
+   "returns": {
+    "1m": 0.1628,
+    "3m": 0.0275,
+    "6m": 0.8285
+   },
+   "risk_pct": 14.44,
+   "risk_wide": true,
+   "setup_age": 1,
+   "stop": 46.43,
+   "symbol": "U",
+   "to_trigger_pct": 16.2,
+   "trigger": 54.26,
+   "vol_ratio": 0.83
+  },
+  {
+   "adr_pct": 6.17,
+   "avg_value": "$19.8M",
+   "avg_value_raw": 19845080.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NYSE:RHLD",
+   "close": 142.13,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "Resolute Holdings Management",
+   "returns": {
+    "1m": 0.2681,
+    "3m": 0.0385,
+    "6m": 0.2434
+   },
+   "risk_pct": 13.97,
+   "risk_wide": true,
+   "setup_age": 0,
+   "stop": 142.09,
+   "symbol": "RHLD",
+   "to_trigger_pct": 16.2,
+   "trigger": 165.16,
+   "vol_ratio": 0.61
+  },
+  {
+   "adr_pct": 6.48,
+   "avg_value": "$15.0M",
+   "avg_value_raw": 14976685.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:PTLO",
+   "close": 6.22,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": true,
+    "6m": false
+   },
+   "name": "Portillo's Inc.",
+   "returns": {
+    "1m": 0.3611,
+    "3m": 0.2515,
+    "6m": 0.5171
+   },
+   "risk_pct": 14.36,
+   "risk_wide": true,
+   "setup_age": 1,
+   "stop": 6.19,
+   "symbol": "PTLO",
+   "to_trigger_pct": 16.21,
+   "trigger": 7.23,
+   "vol_ratio": 0.7
+  },
+  {
+   "adr_pct": 6.52,
+   "avg_value": "$104.4M",
+   "avg_value_raw": 104380019.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NYSE:HRI",
+   "close": 150.97,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "Herc Holdings Inc.",
+   "returns": {
+    "1m": 0.2041,
+    "3m": -0.1279,
+    "6m": 0.1649
+   },
+   "risk_pct": 14.85,
+   "risk_wide": true,
+   "setup_age": 1,
+   "stop": 149.42,
+   "symbol": "HRI",
+   "to_trigger_pct": 16.23,
+   "trigger": 175.47,
+   "vol_ratio": 0.4
+  },
+  {
+   "adr_pct": 5.92,
+   "avg_value": "$83.5M",
+   "avg_value_raw": 83511805.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NYSE:FIGS",
+   "close": 20.32,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": true,
+    "6m": false
+   },
+   "name": "FIGS, Inc.",
+   "returns": {
+    "1m": 0.0232,
+    "3m": 0.419,
+    "6m": 0.6334
+   },
+   "risk_pct": 14.92,
+   "risk_wide": true,
+   "setup_age": 0,
+   "stop": 20.22,
+   "symbol": "FIGS",
+   "to_trigger_pct": 16.95,
+   "trigger": 23.76,
+   "vol_ratio": 0.69
+  },
+  {
+   "adr_pct": 5.72,
+   "avg_value": "$15.4M",
+   "avg_value_raw": 15394328.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:DCTH",
+   "close": 19.24,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "Delcath Systems, Inc.",
+   "returns": {
+    "1m": 0.3035,
+    "3m": 0.1284,
+    "6m": 0.6803
+   },
+   "risk_pct": 15.64,
+   "risk_wide": true,
+   "setup_age": 0,
+   "stop": 18.99,
+   "symbol": "DCTH",
+   "to_trigger_pct": 17.0,
+   "trigger": 22.51,
+   "vol_ratio": 0.57
+  },
+  {
+   "adr_pct": 11.13,
+   "avg_value": "$4.9M",
+   "avg_value_raw": 4897023.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:TTEC",
+   "close": 2.82,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": true,
+    "6m": false
+   },
+   "name": "TTEC Holdings, Inc.",
+   "returns": {
+    "1m": 0.972,
+    "3m": 0.9448,
+    "6m": 0.0522
+   },
+   "risk_pct": 14.85,
+   "risk_wide": true,
+   "setup_age": 0,
+   "stop": 2.81,
+   "symbol": "TTEC",
+   "to_trigger_pct": 17.02,
+   "trigger": 3.3,
+   "vol_ratio": 0.44
+  },
+  {
+   "adr_pct": 5.36,
+   "avg_value": "$86.9M",
+   "avg_value_raw": 86893833.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NYSE:ESAB",
+   "close": 77.26,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "ESAB Corporation",
+   "returns": {
+    "1m": 0.1852,
+    "3m": -0.0593,
+    "6m": -0.1527
+   },
+   "risk_pct": 15.76,
+   "risk_wide": true,
+   "setup_age": 1,
+   "stop": 76.25,
+   "symbol": "ESAB",
+   "to_trigger_pct": 17.15,
+   "trigger": 90.51,
+   "vol_ratio": 0.59
+  },
+  {
+   "adr_pct": 5.84,
+   "avg_value": "$30.5M",
+   "avg_value_raw": 30532132.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:ARHS",
+   "close": 12.93,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": true,
+    "6m": true
+   },
+   "name": "Arhaus, Inc.",
+   "returns": {
+    "1m": 0.205,
+    "3m": 0.3568,
+    "6m": 1.0235
+   },
+   "risk_pct": 15.66,
+   "risk_wide": true,
+   "setup_age": 2,
+   "stop": 12.8,
+   "symbol": "ARHS",
+   "to_trigger_pct": 17.32,
+   "trigger": 15.17,
+   "vol_ratio": 0.96
+  },
+  {
+   "adr_pct": 6.67,
+   "avg_value": "$14.6M",
+   "avg_value_raw": 14581622.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:TREE",
+   "close": 34.69,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "LendingTree, Inc.",
+   "returns": {
+    "1m": 0.3076,
+    "3m": 0.1065,
+    "6m": -0.0519
+   },
+   "risk_pct": 15.44,
+   "risk_wide": true,
+   "setup_age": 4,
+   "stop": 34.5,
+   "symbol": "TREE",
+   "to_trigger_pct": 17.61,
+   "trigger": 40.8,
+   "vol_ratio": 1.12
   }
  ],
  "windows": [
