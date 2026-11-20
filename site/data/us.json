@@ -2,6 +2,49 @@
  "as_of": "2026-11-19",
  "breakouts": [],
  "currency": "USD",
+ "jack": {
+  "items": [
+   {
+    "adr_pct": 5.72,
+    "avg_value": "$268.5M",
+    "avg_value_raw": 268547500.0,
+    "chart": "https://www.tradingview.com/chart/?symbol=NYSE:GKOS",
+    "close": 238.1,
+    "flag": false,
+    "name": "Glaukos Corporation",
+    "ours": "watchlist",
+    "returns": {
+     "1m": 0.3729,
+     "3m": 0.2827,
+     "6m": 0.7126
+    },
+    "stop": 231.61,
+    "symbol": "GKOS",
+    "trigger": 250.61
+   },
+   {
+    "adr_pct": 5.46,
+    "avg_value": "$371.0M",
+    "avg_value_raw": 370981258.0,
+    "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:INSM",
+    "close": 144.46,
+    "flag": false,
+    "name": "Insmed Incorporated",
+    "ours": "leader",
+    "returns": {
+     "1m": 0.51,
+     "3m": 0.1258,
+     "6m": 0.3189
+    },
+    "stop": null,
+    "symbol": "INSM",
+    "trigger": null
+   }
+  ],
+  "ours": 152,
+  "passing": 7,
+  "rule": "above 21 EMA, 50 & 200 SMA, ADR above 4%, 50-day value above $250.0M"
+ },
  "market": "us",
  "summary": {
   "breakouts_ok": 0,
@@ -13,7 +56,7 @@
   },
   "liquid": 1227,
   "qualified_today": 19,
-  "symbols_with_data": 5773,
+  "symbols_with_data": 5792,
   "watchlist": 66
  },
  "title": "US",
