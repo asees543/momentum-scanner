@@ -1,407 +1,315 @@
 {
- "as_of": "2026-11-19",
- "breakouts": [],
+ "as_of": "2026-11-20",
+ "breakouts": [
+  {
+   "adr_pct": 4.94,
+   "avg_value": "₹5.6 Cr",
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:MARATHON",
+   "close": 443.65,
+   "flag": false,
+   "name": "Marathon Nextgen Realty Limited",
+   "returns": {
+    "1m": 0.1602,
+    "3m": 0.2015,
+    "6m": -0.1043
+   },
+   "risk_pct": 3.08,
+   "setup_age": 1,
+   "status": "ok",
+   "stop": 430.0,
+   "symbol": "MARATHON",
+   "trigger": 443.0,
+   "vol_ratio": 2.67
+  },
+  {
+   "adr_pct": 5.24,
+   "avg_value": "₹13.7 Cr",
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:AJMERA",
+   "close": 149.29,
+   "flag": false,
+   "name": "Ajmera Realty & Infra India Limited",
+   "returns": {
+    "1m": 0.1711,
+    "3m": 0.274,
+    "6m": 0.2233
+   },
+   "risk_pct": 11.57,
+   "setup_age": 1,
+   "status": "too wide",
+   "stop": 132.01,
+   "symbol": "AJMERA",
+   "trigger": 142.9,
+   "vol_ratio": 9.81
+  },
+  {
+   "adr_pct": 4.9,
+   "avg_value": "₹93.2 Cr",
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:SGMART",
+   "close": 1097.05,
+   "flag": false,
+   "name": "SG Mart Limited",
+   "returns": {
+    "1m": 0.4133,
+    "3m": 0.4683,
+    "6m": 0.7647
+   },
+   "risk_pct": 8.07,
+   "setup_age": 1,
+   "status": "too wide",
+   "stop": 1008.55,
+   "symbol": "SGMART",
+   "trigger": 1047.75,
+   "vol_ratio": 1.96
+  },
+  {
+   "adr_pct": 5.52,
+   "avg_value": "₹296.5 Cr",
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:WELSPUNLIV",
+   "close": 268.78,
+   "flag": false,
+   "name": "Welspun Living Limited",
+   "returns": {
+    "1m": 0.2368,
+    "3m": 0.6817,
+    "6m": 0.8975
+   },
+   "risk_pct": 7.17,
+   "setup_age": 1,
+   "status": "too wide",
+   "stop": 249.5,
+   "symbol": "WELSPUNLIV",
+   "trigger": 267.5,
+   "vol_ratio": 1.93
+  }
+ ],
  "currency": "INR",
+ "jack": {
+  "items": [
+   {
+    "adr_pct": 5.75,
+    "avg_value": "₹178.4 Cr",
+    "avg_value_raw": 1783841316.0,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:WELSPUNLIV",
+    "close": 268.78,
+    "flag": false,
+    "name": "Welspun Living Limited",
+    "ours": "breakout",
+    "returns": {
+     "1m": 0.2368,
+     "3m": 0.6817,
+     "6m": 0.8975
+    },
+    "stop": 249.5,
+    "symbol": "WELSPUNLIV",
+    "trigger": 267.5
+   },
+   {
+    "adr_pct": 5.61,
+    "avg_value": "₹300.5 Cr",
+    "avg_value_raw": 3004582293.0,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:RAYMOND",
+    "close": 1198.7,
+    "flag": false,
+    "name": "Raymond Limited",
+    "ours": "watchlist",
+    "returns": {
+     "1m": 0.0602,
+     "3m": 0.8671,
+     "6m": 1.2137
+    },
+    "stop": 1138.0,
+    "symbol": "RAYMOND",
+    "trigger": 1237.8
+   },
+   {
+    "adr_pct": 4.67,
+    "avg_value": "₹166.5 Cr",
+    "avg_value_raw": 1665493811.0,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:RATNAVEER",
+    "close": 370.25,
+    "flag": false,
+    "name": "Ratnaveer Precision Engineering Limited",
+    "ours": "watchlist",
+    "returns": {
+     "1m": 0.057,
+     "3m": 0.683,
+     "6m": 1.0242
+    },
+    "stop": 366.3,
+    "symbol": "RATNAVEER",
+    "trigger": 379.6
+   },
+   {
+    "adr_pct": 4.61,
+    "avg_value": "₹126.8 Cr",
+    "avg_value_raw": 1267612573.0,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:MOTILALOFS",
+    "close": 1205.65,
+    "flag": false,
+    "name": "Motilal Oswal Financial Services Limited",
+    "ours": "watchlist",
+    "returns": {
+     "1m": 0.1809,
+     "3m": 0.3433,
+     "6m": 0.4244
+    },
+    "stop": 1186.8,
+    "symbol": "MOTILALOFS",
+    "trigger": 1277.8
+   },
+   {
+    "adr_pct": 4.8,
+    "avg_value": "₹561.7 Cr",
+    "avg_value_raw": 5616543027.0,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:ATHERENERG",
+    "close": 1935.4,
+    "flag": false,
+    "name": "Ather Energy Limited",
+    "ours": "watchlist",
+    "returns": {
+     "1m": 0.3265,
+     "3m": 0.2679,
+     "6m": 1.129
+    },
+    "stop": 1913.3,
+    "symbol": "ATHERENERG",
+    "trigger": 2021.5
+   },
+   {
+    "adr_pct": 4.95,
+    "avg_value": "₹194.3 Cr",
+    "avg_value_raw": 1943298724.0,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:SAILIFE",
+    "close": 1800.7,
+    "flag": false,
+    "name": "Sai Life Sciences Limited",
+    "ours": "watchlist",
+    "returns": {
+     "1m": 0.29,
+     "3m": 0.2408,
+     "6m": 0.5778
+    },
+    "stop": 1776.9,
+    "symbol": "SAILIFE",
+    "trigger": 1954.8
+   },
+   {
+    "adr_pct": 4.48,
+    "avg_value": "₹624.8 Cr",
+    "avg_value_raw": 6248427370.0,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:CUPID",
+    "close": 365.65,
+    "flag": false,
+    "name": "Cupid Limited",
+    "ours": "watchlist",
+    "returns": {
+     "1m": 0.0873,
+     "3m": 0.2401,
+     "6m": 2.0614
+    },
+    "stop": 362.0,
+    "symbol": "CUPID",
+    "trigger": 393.0
+   },
+   {
+    "adr_pct": 4.9,
+    "avg_value": "₹161.2 Cr",
+    "avg_value_raw": 1612246213.0,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:ENGINERSIN",
+    "close": 296.55,
+    "flag": false,
+    "name": "Engineers India Limited",
+    "ours": "watchlist",
+    "returns": {
+     "1m": 0.0989,
+     "3m": 0.2326,
+     "6m": 0.2285
+    },
+    "stop": 294.9,
+    "symbol": "ENGINERSIN",
+    "trigger": 323.65
+   },
+   {
+    "adr_pct": 5.19,
+    "avg_value": "₹213.8 Cr",
+    "avg_value_raw": 2137986155.0,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:ACUTAAS",
+    "close": 3833.5,
+    "flag": false,
+    "name": "Acutaas Chemicals Limited",
+    "ours": "watchlist",
+    "returns": {
+     "1m": 0.1783,
+     "3m": 0.2324,
+     "6m": 0.3308
+    },
+    "stop": 3800.5,
+    "symbol": "ACUTAAS",
+    "trigger": 4130.0
+   },
+   {
+    "adr_pct": 4.24,
+    "avg_value": "₹156.9 Cr",
+    "avg_value_raw": 1568661588.0,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:PPLPHARMA",
+    "close": 239.3,
+    "flag": false,
+    "name": "Piramal Pharma Limited",
+    "ours": "watchlist",
+    "returns": {
+     "1m": 0.2307,
+     "3m": 0.1252,
+     "6m": 0.357
+    },
+    "stop": 234.32,
+    "symbol": "PPLPHARMA",
+    "trigger": 253.9
+   },
+   {
+    "adr_pct": 5.07,
+    "avg_value": "₹612.7 Cr",
+    "avg_value_raw": 6127057986.0,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:KALYANKJIL",
+    "close": 638.7,
+    "flag": false,
+    "name": "Kalyan Jewellers India Limited",
+    "ours": "leader",
+    "returns": {
+     "1m": 0.1585,
+     "3m": 0.0412,
+     "6m": 0.8591
+    },
+    "stop": null,
+    "symbol": "KALYANKJIL",
+    "trigger": null
+   }
+  ],
+  "ours": 122,
+  "passing": 21,
+  "rule": "above 21 EMA, 50 & 200 SMA, ADR above 4%, 50-day value above ₹120.0 Cr"
+ },
  "market": "india",
  "summary": {
-  "breakouts_ok": 0,
-  "breakouts_wide": 0,
+  "breakouts_ok": 1,
+  "breakouts_wide": 3,
   "leaders": {
-   "1m": 41,
-   "3m": 38,
+   "1m": 40,
+   "3m": 37,
    "6m": 37
   },
-  "liquid": 579,
-  "qualified_today": 61,
+  "liquid": 567,
+  "qualified_today": 50,
   "symbols_with_data": 2401,
-  "watchlist": 90
+  "watchlist": 79
  },
  "title": "India",
  "watchlist": [
   {
-   "adr_pct": 5.2,
-   "avg_value": "₹33.0 Cr",
-   "avg_value_raw": 329987348.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:63MOONS",
-   "close": 952.45,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "63 moons technologies limited",
-   "returns": {
-    "1m": 0.0357,
-    "3m": 0.0981,
-    "6m": 0.3657
-   },
-   "risk_pct": 5.45,
-   "risk_wide": true,
-   "setup_age": 1,
-   "stop": 912.4,
-   "symbol": "63MOONS",
-   "to_trigger_pct": 1.32,
-   "trigger": 965.0,
-   "vol_ratio": 0.84
-  },
-  {
-   "adr_pct": 4.94,
-   "avg_value": "₹5.4 Cr",
-   "avg_value_raw": 53802092.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:MARATHON",
-   "close": 437.15,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Marathon Nextgen Realty Limited",
-   "returns": {
-    "1m": 0.1426,
-    "3m": 0.171,
-    "6m": -0.0991
-   },
-   "risk_pct": 3.02,
-   "risk_wide": false,
-   "setup_age": 0,
-   "stop": 429.6,
-   "symbol": "MARATHON",
-   "to_trigger_pct": 1.34,
-   "trigger": 443.0,
-   "vol_ratio": 0.29
-  },
-  {
-   "adr_pct": 4.43,
-   "avg_value": "₹37.0 Cr",
-   "avg_value_raw": 369833212.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:IXIGO",
-   "close": 177.07,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Le Travenues Technology Limited",
-   "returns": {
-    "1m": 0.2257,
-    "3m": -0.0073,
-    "6m": 0.0901
-   },
-   "risk_pct": 2.21,
-   "risk_wide": false,
-   "setup_age": 0,
-   "stop": 175.6,
-   "symbol": "IXIGO",
-   "to_trigger_pct": 1.41,
-   "trigger": 179.57,
-   "vol_ratio": 0.29
-  },
-  {
-   "adr_pct": 4.46,
-   "avg_value": "₹38.6 Cr",
-   "avg_value_raw": 386449280.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:THELEELA",
-   "close": 695.65,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": true,
-    "6m": false
-   },
-   "name": "Leela Palaces Hotels & Resorts Limited",
-   "returns": {
-    "1m": 0.1288,
-    "3m": 0.392,
-    "6m": 0.7086
-   },
-   "risk_pct": 3.35,
-   "risk_wide": false,
-   "setup_age": 1,
-   "stop": 683.05,
-   "symbol": "THELEELA",
-   "to_trigger_pct": 1.59,
-   "trigger": 706.7,
-   "vol_ratio": 1.04
-  },
-  {
-   "adr_pct": 5.54,
-   "avg_value": "₹45.3 Cr",
-   "avg_value_raw": 452911300.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:WESTLIFE",
-   "close": 684.2,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "WESTLIFE FOODWORLD LIMITED",
-   "returns": {
-    "1m": 0.1814,
-    "3m": 0.1505,
-    "6m": 0.467
-   },
-   "risk_pct": 3.75,
-   "risk_wide": false,
-   "setup_age": 1,
-   "stop": 670.35,
-   "symbol": "WESTLIFE",
-   "to_trigger_pct": 1.8,
-   "trigger": 696.5,
-   "vol_ratio": 1.85
-  },
-  {
-   "adr_pct": 4.94,
-   "avg_value": "₹7.7 Cr",
-   "avg_value_raw": 76571266.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:SIMPLEXINF",
-   "close": 302.2,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Simplex Infrastructures Limited",
-   "returns": {
-    "1m": 0.0956,
-    "3m": 0.1977,
-    "6m": 0.4752
-   },
-   "risk_pct": 4.73,
-   "risk_wide": false,
-   "setup_age": 3,
-   "stop": 294.0,
-   "symbol": "SIMPLEXINF",
-   "to_trigger_pct": 2.12,
-   "trigger": 308.6,
-   "vol_ratio": 1.63
-  },
-  {
-   "adr_pct": 6.47,
-   "avg_value": "₹102.9 Cr",
-   "avg_value_raw": 1029225634.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:PARAGMILK",
-   "close": 343.49,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": true,
-    "6m": false
-   },
-   "name": "Parag Milk Foods Limited",
-   "returns": {
-    "1m": 0.2432,
-    "3m": 0.5918,
-    "6m": 0.6049
-   },
-   "risk_pct": 6.55,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 328.01,
-   "symbol": "PARAGMILK",
-   "to_trigger_pct": 2.19,
-   "trigger": 351.0,
-   "vol_ratio": 0.49
-  },
-  {
-   "adr_pct": 5.17,
-   "avg_value": "₹70.0 Cr",
-   "avg_value_raw": 700487546.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:AARTIPHARM",
-   "close": 1024.6,
-   "flag": false,
-   "leader": {
-    "1m": false,
-    "3m": true,
-    "6m": false
-   },
-   "name": "Aarti Pharmalabs Limited",
-   "returns": {
-    "1m": 0.1728,
-    "3m": 0.1529,
-    "6m": 0.4515
-   },
-   "risk_pct": 5.33,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 991.45,
-   "symbol": "AARTIPHARM",
-   "to_trigger_pct": 2.21,
-   "trigger": 1047.25,
-   "vol_ratio": 0.66
-  },
-  {
-   "adr_pct": 4.13,
-   "avg_value": "₹61.0 Cr",
-   "avg_value_raw": 609974377.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:APLLTD",
-   "close": 1049.6,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Alembic Pharmaceuticals Limited",
-   "returns": {
-    "1m": 0.3295,
-    "3m": 0.2471,
-    "6m": 0.3974
-   },
-   "risk_pct": 3.4,
-   "risk_wide": false,
-   "setup_age": 0,
-   "stop": 1038.5,
-   "symbol": "APLLTD",
-   "to_trigger_pct": 2.42,
-   "trigger": 1075.0,
-   "vol_ratio": 0.53
-  },
-  {
-   "adr_pct": 5.66,
-   "avg_value": "₹20.5 Cr",
-   "avg_value_raw": 204562682.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:ANUP",
-   "close": 1787.6,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "The Anup Engineering Limited",
-   "returns": {
-    "1m": 0.2009,
-    "3m": -0.0441,
-    "6m": -0.0859
-   },
-   "risk_pct": 5.07,
-   "risk_wide": false,
-   "setup_age": 0,
-   "stop": 1741.0,
-   "symbol": "ANUP",
-   "to_trigger_pct": 2.6,
-   "trigger": 1834.0,
-   "vol_ratio": 0.56
-  },
-  {
-   "adr_pct": 4.79,
-   "avg_value": "₹61.7 Cr",
-   "avg_value_raw": 616795550.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:CEMPRO",
-   "close": 1378.5,
-   "flag": false,
-   "leader": {
-    "1m": false,
-    "3m": false,
-    "6m": true
-   },
-   "name": "Cemindia Projects Limited",
-   "returns": {
-    "1m": 0.151,
-    "3m": 0.0926,
-    "6m": 0.5877
-   },
-   "risk_pct": 5.41,
-   "risk_wide": true,
-   "setup_age": 3,
-   "stop": 1337.8,
-   "symbol": "CEMPRO",
-   "to_trigger_pct": 2.6,
-   "trigger": 1414.3,
-   "vol_ratio": 1.05
-  },
-  {
-   "adr_pct": 6.53,
-   "avg_value": "₹65.6 Cr",
-   "avg_value_raw": 655756516.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:VRLLOG",
-   "close": 341.3,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "VRL Logistics Limited",
-   "returns": {
-    "1m": 0.2168,
-    "3m": 0.1343,
-    "6m": 0.3914
-   },
-   "risk_pct": 3.4,
-   "risk_wide": false,
-   "setup_age": 0,
-   "stop": 338.4,
-   "symbol": "VRLLOG",
-   "to_trigger_pct": 2.64,
-   "trigger": 350.3,
-   "vol_ratio": 0.26
-  },
-  {
-   "adr_pct": 4.22,
-   "avg_value": "₹41.7 Cr",
-   "avg_value_raw": 417383718.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:TIPSMUSIC",
-   "close": 812.95,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Tips Music Limited",
-   "returns": {
-    "1m": 0.0884,
-    "3m": 0.2056,
-    "6m": 0.2475
-   },
-   "risk_pct": 4.96,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 793.15,
-   "symbol": "TIPSMUSIC",
-   "to_trigger_pct": 2.65,
-   "trigger": 834.5,
-   "vol_ratio": 0.56
-  },
-  {
-   "adr_pct": 4.98,
-   "avg_value": "₹36.6 Cr",
-   "avg_value_raw": 366147624.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:PDSL",
-   "close": 413.6,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "PDS Limited",
-   "returns": {
-    "1m": 0.2078,
-    "3m": 0.0901,
-    "6m": 0.4078
-   },
-   "risk_pct": 5.64,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 400.95,
-   "symbol": "PDSL",
-   "to_trigger_pct": 2.73,
-   "trigger": 424.9,
-   "vol_ratio": 0.28
-  },
-  {
-   "adr_pct": 4.52,
-   "avg_value": "₹98.9 Cr",
-   "avg_value_raw": 988932304.0,
+   "adr_pct": 4.49,
+   "avg_value": "₹100.5 Cr",
+   "avg_value_raw": 1004558913.0,
    "chart": "https://www.tradingview.com/chart/?symbol=NSE:SANSERA",
-   "close": 4720.9,
+   "close": 4798.4,
    "flag": false,
    "leader": {
     "1m": false,
@@ -410,808 +318,52 @@
    },
    "name": "Sansera Engineering Limited",
    "returns": {
-    "1m": 0.1457,
-    "3m": 0.2173,
-    "6m": 0.9699
+    "1m": 0.1562,
+    "3m": 0.2674,
+    "6m": 0.93
    },
-   "risk_pct": 7.42,
-   "risk_wide": true,
-   "setup_age": 1,
-   "stop": 4490.0,
+   "risk_pct": 4.08,
+   "risk_wide": false,
+   "setup_age": 2,
+   "stop": 4651.8,
    "symbol": "SANSERA",
-   "to_trigger_pct": 2.73,
+   "to_trigger_pct": 1.07,
    "trigger": 4849.9,
-   "vol_ratio": 0.81
+   "vol_ratio": 0.89
   },
   {
-   "adr_pct": 8.36,
-   "avg_value": "₹7.6 Cr",
-   "avg_value_raw": 75596520.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:AMANTA",
-   "close": 239.08,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": true,
-    "6m": true
-   },
-   "name": "Amanta Healthcare Limited",
-   "returns": {
-    "1m": 0.3035,
-    "3m": 0.5287,
-    "6m": 0.8063
-   },
-   "risk_pct": 5.41,
-   "risk_wide": false,
-   "setup_age": 0,
-   "stop": 232.41,
-   "symbol": "AMANTA",
-   "to_trigger_pct": 2.77,
-   "trigger": 245.7,
-   "vol_ratio": 0.32
-  },
-  {
-   "adr_pct": 5.61,
-   "avg_value": "₹18.6 Cr",
-   "avg_value_raw": 185562687.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:ROSSTECH",
-   "close": 1557.8,
-   "flag": false,
-   "leader": {
-    "1m": false,
-    "3m": true,
-    "6m": true
-   },
-   "name": "Rossell Techsys Limited",
-   "returns": {
-    "1m": 0.0225,
-    "3m": 0.4298,
-    "6m": 0.7278
-   },
-   "risk_pct": 5.39,
-   "risk_wide": false,
-   "setup_age": 0,
-   "stop": 1517.0,
-   "symbol": "ROSSTECH",
-   "to_trigger_pct": 2.93,
-   "trigger": 1603.5,
-   "vol_ratio": 0.36
-  },
-  {
-   "adr_pct": 6.92,
-   "avg_value": "₹33.4 Cr",
-   "avg_value_raw": 333812399.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:OPTIEMUS",
-   "close": 815.15,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": true,
-    "6m": true
-   },
-   "name": "Optiemus Infracom Limited",
-   "returns": {
-    "1m": 0.0336,
-    "3m": 0.4602,
-    "6m": 0.964
-   },
-   "risk_pct": 4.25,
-   "risk_wide": false,
-   "setup_age": 3,
-   "stop": 805.0,
-   "symbol": "OPTIEMUS",
-   "to_trigger_pct": 3.13,
-   "trigger": 840.7,
-   "vol_ratio": 0.81
-  },
-  {
-   "adr_pct": 6.21,
-   "avg_value": "₹7.3 Cr",
-   "avg_value_raw": 72546739.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:SPECTRUM",
-   "close": 4551.7,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": true,
-    "6m": true
-   },
-   "name": "Spectrum Electrical Industries Limited",
-   "returns": {
-    "1m": 0.202,
-    "3m": 0.9932,
-    "6m": 2.1646
-   },
-   "risk_pct": 6.07,
-   "risk_wide": false,
-   "setup_age": 4,
-   "stop": 4410.0,
-   "symbol": "SPECTRUM",
-   "to_trigger_pct": 3.15,
-   "trigger": 4695.2,
-   "vol_ratio": 0.75
-  },
-  {
-   "adr_pct": 4.41,
-   "avg_value": "₹31.3 Cr",
-   "avg_value_raw": 313267536.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:RUBICON",
-   "close": 1722.3,
-   "flag": false,
-   "leader": {
-    "1m": false,
-    "3m": false,
-    "6m": true
-   },
-   "name": "Rubicon Research Limited",
-   "returns": {
-    "1m": 0.1417,
-    "3m": 0.0415,
-    "6m": 0.7495
-   },
-   "risk_pct": 7.15,
-   "risk_wide": true,
-   "setup_age": 1,
-   "stop": 1650.8,
-   "symbol": "RUBICON",
-   "to_trigger_pct": 3.23,
-   "trigger": 1777.9,
-   "vol_ratio": 0.75
-  },
-  {
-   "adr_pct": 4.84,
-   "avg_value": "₹144.9 Cr",
-   "avg_value_raw": 1448875492.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:SAREGAMA",
-   "close": 671.25,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": true
-   },
-   "name": "Saregama India Limited",
-   "returns": {
-    "1m": 0.3318,
-    "3m": 0.3007,
-    "6m": 0.7024
-   },
-   "risk_pct": 4.38,
-   "risk_wide": false,
-   "setup_age": 0,
-   "stop": 663.05,
-   "symbol": "SAREGAMA",
-   "to_trigger_pct": 3.3,
-   "trigger": 693.4,
-   "vol_ratio": 0.18
-  },
-  {
-   "adr_pct": 4.54,
-   "avg_value": "₹27.4 Cr",
-   "avg_value_raw": 274209226.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:FIEMIND",
-   "close": 2174.9,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Fiem Industries Limited",
-   "returns": {
-    "1m": 0.1333,
-    "3m": -0.178,
-    "6m": 0.0024
-   },
-   "risk_pct": 6.61,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 2098.8,
-   "symbol": "FIEMIND",
-   "to_trigger_pct": 3.33,
-   "trigger": 2247.3,
-   "vol_ratio": 0.5
-  },
-  {
-   "adr_pct": 5.62,
-   "avg_value": "₹53.5 Cr",
-   "avg_value_raw": 535199502.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:BOROLTD",
-   "close": 335.75,
+   "adr_pct": 4.34,
+   "avg_value": "₹38.3 Cr",
+   "avg_value_raw": 383116331.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:THELEELA",
+   "close": 698.1,
    "flag": false,
    "leader": {
     "1m": true,
     "3m": true,
     "6m": false
    },
-   "name": "Borosil Limited",
+   "name": "Leela Palaces Hotels & Resorts Limited",
    "returns": {
-    "1m": 0.2394,
-    "3m": 0.3899,
-    "6m": 0.4329
+    "1m": 0.121,
+    "3m": 0.373,
+    "6m": 0.7157
    },
-   "risk_pct": 6.38,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 324.8,
-   "symbol": "BOROLTD",
-   "to_trigger_pct": 3.34,
-   "trigger": 346.95,
-   "vol_ratio": 0.21
-  },
-  {
-   "adr_pct": 5.67,
-   "avg_value": "₹78.4 Cr",
-   "avg_value_raw": 784239469.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:RAYMOND",
-   "close": 1195.3,
-   "flag": false,
-   "leader": {
-    "1m": false,
-    "3m": true,
-    "6m": true
-   },
-   "name": "Raymond Limited",
-   "returns": {
-    "1m": 0.0541,
-    "3m": 0.9312,
-    "6m": 1.2984
-   },
-   "risk_pct": 5.03,
+   "risk_pct": 2.42,
    "risk_wide": false,
-   "setup_age": 1,
-   "stop": 1175.6,
-   "symbol": "RAYMOND",
-   "to_trigger_pct": 3.56,
-   "trigger": 1237.8,
-   "vol_ratio": 0.79
+   "setup_age": 2,
+   "stop": 689.6,
+   "symbol": "THELEELA",
+   "to_trigger_pct": 1.23,
+   "trigger": 706.7,
+   "vol_ratio": 1.16
   },
   {
-   "adr_pct": 4.63,
-   "avg_value": "₹92.8 Cr",
-   "avg_value_raw": 928463802.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:JYOTICNC",
-   "close": 1071.75,
-   "flag": false,
-   "leader": {
-    "1m": false,
-    "3m": true,
-    "6m": false
-   },
-   "name": "Jyoti CNC Automation Limited",
-   "returns": {
-    "1m": 0.0748,
-    "3m": 0.3088,
-    "6m": 0.5781
-   },
-   "risk_pct": 7.23,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 1029.95,
-   "symbol": "JYOTICNC",
-   "to_trigger_pct": 3.59,
-   "trigger": 1110.2,
-   "vol_ratio": 0.32
-  },
-  {
-   "adr_pct": 4.9,
-   "avg_value": "₹83.9 Cr",
-   "avg_value_raw": 839345966.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:SGMART",
-   "close": 1010.5,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": true,
-    "6m": false
-   },
-   "name": "SG Mart Limited",
-   "returns": {
-    "1m": 0.266,
-    "3m": 0.4082,
-    "6m": 0.678
-   },
-   "risk_pct": 5.44,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 990.75,
-   "symbol": "SGMART",
-   "to_trigger_pct": 3.69,
-   "trigger": 1047.75,
-   "vol_ratio": 0.48
-  },
-  {
-   "adr_pct": 5.3,
-   "avg_value": "₹66.2 Cr",
-   "avg_value_raw": 662214041.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:GRWRHITECH",
-   "close": 7790.5,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": true
-   },
-   "name": "Garware Hi-Tech Films Limited",
-   "returns": {
-    "1m": 0.1177,
-    "3m": 0.0923,
-    "6m": 0.4059
-   },
-   "risk_pct": 4.39,
-   "risk_wide": false,
-   "setup_age": 1,
-   "stop": 7725.0,
-   "symbol": "GRWRHITECH",
-   "to_trigger_pct": 3.71,
-   "trigger": 8079.5,
-   "vol_ratio": 0.21
-  },
-  {
-   "adr_pct": 5.73,
-   "avg_value": "₹34.2 Cr",
-   "avg_value_raw": 341702348.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:SUDEEPPHRM",
-   "close": 1212.1,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": true,
-    "6m": true
-   },
-   "name": "Sudeep Pharma Limited",
-   "returns": {
-    "1m": 0.2113,
-    "3m": 0.0982,
-    "6m": 0.8682
-   },
-   "risk_pct": 11.52,
-   "risk_wide": true,
-   "setup_age": 1,
-   "stop": 1112.4,
-   "symbol": "SUDEEPPHRM",
-   "to_trigger_pct": 3.73,
-   "trigger": 1257.3,
-   "vol_ratio": 3.65
-  },
-  {
-   "adr_pct": 5.05,
-   "avg_value": "₹115.6 Cr",
-   "avg_value_raw": 1156344555.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:IGIL",
-   "close": 437.3,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "International Gemological Institute Lim…",
-   "returns": {
-    "1m": 0.3385,
-    "3m": 0.274,
-    "6m": 0.3144
-   },
-   "risk_pct": 4.04,
-   "risk_wide": false,
-   "setup_age": 0,
-   "stop": 435.3,
-   "symbol": "IGIL",
-   "to_trigger_pct": 3.74,
-   "trigger": 453.65,
-   "vol_ratio": 0.14
-  },
-  {
-   "adr_pct": 5.3,
-   "avg_value": "₹122.6 Cr",
-   "avg_value_raw": 1226189646.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:SYMBIOTEC",
-   "close": 1604.8,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Symbiotec Pharmalab Limited",
-   "returns": {
-    "1m": 0.2542,
-    "3m": null,
-    "6m": null
-   },
-   "risk_pct": 4.86,
-   "risk_wide": false,
-   "setup_age": 0,
-   "stop": 1584.0,
-   "symbol": "SYMBIOTEC",
-   "to_trigger_pct": 3.75,
-   "trigger": 1664.9,
-   "vol_ratio": 0.19
-  },
-  {
-   "adr_pct": 5.66,
-   "avg_value": "₹32.5 Cr",
-   "avg_value_raw": 324609950.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:PROTEAN",
-   "close": 712.1,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Protean eGov Technologies Limited",
-   "returns": {
-    "1m": 0.1282,
-    "3m": 0.2748,
-    "6m": 0.2981
-   },
-   "risk_pct": 10.37,
-   "risk_wide": true,
-   "setup_age": 1,
-   "stop": 662.3,
-   "symbol": "PROTEAN",
-   "to_trigger_pct": 3.77,
-   "trigger": 738.95,
-   "vol_ratio": 2.45
-  },
-  {
-   "adr_pct": 5.17,
-   "avg_value": "₹354.1 Cr",
-   "avg_value_raw": 3541453256.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:ACUTAAS",
-   "close": 3977.1,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Acutaas Chemicals Limited",
-   "returns": {
-    "1m": 0.2405,
-    "3m": 0.2612,
-    "6m": 0.3778
-   },
-   "risk_pct": 4.59,
-   "risk_wide": false,
-   "setup_age": 0,
-   "stop": 3940.5,
-   "symbol": "ACUTAAS",
-   "to_trigger_pct": 3.84,
-   "trigger": 4130.0,
-   "vol_ratio": 0.31
-  },
-  {
-   "adr_pct": 6.91,
-   "avg_value": "₹28.6 Cr",
-   "avg_value_raw": 285591996.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:CHEMPLASTS",
-   "close": 250.03,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": true,
-    "6m": false
-   },
-   "name": "Chemplast Sanmar Limited",
-   "returns": {
-    "1m": 0.1774,
-    "3m": 0.3712,
-    "6m": 0.0854
-   },
-   "risk_pct": 5.99,
-   "risk_wide": false,
-   "setup_age": 0,
-   "stop": 244.22,
-   "symbol": "CHEMPLASTS",
-   "to_trigger_pct": 3.9,
-   "trigger": 259.78,
-   "vol_ratio": 0.24
-  },
-  {
-   "adr_pct": 5.24,
-   "avg_value": "₹9.5 Cr",
-   "avg_value_raw": 94613557.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:XPROINDIA",
-   "close": 1257.6,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Xpro India Limited",
-   "returns": {
-    "1m": 0.2865,
-    "3m": 0.1516,
-    "6m": 0.1435
-   },
-   "risk_pct": 4.49,
-   "risk_wide": false,
-   "setup_age": 0,
-   "stop": 1250.0,
-   "symbol": "XPROINDIA",
-   "to_trigger_pct": 4.06,
-   "trigger": 1308.7,
-   "vol_ratio": 0.5
-  },
-  {
-   "adr_pct": 4.64,
-   "avg_value": "₹15.9 Cr",
-   "avg_value_raw": 158503327.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:MBEL",
-   "close": 292.35,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "M & B Engineering Limited",
-   "returns": {
-    "1m": 0.007,
-    "3m": 0.0907,
-    "6m": -0.0291
-   },
-   "risk_pct": 4.54,
-   "risk_wide": false,
-   "setup_age": 0,
-   "stop": 290.95,
-   "symbol": "MBEL",
-   "to_trigger_pct": 4.26,
-   "trigger": 304.8,
-   "vol_ratio": 0.22
-  },
-  {
-   "adr_pct": 5.76,
-   "avg_value": "₹5.6 Cr",
-   "avg_value_raw": 56199635.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:TCPLPACK",
-   "close": 4525.0,
-   "flag": false,
-   "leader": {
-    "1m": false,
-    "3m": true,
-    "6m": true
-   },
-   "name": "TCPL Packaging Limited",
-   "returns": {
-    "1m": 0.0482,
-    "3m": 0.0296,
-    "6m": 0.7846
-   },
-   "risk_pct": 5.66,
-   "risk_wide": false,
-   "setup_age": 0,
-   "stop": 4452.1,
-   "symbol": "TCPLPACK",
-   "to_trigger_pct": 4.29,
-   "trigger": 4719.0,
-   "vol_ratio": 0.55
-  },
-  {
-   "adr_pct": 4.9,
-   "avg_value": "₹31.1 Cr",
-   "avg_value_raw": 311494937.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:KSHINTL",
-   "close": 1050.7,
-   "flag": false,
-   "leader": {
-    "1m": false,
-    "3m": false,
-    "6m": true
-   },
-   "name": "KSH International Limited",
-   "returns": {
-    "1m": 0.1223,
-    "3m": 0.0532,
-    "6m": 0.6869
-   },
-   "risk_pct": 5.05,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 1041.6,
-   "symbol": "KSHINTL",
-   "to_trigger_pct": 4.41,
-   "trigger": 1097.0,
-   "vol_ratio": 0.33
-  },
-  {
-   "adr_pct": 5.69,
-   "avg_value": "₹13.1 Cr",
-   "avg_value_raw": 130984965.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:GYFTR",
-   "close": 223.44,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": true,
-    "6m": false
-   },
-   "name": "Gyftr Limited",
-   "returns": {
-    "1m": 0.2964,
-    "3m": 0.3952,
-    "6m": null
-   },
-   "risk_pct": 6.78,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 218.12,
-   "symbol": "GYFTR",
-   "to_trigger_pct": 4.72,
-   "trigger": 233.99,
-   "vol_ratio": 0.34
-  },
-  {
-   "adr_pct": 5.65,
-   "avg_value": "₹16.1 Cr",
-   "avg_value_raw": 161113363.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:AEROPLANE",
-   "close": 240.08,
-   "flag": false,
-   "leader": {
-    "1m": false,
-    "3m": false,
-    "6m": true
-   },
-   "name": "Amir Chand Jagdish Kumar (Exports) Limi…",
-   "returns": {
-    "1m": 0.0226,
-    "3m": 0.3074,
-    "6m": 0.8387
-   },
-   "risk_pct": 9.9,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 227.05,
-   "symbol": "AEROPLANE",
-   "to_trigger_pct": 4.97,
-   "trigger": 252.0,
-   "vol_ratio": 0.49
-  },
-  {
-   "adr_pct": 4.76,
-   "avg_value": "₹642.8 Cr",
-   "avg_value_raw": 6428432565.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:ATHERENERG",
-   "close": 1924.9,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": true,
-    "6m": true
-   },
-   "name": "Ather Energy Limited",
-   "returns": {
-    "1m": 0.3095,
-    "3m": 0.2265,
-    "6m": 1.1146
-   },
-   "risk_pct": 7.92,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 1861.4,
-   "symbol": "ATHERENERG",
-   "to_trigger_pct": 5.02,
-   "trigger": 2021.5,
-   "vol_ratio": 0.59
-  },
-  {
-   "adr_pct": 5.66,
-   "avg_value": "₹15.2 Cr",
-   "avg_value_raw": 151611624.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:NILKAMAL",
-   "close": 2169.6,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": true
-   },
-   "name": "Nilkamal Limited",
-   "returns": {
-    "1m": 0.2342,
-    "3m": 0.1669,
-    "6m": 0.724
-   },
-   "risk_pct": 5.26,
-   "risk_wide": false,
-   "setup_age": 0,
-   "stop": 2160.0,
-   "symbol": "NILKAMAL",
-   "to_trigger_pct": 5.09,
-   "trigger": 2280.0,
-   "vol_ratio": 0.19
-  },
-  {
-   "adr_pct": 4.91,
-   "avg_value": "₹156.5 Cr",
-   "avg_value_raw": 1565207506.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:ENGINERSIN",
-   "close": 307.5,
-   "flag": false,
-   "leader": {
-    "1m": false,
-    "3m": true,
-    "6m": false
-   },
-   "name": "Engineers India Limited",
-   "returns": {
-    "1m": 0.1245,
-    "3m": 0.2855,
-    "6m": 0.2551
-   },
-   "risk_pct": 6.98,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 301.05,
-   "symbol": "ENGINERSIN",
-   "to_trigger_pct": 5.25,
-   "trigger": 323.65,
-   "vol_ratio": 0.27
-  },
-  {
-   "adr_pct": 4.4,
-   "avg_value": "₹25.3 Cr",
-   "avg_value_raw": 253108776.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:KRISHANA",
-   "close": 242.11,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": true,
-    "6m": true
-   },
-   "name": "Krishana Phoschem Limited",
-   "returns": {
-    "1m": 0.16,
-    "3m": 0.2985,
-    "6m": 0.7758
-   },
-   "risk_pct": 5.68,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 240.5,
-   "symbol": "KRISHANA",
-   "to_trigger_pct": 5.32,
-   "trigger": 254.99,
-   "vol_ratio": 0.46
-  },
-  {
-   "adr_pct": 7.62,
-   "avg_value": "₹12.4 Cr",
-   "avg_value_raw": 123505310.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:UTTAMSUGAR",
-   "close": 367.85,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": true,
-    "6m": false
-   },
-   "name": "Uttam Sugar Mills Limited",
-   "returns": {
-    "1m": -0.0035,
-    "3m": 0.4509,
-    "6m": 0.4978
-   },
-   "risk_pct": 8.74,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 354.0,
-   "symbol": "UTTAMSUGAR",
-   "to_trigger_pct": 5.45,
-   "trigger": 387.9,
-   "vol_ratio": 0.27
-  },
-  {
-   "adr_pct": 4.73,
-   "avg_value": "₹115.6 Cr",
-   "avg_value_raw": 1155891059.0,
+   "adr_pct": 4.67,
+   "avg_value": "₹115.5 Cr",
+   "avg_value_raw": 1154536732.0,
    "chart": "https://www.tradingview.com/chart/?symbol=NSE:RATNAVEER",
-   "close": 367.1,
+   "close": 370.25,
    "flag": false,
    "leader": {
     "1m": true,
@@ -1220,835 +372,673 @@
    },
    "name": "Ratnaveer Precision Engineering Limited",
    "returns": {
-    "1m": 0.0706,
-    "3m": 0.748,
-    "6m": 1.0304
+    "1m": 0.057,
+    "3m": 0.683,
+    "6m": 1.0242
    },
-   "risk_pct": 5.5,
-   "risk_wide": true,
+   "risk_pct": 3.5,
+   "risk_wide": false,
    "setup_age": 0,
-   "stop": 365.9,
+   "stop": 366.3,
    "symbol": "RATNAVEER",
-   "to_trigger_pct": 5.48,
-   "trigger": 387.2,
-   "vol_ratio": 0.48
+   "to_trigger_pct": 2.53,
+   "trigger": 379.6,
+   "vol_ratio": 0.29
   },
   {
-   "adr_pct": 5.52,
-   "avg_value": "₹270.6 Cr",
-   "avg_value_raw": 2705724319.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:WELSPUNLIV",
-   "close": 253.14,
-   "flag": false,
-   "leader": {
-    "1m": false,
-    "3m": true,
-    "6m": true
-   },
-   "name": "Welspun Living Limited",
-   "returns": {
-    "1m": 0.1543,
-    "3m": 0.532,
-    "6m": 0.8031
-   },
-   "risk_pct": 6.13,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 251.1,
-   "symbol": "WELSPUNLIV",
-   "to_trigger_pct": 5.67,
-   "trigger": 267.5,
-   "vol_ratio": 0.26
-  },
-  {
-   "adr_pct": 5.71,
-   "avg_value": "₹117.3 Cr",
-   "avg_value_raw": 1173143331.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:AARTIDRUGS",
-   "close": 498.9,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Aarti Drugs Limited",
-   "returns": {
-    "1m": 0.2587,
-    "3m": 0.1562,
-    "6m": 0.3186
-   },
-   "risk_pct": 6.33,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 494.1,
-   "symbol": "AARTIDRUGS",
-   "to_trigger_pct": 5.73,
-   "trigger": 527.5,
-   "vol_ratio": 0.11
-  },
-  {
-   "adr_pct": 5.17,
-   "avg_value": "₹29.6 Cr",
-   "avg_value_raw": 295829003.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:AWFIS",
-   "close": 282.25,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Awfis Space Solutions Limited",
-   "returns": {
-    "1m": 0.1531,
-    "3m": 0.0299,
-    "6m": -0.1093
-   },
-   "risk_pct": 6.31,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 280.1,
-   "symbol": "AWFIS",
-   "to_trigger_pct": 5.93,
-   "trigger": 298.98,
-   "vol_ratio": 0.17
-  },
-  {
-   "adr_pct": 4.28,
-   "avg_value": "₹286.1 Cr",
-   "avg_value_raw": 2860707241.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:PPLPHARMA",
-   "close": 239.65,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Piramal Pharma Limited",
-   "returns": {
-    "1m": 0.212,
-    "3m": 0.1399,
-    "6m": 0.3834
-   },
-   "risk_pct": 7.31,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 235.33,
-   "symbol": "PPLPHARMA",
-   "to_trigger_pct": 5.95,
-   "trigger": 253.9,
-   "vol_ratio": 0.15
-  },
-  {
-   "adr_pct": 5.34,
-   "avg_value": "₹34.3 Cr",
-   "avg_value_raw": 342928345.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:TIMEX",
-   "close": 723.15,
-   "flag": false,
-   "leader": {
-    "1m": false,
-    "3m": false,
-    "6m": true
-   },
-   "name": "Timex Group India Limited",
-   "returns": {
-    "1m": 0.0323,
-    "3m": 0.283,
-    "6m": 1.1462
-   },
-   "risk_pct": 6.1,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 720.15,
-   "symbol": "TIMEX",
-   "to_trigger_pct": 6.05,
-   "trigger": 766.9,
-   "vol_ratio": 0.3
-  },
-  {
-   "adr_pct": 6.28,
-   "avg_value": "₹55.9 Cr",
-   "avg_value_raw": 559182510.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:KMEW",
-   "close": 728.4,
+   "adr_pct": 4.96,
+   "avg_value": "₹63.8 Cr",
+   "avg_value_raw": 638388022.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:SUNTV",
+   "close": 694.2,
    "flag": false,
    "leader": {
     "1m": true,
     "3m": true,
-    "6m": true
-   },
-   "name": "Knowledge Marine & Engineering Works Li…",
-   "returns": {
-    "1m": 0.0944,
-    "3m": 0.4009,
-    "6m": 0.8118
-   },
-   "risk_pct": 6.67,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 721.8,
-   "symbol": "KMEW",
-   "to_trigger_pct": 6.18,
-   "trigger": 773.4,
-   "vol_ratio": 0.44
-  },
-  {
-   "adr_pct": 5.85,
-   "avg_value": "₹18.8 Cr",
-   "avg_value_raw": 188171637.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:KRISHNADEF",
-   "close": 1280.5,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
     "6m": false
    },
-   "name": "Krishna Defence And Allied Industries L…",
+   "name": "Sun TV Network Limited",
    "returns": {
-    "1m": 0.0786,
-    "3m": 0.0954,
-    "6m": 0.0929
+    "1m": 0.0848,
+    "3m": 0.4228,
+    "6m": 0.3416
    },
-   "risk_pct": 7.68,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 1255.6,
-   "symbol": "KRISHNADEF",
-   "to_trigger_pct": 6.21,
-   "trigger": 1360.0,
-   "vol_ratio": 0.31
-  },
-  {
-   "adr_pct": 7.93,
-   "avg_value": "₹77.3 Cr",
-   "avg_value_raw": 772807392.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:AGIIL",
-   "close": 304.95,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Agi Infra Limited",
-   "returns": {
-    "1m": 0.2191,
-    "3m": 0.0145,
-    "6m": -0.2003
-   },
-   "risk_pct": 7.53,
+   "risk_pct": 4.74,
    "risk_wide": false,
    "setup_age": 0,
-   "stop": 301.61,
-   "symbol": "AGIIL",
-   "to_trigger_pct": 6.96,
-   "trigger": 326.18,
-   "vol_ratio": 0.38
+   "stop": 680.0,
+   "symbol": "SUNTV",
+   "to_trigger_pct": 2.83,
+   "trigger": 713.85,
+   "vol_ratio": 0.61
   },
   {
-   "adr_pct": 5.24,
-   "avg_value": "₹9.0 Cr",
-   "avg_value_raw": 89989317.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:AJMERA",
-   "close": 133.48,
+   "adr_pct": 6.46,
+   "avg_value": "₹65.7 Cr",
+   "avg_value_raw": 657023550.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:VRLLOG",
+   "close": 340.55,
    "flag": false,
    "leader": {
     "1m": true,
     "3m": false,
     "6m": false
    },
-   "name": "Ajmera Realty & Infra India Limited",
+   "name": "VRL Logistics Limited",
    "returns": {
-    "1m": 0.0334,
-    "3m": 0.1362,
-    "6m": 0.1118
+    "1m": 0.1872,
+    "3m": 0.129,
+    "6m": 0.3774
    },
-   "risk_pct": 7.21,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 132.6,
-   "symbol": "AJMERA",
-   "to_trigger_pct": 7.06,
-   "trigger": 142.9,
-   "vol_ratio": 0.34
-  },
-  {
-   "adr_pct": 4.62,
-   "avg_value": "₹56.5 Cr",
-   "avg_value_raw": 564704665.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:NUVAMA",
-   "close": 1834.6,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Nuvama Wealth Management Limited",
-   "returns": {
-    "1m": 0.0753,
-    "3m": 0.0813,
-    "6m": 0.2504
-   },
-   "risk_pct": 7.24,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 1822.0,
-   "symbol": "NUVAMA",
-   "to_trigger_pct": 7.07,
-   "trigger": 1964.3,
-   "vol_ratio": 0.45
-  },
-  {
-   "adr_pct": 5.69,
-   "avg_value": "₹56.2 Cr",
-   "avg_value_raw": 561796854.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:LUMAXTECH",
-   "close": 2337.2,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": true,
-    "6m": false
-   },
-   "name": "Lumax Auto Technologies Limited",
-   "returns": {
-    "1m": 0.1873,
-    "3m": 0.1461,
-    "6m": 0.4373
-   },
-   "risk_pct": 7.87,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 2305.9,
-   "symbol": "LUMAXTECH",
-   "to_trigger_pct": 7.09,
-   "trigger": 2503.0,
-   "vol_ratio": 0.35
-  },
-  {
-   "adr_pct": 5.0,
-   "avg_value": "₹7.2 Cr",
-   "avg_value_raw": 72437202.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:EIMCOELECO",
-   "close": 2558.1,
-   "flag": false,
-   "leader": {
-    "1m": false,
-    "3m": true,
-    "6m": false
-   },
-   "name": "Eimco Elecon (India) Limited",
-   "returns": {
-    "1m": 0.1145,
-    "3m": 0.425,
-    "6m": 0.6095
-   },
-   "risk_pct": 7.73,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 2528.1,
-   "symbol": "EIMCOELECO",
-   "to_trigger_pct": 7.11,
-   "trigger": 2740.0,
-   "vol_ratio": 0.3
-  },
-  {
-   "adr_pct": 6.87,
-   "avg_value": "₹25.2 Cr",
-   "avg_value_raw": 252155106.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:RAMKY",
-   "close": 382.6,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Ramky Infrastructure Limited",
-   "returns": {
-    "1m": 0.4189,
-    "3m": -0.0111,
-    "6m": -0.1462
-   },
-   "risk_pct": 7.09,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 380.8,
-   "symbol": "RAMKY",
-   "to_trigger_pct": 7.12,
-   "trigger": 409.85,
-   "vol_ratio": 0.03
-  },
-  {
-   "adr_pct": 7.56,
-   "avg_value": "₹115.7 Cr",
-   "avg_value_raw": 1157450276.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:MARSONS",
-   "close": 154.83,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": true,
-    "6m": false
-   },
-   "name": "Marsons Limited",
-   "returns": {
-    "1m": 0.2615,
-    "3m": 0.5009,
-    "6m": 0.0619
-   },
-   "risk_pct": 7.48,
+   "risk_pct": 3.91,
    "risk_wide": false,
+   "setup_age": 0,
+   "stop": 336.6,
+   "symbol": "VRLLOG",
+   "to_trigger_pct": 2.86,
+   "trigger": 350.3,
+   "vol_ratio": 0.14
+  },
+  {
+   "adr_pct": 4.98,
+   "avg_value": "₹8.2 Cr",
+   "avg_value_raw": 81882223.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:SIMPLEXINF",
+   "close": 299.75,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "Simplex Infrastructures Limited",
+   "returns": {
+    "1m": 0.0386,
+    "3m": 0.1954,
+    "6m": 0.3813
+   },
+   "risk_pct": 5.33,
+   "risk_wide": true,
    "setup_age": 4,
-   "stop": 153.8,
-   "symbol": "MARSONS",
-   "to_trigger_pct": 7.36,
-   "trigger": 166.23,
-   "vol_ratio": 0.51
+   "stop": 292.15,
+   "symbol": "SIMPLEXINF",
+   "to_trigger_pct": 2.95,
+   "trigger": 308.6,
+   "vol_ratio": 1.74
   },
   {
-   "adr_pct": 7.01,
-   "avg_value": "₹201.8 Cr",
-   "avg_value_raw": 2018116265.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:SSWL",
-   "close": 548.4,
+   "adr_pct": 5.61,
+   "avg_value": "₹76.9 Cr",
+   "avg_value_raw": 769368756.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:RAYMOND",
+   "close": 1198.7,
+   "flag": false,
+   "leader": {
+    "1m": false,
+    "3m": true,
+    "6m": true
+   },
+   "name": "Raymond Limited",
+   "returns": {
+    "1m": 0.0602,
+    "3m": 0.8671,
+    "6m": 1.2137
+   },
+   "risk_pct": 8.06,
+   "risk_wide": true,
+   "setup_age": 2,
+   "stop": 1138.0,
+   "symbol": "RAYMOND",
+   "to_trigger_pct": 3.26,
+   "trigger": 1237.8,
+   "vol_ratio": 0.73
+  },
+  {
+   "adr_pct": 4.16,
+   "avg_value": "₹61.8 Cr",
+   "avg_value_raw": 618153583.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:APLLTD",
+   "close": 1040.95,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "Alembic Pharmaceuticals Limited",
+   "returns": {
+    "1m": 0.3171,
+    "3m": 0.2523,
+    "6m": 0.3836
+   },
+   "risk_pct": 3.73,
+   "risk_wide": false,
+   "setup_age": 0,
+   "stop": 1034.9,
+   "symbol": "APLLTD",
+   "to_trigger_pct": 3.27,
+   "trigger": 1075.0,
+   "vol_ratio": 0.3
+  },
+  {
+   "adr_pct": 4.64,
+   "avg_value": "₹15.8 Cr",
+   "avg_value_raw": 158431257.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:MBEL",
+   "close": 290.95,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "M & B Engineering Limited",
+   "returns": {
+    "1m": 0.021,
+    "3m": 0.0776,
+    "6m": -0.0132
+   },
+   "risk_pct": 5.52,
+   "risk_wide": true,
+   "setup_age": 0,
+   "stop": 283.9,
+   "symbol": "MBEL",
+   "to_trigger_pct": 3.28,
+   "trigger": 300.5,
+   "vol_ratio": 0.21
+  },
+  {
+   "adr_pct": 4.39,
+   "avg_value": "₹32.3 Cr",
+   "avg_value_raw": 322540655.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:RUBICON",
+   "close": 1718.7,
+   "flag": false,
+   "leader": {
+    "1m": false,
+    "3m": false,
+    "6m": true
+   },
+   "name": "Rubicon Research Limited",
+   "returns": {
+    "1m": 0.1561,
+    "3m": 0.0605,
+    "6m": 0.743
+   },
+   "risk_pct": 4.88,
+   "risk_wide": true,
+   "setup_age": 2,
+   "stop": 1691.2,
+   "symbol": "RUBICON",
+   "to_trigger_pct": 3.44,
+   "trigger": 1777.9,
+   "vol_ratio": 1.26
+  },
+  {
+   "adr_pct": 4.23,
+   "avg_value": "₹25.2 Cr",
+   "avg_value_raw": 251505120.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:KRISHANA",
+   "close": 246.17,
    "flag": false,
    "leader": {
     "1m": true,
     "3m": true,
     "6m": true
    },
-   "name": "Steel Strips Wheels Limited",
+   "name": "Krishana Phoschem Limited",
    "returns": {
-    "1m": 0.3116,
-    "3m": 0.7549,
-    "6m": 1.6087
+    "1m": 0.1563,
+    "3m": 0.3029,
+    "6m": 0.7986
    },
-   "risk_pct": 12.28,
+   "risk_pct": 5.88,
    "risk_wide": true,
    "setup_age": 0,
-   "stop": 516.5,
-   "symbol": "SSWL",
-   "to_trigger_pct": 7.37,
-   "trigger": 588.8,
+   "stop": 240.0,
+   "symbol": "KRISHANA",
+   "to_trigger_pct": 3.58,
+   "trigger": 254.99,
+   "vol_ratio": 0.61
+  },
+  {
+   "adr_pct": 5.49,
+   "avg_value": "₹20.6 Cr",
+   "avg_value_raw": 205909272.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:ANUP",
+   "close": 1766.7,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "The Anup Engineering Limited",
+   "returns": {
+    "1m": 0.2361,
+    "3m": -0.0507,
+    "6m": -0.0949
+   },
+   "risk_pct": 4.09,
+   "risk_wide": false,
+   "setup_age": 0,
+   "stop": 1759.0,
+   "symbol": "ANUP",
+   "to_trigger_pct": 3.81,
+   "trigger": 1834.0,
    "vol_ratio": 0.23
   },
   {
-   "adr_pct": 4.78,
-   "avg_value": "₹479.5 Cr",
-   "avg_value_raw": 4795067077.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:CUPID",
-   "close": 365.95,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": true,
-    "6m": true
-   },
-   "name": "Cupid Limited",
-   "returns": {
-    "1m": 0.0346,
-    "3m": 0.2625,
-    "6m": 2.2005
-   },
-   "risk_pct": 9.26,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 356.6,
-   "symbol": "CUPID",
-   "to_trigger_pct": 7.39,
-   "trigger": 393.0,
-   "vol_ratio": 0.52
-  },
-  {
-   "adr_pct": 4.29,
-   "avg_value": "₹18.8 Cr",
-   "avg_value_raw": 188324232.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:SATIN",
-   "close": 254.55,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Satin Creditcare Network Limited",
-   "returns": {
-    "1m": 0.1009,
-    "3m": 0.1394,
-    "6m": 0.145
-   },
-   "risk_pct": 7.78,
-   "risk_wide": true,
-   "setup_age": 1,
-   "stop": 252.22,
-   "symbol": "SATIN",
-   "to_trigger_pct": 7.44,
-   "trigger": 273.49,
-   "vol_ratio": 0.31
-  },
-  {
-   "adr_pct": 5.04,
-   "avg_value": "₹18.6 Cr",
-   "avg_value_raw": 185770968.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:BBL",
-   "close": 2590.3,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Bharat Bijlee Limited",
-   "returns": {
-    "1m": 0.0603,
-    "3m": 0.1272,
-    "6m": -0.0311
-   },
-   "risk_pct": 9.65,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 2520.0,
-   "symbol": "BBL",
-   "to_trigger_pct": 7.67,
-   "trigger": 2789.0,
-   "vol_ratio": 0.39
-  },
-  {
-   "adr_pct": 6.71,
-   "avg_value": "₹5.8 Cr",
-   "avg_value_raw": 57614415.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:BLUSPRING",
-   "close": 159.62,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": true,
-    "6m": true
-   },
-   "name": "Bluspring Enterprises Limited",
-   "returns": {
-    "1m": -0.0337,
-    "3m": 0.3136,
-    "6m": 1.2852
-   },
-   "risk_pct": 8.16,
-   "risk_wide": true,
-   "setup_age": 2,
-   "stop": 158.0,
-   "symbol": "BLUSPRING",
-   "to_trigger_pct": 7.77,
-   "trigger": 172.03,
-   "vol_ratio": 0.33
-  },
-  {
-   "adr_pct": 5.38,
-   "avg_value": "₹8.0 Cr",
-   "avg_value_raw": 79885752.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:TASTYBITE",
-   "close": 10874.0,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Tasty Bite Eatables Limited",
-   "returns": {
-    "1m": 0.1656,
-    "3m": 0.144,
-    "6m": 0.4667
-   },
-   "risk_pct": 13.91,
-   "risk_wide": true,
-   "setup_age": 1,
-   "stop": 10115.0,
-   "symbol": "TASTYBITE",
-   "to_trigger_pct": 8.06,
-   "trigger": 11750.0,
-   "vol_ratio": 1.06
-  },
-  {
-   "adr_pct": 5.1,
-   "avg_value": "₹50.3 Cr",
-   "avg_value_raw": 502726375.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:ENTERO",
-   "close": 1973.0,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": true,
-    "6m": true
-   },
-   "name": "Entero Healthcare Solutions Limited",
-   "returns": {
-    "1m": 0.2448,
-    "3m": 0.3891,
-    "6m": 0.591
-   },
-   "risk_pct": 9.24,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 1940.0,
-   "symbol": "ENTERO",
-   "to_trigger_pct": 8.34,
-   "trigger": 2137.6,
-   "vol_ratio": 0.35
-  },
-  {
-   "adr_pct": 5.47,
-   "avg_value": "₹23.2 Cr",
-   "avg_value_raw": 232207136.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:DALMIASUG",
-   "close": 461.95,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Dalmia Bharat Sugar and Industries Limi…",
-   "returns": {
-    "1m": -0.0404,
-    "3m": 0.1264,
-    "6m": 0.3482
-   },
-   "risk_pct": 10.35,
-   "risk_wide": true,
-   "setup_age": 1,
-   "stop": 450.15,
-   "symbol": "DALMIASUG",
-   "to_trigger_pct": 8.69,
-   "trigger": 502.1,
-   "vol_ratio": 0.18
-  },
-  {
-   "adr_pct": 5.78,
-   "avg_value": "₹26.8 Cr",
-   "avg_value_raw": 268404139.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:MMFL",
-   "close": 645.8,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "MM Forgings Limited",
-   "returns": {
-    "1m": 0.2225,
-    "3m": 0.0141,
-    "6m": 0.4386
-   },
-   "risk_pct": 9.1,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 639.0,
-   "symbol": "MMFL",
-   "to_trigger_pct": 8.86,
-   "trigger": 703.0,
-   "vol_ratio": 0.18
-  },
-  {
-   "adr_pct": 4.99,
-   "avg_value": "₹48.5 Cr",
-   "avg_value_raw": 484678409.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:DIACABS",
-   "close": 366.05,
+   "adr_pct": 5.51,
+   "avg_value": "₹14.8 Cr",
+   "avg_value_raw": 148153084.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:AEROPLANE",
+   "close": 242.7,
    "flag": false,
    "leader": {
     "1m": false,
-    "3m": true,
+    "3m": false,
     "6m": true
    },
-   "name": "Diamond Power Infrastructure Limited",
+   "name": "Amir Chand Jagdish Kumar (Exports) Limi…",
    "returns": {
-    "1m": 0.0101,
-    "3m": -0.0052,
-    "6m": 0.9242
+    "1m": 0.0897,
+    "3m": 0.2683,
+    "6m": 0.8829
    },
-   "risk_pct": 11.67,
+   "risk_pct": 6.74,
    "risk_wide": true,
-   "setup_age": 2,
-   "stop": 352.0,
-   "symbol": "DIACABS",
-   "to_trigger_pct": 8.86,
-   "trigger": 398.5,
-   "vol_ratio": 0.97
+   "setup_age": 1,
+   "stop": 235.02,
+   "symbol": "AEROPLANE",
+   "to_trigger_pct": 3.83,
+   "trigger": 252.0,
+   "vol_ratio": 0.7
   },
   {
-   "adr_pct": 8.04,
-   "avg_value": "₹5.2 Cr",
-   "avg_value_raw": 51888739.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:PERMAGN",
-   "close": 1173.55,
+   "adr_pct": 4.4,
+   "avg_value": "₹48.6 Cr",
+   "avg_value_raw": 486010884.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:GRWRHITECH",
+   "close": 7779.0,
    "flag": false,
    "leader": {
     "1m": true,
     "3m": false,
+    "6m": true
+   },
+   "name": "Garware Hi-Tech Films Limited",
+   "returns": {
+    "1m": 0.1181,
+    "3m": 0.0759,
+    "6m": 0.3804
+   },
+   "risk_pct": 4.39,
+   "risk_wide": false,
+   "setup_age": 2,
+   "stop": 7724.5,
+   "symbol": "GRWRHITECH",
+   "to_trigger_pct": 3.86,
+   "trigger": 8079.5,
+   "vol_ratio": 0.25
+  },
+  {
+   "adr_pct": 6.85,
+   "avg_value": "₹28.7 Cr",
+   "avg_value_raw": 286627098.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:CHEMPLASTS",
+   "close": 250.06,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": true,
     "6m": false
    },
-   "name": "Permanent Magnets Limited",
+   "name": "Chemplast Sanmar Limited",
    "returns": {
-    "1m": 0.3001,
-    "3m": null,
-    "6m": null
+    "1m": 0.2027,
+    "3m": 0.3862,
+    "6m": 0.1087
    },
-   "risk_pct": 12.54,
-   "risk_wide": true,
+   "risk_pct": 5.61,
+   "risk_wide": false,
    "setup_age": 0,
-   "stop": 1118.65,
-   "symbol": "PERMAGN",
-   "to_trigger_pct": 8.99,
-   "trigger": 1279.0,
+   "stop": 245.2,
+   "symbol": "CHEMPLASTS",
+   "to_trigger_pct": 3.89,
+   "trigger": 259.78,
    "vol_ratio": 0.19
   },
   {
-   "adr_pct": 5.83,
-   "avg_value": "₹42.6 Cr",
-   "avg_value_raw": 425608685.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:UNIMECH",
-   "close": 1857.1,
+   "adr_pct": 4.78,
+   "avg_value": "₹144.7 Cr",
+   "avg_value_raw": 1447070985.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:SAREGAMA",
+   "close": 666.7,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": true
+   },
+   "name": "Saregama India Limited",
+   "returns": {
+    "1m": 0.3069,
+    "3m": 0.254,
+    "6m": 0.6401
+   },
+   "risk_pct": 4.52,
+   "risk_wide": false,
+   "setup_age": 0,
+   "stop": 662.05,
+   "symbol": "SAREGAMA",
+   "to_trigger_pct": 4.0,
+   "trigger": 693.4,
+   "vol_ratio": 0.11
+  },
+  {
+   "adr_pct": 4.95,
+   "avg_value": "₹36.8 Cr",
+   "avg_value_raw": 368261463.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:PDSL",
+   "close": 408.3,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "PDS Limited",
+   "returns": {
+    "1m": 0.2215,
+    "3m": 0.0971,
+    "6m": 0.3871
+   },
+   "risk_pct": 5.02,
+   "risk_wide": true,
+   "setup_age": 0,
+   "stop": 403.55,
+   "symbol": "PDSL",
+   "to_trigger_pct": 4.07,
+   "trigger": 424.9,
+   "vol_ratio": 0.17
+  },
+  {
+   "adr_pct": 5.3,
+   "avg_value": "₹123.2 Cr",
+   "avg_value_raw": 1231902934.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:SYMBIOTEC",
+   "close": 1598.6,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "Symbiotec Pharmalab Limited",
+   "returns": {
+    "1m": 0.2907,
+    "3m": null,
+    "6m": null
+   },
+   "risk_pct": 4.62,
+   "risk_wide": false,
+   "setup_age": 0,
+   "stop": 1588.0,
+   "symbol": "SYMBIOTEC",
+   "to_trigger_pct": 4.15,
+   "trigger": 1664.9,
+   "vol_ratio": 0.35
+  },
+  {
+   "adr_pct": 6.34,
+   "avg_value": "₹102.2 Cr",
+   "avg_value_raw": 1021557684.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:PARAGMILK",
+   "close": 336.94,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": true,
+    "6m": false
+   },
+   "name": "Parag Milk Foods Limited",
+   "returns": {
+    "1m": 0.2502,
+    "3m": 0.5447,
+    "6m": 0.5928
+   },
+   "risk_pct": 5.72,
+   "risk_wide": false,
+   "setup_age": 0,
+   "stop": 330.92,
+   "symbol": "PARAGMILK",
+   "to_trigger_pct": 4.17,
+   "trigger": 351.0,
+   "vol_ratio": 0.26
+  },
+  {
+   "adr_pct": 4.8,
+   "avg_value": "₹649.4 Cr",
+   "avg_value_raw": 6494093504.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:ATHERENERG",
+   "close": 1935.4,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": true,
+    "6m": true
+   },
+   "name": "Ather Energy Limited",
+   "returns": {
+    "1m": 0.3265,
+    "3m": 0.2679,
+    "6m": 1.129
+   },
+   "risk_pct": 5.35,
+   "risk_wide": true,
+   "setup_age": 0,
+   "stop": 1913.3,
+   "symbol": "ATHERENERG",
+   "to_trigger_pct": 4.45,
+   "trigger": 2021.5,
+   "vol_ratio": 0.47
+  },
+  {
+   "adr_pct": 5.5,
+   "avg_value": "₹18.2 Cr",
+   "avg_value_raw": 181795806.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:ROSSTECH",
+   "close": 1528.6,
    "flag": false,
    "leader": {
     "1m": false,
     "3m": true,
     "6m": true
    },
-   "name": "Unimech Aerospace and Manufacturing Lim…",
+   "name": "Rossell Techsys Limited",
    "returns": {
-    "1m": 0.0367,
-    "3m": 0.3092,
-    "6m": 0.9877
+    "1m": 0.0368,
+    "3m": 0.446,
+    "6m": 0.6915
    },
-   "risk_pct": 12.03,
+   "risk_pct": 5.64,
    "risk_wide": true,
    "setup_age": 0,
-   "stop": 1782.0,
-   "symbol": "UNIMECH",
-   "to_trigger_pct": 9.07,
-   "trigger": 2025.6,
-   "vol_ratio": 0.49
+   "stop": 1513.1,
+   "symbol": "ROSSTECH",
+   "to_trigger_pct": 4.9,
+   "trigger": 1603.5,
+   "vol_ratio": 0.56
   },
   {
-   "adr_pct": 6.21,
-   "avg_value": "₹9.7 Cr",
-   "avg_value_raw": 96918227.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:INFOBEAN",
-   "close": 159.88,
+   "adr_pct": 4.52,
+   "avg_value": "₹27.2 Cr",
+   "avg_value_raw": 272496858.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:FIEMIND",
+   "close": 2137.2,
    "flag": false,
    "leader": {
     "1m": true,
     "3m": false,
     "6m": false
    },
-   "name": "InfoBeans Technologies Limited",
+   "name": "Fiem Industries Limited",
    "returns": {
-    "1m": -0.0486,
-    "3m": -0.0184,
-    "6m": 0.05
+    "1m": 0.172,
+    "3m": -0.114,
+    "6m": -0.0065
    },
-   "risk_pct": 10.58,
+   "risk_pct": 5.37,
    "risk_wide": true,
-   "setup_age": 1,
-   "stop": 156.25,
-   "symbol": "INFOBEAN",
-   "to_trigger_pct": 9.29,
-   "trigger": 174.73,
-   "vol_ratio": 0.22
+   "setup_age": 0,
+   "stop": 2126.7,
+   "symbol": "FIEMIND",
+   "to_trigger_pct": 5.15,
+   "trigger": 2247.3,
+   "vol_ratio": 0.48
   },
   {
-   "adr_pct": 4.93,
-   "avg_value": "₹350.2 Cr",
-   "avg_value_raw": 3501823787.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:SAILIFE",
-   "close": 1788.4,
+   "adr_pct": 5.65,
+   "avg_value": "₹13.0 Cr",
+   "avg_value_raw": 129881275.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:GYFTR",
+   "close": 221.88,
    "flag": false,
    "leader": {
     "1m": true,
     "3m": true,
     "6m": false
    },
-   "name": "Sai Life Sciences Limited",
+   "name": "Gyftr Limited",
    "returns": {
-    "1m": 0.2872,
-    "3m": 0.2219,
-    "6m": 0.5891
+    "1m": 0.2703,
+    "3m": 0.3911,
+    "6m": null
    },
-   "risk_pct": 9.35,
+   "risk_pct": 5.85,
    "risk_wide": true,
    "setup_age": 0,
-   "stop": 1772.1,
-   "symbol": "SAILIFE",
-   "to_trigger_pct": 9.3,
-   "trigger": 1954.8,
-   "vol_ratio": 0.23
+   "stop": 220.29,
+   "symbol": "GYFTR",
+   "to_trigger_pct": 5.46,
+   "trigger": 233.99,
+   "vol_ratio": 0.33
   },
   {
-   "adr_pct": 5.26,
-   "avg_value": "₹63.0 Cr",
-   "avg_value_raw": 629970888.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:ROLEXRINGS",
-   "close": 200.34,
+   "adr_pct": 4.58,
+   "avg_value": "₹93.0 Cr",
+   "avg_value_raw": 930328212.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:JYOTICNC",
+   "close": 1052.45,
    "flag": false,
    "leader": {
-    "1m": true,
+    "1m": false,
     "3m": true,
     "6m": false
    },
-   "name": "Rolex Rings Limited",
+   "name": "Jyoti CNC Automation Limited",
    "returns": {
-    "1m": 0.1571,
-    "3m": 0.158,
-    "6m": 0.4109
+    "1m": 0.0786,
+    "3m": 0.2641,
+    "6m": 0.5709
    },
-   "risk_pct": 9.77,
+   "risk_pct": 7.13,
    "risk_wide": true,
    "setup_age": 0,
-   "stop": 198.5,
-   "symbol": "ROLEXRINGS",
-   "to_trigger_pct": 9.81,
-   "trigger": 220.0,
-   "vol_ratio": 0.4
+   "stop": 1031.0,
+   "symbol": "JYOTICNC",
+   "to_trigger_pct": 5.49,
+   "trigger": 1110.2,
+   "vol_ratio": 0.47
   },
   {
-   "adr_pct": 4.46,
-   "avg_value": "₹109.6 Cr",
-   "avg_value_raw": 1095627964.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:CPPLUS",
-   "close": 4023.2,
+   "adr_pct": 4.26,
+   "avg_value": "₹33.3 Cr",
+   "avg_value_raw": 332857000.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:IXIGO",
+   "close": 170.2,
    "flag": false,
    "leader": {
     "1m": true,
     "3m": false,
     "6m": false
    },
-   "name": "Aditya Infotech Limited",
+   "name": "Le Travenues Technology Limited",
    "returns": {
-    "1m": -0.0099,
-    "3m": 0.0318,
-    "6m": 0.6939
+    "1m": 0.0835,
+    "3m": -0.0067,
+    "6m": 0.0515
    },
-   "risk_pct": 10.78,
+   "risk_pct": 5.71,
    "risk_wide": true,
-   "setup_age": 1,
-   "stop": 3942.4,
-   "symbol": "CPPLUS",
-   "to_trigger_pct": 9.83,
-   "trigger": 4418.6,
-   "vol_ratio": 0.26
+   "setup_age": 0,
+   "stop": 169.31,
+   "symbol": "IXIGO",
+   "to_trigger_pct": 5.51,
+   "trigger": 179.57,
+   "vol_ratio": 0.43
   },
   {
-   "adr_pct": 4.5,
+   "adr_pct": 5.73,
+   "avg_value": "₹33.9 Cr",
+   "avg_value_raw": 339104763.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:SUDEEPPHRM",
+   "close": 1191.5,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": true,
+    "6m": true
+   },
+   "name": "Sudeep Pharma Limited",
+   "returns": {
+    "1m": 0.1876,
+    "3m": 0.0824,
+    "6m": 0.8328
+   },
+   "risk_pct": 5.97,
+   "risk_wide": true,
+   "setup_age": 2,
+   "stop": 1182.2,
+   "symbol": "SUDEEPPHRM",
+   "to_trigger_pct": 5.52,
+   "trigger": 1257.3,
+   "vol_ratio": 0.38
+  },
+  {
+   "adr_pct": 5.25,
+   "avg_value": "₹70.1 Cr",
+   "avg_value_raw": 700596726.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:AARTIPHARM",
+   "close": 990.7,
+   "flag": false,
+   "leader": {
+    "1m": false,
+    "3m": true,
+    "6m": false
+   },
+   "name": "Aarti Pharmalabs Limited",
+   "returns": {
+    "1m": 0.1902,
+    "3m": 0.134,
+    "6m": 0.4138
+   },
+   "risk_pct": 5.85,
+   "risk_wide": true,
+   "setup_age": 0,
+   "stop": 986.0,
+   "symbol": "AARTIPHARM",
+   "to_trigger_pct": 5.71,
+   "trigger": 1047.25,
+   "vol_ratio": 0.47
+  },
+  {
+   "adr_pct": 4.45,
    "avg_value": "₹24.6 Cr",
-   "avg_value_raw": 246284944.0,
+   "avg_value_raw": 246240331.0,
    "chart": "https://www.tradingview.com/chart/?symbol=NSE:KITEX",
-   "close": 133.61,
+   "close": 131.95,
    "flag": false,
    "leader": {
     "1m": true,
@@ -2057,214 +1047,808 @@
    },
    "name": "Kitex Garments Limited",
    "returns": {
-    "1m": 0.0934,
-    "3m": -0.0076,
-    "6m": -0.1504
+    "1m": 0.0838,
+    "3m": -0.05,
+    "6m": -0.1564
    },
-   "risk_pct": 11.37,
+   "risk_pct": 6.37,
    "risk_wide": true,
-   "setup_age": 1,
-   "stop": 130.26,
+   "setup_age": 0,
+   "stop": 130.61,
    "symbol": "KITEX",
-   "to_trigger_pct": 10.0,
-   "trigger": 146.97,
-   "vol_ratio": 0.29
-  },
-  {
-   "adr_pct": 6.07,
-   "avg_value": "₹13.8 Cr",
-   "avg_value_raw": 138483755.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:KOPRAN",
-   "close": 267.05,
-   "flag": false,
-   "leader": {
-    "1m": false,
-    "3m": true,
-    "6m": true
-   },
-   "name": "Kopran Limited",
-   "returns": {
-    "1m": -0.0151,
-    "3m": 0.5478,
-    "6m": 0.5505
-   },
-   "risk_pct": 10.27,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 263.81,
-   "symbol": "KOPRAN",
-   "to_trigger_pct": 10.09,
-   "trigger": 294.0,
-   "vol_ratio": 0.25
-  },
-  {
-   "adr_pct": 5.13,
-   "avg_value": "₹97.5 Cr",
-   "avg_value_raw": 975215698.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:TANLA",
-   "close": 670.0,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Tanla Platforms Limited",
-   "returns": {
-    "1m": 0.1972,
-    "3m": 0.1272,
-    "6m": 0.2805
-   },
-   "risk_pct": 10.68,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 660.05,
-   "symbol": "TANLA",
-   "to_trigger_pct": 10.29,
-   "trigger": 738.95,
-   "vol_ratio": 0.42
-  },
-  {
-   "adr_pct": 6.2,
-   "avg_value": "₹63.7 Cr",
-   "avg_value_raw": 637042342.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:KROSS",
-   "close": 285.45,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": true,
-    "6m": false
-   },
-   "name": "Kross Limited",
-   "returns": {
-    "1m": 0.0494,
-    "3m": 0.394,
-    "6m": 0.4915
-   },
-   "risk_pct": 11.03,
-   "risk_wide": true,
-   "setup_age": 1,
-   "stop": 281.15,
-   "symbol": "KROSS",
-   "to_trigger_pct": 10.7,
-   "trigger": 316.0,
+   "to_trigger_pct": 5.72,
+   "trigger": 139.5,
    "vol_ratio": 0.17
   },
   {
-   "adr_pct": 5.16,
-   "avg_value": "₹33.9 Cr",
-   "avg_value_raw": 338824114.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:SAMBHV",
-   "close": 161.48,
-   "flag": false,
-   "leader": {
-    "1m": false,
-    "3m": true,
-    "6m": false
-   },
-   "name": "Sambhv Steel Tubes Limited",
-   "returns": {
-    "1m": -0.0637,
-    "3m": 0.3633,
-    "6m": 0.4684
-   },
-   "risk_pct": 11.07,
-   "risk_wide": true,
-   "setup_age": 1,
-   "stop": 159.1,
-   "symbol": "SAMBHV",
-   "to_trigger_pct": 10.79,
-   "trigger": 178.9,
-   "vol_ratio": 0.32
-  },
-  {
-   "adr_pct": 5.4,
-   "avg_value": "₹36.2 Cr",
-   "avg_value_raw": 361830275.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:SMSPHARMA",
-   "close": 481.35,
-   "flag": false,
-   "leader": {
-    "1m": false,
-    "3m": true,
-    "6m": false
-   },
-   "name": "SMS Pharmaceuticals Limited",
-   "returns": {
-    "1m": 0.0685,
-    "3m": 0.3025,
-    "6m": 0.1733
-   },
-   "risk_pct": 12.64,
-   "risk_wide": true,
-   "setup_age": 3,
-   "stop": 467.35,
-   "symbol": "SMSPHARMA",
-   "to_trigger_pct": 11.15,
-   "trigger": 535.0,
-   "vol_ratio": 0.24
-  },
-  {
-   "adr_pct": 7.75,
-   "avg_value": "₹6.7 Cr",
-   "avg_value_raw": 66997417.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:CNL",
-   "close": 1389.0,
+   "adr_pct": 4.61,
+   "avg_value": "₹184.6 Cr",
+   "avg_value_raw": 1845976282.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:MOTILALOFS",
+   "close": 1205.65,
    "flag": false,
    "leader": {
     "1m": true,
     "3m": true,
-    "6m": true
+    "6m": false
    },
-   "name": "Creative Newtech Limited",
+   "name": "Motilal Oswal Financial Services Limited",
    "returns": {
-    "1m": 0.1784,
-    "3m": 0.1505,
-    "6m": 1.2344
+    "1m": 0.1809,
+    "3m": 0.3433,
+    "6m": 0.4244
    },
-   "risk_pct": 11.49,
+   "risk_pct": 7.12,
    "risk_wide": true,
    "setup_age": 0,
-   "stop": 1372.1,
-   "symbol": "CNL",
-   "to_trigger_pct": 11.61,
-   "trigger": 1550.2,
+   "stop": 1186.8,
+   "symbol": "MOTILALOFS",
+   "to_trigger_pct": 5.98,
+   "trigger": 1277.8,
+   "vol_ratio": 0.63
+  },
+  {
+   "adr_pct": 5.51,
+   "avg_value": "₹53.6 Cr",
+   "avg_value_raw": 536221942.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:BOROLTD",
+   "close": 327.1,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": true,
+    "6m": false
+   },
+   "name": "Borosil Limited",
+   "returns": {
+    "1m": 0.2442,
+    "3m": 0.3407,
+    "6m": 0.4281
+   },
+   "risk_pct": 6.11,
+   "risk_wide": true,
+   "setup_age": 0,
+   "stop": 325.75,
+   "symbol": "BOROLTD",
+   "to_trigger_pct": 6.07,
+   "trigger": 346.95,
    "vol_ratio": 0.09
   },
   {
-   "adr_pct": 5.26,
-   "avg_value": "₹23.3 Cr",
-   "avg_value_raw": 232840632.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:PRINCEPIPE",
-   "close": 290.4,
+   "adr_pct": 4.24,
+   "avg_value": "₹288.0 Cr",
+   "avg_value_raw": 2879850875.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:PPLPHARMA",
+   "close": 239.3,
    "flag": false,
    "leader": {
     "1m": true,
     "3m": false,
     "6m": false
    },
-   "name": "Prince Pipes And Fittings Limited",
+   "name": "Piramal Pharma Limited",
    "returns": {
-    "1m": 0.0285,
-    "3m": 0.0772,
-    "6m": 0.079
+    "1m": 0.2307,
+    "3m": 0.1252,
+    "6m": 0.357
    },
-   "risk_pct": 11.91,
+   "risk_pct": 7.71,
    "risk_wide": true,
-   "setup_age": 2,
-   "stop": 287.1,
-   "symbol": "PRINCEPIPE",
-   "to_trigger_pct": 12.22,
-   "trigger": 325.9,
+   "setup_age": 1,
+   "stop": 234.32,
+   "symbol": "PPLPHARMA",
+   "to_trigger_pct": 6.1,
+   "trigger": 253.9,
    "vol_ratio": 0.32
   },
   {
-   "adr_pct": 4.02,
-   "avg_value": "₹80.2 Cr",
-   "avg_value_raw": 801698902.0,
+   "adr_pct": 5.38,
+   "avg_value": "₹9.3 Cr",
+   "avg_value_raw": 92904713.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:AVTNPL",
+   "close": 101.96,
+   "flag": false,
+   "leader": {
+    "1m": false,
+    "3m": true,
+    "6m": false
+   },
+   "name": "AVT Natural Products Limited",
+   "returns": {
+    "1m": 0.0226,
+    "3m": 0.4298,
+    "6m": 0.5132
+   },
+   "risk_pct": 6.36,
+   "risk_wide": true,
+   "setup_age": 0,
+   "stop": 101.55,
+   "symbol": "AVTNPL",
+   "to_trigger_pct": 6.37,
+   "trigger": 108.45,
+   "vol_ratio": 0.43
+  },
+  {
+   "adr_pct": 6.72,
+   "avg_value": "₹25.2 Cr",
+   "avg_value_raw": 251755582.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:RAMKY",
+   "close": 384.65,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "Ramky Infrastructure Limited",
+   "returns": {
+    "1m": 0.4612,
+    "3m": -0.0229,
+    "6m": -0.1344
+   },
+   "risk_pct": 8.0,
+   "risk_wide": true,
+   "setup_age": 0,
+   "stop": 377.05,
+   "symbol": "RAMKY",
+   "to_trigger_pct": 6.55,
+   "trigger": 409.85,
+   "vol_ratio": 0.02
+  },
+  {
+   "adr_pct": 7.94,
+   "avg_value": "₹77.6 Cr",
+   "avg_value_raw": 776120163.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:AGIIL",
+   "close": 305.78,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "Agi Infra Limited",
+   "returns": {
+    "1m": 0.2483,
+    "3m": 0.0265,
+    "6m": -0.1989
+   },
+   "risk_pct": 7.65,
+   "risk_wide": false,
+   "setup_age": 0,
+   "stop": 301.22,
+   "symbol": "AGIIL",
+   "to_trigger_pct": 6.67,
+   "trigger": 326.18,
+   "vol_ratio": 0.12
+  },
+  {
+   "adr_pct": 4.24,
+   "avg_value": "₹18.9 Cr",
+   "avg_value_raw": 188882113.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:SATIN",
+   "close": 256.16,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "Satin Creditcare Network Limited",
+   "returns": {
+    "1m": 0.1174,
+    "3m": 0.1585,
+    "6m": 0.1511
+   },
+   "risk_pct": 8.2,
+   "risk_wide": true,
+   "setup_age": 2,
+   "stop": 251.06,
+   "symbol": "SATIN",
+   "to_trigger_pct": 6.77,
+   "trigger": 273.49,
+   "vol_ratio": 0.3
+  },
+  {
+   "adr_pct": 5.27,
+   "avg_value": "₹8.8 Cr",
+   "avg_value_raw": 88318593.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:XPROINDIA",
+   "close": 1220.4,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "Xpro India Limited",
+   "returns": {
+    "1m": 0.2265,
+    "3m": 0.0939,
+    "6m": 0.1396
+   },
+   "risk_pct": 7.54,
+   "risk_wide": true,
+   "setup_age": 0,
+   "stop": 1210.0,
+   "symbol": "XPROINDIA",
+   "to_trigger_pct": 7.24,
+   "trigger": 1308.7,
+   "vol_ratio": 0.38
+  },
+  {
+   "adr_pct": 5.65,
+   "avg_value": "₹56.3 Cr",
+   "avg_value_raw": 562742781.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:LUMAXTECH",
+   "close": 2330.3,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": true,
+    "6m": false
+   },
+   "name": "Lumax Auto Technologies Limited",
+   "returns": {
+    "1m": 0.2246,
+    "3m": 0.1725,
+    "6m": 0.4125
+   },
+   "risk_pct": 7.5,
+   "risk_wide": true,
+   "setup_age": 0,
+   "stop": 2315.4,
+   "symbol": "LUMAXTECH",
+   "to_trigger_pct": 7.41,
+   "trigger": 2503.0,
+   "vol_ratio": 0.24
+  },
+  {
+   "adr_pct": 4.98,
+   "avg_value": "₹104.5 Cr",
+   "avg_value_raw": 1045491365.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:IGIL",
+   "close": 422.2,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "International Gemological Institute Lim…",
+   "returns": {
+    "1m": 0.3114,
+    "3m": 0.2234,
+    "6m": 0.1984
+   },
+   "risk_pct": 7.86,
+   "risk_wide": true,
+   "setup_age": 0,
+   "stop": 418.0,
+   "symbol": "IGIL",
+   "to_trigger_pct": 7.45,
+   "trigger": 453.65,
+   "vol_ratio": 0.37
+  },
+  {
+   "adr_pct": 4.48,
+   "avg_value": "₹456.8 Cr",
+   "avg_value_raw": 4568049723.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:CUPID",
+   "close": 365.65,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": true,
+    "6m": true
+   },
+   "name": "Cupid Limited",
+   "returns": {
+    "1m": 0.0873,
+    "3m": 0.2401,
+    "6m": 2.0614
+   },
+   "risk_pct": 7.89,
+   "risk_wide": true,
+   "setup_age": 0,
+   "stop": 362.0,
+   "symbol": "CUPID",
+   "to_trigger_pct": 7.48,
+   "trigger": 393.0,
+   "vol_ratio": 0.45
+  },
+  {
+   "adr_pct": 5.82,
+   "avg_value": "₹5.7 Cr",
+   "avg_value_raw": 56824468.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:TCPLPACK",
+   "close": 4387.4,
+   "flag": false,
+   "leader": {
+    "1m": false,
+    "3m": true,
+    "6m": true
+   },
+   "name": "TCPL Packaging Limited",
+   "returns": {
+    "1m": 0.0484,
+    "3m": 0.0311,
+    "6m": 0.7226
+   },
+   "risk_pct": 7.82,
+   "risk_wide": true,
+   "setup_age": 1,
+   "stop": 4350.0,
+   "symbol": "TCPLPACK",
+   "to_trigger_pct": 7.56,
+   "trigger": 4719.0,
+   "vol_ratio": 0.76
+  },
+  {
+   "adr_pct": 5.19,
+   "avg_value": "₹358.5 Cr",
+   "avg_value_raw": 3585457928.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:ACUTAAS",
+   "close": 3833.5,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "Acutaas Chemicals Limited",
+   "returns": {
+    "1m": 0.1783,
+    "3m": 0.2324,
+    "6m": 0.3308
+   },
+   "risk_pct": 7.98,
+   "risk_wide": true,
+   "setup_age": 0,
+   "stop": 3800.5,
+   "symbol": "ACUTAAS",
+   "to_trigger_pct": 7.73,
+   "trigger": 4130.0,
+   "vol_ratio": 0.53
+  },
+  {
+   "adr_pct": 7.91,
+   "avg_value": "₹5.0 Cr",
+   "avg_value_raw": 50147134.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:BPLPHARMA",
+   "close": 2312.0,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "Bharat Parenterals Limited",
+   "returns": {
+    "1m": 0.3368,
+    "3m": null,
+    "6m": null
+   },
+   "risk_pct": 7.73,
+   "risk_wide": false,
+   "setup_age": 0,
+   "stop": 2300.0,
+   "symbol": "BPLPHARMA",
+   "to_trigger_pct": 7.82,
+   "trigger": 2492.8,
+   "vol_ratio": 0.17
+  },
+  {
+   "adr_pct": 5.2,
+   "avg_value": "₹29.4 Cr",
+   "avg_value_raw": 293753218.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:AWFIS",
+   "close": 277.19,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "Awfis Space Solutions Limited",
+   "returns": {
+    "1m": 0.1586,
+    "3m": 0.0191,
+    "6m": -0.1165
+   },
+   "risk_pct": 8.89,
+   "risk_wide": true,
+   "setup_age": 0,
+   "stop": 272.4,
+   "symbol": "AWFIS",
+   "to_trigger_pct": 7.86,
+   "trigger": 298.98,
+   "vol_ratio": 0.17
+  },
+  {
+   "adr_pct": 4.59,
+   "avg_value": "₹55.2 Cr",
+   "avg_value_raw": 552450297.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:NUVAMA",
+   "close": 1820.8,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "Nuvama Wealth Management Limited",
+   "returns": {
+    "1m": 0.0814,
+    "3m": 0.068,
+    "6m": 0.2334
+   },
+   "risk_pct": 8.81,
+   "risk_wide": true,
+   "setup_age": 1,
+   "stop": 1791.3,
+   "symbol": "NUVAMA",
+   "to_trigger_pct": 7.88,
+   "trigger": 1964.3,
+   "vol_ratio": 0.47
+  },
+  {
+   "adr_pct": 6.21,
+   "avg_value": "₹55.7 Cr",
+   "avg_value_raw": 556546994.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:KMEW",
+   "close": 716.7,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": true,
+    "6m": true
+   },
+   "name": "Knowledge Marine & Engineering Works Li…",
+   "returns": {
+    "1m": 0.0781,
+    "3m": 0.3224,
+    "6m": 0.7304
+   },
+   "risk_pct": 9.43,
+   "risk_wide": true,
+   "setup_age": 0,
+   "stop": 700.5,
+   "symbol": "KMEW",
+   "to_trigger_pct": 7.91,
+   "trigger": 773.4,
+   "vol_ratio": 0.54
+  },
+  {
+   "adr_pct": 5.75,
+   "avg_value": "₹15.3 Cr",
+   "avg_value_raw": 152639902.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:NILKAMAL",
+   "close": 2102.7,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": true
+   },
+   "name": "Nilkamal Limited",
+   "returns": {
+    "1m": 0.2208,
+    "3m": 0.088,
+    "6m": 0.69
+   },
+   "risk_pct": 8.89,
+   "risk_wide": true,
+   "setup_age": 0,
+   "stop": 2077.4,
+   "symbol": "NILKAMAL",
+   "to_trigger_pct": 8.43,
+   "trigger": 2280.0,
+   "vol_ratio": 0.22
+  },
+  {
+   "adr_pct": 5.78,
+   "avg_value": "₹27.2 Cr",
+   "avg_value_raw": 271878364.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:MMFL",
+   "close": 648.05,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "MM Forgings Limited",
+   "returns": {
+    "1m": 0.2741,
+    "3m": 0.0426,
+    "6m": 0.4306
+   },
+   "risk_pct": 10.61,
+   "risk_wide": true,
+   "setup_age": 0,
+   "stop": 628.4,
+   "symbol": "MMFL",
+   "to_trigger_pct": 8.48,
+   "trigger": 703.0,
+   "vol_ratio": 0.34
+  },
+  {
+   "adr_pct": 4.95,
+   "avg_value": "₹354.5 Cr",
+   "avg_value_raw": 3545110367.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:SAILIFE",
+   "close": 1800.7,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": true,
+    "6m": false
+   },
+   "name": "Sai Life Sciences Limited",
+   "returns": {
+    "1m": 0.29,
+    "3m": 0.2408,
+    "6m": 0.5778
+   },
+   "risk_pct": 9.1,
+   "risk_wide": true,
+   "setup_age": 0,
+   "stop": 1776.9,
+   "symbol": "SAILIFE",
+   "to_trigger_pct": 8.56,
+   "trigger": 1954.8,
+   "vol_ratio": 0.31
+  },
+  {
+   "adr_pct": 4.44,
+   "avg_value": "₹36.9 Cr",
+   "avg_value_raw": 369407856.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:INDIACEM",
+   "close": 326.9,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "The India Cements Limited",
+   "returns": {
+    "1m": 0.1106,
+    "3m": -0.1442,
+    "6m": -0.1833
+   },
+   "risk_pct": 10.7,
+   "risk_wide": true,
+   "setup_age": 4,
+   "stop": 317.4,
+   "symbol": "INDIACEM",
+   "to_trigger_pct": 8.73,
+   "trigger": 355.45,
+   "vol_ratio": 0.43
+  },
+  {
+   "adr_pct": 5.69,
+   "avg_value": "₹117.7 Cr",
+   "avg_value_raw": 1177194279.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:AARTIDRUGS",
+   "close": 484.5,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "Aarti Drugs Limited",
+   "returns": {
+    "1m": 0.2134,
+    "3m": 0.1328,
+    "6m": 0.2695
+   },
+   "risk_pct": 8.75,
+   "risk_wide": true,
+   "setup_age": 0,
+   "stop": 481.35,
+   "symbol": "AARTIDRUGS",
+   "to_trigger_pct": 8.88,
+   "trigger": 527.5,
+   "vol_ratio": 0.12
+  },
+  {
+   "adr_pct": 7.17,
+   "avg_value": "₹11.6 Cr",
+   "avg_value_raw": 115974731.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:UTTAMSUGAR",
+   "close": 355.8,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": true,
+    "6m": false
+   },
+   "name": "Uttam Sugar Mills Limited",
+   "returns": {
+    "1m": -0.0124,
+    "3m": 0.3427,
+    "6m": 0.4508
+   },
+   "risk_pct": 10.13,
+   "risk_wide": true,
+   "setup_age": 1,
+   "stop": 348.6,
+   "symbol": "UTTAMSUGAR",
+   "to_trigger_pct": 9.02,
+   "trigger": 387.9,
+   "vol_ratio": 0.5
+  },
+  {
+   "adr_pct": 6.13,
+   "avg_value": "₹9.6 Cr",
+   "avg_value_raw": 96189384.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:INFOBEAN",
+   "close": 160.1,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "InfoBeans Technologies Limited",
+   "returns": {
+    "1m": 0.0076,
+    "3m": -0.0201,
+    "6m": 0.0638
+   },
+   "risk_pct": 10.14,
+   "risk_wide": true,
+   "setup_age": 2,
+   "stop": 157.01,
+   "symbol": "INFOBEAN",
+   "to_trigger_pct": 9.14,
+   "trigger": 174.73,
+   "vol_ratio": 0.27
+  },
+  {
+   "adr_pct": 4.9,
+   "avg_value": "₹156.6 Cr",
+   "avg_value_raw": 1565717001.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:ENGINERSIN",
+   "close": 296.55,
+   "flag": false,
+   "leader": {
+    "1m": false,
+    "3m": true,
+    "6m": false
+   },
+   "name": "Engineers India Limited",
+   "returns": {
+    "1m": 0.0989,
+    "3m": 0.2326,
+    "6m": 0.2285
+   },
+   "risk_pct": 8.88,
+   "risk_wide": true,
+   "setup_age": 0,
+   "stop": 294.9,
+   "symbol": "ENGINERSIN",
+   "to_trigger_pct": 9.14,
+   "trigger": 323.65,
+   "vol_ratio": 0.33
+  },
+  {
+   "adr_pct": 6.48,
+   "avg_value": "₹5.7 Cr",
+   "avg_value_raw": 56520547.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:BLUSPRING",
+   "close": 157.47,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": true,
+    "6m": true
+   },
+   "name": "Bluspring Enterprises Limited",
+   "returns": {
+    "1m": -0.0246,
+    "3m": 0.3635,
+    "6m": 1.1422
+   },
+   "risk_pct": 8.82,
+   "risk_wide": true,
+   "setup_age": 3,
+   "stop": 156.86,
+   "symbol": "BLUSPRING",
+   "to_trigger_pct": 9.25,
+   "trigger": 172.03,
+   "vol_ratio": 0.29
+  },
+  {
+   "adr_pct": 5.01,
+   "avg_value": "₹51.2 Cr",
+   "avg_value_raw": 512010425.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:DIACABS",
+   "close": 363.05,
+   "flag": false,
+   "leader": {
+    "1m": false,
+    "3m": true,
+    "6m": true
+   },
+   "name": "Diamond Power Infrastructure Limited",
+   "returns": {
+    "1m": 0.0497,
+    "3m": -0.0121,
+    "6m": 0.8608
+   },
+   "risk_pct": 9.66,
+   "risk_wide": true,
+   "setup_age": 3,
+   "stop": 360.0,
+   "symbol": "DIACABS",
+   "to_trigger_pct": 9.76,
+   "trigger": 398.5,
+   "vol_ratio": 1.6
+  },
+  {
+   "adr_pct": 6.68,
+   "avg_value": "₹32.6 Cr",
+   "avg_value_raw": 325573906.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:OPTIEMUS",
+   "close": 792.2,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": true,
+    "6m": true
+   },
+   "name": "Optiemus Infracom Limited",
+   "returns": {
+    "1m": 0.0581,
+    "3m": 0.4345,
+    "6m": 0.8936
+   },
+   "risk_pct": 9.82,
+   "risk_wide": true,
+   "setup_age": 0,
+   "stop": 785.0,
+   "symbol": "OPTIEMUS",
+   "to_trigger_pct": 9.88,
+   "trigger": 870.5,
+   "vol_ratio": 0.37
+  },
+  {
+   "adr_pct": 5.46,
+   "avg_value": "₹45.7 Cr",
+   "avg_value_raw": 457034443.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:WESTLIFE",
+   "close": 658.3,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "WESTLIFE FOODWORLD LIMITED",
+   "returns": {
+    "1m": 0.1945,
+    "3m": 0.1181,
+    "6m": 0.406
+   },
+   "risk_pct": 9.71,
+   "risk_wide": true,
+   "setup_age": 0,
+   "stop": 653.35,
+   "symbol": "WESTLIFE",
+   "to_trigger_pct": 9.92,
+   "trigger": 723.6,
+   "vol_ratio": 0.27
+  },
+  {
+   "adr_pct": 4.13,
+   "avg_value": "₹79.2 Cr",
+   "avg_value_raw": 792126546.0,
    "chart": "https://www.tradingview.com/chart/?symbol=NSE:ZENSARTECH",
-   "close": 515.6,
+   "close": 529.05,
    "flag": false,
    "leader": {
     "1m": true,
@@ -2273,79 +1857,565 @@
    },
    "name": "Zensar Technologies Limited",
    "returns": {
-    "1m": 0.0155,
-    "3m": 0.0428,
-    "6m": 0.0439
+    "1m": 0.031,
+    "3m": 0.061,
+    "6m": 0.0789
    },
-   "risk_pct": 11.82,
+   "risk_pct": 12.37,
    "risk_wide": true,
-   "setup_age": 1,
-   "stop": 513.2,
+   "setup_age": 2,
+   "stop": 510.0,
    "symbol": "ZENSARTECH",
-   "to_trigger_pct": 12.88,
+   "to_trigger_pct": 10.01,
    "trigger": 582.0,
-   "vol_ratio": 0.33
+   "vol_ratio": 0.73
   },
   {
-   "adr_pct": 6.61,
-   "avg_value": "₹55.9 Cr",
-   "avg_value_raw": 558517880.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:MARINE",
-   "close": 425.4,
-   "flag": false,
-   "leader": {
-    "1m": false,
-    "3m": true,
-    "6m": true
-   },
-   "name": "Marine Electricals (India) Limited",
-   "returns": {
-    "1m": -0.0084,
-    "3m": 0.2259,
-    "6m": 0.9158
-   },
-   "risk_pct": 14.85,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 413.0,
-   "symbol": "MARINE",
-   "to_trigger_pct": 14.01,
-   "trigger": 485.0,
-   "vol_ratio": 0.54
-  },
-  {
-   "adr_pct": 6.88,
-   "avg_value": "₹13.4 Cr",
-   "avg_value_raw": 134030645.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:MACPOWER",
-   "close": 2130.8,
+   "adr_pct": 8.35,
+   "avg_value": "₹7.7 Cr",
+   "avg_value_raw": 76614846.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:AMANTA",
+   "close": 222.37,
    "flag": false,
    "leader": {
     "1m": true,
     "3m": true,
     "6m": true
    },
-   "name": "Macpower CNC Machines Limited",
+   "name": "Amanta Healthcare Limited",
    "returns": {
-    "1m": 0.1069,
-    "3m": 0.2343,
-    "6m": 0.8855
+    "1m": 0.3507,
+    "3m": 0.4508,
+    "6m": 0.76
    },
-   "risk_pct": 13.46,
+   "risk_pct": 11.4,
    "risk_wide": true,
-   "setup_age": 1,
-   "stop": 2120.3,
-   "symbol": "MACPOWER",
-   "to_trigger_pct": 14.98,
-   "trigger": 2450.0,
-   "vol_ratio": 0.52
+   "setup_age": 0,
+   "stop": 217.7,
+   "symbol": "AMANTA",
+   "to_trigger_pct": 10.49,
+   "trigger": 245.7,
+   "vol_ratio": 0.55
   },
   {
-   "adr_pct": 6.66,
-   "avg_value": "₹25.9 Cr",
-   "avg_value_raw": 258961704.0,
+   "adr_pct": 5.5,
+   "avg_value": "₹21.6 Cr",
+   "avg_value_raw": 215981305.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:RPEL",
+   "close": 1854.3,
+   "flag": false,
+   "leader": {
+    "1m": false,
+    "3m": true,
+    "6m": true
+   },
+   "name": "Raghav Productivity Enhancers Limited",
+   "returns": {
+    "1m": 0.043,
+    "3m": 0.3352,
+    "6m": 1.0362
+   },
+   "risk_pct": 9.8,
+   "risk_wide": true,
+   "setup_age": 0,
+   "stop": 1850.0,
+   "symbol": "RPEL",
+   "to_trigger_pct": 10.6,
+   "trigger": 2050.9,
+   "vol_ratio": 0.49
+  },
+  {
+   "adr_pct": 4.94,
+   "avg_value": "₹18.5 Cr",
+   "avg_value_raw": 185464693.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:BBL",
+   "close": 2520.4,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "Bharat Bijlee Limited",
+   "returns": {
+    "1m": 0.0416,
+    "3m": 0.0928,
+    "6m": -0.0724
+   },
+   "risk_pct": 9.93,
+   "risk_wide": true,
+   "setup_age": 0,
+   "stop": 2512.1,
+   "symbol": "BBL",
+   "to_trigger_pct": 10.66,
+   "trigger": 2789.0,
+   "vol_ratio": 0.29
+  },
+  {
+   "adr_pct": 4.92,
+   "avg_value": "₹7.2 Cr",
+   "avg_value_raw": 71700047.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:EIMCOELECO",
+   "close": 2474.2,
+   "flag": false,
+   "leader": {
+    "1m": false,
+    "3m": true,
+    "6m": false
+   },
+   "name": "Eimco Elecon (India) Limited",
+   "returns": {
+    "1m": 0.0976,
+    "3m": 0.3064,
+    "6m": 0.5372
+   },
+   "risk_pct": 10.22,
+   "risk_wide": true,
+   "setup_age": 0,
+   "stop": 2460.0,
+   "symbol": "EIMCOELECO",
+   "to_trigger_pct": 10.74,
+   "trigger": 2740.0,
+   "vol_ratio": 0.41
+  },
+  {
+   "adr_pct": 5.39,
+   "avg_value": "₹34.2 Cr",
+   "avg_value_raw": 342084499.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:TIMEX",
+   "close": 690.0,
+   "flag": false,
+   "leader": {
+    "1m": false,
+    "3m": false,
+    "6m": true
+   },
+   "name": "Timex Group India Limited",
+   "returns": {
+    "1m": -0.0159,
+    "3m": 0.2798,
+    "6m": 1.0035
+   },
+   "risk_pct": 11.05,
+   "risk_wide": true,
+   "setup_age": 1,
+   "stop": 682.15,
+   "symbol": "TIMEX",
+   "to_trigger_pct": 11.14,
+   "trigger": 766.9,
+   "vol_ratio": 0.86
+  },
+  {
+   "adr_pct": 5.01,
+   "avg_value": "₹91.3 Cr",
+   "avg_value_raw": 913248525.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:TANLA",
+   "close": 660.6,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "Tanla Platforms Limited",
+   "returns": {
+    "1m": 0.196,
+    "3m": 0.1307,
+    "6m": 0.2781
+   },
+   "risk_pct": 10.94,
+   "risk_wide": true,
+   "setup_age": 0,
+   "stop": 658.1,
+   "symbol": "TANLA",
+   "to_trigger_pct": 11.86,
+   "trigger": 738.95,
+   "vol_ratio": 0.51
+  },
+  {
+   "adr_pct": 5.9,
+   "avg_value": "₹19.2 Cr",
+   "avg_value_raw": 191511890.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:KRISHNADEF",
+   "close": 1212.8,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "Krishna Defence And Allied Industries L…",
+   "returns": {
+    "1m": 0.0562,
+    "3m": 0.1298,
+    "6m": 0.0209
+   },
+   "risk_pct": 11.25,
+   "risk_wide": true,
+   "setup_age": 1,
+   "stop": 1207.0,
+   "symbol": "KRISHNADEF",
+   "to_trigger_pct": 12.14,
+   "trigger": 1360.0,
+   "vol_ratio": 0.73
+  },
+  {
+   "adr_pct": 5.43,
+   "avg_value": "₹22.9 Cr",
+   "avg_value_raw": 228965081.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:DALMIASUG",
+   "close": 447.55,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "Dalmia Bharat Sugar and Industries Limi…",
+   "returns": {
+    "1m": -0.0348,
+    "3m": 0.0473,
+    "6m": 0.2753
+   },
+   "risk_pct": 11.37,
+   "risk_wide": true,
+   "setup_age": 2,
+   "stop": 445.0,
+   "symbol": "DALMIASUG",
+   "to_trigger_pct": 12.19,
+   "trigger": 502.1,
+   "vol_ratio": 0.17
+  },
+  {
+   "adr_pct": 7.11,
+   "avg_value": "₹201.2 Cr",
+   "avg_value_raw": 2012040098.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:SSWL",
+   "close": 524.8,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": true,
+    "6m": true
+   },
+   "name": "Steel Strips Wheels Limited",
+   "returns": {
+    "1m": 0.2736,
+    "3m": 0.6899,
+    "6m": 1.5234
+   },
+   "risk_pct": 11.29,
+   "risk_wide": true,
+   "setup_age": 0,
+   "stop": 522.3,
+   "symbol": "SSWL",
+   "to_trigger_pct": 12.2,
+   "trigger": 588.8,
+   "vol_ratio": 0.09
+  },
+  {
+   "adr_pct": 5.15,
+   "avg_value": "₹50.6 Cr",
+   "avg_value_raw": 506060972.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:ENTERO",
+   "close": 1901.8,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": true,
+    "6m": true
+   },
+   "name": "Entero Healthcare Solutions Limited",
+   "returns": {
+    "1m": 0.2646,
+    "3m": 0.3134,
+    "6m": 0.5157
+   },
+   "risk_pct": 12.0,
+   "risk_wide": true,
+   "setup_age": 0,
+   "stop": 1881.0,
+   "symbol": "ENTERO",
+   "to_trigger_pct": 12.4,
+   "trigger": 2137.6,
+   "vol_ratio": 0.36
+  },
+  {
+   "adr_pct": 5.65,
+   "avg_value": "₹8.2 Cr",
+   "avg_value_raw": 82003236.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:TASTYBITE",
+   "close": 10412.0,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "Tasty Bite Eatables Limited",
+   "returns": {
+    "1m": 0.1319,
+    "3m": 0.1454,
+    "6m": 0.3967
+   },
+   "risk_pct": 12.37,
+   "risk_wide": true,
+   "setup_age": 2,
+   "stop": 10297.0,
+   "symbol": "TASTYBITE",
+   "to_trigger_pct": 12.85,
+   "trigger": 11750.0,
+   "vol_ratio": 0.59
+  },
+  {
+   "adr_pct": 5.35,
+   "avg_value": "₹35.9 Cr",
+   "avg_value_raw": 358785081.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:SMSPHARMA",
+   "close": 473.25,
+   "flag": false,
+   "leader": {
+    "1m": false,
+    "3m": true,
+    "6m": false
+   },
+   "name": "SMS Pharmaceuticals Limited",
+   "returns": {
+    "1m": 0.0888,
+    "3m": 0.2955,
+    "6m": 0.1154
+   },
+   "risk_pct": 11.78,
+   "risk_wide": true,
+   "setup_age": 4,
+   "stop": 472.0,
+   "symbol": "SMSPHARMA",
+   "to_trigger_pct": 13.05,
+   "trigger": 535.0,
+   "vol_ratio": 0.27
+  },
+  {
+   "adr_pct": 5.17,
+   "avg_value": "₹33.9 Cr",
+   "avg_value_raw": 339049993.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:SAMBHV",
+   "close": 158.06,
+   "flag": false,
+   "leader": {
+    "1m": false,
+    "3m": true,
+    "6m": false
+   },
+   "name": "Sambhv Steel Tubes Limited",
+   "returns": {
+    "1m": -0.0486,
+    "3m": 0.3497,
+    "6m": 0.4439
+   },
+   "risk_pct": 12.35,
+   "risk_wide": true,
+   "setup_age": 2,
+   "stop": 156.8,
+   "symbol": "SAMBHV",
+   "to_trigger_pct": 13.18,
+   "trigger": 178.9,
+   "vol_ratio": 0.68
+  },
+  {
+   "adr_pct": 7.82,
+   "avg_value": "₹5.2 Cr",
+   "avg_value_raw": 51636423.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:PERMAGN",
+   "close": 1128.75,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "Permanent Magnets Limited",
+   "returns": {
+    "1m": 0.2458,
+    "3m": null,
+    "6m": null
+   },
+   "risk_pct": 12.42,
+   "risk_wide": true,
+   "setup_age": 0,
+   "stop": 1120.1,
+   "symbol": "PERMAGN",
+   "to_trigger_pct": 13.31,
+   "trigger": 1279.0,
+   "vol_ratio": 0.17
+  },
+  {
+   "adr_pct": 5.22,
+   "avg_value": "₹62.8 Cr",
+   "avg_value_raw": 628265175.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:ROLEXRINGS",
+   "close": 193.81,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": true,
+    "6m": false
+   },
+   "name": "Rolex Rings Limited",
+   "returns": {
+    "1m": 0.1476,
+    "3m": 0.0872,
+    "6m": 0.3493
+   },
+   "risk_pct": 12.5,
+   "risk_wide": true,
+   "setup_age": 1,
+   "stop": 192.5,
+   "symbol": "ROLEXRINGS",
+   "to_trigger_pct": 13.51,
+   "trigger": 220.0,
+   "vol_ratio": 0.33
+  },
+  {
+   "adr_pct": 5.74,
+   "avg_value": "₹54.1 Cr",
+   "avg_value_raw": 541339493.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:KROSS",
+   "close": 278.3,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": true,
+    "6m": false
+   },
+   "name": "Kross Limited",
+   "returns": {
+    "1m": -0.0647,
+    "3m": 0.3706,
+    "6m": 0.4571
+   },
+   "risk_pct": 12.53,
+   "risk_wide": true,
+   "setup_age": 2,
+   "stop": 276.4,
+   "symbol": "KROSS",
+   "to_trigger_pct": 13.55,
+   "trigger": 316.0,
+   "vol_ratio": 0.16
+  },
+  {
+   "adr_pct": 5.83,
+   "avg_value": "₹43.3 Cr",
+   "avg_value_raw": 433264493.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:UNIMECH",
+   "close": 1782.2,
+   "flag": false,
+   "leader": {
+    "1m": false,
+    "3m": true,
+    "6m": true
+   },
+   "name": "Unimech Aerospace and Manufacturing Lim…",
+   "returns": {
+    "1m": 0.061,
+    "3m": 0.249,
+    "6m": 0.9261
+   },
+   "risk_pct": 12.57,
+   "risk_wide": true,
+   "setup_age": 1,
+   "stop": 1771.0,
+   "symbol": "UNIMECH",
+   "to_trigger_pct": 13.66,
+   "trigger": 2025.6,
+   "vol_ratio": 0.75
+  },
+  {
+   "adr_pct": 5.26,
+   "avg_value": "₹23.6 Cr",
+   "avg_value_raw": 235561533.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:PRINCEPIPE",
+   "close": 285.1,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "Prince Pipes And Fittings Limited",
+   "returns": {
+    "1m": 0.0283,
+    "3m": 0.0124,
+    "6m": 0.0754
+   },
+   "risk_pct": 12.9,
+   "risk_wide": true,
+   "setup_age": 3,
+   "stop": 283.85,
+   "symbol": "PRINCEPIPE",
+   "to_trigger_pct": 14.31,
+   "trigger": 325.9,
+   "vol_ratio": 0.34
+  },
+  {
+   "adr_pct": 7.58,
+   "avg_value": "₹6.8 Cr",
+   "avg_value_raw": 67614071.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:CNL",
+   "close": 1348.1,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": true,
+    "6m": true
+   },
+   "name": "Creative Newtech Limited",
+   "returns": {
+    "1m": 0.1631,
+    "3m": 0.0996,
+    "6m": 1.0954
+   },
+   "risk_pct": 14.46,
+   "risk_wide": true,
+   "setup_age": 0,
+   "stop": 1326.1,
+   "symbol": "CNL",
+   "to_trigger_pct": 14.99,
+   "trigger": 1550.2,
+   "vol_ratio": 0.36
+  },
+  {
+   "adr_pct": 7.6,
+   "avg_value": "₹12.9 Cr",
+   "avg_value_raw": 129005902.0,
+   "chart": "https://www.tradingview.com/chart/?symbol=NSE:MOMSBELIEF",
+   "close": 267.12,
+   "flag": false,
+   "leader": {
+    "1m": true,
+    "3m": false,
+    "6m": false
+   },
+   "name": "Rays of Belief Limited",
+   "returns": {
+    "1m": -0.0608,
+    "3m": null,
+    "6m": null
+   },
+   "risk_pct": 13.74,
+   "risk_wide": true,
+   "setup_age": 0,
+   "stop": 265.58,
+   "symbol": "MOMSBELIEF",
+   "to_trigger_pct": 15.26,
+   "trigger": 307.88,
+   "vol_ratio": 0.57
+  },
+  {
+   "adr_pct": 6.67,
+   "avg_value": "₹27.5 Cr",
+   "avg_value_raw": 275228746.0,
    "chart": "https://www.tradingview.com/chart/?symbol=NSE:MANAKCOAT",
-   "close": 160.33,
+   "close": 157.52,
    "flag": false,
    "leader": {
     "1m": true,
@@ -2354,99 +2424,18 @@
    },
    "name": "Manaksia Coated Metals & Industries Lim…",
    "returns": {
-    "1m": 0.2764,
-    "3m": 0.3645,
-    "6m": 0.6146
+    "1m": 0.2128,
+    "3m": 0.3372,
+    "6m": 0.582
    },
-   "risk_pct": 14.86,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 157.35,
-   "symbol": "MANAKCOAT",
-   "to_trigger_pct": 15.27,
-   "trigger": 184.81,
-   "vol_ratio": 0.32
-  },
-  {
-   "adr_pct": 7.93,
-   "avg_value": "₹176.6 Cr",
-   "avg_value_raw": 1765750435.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:SKYGOLD",
-   "close": 926.3,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": true,
-    "6m": true
-   },
-   "name": "SKY GOLD AND DIAMONDS LIMITED",
-   "returns": {
-    "1m": -0.1266,
-    "3m": 0.1119,
-    "6m": 1.0212
-   },
-   "risk_pct": 18.27,
+   "risk_pct": 15.68,
    "risk_wide": true,
    "setup_age": 1,
-   "stop": 881.05,
-   "symbol": "SKYGOLD",
-   "to_trigger_pct": 16.38,
-   "trigger": 1078.0,
-   "vol_ratio": 0.72
-  },
-  {
-   "adr_pct": 5.4,
-   "avg_value": "₹5.6 Cr",
-   "avg_value_raw": 55897147.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:SURAKSHA",
-   "close": 329.9,
-   "flag": false,
-   "leader": {
-    "1m": false,
-    "3m": true,
-    "6m": false
-   },
-   "name": "Suraksha Diagnostic Limited",
-   "returns": {
-    "1m": 0.0756,
-    "3m": 0.2203,
-    "6m": 0.1015
-   },
-   "risk_pct": 14.22,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 329.4,
-   "symbol": "SURAKSHA",
-   "to_trigger_pct": 16.4,
-   "trigger": 384.0,
-   "vol_ratio": 0.61
-  },
-  {
-   "adr_pct": 5.16,
-   "avg_value": "₹6.9 Cr",
-   "avg_value_raw": 68504447.0,
-   "chart": "https://www.tradingview.com/chart/?symbol=NSE:FRONTSP",
-   "close": 1434.6,
-   "flag": false,
-   "leader": {
-    "1m": true,
-    "3m": false,
-    "6m": false
-   },
-   "name": "Frontier Springs Limited",
-   "returns": {
-    "1m": 0.045,
-    "3m": null,
-    "6m": null
-   },
-   "risk_pct": 15.47,
-   "risk_wide": true,
-   "setup_age": 0,
-   "stop": 1413.1,
-   "symbol": "FRONTSP",
-   "to_trigger_pct": 16.53,
-   "trigger": 1671.8,
-   "vol_ratio": 0.2
+   "stop": 155.84,
+   "symbol": "MANAKCOAT",
+   "to_trigger_pct": 17.32,
+   "trigger": 184.81,
+   "vol_ratio": 1.37
   }
  ],
  "windows": [

@@ -1,14 +1,12 @@
 {
   "active_count": 2401,
-  "as_of": "2026-11-19",
-  "breakouts": [],
+  "as_of": "2026-11-20",
+  "breakouts": [
+    "MARATHON.NS"
+  ],
   "market": "india",
-  "updated_at": "2026-11-19T12:32:44+00:00",
+  "updated_at": "2026-11-20T12:33:21+00:00",
   "watchlist": {
-    "63MOONS.NS": {
-      "first_seen": "2026-11-16",
-      "trigger": 965.0
-    },
     "AARTIDRUGS.NS": {
       "first_seen": "2026-11-13",
       "trigger": 527.5
@@ -29,10 +27,6 @@
       "first_seen": "2026-11-18",
       "trigger": 326.18
     },
-    "AJMERA.NS": {
-      "first_seen": "2026-11-18",
-      "trigger": 142.9
-    },
     "AMANTA.NS": {
       "first_seen": "2026-11-19",
       "trigger": 245.7
@@ -48,6 +42,10 @@
     "ATHERENERG.NS": {
       "first_seen": "2026-11-13",
       "trigger": 2021.5
+    },
+    "AVTNPL.NS": {
+      "first_seen": "2026-11-20",
+      "trigger": 108.45
     },
     "AWFIS.NS": {
       "first_seen": "2026-11-13",
@@ -65,9 +63,9 @@
       "first_seen": "2026-11-17",
       "trigger": 346.95
     },
-    "CEMPRO.NS": {
-      "first_seen": "2026-11-13",
-      "trigger": 1414.3
+    "BPLPHARMA.NS": {
+      "first_seen": "2026-11-20",
+      "trigger": 2492.8
     },
     "CHEMPLASTS.NS": {
       "first_seen": "2026-11-13",
@@ -76,10 +74,6 @@
     "CNL.NS": {
       "first_seen": "2026-11-13",
       "trigger": 1550.2
-    },
-    "CPPLUS.NS": {
-      "first_seen": "2026-11-13",
-      "trigger": 4418.6001
     },
     "CUPID.NS": {
       "first_seen": "2026-11-18",
@@ -109,10 +103,6 @@
       "first_seen": "2026-11-18",
       "trigger": 2247.3
     },
-    "FRONTSP.NS": {
-      "first_seen": "2026-11-17",
-      "trigger": 1671.8
-    },
     "GRWRHITECH.NS": {
       "first_seen": "2026-11-13",
       "trigger": 8079.5
@@ -124,6 +114,10 @@
     "IGIL.NS": {
       "first_seen": "2026-11-13",
       "trigger": 453.65
+    },
+    "INDIACEM.NS": {
+      "first_seen": "2026-11-20",
+      "trigger": 355.45
     },
     "INFOBEAN.NS": {
       "first_seen": "2026-11-13",
@@ -139,15 +133,11 @@
     },
     "KITEX.NS": {
       "first_seen": "2026-11-13",
-      "trigger": 146.97
+      "trigger": 139.5
     },
     "KMEW.NS": {
       "first_seen": "2026-11-19",
       "trigger": 773.4
-    },
-    "KOPRAN.NS": {
-      "first_seen": "2026-11-18",
-      "trigger": 294.0
     },
     "KRISHANA.NS": {
       "first_seen": "2026-11-13",
@@ -161,41 +151,29 @@
       "first_seen": "2026-11-18",
       "trigger": 316.0
     },
-    "KSHINTL.NS": {
-      "first_seen": "2026-11-16",
-      "trigger": 1097.0
-    },
     "LUMAXTECH.NS": {
       "first_seen": "2026-11-13",
       "trigger": 2503.0
-    },
-    "MACPOWER.NS": {
-      "first_seen": "2026-11-13",
-      "trigger": 2450.0
     },
     "MANAKCOAT.NS": {
       "first_seen": "2026-11-17",
       "trigger": 184.81
     },
-    "MARATHON.NS": {
-      "first_seen": "2026-11-13",
-      "trigger": 443.0
-    },
-    "MARINE.NS": {
-      "first_seen": "2026-11-19",
-      "trigger": 485.0
-    },
-    "MARSONS.NS": {
-      "first_seen": "2026-11-13",
-      "trigger": 166.23
-    },
     "MBEL.NS": {
       "first_seen": "2026-11-13",
-      "trigger": 304.8
+      "trigger": 300.5
     },
     "MMFL.NS": {
       "first_seen": "2026-11-18",
       "trigger": 703.0
+    },
+    "MOMSBELIEF.NS": {
+      "first_seen": "2026-11-20",
+      "trigger": 307.88
+    },
+    "MOTILALOFS.NS": {
+      "first_seen": "2026-11-20",
+      "trigger": 1277.8
     },
     "NILKAMAL.NS": {
       "first_seen": "2026-11-13",
@@ -207,7 +185,7 @@
     },
     "OPTIEMUS.NS": {
       "first_seen": "2026-11-13",
-      "trigger": 840.7
+      "trigger": 870.5
     },
     "PARAGMILK.NS": {
       "first_seen": "2026-11-18",
@@ -229,17 +207,13 @@
       "first_seen": "2026-11-13",
       "trigger": 325.9
     },
-    "PROTEAN.NS": {
-      "first_seen": "2026-11-16",
-      "trigger": 738.95
-    },
     "RAMKY.NS": {
       "first_seen": "2026-11-13",
       "trigger": 409.85
     },
     "RATNAVEER.NS": {
       "first_seen": "2026-11-13",
-      "trigger": 387.2
+      "trigger": 379.6
     },
     "RAYMOND.NS": {
       "first_seen": "2026-11-18",
@@ -252,6 +226,10 @@
     "ROSSTECH.NS": {
       "first_seen": "2026-11-17",
       "trigger": 1603.5
+    },
+    "RPEL.NS": {
+      "first_seen": "2026-11-20",
+      "trigger": 2050.8999
     },
     "RUBICON.NS": {
       "first_seen": "2026-11-13",
@@ -277,25 +255,13 @@
       "first_seen": "2026-11-13",
       "trigger": 273.49
     },
-    "SGMART.NS": {
-      "first_seen": "2026-11-17",
-      "trigger": 1047.75
-    },
     "SIMPLEXINF.NS": {
       "first_seen": "2026-11-16",
       "trigger": 308.6
     },
-    "SKYGOLD.NS": {
-      "first_seen": "2026-11-17",
-      "trigger": 1078.0
-    },
     "SMSPHARMA.NS": {
       "first_seen": "2026-11-13",
       "trigger": 535.0
-    },
-    "SPECTRUM.NS": {
-      "first_seen": "2026-11-13",
-      "trigger": 4695.2002
     },
     "SSWL.NS": {
       "first_seen": "2026-11-13",
@@ -305,9 +271,9 @@
       "first_seen": "2026-11-13",
       "trigger": 1257.3
     },
-    "SURAKSHA.NS": {
-      "first_seen": "2026-11-16",
-      "trigger": 384.0
+    "SUNTV.NS": {
+      "first_seen": "2026-11-20",
+      "trigger": 713.85
     },
     "SYMBIOTEC.NS": {
       "first_seen": "2026-11-13",
@@ -333,10 +299,6 @@
       "first_seen": "2026-11-16",
       "trigger": 766.9
     },
-    "TIPSMUSIC.NS": {
-      "first_seen": "2026-11-16",
-      "trigger": 834.5
-    },
     "UNIMECH.NS": {
       "first_seen": "2026-11-16",
       "trigger": 2025.6
@@ -349,13 +311,9 @@
       "first_seen": "2026-11-13",
       "trigger": 350.3
     },
-    "WELSPUNLIV.NS": {
-      "first_seen": "2026-11-13",
-      "trigger": 267.5
-    },
     "WESTLIFE.NS": {
       "first_seen": "2026-11-13",
-      "trigger": 696.5
+      "trigger": 723.6
     },
     "XPROINDIA.NS": {
       "first_seen": "2026-11-19",
@@ -366,5 +324,9 @@
       "trigger": 582.0
     }
   },
-  "wide_breakouts": []
+  "wide_breakouts": [
+    "AJMERA.NS",
+    "SGMART.NS",
+    "WELSPUNLIV.NS"
+  ]
 }
