@@ -1,13 +1,17 @@
 {
-  "active_count": 5773,
-  "as_of": "2026-11-19",
+  "active_count": 5783,
+  "as_of": "2026-11-20",
   "breakouts": [],
   "market": "us",
-  "updated_at": "2026-11-19T22:06:50+00:00",
+  "updated_at": "2026-11-20T22:05:39+00:00",
   "watchlist": {
     "ACHC": {
       "first_seen": "2026-11-18",
       "trigger": 39.7
+    },
+    "ADMA": {
+      "first_seen": "2026-11-20",
+      "trigger": 14.2
     },
     "AHCO": {
       "first_seen": "2026-11-17",
@@ -17,17 +21,9 @@
       "first_seen": "2026-11-13",
       "trigger": 98.7
     },
-    "AMPL": {
-      "first_seen": "2026-11-19",
-      "trigger": 18.85
-    },
     "AOUT": {
       "first_seen": "2026-11-19",
-      "trigger": 19.6507
-    },
-    "APP": {
-      "first_seen": "2026-11-18",
-      "trigger": 418.767
+      "trigger": 19.651
     },
     "APPN": {
       "first_seen": "2026-11-13",
@@ -49,6 +45,10 @@
       "first_seen": "2026-11-16",
       "trigger": 59.72
     },
+    "AZTA": {
+      "first_seen": "2026-11-20",
+      "trigger": 50.06
+    },
     "BGS": {
       "first_seen": "2026-11-18",
       "trigger": 3.89
@@ -56,10 +56,6 @@
     "BHC": {
       "first_seen": "2026-11-19",
       "trigger": 8.85
-    },
-    "BLMN": {
-      "first_seen": "2026-11-13",
-      "trigger": 11.28
     },
     "BMI": {
       "first_seen": "2026-11-13",
@@ -73,17 +69,9 @@
       "first_seen": "2026-11-18",
       "trigger": 142.6
     },
-    "CLMB": {
-      "first_seen": "2026-11-13",
-      "trigger": 44.89
-    },
-    "CMCO": {
-      "first_seen": "2026-11-17",
-      "trigger": 22.14
-    },
-    "DCTH": {
-      "first_seen": "2026-11-17",
-      "trigger": 22.51
+    "CNXC": {
+      "first_seen": "2026-11-20",
+      "trigger": 33.93
     },
     "DIN": {
       "first_seen": "2026-11-19",
@@ -93,10 +81,6 @@
       "first_seen": "2026-11-13",
       "trigger": 29.89
     },
-    "ESAB": {
-      "first_seen": "2026-11-13",
-      "trigger": 90.51
-    },
     "ETON": {
       "first_seen": "2026-11-19",
       "trigger": 70.64
@@ -104,14 +88,6 @@
     "EVER": {
       "first_seen": "2026-11-13",
       "trigger": 31.2
-    },
-    "FIGS": {
-      "first_seen": "2026-11-17",
-      "trigger": 23.765
-    },
-    "FLGT": {
-      "first_seen": "2026-11-13",
-      "trigger": 27.41
     },
     "FUN": {
       "first_seen": "2026-11-17",
@@ -121,25 +97,9 @@
       "first_seen": "2026-11-13",
       "trigger": 250.61
     },
-    "GLIBK": {
-      "first_seen": "2026-11-18",
-      "trigger": 29.09
-    },
-    "HRI": {
-      "first_seen": "2026-11-13",
-      "trigger": 175.47
-    },
-    "ICMB": {
-      "first_seen": "2026-11-18",
-      "trigger": 1.15
-    },
     "JACK": {
       "first_seen": "2026-11-17",
       "trigger": 15.19
-    },
-    "KD": {
-      "first_seen": "2026-11-13",
-      "trigger": 17.39
     },
     "KIDS": {
       "first_seen": "2026-11-13",
@@ -149,17 +109,17 @@
       "first_seen": "2026-11-13",
       "trigger": 99.31
     },
+    "LFTO": {
+      "first_seen": "2026-11-20",
+      "trigger": 25.96
+    },
+    "LMRI": {
+      "first_seen": "2026-11-20",
+      "trigger": 16.62
+    },
     "LQDA": {
       "first_seen": "2026-11-13",
       "trigger": 59.5
-    },
-    "MAX": {
-      "first_seen": "2026-11-18",
-      "trigger": 15.68
-    },
-    "MIR": {
-      "first_seen": "2026-11-18",
-      "trigger": 19.67
     },
     "MNKD": {
       "first_seen": "2026-11-18",
@@ -173,14 +133,6 @@
       "first_seen": "2026-11-13",
       "trigger": 24.435
     },
-    "ORKA": {
-      "first_seen": "2026-11-19",
-      "trigger": 113.24
-    },
-    "PLTK": {
-      "first_seen": "2026-11-18",
-      "trigger": 2.75
-    },
     "PRCH": {
       "first_seen": "2026-11-13",
       "trigger": 22.36
@@ -193,17 +145,9 @@
       "first_seen": "2026-11-17",
       "trigger": 43.84
     },
-    "PTLO": {
-      "first_seen": "2026-11-13",
-      "trigger": 7.228
-    },
     "REZI": {
       "first_seen": "2026-11-17",
       "trigger": 23.75
-    },
-    "RHLD": {
-      "first_seen": "2026-11-19",
-      "trigger": 165.16
     },
     "SG": {
       "first_seen": "2026-11-13",
@@ -221,37 +165,13 @@
       "first_seen": "2026-11-13",
       "trigger": 13.57
     },
-    "SRZN": {
-      "first_seen": "2026-11-13",
-      "trigger": 33.75
-    },
     "TLS": {
       "first_seen": "2026-11-18",
       "trigger": 7.955
     },
-    "TREE": {
-      "first_seen": "2026-11-18",
-      "trigger": 40.8
-    },
-    "TRUP": {
-      "first_seen": "2026-11-13",
-      "trigger": 38.87
-    },
-    "TTEC": {
-      "first_seen": "2026-11-18",
-      "trigger": 3.3
-    },
-    "U": {
-      "first_seen": "2026-11-18",
-      "trigger": 54.265
-    },
-    "UIS": {
-      "first_seen": "2026-11-18",
-      "trigger": 2.98
-    },
-    "ULCC": {
-      "first_seen": "2026-11-13",
-      "trigger": 8.53
+    "TOP": {
+      "first_seen": "2026-11-20",
+      "trigger": 17.99
     },
     "VLRS": {
       "first_seen": "2026-11-13",
@@ -259,15 +179,11 @@
     },
     "VRDN": {
       "first_seen": "2026-11-13",
-      "trigger": 31.63
+      "trigger": 31.75
     },
-    "VYX": {
-      "first_seen": "2026-11-13",
-      "trigger": 10.84
-    },
-    "XMTR": {
-      "first_seen": "2026-11-13",
-      "trigger": 127.49
+    "ZIP": {
+      "first_seen": "2026-11-20",
+      "trigger": 6.72
     }
   },
   "wide_breakouts": []
