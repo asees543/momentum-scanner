@@ -161,6 +161,33 @@ def jack_entry(sym: str, r: pd.Series, windows: list[str], cur: str, url: str, n
     return "\n".join([_title_line(sym, r, name), numbers, _returns_line(r, windows, cur, url)])
 
 
+WINDOW_WORDS = {"1m": "1-month", "3m": "3-month", "6m": "6-month"}
+LIST_CHUNK = 20  # names per block, so a long list splits between names, never inside one
+
+
+def window_list_blocks(w: str, table: pd.DataFrame, cfg: MarketConfig, name, display) -> list[str]:
+    """One window's leaders as numbered one-liners, biggest gain first. The header travels with the first
+    names (a header alone at the end of a message would be an orphan)."""
+    word = WINDOW_WORDS.get(w, w)
+    head = (
+        f"📈 <b>{_e(w.upper())} leaders</b> · {len(table)} names, biggest {word} gain first "
+        f"(last-session value above {money(cfg.leaders.min_day_value, cfg.currency)})"
+    )
+    if table.empty:
+        return [f"{head}\nNone today."]
+    lines = []
+    for i, (sym, r) in enumerate(table.iterrows(), start=1):
+        flag = " ⚠" if r["flag_day_move"] else ""
+        nm = name(sym)
+        lines.append(
+            f"{i}. <b>{_e(display(sym))}</b>{flag}" + (f" · {_e(nm)}" if nm else "")
+            + f" · {_pct(r[f'ret_{w}'])} · {money(r['day_value'], cfg.currency)}"
+        )
+    chunks = ["\n".join(lines[i:i + LIST_CHUNK]) for i in range(0, len(lines), LIST_CHUNK)]
+    chunks[0] = f"{head}\n{chunks[0]}"
+    return chunks
+
+
 def _lookups(universe: pd.DataFrame, chart_url: ChartUrlFn):
     """Per-symbol company name, chart link and display symbol from the universe table.
     The display symbol is the exchange's own (RELIANCE, BRK.B) rather than Yahoo's (RELIANCE.NS, BRK-B)."""
@@ -288,6 +315,14 @@ def format_alerts(
             blocks.append(f"{label}\n{len(jk.table)} of {jk.passing_jack} names that pass their screen are on our lists.")
             shown.extend(jk.table.loc[s] for s in jk.table.index)
             blocks += [jack_entry(display(s), jk.table.loc[s], windows, cur, url(s), name(s)) for s in jk.table.index]
+    if results.window_lists is not None:
+        # The three leader lists in full, every day: 1M, 3M and 6M each ranked by their own gain.
+        for w in windows:
+            lst = results.window_lists.get(w)
+            if lst is None:
+                continue
+            shown.extend(lst.loc[s] for s in lst.index[lst["flag_day_move"]])
+            blocks += window_list_blocks(w, lst, cfg, name, display)
     if any(bool(r.get("flag_day_move", False)) for r in shown):
         blocks.append(flag_note(cfg))
     blocks.append(DISCLAIMER)

@@ -65,6 +65,9 @@ leaders:
   sort_by: 3m                      # (assumption) table order: scans passed, then this window's return
   flag_day_move_multiple: 3.0      # (assumption) mark names whose window holds a one-day move >= 3x (or <= 1/3x):
                                    # a real squeeze or an un-adjusted reverse split - check the chart
+  min_day_value: 5000000           # (user, 2026-11-21) the per-window lists (1M / 3M / 6M, each ranked by its gain) only
+                                   #   include names whose last session's close x volume is above this: the user's scanner
+                                   #   formula "C*V/100 > 50,000" is the same as C*V > 5,000,000. One day, not an average
 
 # Stage 3: orderly consolidation. A leader qualifies on day t when ALL of these hold.
 setup:

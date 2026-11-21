@@ -123,6 +123,9 @@ class LeadersConfig(_Strict):
     target_count: tuple[int, int] = (25, 75)
     sort_by: str  # window name whose return orders rows (after number of scans passed)
     flag_day_move_multiple: float = Field(3.0, gt=1)  # data-quality flag, see us.yaml
+    # Per-window lists (1M / 3M / 6M, each ranked by its own gain) only include names whose LAST session's
+    # close x volume is above this. 0 = no floor. It does not change the leaders table or any other scan.
+    min_day_value: float = Field(0, ge=0)
 
     @model_validator(mode="after")
     def _check(self) -> LeadersConfig:

@@ -368,6 +368,8 @@ class ScanResults:
     watchlist: WatchlistResult
     breakouts: BreakoutResult
     jack: JackResult | None = None  # None where the screen was not computed (hand-built results in tests)
+    # Window name -> that window's leaders, ranked by its gain (see `window_lists`); None where not computed.
+    window_lists: dict[str, pd.DataFrame] | None = None
 
 
 def _rows_needed(cfg: MarketConfig) -> int:
@@ -498,6 +500,28 @@ def breakouts_from_frames(
     )
 
 
+def window_lists(panels: Panels, cfg: MarketConfig, leaders: LeadersResult) -> dict[str, pd.DataFrame]:
+    """One list per window (1M / 3M / 6M): the leaders that pass THAT window, ranked by that window's gain, most first.
+
+    A name is listed for window w when pass_w holds on the leaders table (which already holds only Stage 1
+    liquid names) AND its last session's value traded is above `leaders.min_day_value`:
+        day_value_t = close_t x volume_t        (shares x price, the user's scanner formula C*V/100 before the /100)
+    The comparison is strict and a missing close or volume fails it. The floor is on one day, not an average.
+    Columns: close, ret_<every window>, day_value, flag_day_move. Ties in the gain are ordered by symbol.
+    """
+    day_value = panels.close.iloc[-1] * panels.volume.iloc[-1]
+    t = leaders.table.sort_index()
+    t = t.assign(day_value=day_value.reindex(t.index))
+    t = t[t["day_value"] > cfg.leaders.min_day_value]
+    cols = ["close"] + [f"ret_{w}" for w in cfg.leaders.windows] + ["day_value", "flag_day_move"]
+    out = {}
+    for w in cfg.leaders.windows:
+        sub = t[t[f"pass_{w}"]][cols].sort_values(f"ret_{w}", ascending=False, kind="stable")
+        sub.index.name = "symbol"
+        out[w] = sub
+    return out
+
+
 OURS_ORDER = {"breakout": 0, "watchlist": 1, "leader": 2}
 
 
@@ -564,7 +588,8 @@ def run_scans(panels: Panels, cfg: MarketConfig, mode: Literal["fixed", "rank"] 
     leaders = leaders_from_frames(p, liq, lf, cfg.leaders, mode)
     watchlist = watchlist_from_frames(p, liq, lf, sf, cfg, max_lb)
     breakouts = breakouts_from_frames(p, liq, lf, sf, cfg, max_lb)
-    return ScanResults(leaders, watchlist, breakouts, jack_screen(panels, cfg, leaders, watchlist, breakouts))
+    return ScanResults(leaders, watchlist, breakouts, jack_screen(panels, cfg, leaders, watchlist, breakouts),
+                       window_lists(panels, cfg, leaders))
 
 
 def missed_breakouts(

@@ -88,6 +88,18 @@ def snapshot(res: ScanResults, cfg: MarketConfig, universe: pd.DataFrame, chart_
              "flag": bool(r["flag_day_move"])}
             for s, r in wl.iterrows()
         ],
+        # The leaders of each window, ranked by that window's gain (None where not computed).
+        "leader_lists": None if res.window_lists is None else {
+            "min_day_value": money(cfg.leaders.min_day_value, cfg.currency),
+            "lists": {
+                w: [
+                    {**meta(s), "close": _f(r["close"]), "returns": rets(r), "day_value": money(r["day_value"], cfg.currency),
+                     "day_value_raw": _f(r["day_value"], 0), "flag": bool(r["flag_day_move"])}
+                    for s, r in df.iterrows()
+                ]
+                for w, df in res.window_lists.items()
+            },
+        },
         # Names on one of our lists that also pass the other trader's screener (None where not computed).
         "jack": None if jk is None else {
             "rule": jack_rule_text(cfg),
@@ -197,6 +209,7 @@ a { color: var(--accent); }
 .badge { font-size: 11px; padding: 1px 6px; border-radius: 6px; background: var(--chip); }
 .badge.ok { color: var(--good); } .badge.wide { color: var(--warn); }
 .flag { color: var(--warn); }
+.tall { max-height: 460px; overflow-y: auto; }
 .report h1 { font-size: 20px; } .report h2 { margin-top: 24px; } .report td, .report th { cursor: default; }
 """
 
@@ -321,6 +334,36 @@ def _jack_panel(snap: dict) -> str:
     )
 
 
+def _leader_lists_panels(snap: dict) -> str:
+    ll = snap.get("leader_lists")
+    if ll is None:  # a snapshot written before these lists existed
+        return ""
+    ws = snap["windows"]
+    words = {"1m": "1-month", "3m": "3-month", "6m": "6-month"}
+    out = []
+    for w in ws:
+        rows = ll["lists"].get(w, [])
+        if rows:
+            head = ["#", "Symbol", "Name", "Close"] + [x.upper() for x in ws] + ["Last-session value"]
+            body = []
+            for i, r in enumerate(rows, start=1):
+                body.append(
+                    f'<tr><td data-v="{i}">{i}</td>' + _sym_cell(r) + f'<td class="name">{html.escape(r["name"])}</td>'
+                    + f'<td data-v="{r["close"]}">{_num(r["close"])}</td>'
+                    + "".join(_ret(r["returns"].get(x)) for x in ws)
+                    + f'<td data-v="{r["day_value_raw"] or 0}">{html.escape(r["day_value"])}</td></tr>'
+                )
+            table = ('<div class="scroll tall"><table class="sortable"><thead><tr>' + _header(head)
+                     + "</tr></thead><tbody>" + "".join(body) + "</tbody></table></div>")
+        else:
+            table = '<p class="note">None on this session.</p>'
+        out.append(f'<div class="panel"><h2>{w.upper()} leaders ({len(rows)})</h2>{table}'
+                   f'<p class="note">Biggest {words.get(w, w)} gain first (click a column to re-sort). Passes the {w.upper()} '
+                   f"leader rule and traded more than {html.escape(ll['min_day_value'])} in the last session "
+                   "(close × volume).</p></div>")
+    return "".join(out)
+
+
 def _market_section(snap: dict, has_report: bool, first: bool) -> str:
     s = snap["summary"]
     day = datetime.strptime(snap["as_of"], "%Y-%m-%d").strftime("%a %d %b %Y")
@@ -345,7 +388,8 @@ def _market_section(snap: dict, has_report: bool, first: bool) -> str:
         + f'<div class="panel"><h2>Watchlist</h2>{_watchlist_table(snap)}'
         + '<p class="note">Names that can break out next session, closest to their trigger first (click a column to '
           "sort). Trigger = highest high of the last 10 sessions on the setup day; stop = latest low; ⚠ = a one-day "
-          "move beyond the flag threshold in the last 6 months.</p></div></section>"
+          "move beyond the flag threshold in the last 6 months.</p></div>"
+        + _leader_lists_panels(snap) + "</section>"
     )
 
 

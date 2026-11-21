@@ -54,6 +54,10 @@ leaders:
   flag_day_move_multiple: 1.3      # (decision: flag only) NSE caps daily moves at 20%, so a one-day move of
                                    #   +30% or -23% or more almost always means an unadjusted bonus/split or
                                    #   bad data. Marked with a warning, not excluded.
+  min_day_value: 5000000           # (user, 2026-11-21) as US: last session's close x volume above 5,000,000 (the user's
+                                   #   "C*V/100 > 50,000"), applied in RUPEES because no other figure was given. That is
+                                   #   only Rs 50 lakh, far below the Rs 5 crore 20-day average already required, so it
+                                   #   barely filters here; raise it if you want it to bite
 
 setup:                             # same rules as US (SPEC Stage 3)
   leader_lookback_sessions: 20     # (decision)
