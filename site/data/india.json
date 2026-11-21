@@ -846,6 +846,2589 @@
   "watchlist": 79
  },
  "title": "India",
+ "trigger_bars": {
+  "count": 89,
+  "items": [
+   {
+    "adr_pct": 6.48,
+    "avg_value": "₹5.7 Cr",
+    "avg_value_raw": 56520547.0,
+    "below_high_pct": 13.4,
+    "buy_above": 160.4,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:BLUSPRING",
+    "close": 157.47,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Bluspring Enterprises Limited",
+    "ours": "watchlist",
+    "returns": {
+     "1m": -0.0246,
+     "3m": 0.3635,
+     "6m": 1.1422
+    },
+    "risk_pct": 2.24,
+    "risk_vs_adr": 0.35,
+    "score": 4,
+    "signs": [
+     "tightest of recent bars",
+     "low volume 0.1×",
+     "range under half an ADR",
+     "2+ key averages"
+    ],
+    "stop": 156.81,
+    "symbol": "BLUSPRING",
+    "vol_ratio": 0.15
+   },
+   {
+    "adr_pct": 5.65,
+    "avg_value": "₹56.3 Cr",
+    "avg_value_raw": 562742781.0,
+    "below_high_pct": 6.9,
+    "buy_above": 2364.9,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:LUMAXTECH",
+    "close": 2330.3,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Lumax Auto Technologies Limited",
+    "ours": "watchlist",
+    "returns": {
+     "1m": 0.2246,
+     "3m": 0.1725,
+     "6m": 0.4125
+    },
+    "risk_pct": 2.1,
+    "risk_vs_adr": 0.37,
+    "score": 4,
+    "signs": [
+     "inside bar",
+     "tightest of recent bars",
+     "low volume 0.3×",
+     "range under half an ADR"
+    ],
+    "stop": 2315.35,
+    "symbol": "LUMAXTECH",
+    "vol_ratio": 0.28
+   },
+   {
+    "adr_pct": 6.85,
+    "avg_value": "₹28.7 Cr",
+    "avg_value_raw": 286627098.0,
+    "below_high_pct": 28.6,
+    "buy_above": 252.35,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:CHEMPLASTS",
+    "close": 250.06,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Chemplast Sanmar Limited",
+    "ours": "watchlist",
+    "returns": {
+     "1m": 0.2027,
+     "3m": 0.3862,
+     "6m": 0.1087
+    },
+    "risk_pct": 2.85,
+    "risk_vs_adr": 0.42,
+    "score": 4,
+    "signs": [
+     "tightest of recent bars",
+     "low volume 0.2×",
+     "strong close",
+     "range under half an ADR"
+    ],
+    "stop": 245.15,
+    "symbol": "CHEMPLASTS",
+    "vol_ratio": 0.21
+   },
+   {
+    "adr_pct": 4.48,
+    "avg_value": "₹456.8 Cr",
+    "avg_value_raw": 4568049723.0,
+    "below_high_pct": 7.0,
+    "buy_above": 369.3,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:CUPID",
+    "close": 365.65,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Cupid Limited",
+    "ours": "watchlist",
+    "returns": {
+     "1m": 0.0873,
+     "3m": 0.2401,
+     "6m": 2.0614
+    },
+    "risk_pct": 1.99,
+    "risk_vs_adr": 0.44,
+    "score": 4,
+    "signs": [
+     "inside bar",
+     "low volume 0.4×",
+     "strong close",
+     "range under half an ADR"
+    ],
+    "stop": 361.95,
+    "symbol": "CUPID",
+    "vol_ratio": 0.37
+   },
+   {
+    "adr_pct": 4.67,
+    "avg_value": "₹115.5 Cr",
+    "avg_value_raw": 1154536732.0,
+    "below_high_pct": 5.0,
+    "buy_above": 374.5,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:RATNAVEER",
+    "close": 370.25,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Ratnaveer Precision Engineering Limited",
+    "ours": "watchlist",
+    "returns": {
+     "1m": 0.057,
+     "3m": 0.683,
+     "6m": 1.0242
+    },
+    "risk_pct": 2.2,
+    "risk_vs_adr": 0.47,
+    "score": 4,
+    "signs": [
+     "inside bar",
+     "low volume 0.3×",
+     "range under half an ADR",
+     "2+ key averages"
+    ],
+    "stop": 366.25,
+    "symbol": "RATNAVEER",
+    "vol_ratio": 0.25
+   },
+   {
+    "adr_pct": 4.59,
+    "avg_value": "₹55.2 Cr",
+    "avg_value_raw": 552450297.0,
+    "below_high_pct": 11.9,
+    "buy_above": 1835.0,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:NUVAMA",
+    "close": 1820.8,
+    "flag": false,
+    "ma": "21 EMA",
+    "name": "Nuvama Wealth Management Limited",
+    "ours": "watchlist",
+    "returns": {
+     "1m": 0.0814,
+     "3m": 0.068,
+     "6m": 0.2334
+    },
+    "risk_pct": 2.38,
+    "risk_vs_adr": 0.52,
+    "score": 4,
+    "signs": [
+     "tightest of recent bars",
+     "low volume 0.5×",
+     "strong close",
+     "2+ key averages"
+    ],
+    "stop": 1791.25,
+    "symbol": "NUVAMA",
+    "vol_ratio": 0.46
+   },
+   {
+    "adr_pct": 4.78,
+    "avg_value": "₹144.7 Cr",
+    "avg_value_raw": 1447070985.0,
+    "below_high_pct": 3.9,
+    "buy_above": 673.6,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:SAREGAMA",
+    "close": 666.7,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Saregama India Limited",
+    "ours": "watchlist",
+    "returns": {
+     "1m": 0.3069,
+     "3m": 0.254,
+     "6m": 0.6401
+    },
+    "risk_pct": 1.72,
+    "risk_vs_adr": 0.36,
+    "score": 3,
+    "signs": [
+     "tightest of recent bars",
+     "low volume 0.2×",
+     "range under half an ADR"
+    ],
+    "stop": 662.0,
+    "symbol": "SAREGAMA",
+    "vol_ratio": 0.16
+   },
+   {
+    "adr_pct": 6.46,
+    "avg_value": "₹65.7 Cr",
+    "avg_value_raw": 657023550.0,
+    "below_high_pct": 2.8,
+    "buy_above": 344.9,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:VRLLOG",
+    "close": 340.55,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "VRL Logistics Limited",
+    "ours": "watchlist",
+    "returns": {
+     "1m": 0.1872,
+     "3m": 0.129,
+     "6m": 0.3774
+    },
+    "risk_pct": 2.42,
+    "risk_vs_adr": 0.37,
+    "score": 3,
+    "signs": [
+     "tightest of recent bars",
+     "low volume 0.2×",
+     "range under half an ADR"
+    ],
+    "stop": 336.55,
+    "symbol": "VRLLOG",
+    "vol_ratio": 0.2
+   },
+   {
+    "adr_pct": 5.51,
+    "avg_value": "₹53.6 Cr",
+    "avg_value_raw": 536221942.0,
+    "below_high_pct": 5.7,
+    "buy_above": 334.25,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:BOROLTD",
+    "close": 327.1,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Borosil Limited",
+    "ours": "watchlist",
+    "returns": {
+     "1m": 0.2442,
+     "3m": 0.3407,
+     "6m": 0.4281
+    },
+    "risk_pct": 2.56,
+    "risk_vs_adr": 0.46,
+    "score": 3,
+    "signs": [
+     "inside bar",
+     "low volume 0.1×",
+     "range under half an ADR"
+    ],
+    "stop": 325.7,
+    "symbol": "BOROLTD",
+    "vol_ratio": 0.12
+   },
+   {
+    "adr_pct": 5.35,
+    "avg_value": "₹35.9 Cr",
+    "avg_value_raw": 358785081.0,
+    "below_high_pct": 11.5,
+    "buy_above": 484.2,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:SMSPHARMA",
+    "close": 473.25,
+    "flag": false,
+    "ma": "21 EMA",
+    "name": "SMS Pharmaceuticals Limited",
+    "ours": "watchlist",
+    "returns": {
+     "1m": 0.0888,
+     "3m": 0.2955,
+     "6m": 0.1154
+    },
+    "risk_pct": 2.53,
+    "risk_vs_adr": 0.47,
+    "score": 3,
+    "signs": [
+     "low volume 0.3×",
+     "range under half an ADR",
+     "2+ key averages"
+    ],
+    "stop": 471.95,
+    "symbol": "SMSPHARMA",
+    "vol_ratio": 0.32
+   },
+   {
+    "adr_pct": 6.21,
+    "avg_value": "₹55.7 Cr",
+    "avg_value_raw": 556546994.0,
+    "below_high_pct": 7.3,
+    "buy_above": 724.8,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:KMEW",
+    "close": 716.7,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Knowledge Marine & Engineering Works Li…",
+    "ours": "watchlist",
+    "returns": {
+     "1m": 0.0781,
+     "3m": 0.3224,
+     "6m": 0.7304
+    },
+    "risk_pct": 3.36,
+    "risk_vs_adr": 0.54,
+    "score": 3,
+    "signs": [
+     "low volume 0.6×",
+     "strong close",
+     "2+ key averages"
+    ],
+    "stop": 700.45,
+    "symbol": "KMEW",
+    "vol_ratio": 0.58
+   },
+   {
+    "adr_pct": 5.73,
+    "avg_value": "₹33.9 Cr",
+    "avg_value_raw": 339104763.0,
+    "below_high_pct": 13.5,
+    "buy_above": 1223.9,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:SUDEEPPHRM",
+    "close": 1191.5,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Sudeep Pharma Limited",
+    "ours": "watchlist",
+    "returns": {
+     "1m": 0.1876,
+     "3m": 0.0824,
+     "6m": 0.8328
+    },
+    "risk_pct": 3.41,
+    "risk_vs_adr": 0.6,
+    "score": 3,
+    "signs": [
+     "inside bar",
+     "low volume 0.4×",
+     "2+ key averages"
+    ],
+    "stop": 1182.15,
+    "symbol": "SUDEEPPHRM",
+    "vol_ratio": 0.4
+   },
+   {
+    "adr_pct": 4.4,
+    "avg_value": "₹48.6 Cr",
+    "avg_value_raw": 486010884.0,
+    "below_high_pct": 3.7,
+    "buy_above": 7890.0,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:GRWRHITECH",
+    "close": 7779.0,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Garware Hi-Tech Films Limited",
+    "ours": "watchlist",
+    "returns": {
+     "1m": 0.1181,
+     "3m": 0.0759,
+     "6m": 0.3804
+    },
+    "risk_pct": 2.1,
+    "risk_vs_adr": 0.48,
+    "score": 2,
+    "signs": [
+     "low volume 0.3×",
+     "range under half an ADR"
+    ],
+    "stop": 7724.45,
+    "symbol": "GRWRHITECH",
+    "vol_ratio": 0.3
+   },
+   {
+    "adr_pct": 4.61,
+    "avg_value": "₹184.6 Cr",
+    "avg_value_raw": 1845976282.0,
+    "below_high_pct": 5.6,
+    "buy_above": 1215.15,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:MOTILALOFS",
+    "close": 1205.65,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Motilal Oswal Financial Services Limited",
+    "ours": "watchlist",
+    "returns": {
+     "1m": 0.1809,
+     "3m": 0.3433,
+     "6m": 0.4244
+    },
+    "risk_pct": 2.34,
+    "risk_vs_adr": 0.51,
+    "score": 2,
+    "signs": [
+     "low volume 0.8×",
+     "strong close"
+    ],
+    "stop": 1186.75,
+    "symbol": "MOTILALOFS",
+    "vol_ratio": 0.75
+   },
+   {
+    "adr_pct": 4.34,
+    "avg_value": "₹38.3 Cr",
+    "avg_value_raw": 383116331.0,
+    "below_high_pct": 1.2,
+    "buy_above": 705.2,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:THELEELA",
+    "close": 698.1,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Leela Palaces Hotels & Resorts Limited",
+    "ours": "watchlist",
+    "returns": {
+     "1m": 0.121,
+     "3m": 0.373,
+     "6m": 0.7157
+    },
+    "risk_pct": 2.22,
+    "risk_vs_adr": 0.51,
+    "score": 2,
+    "signs": [
+     "tightest of recent bars",
+     "strong close"
+    ],
+    "stop": 689.55,
+    "symbol": "THELEELA",
+    "vol_ratio": 1.01
+   },
+   {
+    "adr_pct": 5.74,
+    "avg_value": "₹54.1 Cr",
+    "avg_value_raw": 541339493.0,
+    "below_high_pct": 14.7,
+    "buy_above": 285.0,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:KROSS",
+    "close": 278.3,
+    "flag": false,
+    "ma": "21 EMA",
+    "name": "Kross Limited",
+    "ours": "watchlist",
+    "returns": {
+     "1m": -0.0647,
+     "3m": 0.3706,
+     "6m": 0.4571
+    },
+    "risk_pct": 3.04,
+    "risk_vs_adr": 0.53,
+    "score": 2,
+    "signs": [
+     "low volume 0.1×",
+     "2+ key averages"
+    ],
+    "stop": 276.35,
+    "symbol": "KROSS",
+    "vol_ratio": 0.13
+   },
+   {
+    "adr_pct": 4.95,
+    "avg_value": "₹36.8 Cr",
+    "avg_value_raw": 368261463.0,
+    "below_high_pct": 3.9,
+    "buy_above": 414.45,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:PDSL",
+    "close": 408.3,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "PDS Limited",
+    "ours": "watchlist",
+    "returns": {
+     "1m": 0.2215,
+     "3m": 0.0971,
+     "6m": 0.3871
+    },
+    "risk_pct": 2.64,
+    "risk_vs_adr": 0.53,
+    "score": 2,
+    "signs": [
+     "inside bar",
+     "low volume 0.2×"
+    ],
+    "stop": 403.5,
+    "symbol": "PDSL",
+    "vol_ratio": 0.24
+   },
+   {
+    "adr_pct": 7.58,
+    "avg_value": "₹6.8 Cr",
+    "avg_value_raw": 67614071.0,
+    "below_high_pct": 13.0,
+    "buy_above": 1383.0,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:CNL",
+    "close": 1348.1,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Creative Newtech Limited",
+    "ours": "watchlist",
+    "returns": {
+     "1m": 0.1631,
+     "3m": 0.0996,
+     "6m": 1.0954
+    },
+    "risk_pct": 4.12,
+    "risk_vs_adr": 0.54,
+    "score": 2,
+    "signs": [
+     "low volume 0.5×",
+     "2+ key averages"
+    ],
+    "stop": 1326.05,
+    "symbol": "CNL",
+    "vol_ratio": 0.47
+   },
+   {
+    "adr_pct": 5.26,
+    "avg_value": "₹23.6 Cr",
+    "avg_value_raw": 235561533.0,
+    "below_high_pct": 12.5,
+    "buy_above": 292.55,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:PRINCEPIPE",
+    "close": 285.1,
+    "flag": false,
+    "ma": "21 EMA",
+    "name": "Prince Pipes And Fittings Limited",
+    "ours": "watchlist",
+    "returns": {
+     "1m": 0.0283,
+     "3m": 0.0124,
+     "6m": 0.0754
+    },
+    "risk_pct": 2.99,
+    "risk_vs_adr": 0.57,
+    "score": 2,
+    "signs": [
+     "low volume 0.4×",
+     "2+ key averages"
+    ],
+    "stop": 283.8,
+    "symbol": "PRINCEPIPE",
+    "vol_ratio": 0.43
+   },
+   {
+    "adr_pct": 7.17,
+    "avg_value": "₹11.6 Cr",
+    "avg_value_raw": 115974731.0,
+    "below_high_pct": 11.3,
+    "buy_above": 363.7,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:UTTAMSUGAR",
+    "close": 355.8,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Uttam Sugar Mills Limited",
+    "ours": "watchlist",
+    "returns": {
+     "1m": -0.0124,
+     "3m": 0.3427,
+     "6m": 0.4508
+    },
+    "risk_pct": 4.17,
+    "risk_vs_adr": 0.58,
+    "score": 2,
+    "signs": [
+     "low volume 0.2×",
+     "2+ key averages"
+    ],
+    "stop": 348.55,
+    "symbol": "UTTAMSUGAR",
+    "vol_ratio": 0.24
+   },
+   {
+    "adr_pct": 6.68,
+    "avg_value": "₹32.6 Cr",
+    "avg_value_raw": 325573906.0,
+    "below_high_pct": 14.3,
+    "buy_above": 818.0,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:OPTIEMUS",
+    "close": 792.2,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Optiemus Infracom Limited",
+    "ours": "watchlist",
+    "returns": {
+     "1m": 0.0581,
+     "3m": 0.4345,
+     "6m": 0.8936
+    },
+    "risk_pct": 4.04,
+    "risk_vs_adr": 0.6,
+    "score": 2,
+    "signs": [
+     "low volume 0.3×",
+     "2+ key averages"
+    ],
+    "stop": 784.95,
+    "symbol": "OPTIEMUS",
+    "vol_ratio": 0.33
+   },
+   {
+    "adr_pct": 6.34,
+    "avg_value": "₹102.2 Cr",
+    "avg_value_raw": 1021557684.0,
+    "below_high_pct": 9.0,
+    "buy_above": 344.13,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:PARAGMILK",
+    "close": 336.94,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Parag Milk Foods Limited",
+    "ours": "watchlist",
+    "returns": {
+     "1m": 0.2502,
+     "3m": 0.5447,
+     "6m": 0.5928
+    },
+    "risk_pct": 3.85,
+    "risk_vs_adr": 0.61,
+    "score": 2,
+    "signs": [
+     "inside bar",
+     "low volume 0.3×"
+    ],
+    "stop": 330.87,
+    "symbol": "PARAGMILK",
+    "vol_ratio": 0.31
+   },
+   {
+    "adr_pct": 5.46,
+    "avg_value": "₹45.7 Cr",
+    "avg_value_raw": 457034443.0,
+    "below_high_pct": 9.0,
+    "buy_above": 677.0,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:WESTLIFE",
+    "close": 658.3,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "WESTLIFE FOODWORLD LIMITED",
+    "ours": "watchlist",
+    "returns": {
+     "1m": 0.1945,
+     "3m": 0.1181,
+     "6m": 0.406
+    },
+    "risk_pct": 3.5,
+    "risk_vs_adr": 0.64,
+    "score": 2,
+    "signs": [
+     "low volume 0.4×",
+     "2+ key averages"
+    ],
+    "stop": 653.3,
+    "symbol": "WESTLIFE",
+    "vol_ratio": 0.38
+   },
+   {
+    "adr_pct": 4.95,
+    "avg_value": "₹354.5 Cr",
+    "avg_value_raw": 3545110367.0,
+    "below_high_pct": 7.9,
+    "buy_above": 1829.9,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:SAILIFE",
+    "close": 1800.7,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Sai Life Sciences Limited",
+    "ours": "watchlist",
+    "returns": {
+     "1m": 0.29,
+     "3m": 0.2408,
+     "6m": 0.5778
+    },
+    "risk_pct": 2.9,
+    "risk_vs_adr": 0.59,
+    "score": 1,
+    "signs": [
+     "low volume 0.4×"
+    ],
+    "stop": 1776.85,
+    "symbol": "SAILIFE",
+    "vol_ratio": 0.42
+   },
+   {
+    "adr_pct": 4.8,
+    "avg_value": "₹649.4 Cr",
+    "avg_value_raw": 6494093504.0,
+    "below_high_pct": 4.3,
+    "buy_above": 1972.4,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:ATHERENERG",
+    "close": 1935.4,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Ather Energy Limited",
+    "ours": "watchlist",
+    "returns": {
+     "1m": 0.3265,
+     "3m": 0.2679,
+     "6m": 1.129
+    },
+    "risk_pct": 3.0,
+    "risk_vs_adr": 0.63,
+    "score": 1,
+    "signs": [
+     "low volume 0.5×"
+    ],
+    "stop": 1913.25,
+    "symbol": "ATHERENERG",
+    "vol_ratio": 0.53
+   },
+   {
+    "adr_pct": 5.82,
+    "avg_value": "₹7.3 Cr",
+    "avg_value_raw": 73163834.0,
+    "below_high_pct": 16.8,
+    "buy_above": 854.55,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:AVADHSUGAR",
+    "close": 851.15,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Avadh Sugar & Energy Limited",
+    "ours": "leader",
+    "returns": {
+     "1m": -0.1381,
+     "3m": 0.3358,
+     "6m": 0.7942
+    },
+    "risk_pct": 3.46,
+    "risk_vs_adr": 0.6,
+    "score": 4,
+    "signs": [
+     "inside bar",
+     "low volume 0.3×",
+     "strong close",
+     "2+ key averages"
+    ],
+    "stop": 824.95,
+    "symbol": "AVADHSUGAR",
+    "vol_ratio": 0.33
+   },
+   {
+    "adr_pct": 6.55,
+    "avg_value": "₹13.2 Cr",
+    "avg_value_raw": 131612240.0,
+    "below_high_pct": 15.1,
+    "buy_above": 2146.7,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:MACPOWER",
+    "close": 2080.0,
+    "flag": false,
+    "ma": "21 EMA",
+    "name": "Macpower CNC Machines Limited",
+    "ours": "leader",
+    "returns": {
+     "1m": 0.1388,
+     "3m": 0.1911,
+     "6m": 0.7922
+    },
+    "risk_pct": 4.17,
+    "risk_vs_adr": 0.64,
+    "score": 3,
+    "signs": [
+     "tightest of recent bars",
+     "low volume 0.8×",
+     "2+ key averages"
+    ],
+    "stop": 2057.15,
+    "symbol": "MACPOWER",
+    "vol_ratio": 0.84
+   },
+   {
+    "adr_pct": 3.79,
+    "avg_value": "₹10.4 Cr",
+    "avg_value_raw": 103606122.0,
+    "below_high_pct": 19.2,
+    "buy_above": 554.0,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:AIIL",
+    "close": 552.0,
+    "flag": false,
+    "ma": "21 EMA",
+    "name": "Authum Investment & Infrastructure Limi…",
+    "ours": "",
+    "returns": {
+     "1m": 0.0056,
+     "3m": -0.0468,
+     "6m": 0.0869
+    },
+    "risk_pct": 1.63,
+    "risk_vs_adr": 0.43,
+    "score": 6,
+    "signs": [
+     "inside bar",
+     "tightest of recent bars",
+     "low volume 0.3×",
+     "strong close",
+     "range under half an ADR",
+     "2+ key averages"
+    ],
+    "stop": 544.95,
+    "symbol": "AIIL",
+    "vol_ratio": 0.26
+   },
+   {
+    "adr_pct": 4.16,
+    "avg_value": "₹50.6 Cr",
+    "avg_value_raw": 506388009.0,
+    "below_high_pct": 5.8,
+    "buy_above": 3571.0,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:PRIVISCL",
+    "close": 3565.5,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Privi Speciality Chemicals Limited",
+    "ours": "",
+    "returns": {
+     "1m": 0.086,
+     "3m": 0.0104,
+     "6m": 0.1237
+    },
+    "risk_pct": 1.96,
+    "risk_vs_adr": 0.47,
+    "score": 6,
+    "signs": [
+     "inside bar",
+     "tightest of recent bars",
+     "low volume 0.6×",
+     "strong close",
+     "range under half an ADR",
+     "2+ key averages"
+    ],
+    "stop": 3500.95,
+    "symbol": "PRIVISCL",
+    "vol_ratio": 0.56
+   },
+   {
+    "adr_pct": 4.78,
+    "avg_value": "₹83.4 Cr",
+    "avg_value_raw": 834435874.0,
+    "below_high_pct": 24.4,
+    "buy_above": 1099.0,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:GODREJIND",
+    "close": 1090.35,
+    "flag": false,
+    "ma": "200 SMA",
+    "name": "Godrej Industries Limited",
+    "ours": "",
+    "returns": {
+     "1m": 0.069,
+     "3m": -0.1316,
+     "6m": -0.0301
+    },
+    "risk_pct": 1.64,
+    "risk_vs_adr": 0.34,
+    "score": 5,
+    "signs": [
+     "tightest of recent bars",
+     "low volume 0.5×",
+     "strong close",
+     "range under half an ADR",
+     "2+ key averages"
+    ],
+    "stop": 1080.95,
+    "symbol": "GODREJIND",
+    "vol_ratio": 0.45
+   },
+   {
+    "adr_pct": 4.7,
+    "avg_value": "₹261.6 Cr",
+    "avg_value_raw": 2615519933.0,
+    "below_high_pct": 17.3,
+    "buy_above": 177.56,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:MRPL",
+    "close": 175.52,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Mangalore Refinery and Petrochemicals L…",
+    "ours": "",
+    "returns": {
+     "1m": 0.0104,
+     "3m": 0.0065,
+     "6m": 0.1849
+    },
+    "risk_pct": 1.72,
+    "risk_vs_adr": 0.37,
+    "score": 5,
+    "signs": [
+     "inside bar",
+     "tightest of recent bars",
+     "low volume 0.2×",
+     "range under half an ADR",
+     "2+ key averages"
+    ],
+    "stop": 174.51,
+    "symbol": "MRPL",
+    "vol_ratio": 0.15
+   },
+   {
+    "adr_pct": 5.6,
+    "avg_value": "₹8.7 Cr",
+    "avg_value_raw": 86918985.0,
+    "below_high_pct": 33.7,
+    "buy_above": 1859.9,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:SASKEN",
+    "close": 1844.1,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Sasken Technologies Limited",
+    "ours": "",
+    "returns": {
+     "1m": 0.1195,
+     "3m": -0.0788,
+     "6m": 0.0731
+    },
+    "risk_pct": 2.31,
+    "risk_vs_adr": 0.41,
+    "score": 5,
+    "signs": [
+     "inside bar",
+     "tightest of recent bars",
+     "low volume 0.4×",
+     "strong close",
+     "range under half an ADR"
+    ],
+    "stop": 1816.85,
+    "symbol": "SASKEN",
+    "vol_ratio": 0.35
+   },
+   {
+    "adr_pct": 4.05,
+    "avg_value": "₹85.2 Cr",
+    "avg_value_raw": 852123460.0,
+    "below_high_pct": 7.6,
+    "buy_above": 344.0,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:KTKBANK",
+    "close": 342.7,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "The Karnataka Bank Limited",
+    "ours": "",
+    "returns": {
+     "1m": 0.0396,
+     "3m": 0.0958,
+     "6m": 0.2991
+    },
+    "risk_pct": 1.76,
+    "risk_vs_adr": 0.43,
+    "score": 5,
+    "signs": [
+     "tightest of recent bars",
+     "low volume 0.5×",
+     "strong close",
+     "range under half an ADR",
+     "2+ key averages"
+    ],
+    "stop": 337.95,
+    "symbol": "KTKBANK",
+    "vol_ratio": 0.49
+   },
+   {
+    "adr_pct": 2.87,
+    "avg_value": "₹36.5 Cr",
+    "avg_value_raw": 364960055.0,
+    "below_high_pct": 16.7,
+    "buy_above": 737.4,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:JSL",
+    "close": 736.65,
+    "flag": false,
+    "ma": "200 SMA",
+    "name": "Jindal Stainless Limited",
+    "ours": "",
+    "returns": {
+     "1m": 0.0024,
+     "3m": 0.0017,
+     "6m": -0.0004
+    },
+    "risk_pct": 1.38,
+    "risk_vs_adr": 0.48,
+    "score": 5,
+    "signs": [
+     "inside bar",
+     "low volume 0.5×",
+     "strong close",
+     "range under half an ADR",
+     "2+ key averages"
+    ],
+    "stop": 727.2,
+    "symbol": "JSL",
+    "vol_ratio": 0.49
+   },
+   {
+    "adr_pct": 3.86,
+    "avg_value": "₹13.1 Cr",
+    "avg_value_raw": 131278944.0,
+    "below_high_pct": 3.2,
+    "buy_above": 557.9,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:AGARWALEYE",
+    "close": 553.4,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Dr. Agarwal's Health Care Limited",
+    "ours": "",
+    "returns": {
+     "1m": 0.1817,
+     "3m": 0.0883,
+     "6m": 0.2038
+    },
+    "risk_pct": 1.86,
+    "risk_vs_adr": 0.48,
+    "score": 5,
+    "signs": [
+     "inside bar",
+     "tightest of recent bars",
+     "low volume 0.4×",
+     "strong close",
+     "range under half an ADR"
+    ],
+    "stop": 547.5,
+    "symbol": "AGARWALEYE",
+    "vol_ratio": 0.38
+   },
+   {
+    "adr_pct": 2.89,
+    "avg_value": "₹902.2 Cr",
+    "avg_value_raw": 9021913052.0,
+    "below_high_pct": 3.7,
+    "buy_above": 365.6,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:ETERNAL",
+    "close": 364.0,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "ETERNAL LIMITED",
+    "ours": "",
+    "returns": {
+     "1m": 0.1368,
+     "3m": 0.1447,
+     "6m": 0.4958
+    },
+    "risk_pct": 1.41,
+    "risk_vs_adr": 0.49,
+    "score": 5,
+    "signs": [
+     "inside bar",
+     "tightest of recent bars",
+     "low volume 0.6×",
+     "strong close",
+     "range under half an ADR"
+    ],
+    "stop": 360.45,
+    "symbol": "ETERNAL",
+    "vol_ratio": 0.64
+   },
+   {
+    "adr_pct": 2.67,
+    "avg_value": "₹17.2 Cr",
+    "avg_value_raw": 171881231.0,
+    "below_high_pct": 5.6,
+    "buy_above": 138.09,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:MUFIN",
+    "close": 136.89,
+    "flag": false,
+    "ma": "21 EMA",
+    "name": "Mufin Green Finance Limited",
+    "ours": "",
+    "returns": {
+     "1m": -0.0356,
+     "3m": 0.0031,
+     "6m": 0.1311
+    },
+    "risk_pct": 1.33,
+    "risk_vs_adr": 0.5,
+    "score": 5,
+    "signs": [
+     "inside bar",
+     "tightest of recent bars",
+     "low volume 0.4×",
+     "range under half an ADR",
+     "2+ key averages"
+    ],
+    "stop": 136.25,
+    "symbol": "MUFIN",
+    "vol_ratio": 0.4
+   },
+   {
+    "adr_pct": 4.01,
+    "avg_value": "₹709.0 Cr",
+    "avg_value_raw": 7089670331.0,
+    "below_high_pct": 7.8,
+    "buy_above": 2320.0,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:LAURUSLABS",
+    "close": 2294.6,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Laurus Labs Limited",
+    "ours": "",
+    "returns": {
+     "1m": 0.109,
+     "3m": 0.2392,
+     "6m": 0.6858
+    },
+    "risk_pct": 1.43,
+    "risk_vs_adr": 0.36,
+    "score": 4,
+    "signs": [
+     "inside bar",
+     "low volume 0.4×",
+     "range under half an ADR",
+     "2+ key averages"
+    ],
+    "stop": 2286.75,
+    "symbol": "LAURUSLABS",
+    "vol_ratio": 0.35
+   },
+   {
+    "adr_pct": 3.93,
+    "avg_value": "₹125.5 Cr",
+    "avg_value_raw": 1254891306.0,
+    "below_high_pct": 14.8,
+    "buy_above": 1553.1,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:GESHIP",
+    "close": 1531.6,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "The Great Eastern Shipping Company Limi…",
+    "ours": "",
+    "returns": {
+     "1m": 0.0081,
+     "3m": 0.1792,
+     "6m": -0.0803
+    },
+    "risk_pct": 1.55,
+    "risk_vs_adr": 0.4,
+    "score": 4,
+    "signs": [
+     "tightest of recent bars",
+     "low volume 0.5×",
+     "range under half an ADR",
+     "2+ key averages"
+    ],
+    "stop": 1528.95,
+    "symbol": "GESHIP",
+    "vol_ratio": 0.46
+   },
+   {
+    "adr_pct": 3.09,
+    "avg_value": "₹29.0 Cr",
+    "avg_value_raw": 290165278.0,
+    "below_high_pct": 23.4,
+    "buy_above": 425.0,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:EMAMILTD",
+    "close": 422.2,
+    "flag": false,
+    "ma": "200 SMA",
+    "name": "Emami Limited",
+    "ours": "",
+    "returns": {
+     "1m": 0.1257,
+     "3m": 0.0492,
+     "6m": -0.0154
+    },
+    "risk_pct": 1.31,
+    "risk_vs_adr": 0.42,
+    "score": 4,
+    "signs": [
+     "inside bar",
+     "tightest of recent bars",
+     "low volume 0.4×",
+     "range under half an ADR"
+    ],
+    "stop": 419.45,
+    "symbol": "EMAMILTD",
+    "vol_ratio": 0.43
+   },
+   {
+    "adr_pct": 2.7,
+    "avg_value": "₹198.0 Cr",
+    "avg_value_raw": 1980314697.0,
+    "below_high_pct": 5.3,
+    "buy_above": 1208.5,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:ZYDUSLIFE",
+    "close": 1200.0,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Zydus Lifesciences Limited",
+    "ours": "",
+    "returns": {
+     "1m": 0.0773,
+     "3m": 0.028,
+     "6m": 0.1529
+    },
+    "risk_pct": 1.25,
+    "risk_vs_adr": 0.46,
+    "score": 4,
+    "signs": [
+     "tightest of recent bars",
+     "low volume 0.5×",
+     "range under half an ADR",
+     "2+ key averages"
+    ],
+    "stop": 1193.45,
+    "symbol": "ZYDUSLIFE",
+    "vol_ratio": 0.52
+   },
+   {
+    "adr_pct": 4.19,
+    "avg_value": "₹63.8 Cr",
+    "avg_value_raw": 638385281.0,
+    "below_high_pct": 12.6,
+    "buy_above": 1606.0,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:AFFLE",
+    "close": 1599.4,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Affle 3i Limited",
+    "ours": "",
+    "returns": {
+     "1m": 0.103,
+     "3m": -0.0265,
+     "6m": 0.1077
+    },
+    "risk_pct": 1.95,
+    "risk_vs_adr": 0.46,
+    "score": 4,
+    "signs": [
+     "low volume 0.4×",
+     "strong close",
+     "range under half an ADR",
+     "2+ key averages"
+    ],
+    "stop": 1574.75,
+    "symbol": "AFFLE",
+    "vol_ratio": 0.43
+   },
+   {
+    "adr_pct": 3.95,
+    "avg_value": "₹40.0 Cr",
+    "avg_value_raw": 400409929.0,
+    "below_high_pct": 3.2,
+    "buy_above": 819.3,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:TIPSMUSIC",
+    "close": 808.05,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Tips Music Limited",
+    "ours": "",
+    "returns": {
+     "1m": 0.0471,
+     "3m": 0.2025,
+     "6m": 0.2256
+    },
+    "risk_pct": 1.86,
+    "risk_vs_adr": 0.47,
+    "score": 4,
+    "signs": [
+     "inside bar",
+     "tightest of recent bars",
+     "low volume 0.3×",
+     "range under half an ADR"
+    ],
+    "stop": 804.1,
+    "symbol": "TIPSMUSIC",
+    "vol_ratio": 0.25
+   },
+   {
+    "adr_pct": 4.07,
+    "avg_value": "₹72.7 Cr",
+    "avg_value_raw": 727281653.0,
+    "below_high_pct": 16.2,
+    "buy_above": 1669.0,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:ASTRAMICRO",
+    "close": 1642.7,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Astra Microwave Products Limited",
+    "ours": "",
+    "returns": {
+     "1m": 0.0158,
+     "3m": -0.0342,
+     "6m": 0.4234
+    },
+    "risk_pct": 1.92,
+    "risk_vs_adr": 0.47,
+    "score": 4,
+    "signs": [
+     "tightest of recent bars",
+     "low volume 0.4×",
+     "range under half an ADR",
+     "2+ key averages"
+    ],
+    "stop": 1636.95,
+    "symbol": "ASTRAMICRO",
+    "vol_ratio": 0.43
+   },
+   {
+    "adr_pct": 3.36,
+    "avg_value": "₹410.6 Cr",
+    "avg_value_raw": 4105521966.0,
+    "below_high_pct": 2.4,
+    "buy_above": 748.5,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:LENSKART",
+    "close": 744.35,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Lenskart Solutions Limited",
+    "ours": "",
+    "returns": {
+     "1m": 0.1631,
+     "3m": 0.247,
+     "6m": 0.5289
+    },
+    "risk_pct": 1.62,
+    "risk_vs_adr": 0.48,
+    "score": 4,
+    "signs": [
+     "tightest of recent bars",
+     "low volume 0.6×",
+     "strong close",
+     "range under half an ADR"
+    ],
+    "stop": 736.4,
+    "symbol": "LENSKART",
+    "vol_ratio": 0.61
+   },
+   {
+    "adr_pct": 5.55,
+    "avg_value": "₹32.3 Cr",
+    "avg_value_raw": 323129483.0,
+    "below_high_pct": 17.7,
+    "buy_above": 720.95,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:PROTEAN",
+    "close": 705.6,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Protean eGov Technologies Limited",
+    "ours": "",
+    "returns": {
+     "1m": 0.1429,
+     "3m": 0.2694,
+     "6m": 0.2942
+    },
+    "risk_pct": 2.64,
+    "risk_vs_adr": 0.47,
+    "score": 4,
+    "signs": [
+     "inside bar",
+     "tightest of recent bars",
+     "low volume 0.6×",
+     "range under half an ADR"
+    ],
+    "stop": 701.95,
+    "symbol": "PROTEAN",
+    "vol_ratio": 0.57
+   },
+   {
+    "adr_pct": 3.17,
+    "avg_value": "₹224.0 Cr",
+    "avg_value_raw": 2240453163.0,
+    "below_high_pct": 1.7,
+    "buy_above": 4666.2,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:RADICO",
+    "close": 4665.0,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Radico Khaitan Limited",
+    "ours": "",
+    "returns": {
+     "1m": 0.0517,
+     "3m": -0.0022,
+     "6m": 0.3082
+    },
+    "risk_pct": 1.54,
+    "risk_vs_adr": 0.48,
+    "score": 4,
+    "signs": [
+     "tightest of recent bars",
+     "low volume 0.5×",
+     "strong close",
+     "range under half an ADR"
+    ],
+    "stop": 4594.55,
+    "symbol": "RADICO",
+    "vol_ratio": 0.49
+   },
+   {
+    "adr_pct": 2.98,
+    "avg_value": "₹113.9 Cr",
+    "avg_value_raw": 1138815521.0,
+    "below_high_pct": 6.2,
+    "buy_above": 1472.9,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:UNITDSPR",
+    "close": 1466.4,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "United Spirits Limited",
+    "ours": "",
+    "returns": {
+     "1m": 0.0751,
+     "3m": -0.0321,
+     "6m": 0.1415
+    },
+    "risk_pct": 1.46,
+    "risk_vs_adr": 0.49,
+    "score": 4,
+    "signs": [
+     "inside bar",
+     "low volume 0.5×",
+     "strong close",
+     "range under half an ADR"
+    ],
+    "stop": 1451.35,
+    "symbol": "UNITDSPR",
+    "vol_ratio": 0.55
+   },
+   {
+    "adr_pct": 3.41,
+    "avg_value": "₹8.0 Cr",
+    "avg_value_raw": 80104791.0,
+    "below_high_pct": 13.8,
+    "buy_above": 694.35,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:WEWORK",
+    "close": 684.95,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "WeWork India Management Limited",
+    "ours": "",
+    "returns": {
+     "1m": 0.0319,
+     "3m": -0.048,
+     "6m": 0.407
+    },
+    "risk_pct": 1.79,
+    "risk_vs_adr": 0.52,
+    "score": 4,
+    "signs": [
+     "inside bar",
+     "tightest of recent bars",
+     "low volume 0.2×",
+     "2+ key averages"
+    ],
+    "stop": 681.95,
+    "symbol": "WEWORK",
+    "vol_ratio": 0.16
+   },
+   {
+    "adr_pct": 4.99,
+    "avg_value": "₹30.3 Cr",
+    "avg_value_raw": 303496651.0,
+    "below_high_pct": 11.8,
+    "buy_above": 140.28,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:JAMNAAUTO",
+    "close": 137.55,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Jamna Auto Industries Limited",
+    "ours": "",
+    "returns": {
+     "1m": -0.0106,
+     "3m": 0.0858,
+     "6m": 0.2325
+    },
+    "risk_pct": 2.65,
+    "risk_vs_adr": 0.53,
+    "score": 4,
+    "signs": [
+     "inside bar",
+     "tightest of recent bars",
+     "low volume 0.6×",
+     "2+ key averages"
+    ],
+    "stop": 136.56,
+    "symbol": "JAMNAAUTO",
+    "vol_ratio": 0.63
+   },
+   {
+    "adr_pct": 3.62,
+    "avg_value": "₹19.4 Cr",
+    "avg_value_raw": 194204802.0,
+    "below_high_pct": 14.2,
+    "buy_above": 237.4,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:EPL",
+    "close": 235.2,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "EPL Limited",
+    "ours": "",
+    "returns": {
+     "1m": 0.018,
+     "3m": -0.0487,
+     "6m": 0.0906
+    },
+    "risk_pct": 1.93,
+    "risk_vs_adr": 0.53,
+    "score": 4,
+    "signs": [
+     "inside bar",
+     "low volume 0.6×",
+     "strong close",
+     "2+ key averages"
+    ],
+    "stop": 232.81,
+    "symbol": "EPL",
+    "vol_ratio": 0.65
+   },
+   {
+    "adr_pct": 4.82,
+    "avg_value": "₹10.1 Cr",
+    "avg_value_raw": 100949556.0,
+    "below_high_pct": 9.9,
+    "buy_above": 121.63,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:TEXINFRA",
+    "close": 120.43,
+    "flag": false,
+    "ma": "21 EMA",
+    "name": "Texmaco Infrastructure & Holdings Limit…",
+    "ours": "",
+    "returns": {
+     "1m": -0.0611,
+     "3m": 0.0842,
+     "6m": 0.2325
+    },
+    "risk_pct": 2.61,
+    "risk_vs_adr": 0.54,
+    "score": 4,
+    "signs": [
+     "inside bar",
+     "low volume 0.1×",
+     "strong close",
+     "2+ key averages"
+    ],
+    "stop": 118.46,
+    "symbol": "TEXINFRA",
+    "vol_ratio": 0.11
+   },
+   {
+    "adr_pct": 4.24,
+    "avg_value": "₹14.6 Cr",
+    "avg_value_raw": 145890585.0,
+    "below_high_pct": 20.0,
+    "buy_above": 667.65,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:ITDC",
+    "close": 657.65,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "India Tourism Development Corporation L…",
+    "ours": "",
+    "returns": {
+     "1m": -0.0057,
+     "3m": -0.0603,
+     "6m": 0.2094
+    },
+    "risk_pct": 1.89,
+    "risk_vs_adr": 0.45,
+    "score": 3,
+    "signs": [
+     "low volume 0.2×",
+     "range under half an ADR",
+     "2+ key averages"
+    ],
+    "stop": 655.0,
+    "symbol": "ITDC",
+    "vol_ratio": 0.15
+   },
+   {
+    "adr_pct": 4.36,
+    "avg_value": "₹17.8 Cr",
+    "avg_value_raw": 178061440.0,
+    "below_high_pct": 14.3,
+    "buy_above": 381.8,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:REPCOHOME",
+    "close": 377.3,
+    "flag": false,
+    "ma": "200 SMA",
+    "name": "Repco Home Finance Limited",
+    "ours": "",
+    "returns": {
+     "1m": 0.1324,
+     "3m": 0.042,
+     "6m": -0.0406
+    },
+    "risk_pct": 2.06,
+    "risk_vs_adr": 0.47,
+    "score": 3,
+    "signs": [
+     "low volume 0.1×",
+     "range under half an ADR",
+     "2+ key averages"
+    ],
+    "stop": 373.95,
+    "symbol": "REPCOHOME",
+    "vol_ratio": 0.13
+   },
+   {
+    "adr_pct": 4.77,
+    "avg_value": "₹90.5 Cr",
+    "avg_value_raw": 905006778.0,
+    "below_high_pct": 18.7,
+    "buy_above": 912.0,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:BBOX",
+    "close": 896.4,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Black Box Limited",
+    "ours": "",
+    "returns": {
+     "1m": 0.0022,
+     "3m": 0.0768,
+     "6m": -0.0506
+    },
+    "risk_pct": 2.35,
+    "risk_vs_adr": 0.49,
+    "score": 3,
+    "signs": [
+     "inside bar",
+     "tightest of recent bars",
+     "low volume 0.3×"
+    ],
+    "stop": 890.55,
+    "symbol": "BBOX",
+    "vol_ratio": 0.34
+   },
+   {
+    "adr_pct": 2.51,
+    "avg_value": "₹282.2 Cr",
+    "avg_value_raw": 2821942181.0,
+    "below_high_pct": 12.6,
+    "buy_above": 2610.9,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:ASIANPAINT",
+    "close": 2608.3,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Asian Paints Limited",
+    "ours": "",
+    "returns": {
+     "1m": 0.1191,
+     "3m": -0.0534,
+     "6m": 0.0037
+    },
+    "risk_pct": 1.3,
+    "risk_vs_adr": 0.52,
+    "score": 3,
+    "signs": [
+     "tightest of recent bars",
+     "low volume 0.5×",
+     "strong close"
+    ],
+    "stop": 2577.05,
+    "symbol": "ASIANPAINT",
+    "vol_ratio": 0.49
+   },
+   {
+    "adr_pct": 3.17,
+    "avg_value": "₹52.5 Cr",
+    "avg_value_raw": 524932256.0,
+    "below_high_pct": 17.0,
+    "buy_above": 1763.9,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:TATACOMM",
+    "close": 1751.0,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Tata Communications Limited",
+    "ours": "",
+    "returns": {
+     "1m": 0.0189,
+     "3m": -0.0041,
+     "6m": -0.0139
+    },
+    "risk_pct": 1.64,
+    "risk_vs_adr": 0.52,
+    "score": 3,
+    "signs": [
+     "low volume 0.3×",
+     "strong close",
+     "2+ key averages"
+    ],
+    "stop": 1734.95,
+    "symbol": "TATACOMM",
+    "vol_ratio": 0.28
+   },
+   {
+    "adr_pct": 3.38,
+    "avg_value": "₹228.8 Cr",
+    "avg_value_raw": 2287974142.0,
+    "below_high_pct": 12.5,
+    "buy_above": 7004.5,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:ABB",
+    "close": 6934.5,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "ABB India Limited",
+    "ours": "",
+    "returns": {
+     "1m": -0.0057,
+     "3m": -0.1006,
+     "6m": 0.0499
+    },
+    "risk_pct": 1.78,
+    "risk_vs_adr": 0.53,
+    "score": 3,
+    "signs": [
+     "tightest of recent bars",
+     "low volume 0.4×",
+     "2+ key averages"
+    ],
+    "stop": 6879.95,
+    "symbol": "ABB",
+    "vol_ratio": 0.41
+   },
+   {
+    "adr_pct": 2.92,
+    "avg_value": "₹875.4 Cr",
+    "avg_value_raw": 8753802796.0,
+    "below_high_pct": 5.4,
+    "buy_above": 11198.0,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:DIVISLAB",
+    "close": 11180.5,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Divi's Laboratories Limited",
+    "ours": "",
+    "returns": {
+     "1m": 0.2304,
+     "3m": 0.3154,
+     "6m": 0.622
+    },
+    "risk_pct": 1.55,
+    "risk_vs_adr": 0.53,
+    "score": 3,
+    "signs": [
+     "tightest of recent bars",
+     "low volume 0.5×",
+     "strong close"
+    ],
+    "stop": 11024.95,
+    "symbol": "DIVISLAB",
+    "vol_ratio": 0.53
+   },
+   {
+    "adr_pct": 3.68,
+    "avg_value": "₹41.7 Cr",
+    "avg_value_raw": 417305605.0,
+    "below_high_pct": 7.5,
+    "buy_above": 24300.0,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:PTCIL",
+    "close": 24120.0,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "PTC Industries Limited",
+    "ours": "",
+    "returns": {
+     "1m": -0.0369,
+     "3m": 0.2584,
+     "6m": 0.527
+    },
+    "risk_pct": 1.98,
+    "risk_vs_adr": 0.54,
+    "score": 3,
+    "signs": [
+     "low volume 0.5×",
+     "strong close",
+     "2+ key averages"
+    ],
+    "stop": 23819.95,
+    "symbol": "PTCIL",
+    "vol_ratio": 0.5
+   },
+   {
+    "adr_pct": 5.07,
+    "avg_value": "₹10.6 Cr",
+    "avg_value_raw": 106210889.0,
+    "below_high_pct": 16.0,
+    "buy_above": 970.15,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:ORCHPHARMA",
+    "close": 960.4,
+    "flag": false,
+    "ma": "50 SMA",
+    "name": "Orchid Pharma Limited",
+    "ours": "",
+    "returns": {
+     "1m": 0.0749,
+     "3m": -0.0711,
+     "6m": 0.3427
+    },
+    "risk_pct": 2.72,
+    "risk_vs_adr": 0.54,
+    "score": 3,
+    "signs": [
+     "tightest of recent bars",
+     "low volume 0.6×",
+     "strong close"
+    ],
+    "stop": 943.8,
+    "symbol": "ORCHPHARMA",
+    "vol_ratio": 0.62
+   },
+   {
+    "adr_pct": 3.15,
+    "avg_value": "₹22.3 Cr",
+    "avg_value_raw": 222762705.0,
+    "below_high_pct": 12.3,
+    "buy_above": 178.5,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:GPPL",
+    "close": 175.53,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Gujarat Pipavav Port Limited",
+    "ours": "",
+    "returns": {
+     "1m": 0.0569,
+     "3m": 0.1567,
+     "6m": 0.1383
+    },
+    "risk_pct": 1.81,
+    "risk_vs_adr": 0.57,
+    "score": 3,
+    "signs": [
+     "inside bar",
+     "tightest of recent bars",
+     "low volume 0.5×"
+    ],
+    "stop": 175.27,
+    "symbol": "GPPL",
+    "vol_ratio": 0.5
+   },
+   {
+    "adr_pct": 3.9,
+    "avg_value": "₹28.6 Cr",
+    "avg_value_raw": 286103828.0,
+    "below_high_pct": 11.0,
+    "buy_above": 566.0,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:STARHEALTH",
+    "close": 556.05,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Star Health and Allied Insurance Compan…",
+    "ours": "",
+    "returns": {
+     "1m": 0.0258,
+     "3m": -0.0488,
+     "6m": 0.0697
+    },
+    "risk_pct": 2.23,
+    "risk_vs_adr": 0.57,
+    "score": 3,
+    "signs": [
+     "tightest of recent bars",
+     "low volume 0.6×",
+     "2+ key averages"
+    ],
+    "stop": 553.35,
+    "symbol": "STARHEALTH",
+    "vol_ratio": 0.6
+   },
+   {
+    "adr_pct": 4.81,
+    "avg_value": "₹6.8 Cr",
+    "avg_value_raw": 68200713.0,
+    "below_high_pct": 11.2,
+    "buy_above": 381.95,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:VSSL",
+    "close": 380.35,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Vardhman Special Steels Limited",
+    "ours": "",
+    "returns": {
+     "1m": 0.0308,
+     "3m": 0.1626,
+     "6m": 0.3823
+    },
+    "risk_pct": 2.98,
+    "risk_vs_adr": 0.62,
+    "score": 3,
+    "signs": [
+     "low volume 0.2×",
+     "strong close",
+     "2+ key averages"
+    ],
+    "stop": 370.55,
+    "symbol": "VSSL",
+    "vol_ratio": 0.22
+   },
+   {
+    "adr_pct": 3.48,
+    "avg_value": "₹449.8 Cr",
+    "avg_value_raw": 4497884368.0,
+    "below_high_pct": 16.8,
+    "buy_above": 13205.0,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:DIXON",
+    "close": 13120.0,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Dixon Technologies (India) Limited",
+    "ours": "",
+    "returns": {
+     "1m": 0.0843,
+     "3m": -0.0652,
+     "6m": 0.1931
+    },
+    "risk_pct": 2.26,
+    "risk_vs_adr": 0.65,
+    "score": 3,
+    "signs": [
+     "low volume 0.7×",
+     "strong close",
+     "2+ key averages"
+    ],
+    "stop": 12905.95,
+    "symbol": "DIXON",
+    "vol_ratio": 0.66
+   },
+   {
+    "adr_pct": 2.6,
+    "avg_value": "₹109.7 Cr",
+    "avg_value_raw": 1097184528.0,
+    "below_high_pct": 2.1,
+    "buy_above": 330.15,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:PETRONET",
+    "close": 329.15,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Petronet LNG Limited",
+    "ours": "",
+    "returns": {
+     "1m": 0.1209,
+     "3m": 0.1785,
+     "6m": 0.2437
+    },
+    "risk_pct": 1.32,
+    "risk_vs_adr": 0.51,
+    "score": 2,
+    "signs": [
+     "inside bar",
+     "strong close"
+    ],
+    "stop": 325.8,
+    "symbol": "PETRONET",
+    "vol_ratio": 1.15
+   },
+   {
+    "adr_pct": 4.53,
+    "avg_value": "₹6.9 Cr",
+    "avg_value_raw": 68654504.0,
+    "below_high_pct": 26.0,
+    "buy_above": 1310.0,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:ZOTA",
+    "close": 1288.0,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Zota Health Care LImited",
+    "ours": "",
+    "returns": {
+     "1m": -0.0529,
+     "3m": 0.0376,
+     "6m": 0.071
+    },
+    "risk_pct": 2.29,
+    "risk_vs_adr": 0.51,
+    "score": 2,
+    "signs": [
+     "low volume 0.2×",
+     "2+ key averages"
+    ],
+    "stop": 1279.95,
+    "symbol": "ZOTA",
+    "vol_ratio": 0.22
+   },
+   {
+    "adr_pct": 2.93,
+    "avg_value": "₹78.0 Cr",
+    "avg_value_raw": 779898692.0,
+    "below_high_pct": 1.2,
+    "buy_above": 916.5,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:SHREEJISPG",
+    "close": 913.8,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Shreeji Shipping Global Limited",
+    "ours": "",
+    "returns": {
+     "1m": 0.1226,
+     "3m": 0.3954,
+     "6m": 1.0894
+    },
+    "risk_pct": 1.52,
+    "risk_vs_adr": 0.52,
+    "score": 2,
+    "signs": [
+     "low volume 0.3×",
+     "strong close"
+    ],
+    "stop": 902.6,
+    "symbol": "SHREEJISPG",
+    "vol_ratio": 0.32
+   },
+   {
+    "adr_pct": 3.3,
+    "avg_value": "₹181.4 Cr",
+    "avg_value_raw": 1813942036.0,
+    "below_high_pct": 0.1,
+    "buy_above": 171.95,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:TFCILTD",
+    "close": 171.85,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Tourism Finance Corporation of India Li…",
+    "ours": "",
+    "returns": {
+     "1m": 0.1003,
+     "3m": 0.4903,
+     "6m": 1.334
+    },
+    "risk_pct": 1.73,
+    "risk_vs_adr": 0.53,
+    "score": 2,
+    "signs": [
+     "low volume 0.4×",
+     "strong close"
+    ],
+    "stop": 168.97,
+    "symbol": "TFCILTD",
+    "vol_ratio": 0.36
+   },
+   {
+    "adr_pct": 2.08,
+    "avg_value": "₹274.9 Cr",
+    "avg_value_raw": 2749057723.0,
+    "below_high_pct": 1.7,
+    "buy_above": 1400.0,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:DRREDDY",
+    "close": 1390.2,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Dr. Reddy's Laboratories Limited",
+    "ours": "",
+    "returns": {
+     "1m": 0.1189,
+     "3m": 0.1527,
+     "6m": 0.0517
+    },
+    "risk_pct": 1.09,
+    "risk_vs_adr": 0.52,
+    "score": 2,
+    "signs": [
+     "inside bar",
+     "low volume 0.4×"
+    ],
+    "stop": 1384.75,
+    "symbol": "DRREDDY",
+    "vol_ratio": 0.42
+   },
+   {
+    "adr_pct": 3.35,
+    "avg_value": "₹144.2 Cr",
+    "avg_value_raw": 1441760883.0,
+    "below_high_pct": 2.8,
+    "buy_above": 3339.1,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:GLAND",
+    "close": 3331.9,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Gland Pharma Limited",
+    "ours": "",
+    "returns": {
+     "1m": 0.1034,
+     "3m": 0.1228,
+     "6m": 0.4996
+    },
+    "risk_pct": 1.78,
+    "risk_vs_adr": 0.53,
+    "score": 2,
+    "signs": [
+     "low volume 0.7×",
+     "strong close"
+    ],
+    "stop": 3279.65,
+    "symbol": "GLAND",
+    "vol_ratio": 0.67
+   },
+   {
+    "adr_pct": 4.63,
+    "avg_value": "₹49.5 Cr",
+    "avg_value_raw": 494923166.0,
+    "below_high_pct": 22.7,
+    "buy_above": 524.9,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:BALUFORGE",
+    "close": 515.7,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Balu Forge Industries Limited",
+    "ours": "",
+    "returns": {
+     "1m": 0.0985,
+     "3m": 0.1556,
+     "6m": 0.0907
+    },
+    "risk_pct": 2.47,
+    "risk_vs_adr": 0.53,
+    "score": 2,
+    "signs": [
+     "low volume 0.6×",
+     "2+ key averages"
+    ],
+    "stop": 511.95,
+    "symbol": "BALUFORGE",
+    "vol_ratio": 0.63
+   },
+   {
+    "adr_pct": 4.49,
+    "avg_value": "₹11.5 Cr",
+    "avg_value_raw": 114541689.0,
+    "below_high_pct": 15.4,
+    "buy_above": 224.4,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:HIKAL",
+    "close": 220.76,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Hikal Limited",
+    "ours": "",
+    "returns": {
+     "1m": 0.0162,
+     "3m": 0.0204,
+     "6m": 0.0785
+    },
+    "risk_pct": 2.43,
+    "risk_vs_adr": 0.54,
+    "score": 2,
+    "signs": [
+     "low volume 0.2×",
+     "2+ key averages"
+    ],
+    "stop": 218.95,
+    "symbol": "HIKAL",
+    "vol_ratio": 0.22
+   },
+   {
+    "adr_pct": 2.63,
+    "avg_value": "₹514.3 Cr",
+    "avg_value_raw": 5142961931.0,
+    "below_high_pct": 3.1,
+    "buy_above": 1930.2,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:ADANIPORTS",
+    "close": 1917.0,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Adani Ports and Special Economic Zone L…",
+    "ours": "",
+    "returns": {
+     "1m": 0.0855,
+     "3m": 0.1562,
+     "6m": 0.0815
+    },
+    "risk_pct": 1.43,
+    "risk_vs_adr": 0.54,
+    "score": 2,
+    "signs": [
+     "low volume 0.7×",
+     "strong close"
+    ],
+    "stop": 1902.65,
+    "symbol": "ADANIPORTS",
+    "vol_ratio": 0.73
+   },
+   {
+    "adr_pct": 4.96,
+    "avg_value": "₹72.3 Cr",
+    "avg_value_raw": 722949166.0,
+    "below_high_pct": 7.5,
+    "buy_above": 1460.0,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:ALIVUS",
+    "close": 1436.9,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Alivus Life Sciences Limited",
+    "ours": "",
+    "returns": {
+     "1m": 0.1327,
+     "3m": 0.0453,
+     "6m": 0.3545
+    },
+    "risk_pct": 2.72,
+    "risk_vs_adr": 0.55,
+    "score": 2,
+    "signs": [
+     "low volume 0.4×",
+     "2+ key averages"
+    ],
+    "stop": 1420.35,
+    "symbol": "ALIVUS",
+    "vol_ratio": 0.4
+   },
+   {
+    "adr_pct": 2.41,
+    "avg_value": "₹184.6 Cr",
+    "avg_value_raw": 1846348180.0,
+    "below_high_pct": 0.4,
+    "buy_above": 191.44,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:GAIL",
+    "close": 191.44,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "GAIL (India) Limited",
+    "ours": "",
+    "returns": {
+     "1m": 0.1443,
+     "3m": 0.0883,
+     "6m": 0.23
+    },
+    "risk_pct": 1.38,
+    "risk_vs_adr": 0.57,
+    "score": 2,
+    "signs": [
+     "low volume 0.6×",
+     "strong close"
+    ],
+    "stop": 188.79,
+    "symbol": "GAIL",
+    "vol_ratio": 0.61
+   },
+   {
+    "adr_pct": 4.36,
+    "avg_value": "₹14.3 Cr",
+    "avg_value_raw": 143216857.0,
+    "below_high_pct": 21.6,
+    "buy_above": 3314.2,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:STYLAMIND",
+    "close": 3252.4,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Stylam Industries Limited",
+    "ours": "",
+    "returns": {
+     "1m": -0.016,
+     "3m": -0.0955,
+     "6m": 0.1863
+    },
+    "risk_pct": 2.45,
+    "risk_vs_adr": 0.56,
+    "score": 2,
+    "signs": [
+     "low volume 0.3×",
+     "2+ key averages"
+    ],
+    "stop": 3232.95,
+    "symbol": "STYLAMIND",
+    "vol_ratio": 0.29
+   },
+   {
+    "adr_pct": 3.96,
+    "avg_value": "₹38.0 Cr",
+    "avg_value_raw": 380155056.0,
+    "below_high_pct": 7.7,
+    "buy_above": 1192.65,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:ACE",
+    "close": 1170.35,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Action Construction Equipment Limited",
+    "ours": "",
+    "returns": {
+     "1m": 0.0562,
+     "3m": 0.0854,
+     "6m": 0.305
+    },
+    "risk_pct": 2.32,
+    "risk_vs_adr": 0.59,
+    "score": 2,
+    "signs": [
+     "low volume 0.4×",
+     "2+ key averages"
+    ],
+    "stop": 1164.95,
+    "symbol": "ACE",
+    "vol_ratio": 0.39
+   },
+   {
+    "adr_pct": 2.28,
+    "avg_value": "₹250.0 Cr",
+    "avg_value_raw": 2499739894.0,
+    "below_high_pct": 0.9,
+    "buy_above": 924.3,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:MARICO",
+    "close": 917.0,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Marico Limited",
+    "ours": "",
+    "returns": {
+     "1m": 0.1787,
+     "3m": 0.0608,
+     "6m": 0.0937
+    },
+    "risk_pct": 1.38,
+    "risk_vs_adr": 0.6,
+    "score": 2,
+    "signs": [
+     "tightest of recent bars",
+     "low volume 0.6×"
+    ],
+    "stop": 911.55,
+    "symbol": "MARICO",
+    "vol_ratio": 0.64
+   },
+   {
+    "adr_pct": 3.51,
+    "avg_value": "₹239.8 Cr",
+    "avg_value_raw": 2397901434.0,
+    "below_high_pct": 2.4,
+    "buy_above": 2657.7,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:GLENMARK",
+    "close": 2648.0,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Glenmark Pharmaceuticals Limited",
+    "ours": "",
+    "returns": {
+     "1m": 0.1981,
+     "3m": 0.1414,
+     "6m": 0.1131
+    },
+    "risk_pct": 2.1,
+    "risk_vs_adr": 0.6,
+    "score": 2,
+    "signs": [
+     "low volume 0.7×",
+     "strong close"
+    ],
+    "stop": 2601.85,
+    "symbol": "GLENMARK",
+    "vol_ratio": 0.67
+   },
+   {
+    "adr_pct": 2.31,
+    "avg_value": "₹429.0 Cr",
+    "avg_value_raw": 4289995809.0,
+    "below_high_pct": 7.9,
+    "buy_above": 1910.0,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:SUNPHARMA",
+    "close": 1884.9,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Sun Pharmaceutical Industries Limited",
+    "ours": "",
+    "returns": {
+     "1m": 0.0814,
+     "3m": -0.0244,
+     "6m": 0.0024
+    },
+    "risk_pct": 1.42,
+    "risk_vs_adr": 0.61,
+    "score": 2,
+    "signs": [
+     "inside bar",
+     "low volume 0.9×"
+    ],
+    "stop": 1882.95,
+    "symbol": "SUNPHARMA",
+    "vol_ratio": 0.94
+   },
+   {
+    "adr_pct": 2.54,
+    "avg_value": "₹161.8 Cr",
+    "avg_value_raw": 1617729923.0,
+    "below_high_pct": 5.9,
+    "buy_above": 49795.0,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:BOSCHLTD",
+    "close": 49360.0,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Bosch Limited",
+    "ours": "",
+    "returns": {
+     "1m": 0.0922,
+     "3m": 0.0558,
+     "6m": 0.3402
+    },
+    "risk_pct": 1.61,
+    "risk_vs_adr": 0.63,
+    "score": 2,
+    "signs": [
+     "low volume 0.9×",
+     "2+ key averages"
+    ],
+    "stop": 48994.95,
+    "symbol": "BOSCHLTD",
+    "vol_ratio": 0.85
+   },
+   {
+    "adr_pct": 4.44,
+    "avg_value": "₹15.3 Cr",
+    "avg_value_raw": 152500157.0,
+    "below_high_pct": 8.3,
+    "buy_above": 644.0,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:ASKAUTOLTD",
+    "close": 630.85,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "ASK Automotive Limited",
+    "ours": "",
+    "returns": {
+     "1m": 0.1133,
+     "3m": -0.0286,
+     "6m": 0.4192
+    },
+    "risk_pct": 2.79,
+    "risk_vs_adr": 0.63,
+    "score": 2,
+    "signs": [
+     "low volume 0.5×",
+     "2+ key averages"
+    ],
+    "stop": 626.05,
+    "symbol": "ASKAUTOLTD",
+    "vol_ratio": 0.49
+   },
+   {
+    "adr_pct": 3.32,
+    "avg_value": "₹10.9 Cr",
+    "avg_value_raw": 109256349.0,
+    "below_high_pct": 3.1,
+    "buy_above": 5522.5,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:FINEORG",
+    "close": 5488.5,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Fine Organic Industries Limited",
+    "ours": "",
+    "returns": {
+     "1m": 0.0168,
+     "3m": 0.0637,
+     "6m": 0.1947
+    },
+    "risk_pct": 2.09,
+    "risk_vs_adr": 0.63,
+    "score": 2,
+    "signs": [
+     "low volume 0.8×",
+     "strong close"
+    ],
+    "stop": 5406.95,
+    "symbol": "FINEORG",
+    "vol_ratio": 0.82
+   },
+   {
+    "adr_pct": 3.91,
+    "avg_value": "₹87.5 Cr",
+    "avg_value_raw": 875004698.0,
+    "below_high_pct": 17.8,
+    "buy_above": 1703.3,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:ZENTEC",
+    "close": 1680.9,
+    "flag": false,
+    "ma": "21 EMA",
+    "name": "Zen Technologies Limited",
+    "ours": "",
+    "returns": {
+     "1m": 0.0329,
+     "3m": -0.0824,
+     "6m": 0.0478
+    },
+    "risk_pct": 2.47,
+    "risk_vs_adr": 0.63,
+    "score": 2,
+    "signs": [
+     "low volume 0.6×",
+     "2+ key averages"
+    ],
+    "stop": 1661.25,
+    "symbol": "ZENTEC",
+    "vol_ratio": 0.56
+   },
+   {
+    "adr_pct": 5.13,
+    "avg_value": "₹35.2 Cr",
+    "avg_value_raw": 352110036.0,
+    "below_high_pct": 16.1,
+    "buy_above": 638.8,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:RAYMONDREL",
+    "close": 622.35,
+    "flag": false,
+    "ma": "50 SMA",
+    "name": "Raymond Realty Limited",
+    "ours": "",
+    "returns": {
+     "1m": -0.0028,
+     "3m": 0.0902,
+     "6m": 0.1009
+    },
+    "risk_pct": 2.95,
+    "risk_vs_adr": 0.58,
+    "score": 1,
+    "signs": [
+     "low volume 0.7×"
+    ],
+    "stop": 619.95,
+    "symbol": "RAYMONDREL",
+    "vol_ratio": 0.73
+   },
+   {
+    "adr_pct": 4.59,
+    "avg_value": "₹37.1 Cr",
+    "avg_value_raw": 370702034.0,
+    "below_high_pct": 10.7,
+    "buy_above": 555.8,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:TI",
+    "close": 542.75,
+    "flag": false,
+    "ma": "50 SMA",
+    "name": "Tilaknagar Industries Limited",
+    "ours": "",
+    "returns": {
+     "1m": -0.0028,
+     "3m": -0.0198,
+     "6m": 0.2837
+    },
+    "risk_pct": 2.67,
+    "risk_vs_adr": 0.58,
+    "score": 1,
+    "signs": [
+     "low volume 0.8×"
+    ],
+    "stop": 540.95,
+    "symbol": "TI",
+    "vol_ratio": 0.8
+   },
+   {
+    "adr_pct": 3.67,
+    "avg_value": "₹185.7 Cr",
+    "avg_value_raw": 1857281806.0,
+    "below_high_pct": 2.1,
+    "buy_above": 1399.9,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:UNOMINDA",
+    "close": 1380.0,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "UNO Minda Limited",
+    "ours": "",
+    "returns": {
+     "1m": 0.2691,
+     "3m": 0.1129,
+     "6m": 0.3063
+    },
+    "risk_pct": 2.17,
+    "risk_vs_adr": 0.59,
+    "score": 0,
+    "signs": [],
+    "stop": 1369.55,
+    "symbol": "UNOMINDA",
+    "vol_ratio": 1.12
+   },
+   {
+    "adr_pct": 3.22,
+    "avg_value": "₹7.0 Cr",
+    "avg_value_raw": 69947915.0,
+    "below_high_pct": 6.6,
+    "buy_above": 1163.6,
+    "chart": "https://www.tradingview.com/chart/?symbol=NSE:GULFOILLUB",
+    "close": 1149.3,
+    "flag": false,
+    "ma": "10 EMA",
+    "name": "Gulf Oil Lubricants India Limited",
+    "ours": "",
+    "returns": {
+     "1m": 0.0829,
+     "3m": -0.0233,
+     "6m": 0.2747
+    },
+    "risk_pct": 2.0,
+    "risk_vs_adr": 0.62,
+    "score": 0,
+    "signs": [],
+    "stop": 1140.35,
+    "symbol": "GULFOILLUB",
+    "vol_ratio": 4.56
+   }
+  ]
+ },
  "watchlist": [
   {
    "adr_pct": 4.49,
