@@ -48,7 +48,7 @@ from scanner.notify import (
 )
 from scanner.dashboard import SITE_DATA, snapshot, write_snapshot
 from scanner.quality import QualityReport, quality_report, yahoo_split_dates
-from scanner.scans import (BreakoutResult, JackResult, LeadersResult, ScanResults, WatchlistResult,
+from scanner.scans import (BreakoutResult, JackResult, LeadersResult, ScanResults, TriggerBarResult, WatchlistResult,
                           missed_breakouts, run_scans)
 from scanner.state import STATE_DIR, MarketState, diff_results, state_path
 
@@ -61,7 +61,7 @@ err_console = Console(stderr=True)
 def parse_args(argv: list[str] | None) -> argparse.Namespace:
     p = argparse.ArgumentParser(prog="python -m scanner.run", description=__doc__.split("\n\n")[0])
     p.add_argument("--market", default="us", choices=sorted(MARKETS))
-    p.add_argument("--scan", default="all", choices=["all", "leaders", "watchlist", "breakouts", "both"],
+    p.add_argument("--scan", default="all", choices=["all", "leaders", "watchlist", "breakouts", "both", "trigger"],
                    help="what to print (default: breakouts, watchlist, names on both screens and leader counts)")
     p.add_argument("--window", help="only names that are leaders in this window (e.g. 1m, 3m, 6m); for the "
                    "watchlist and breakouts: a leader in that window during the setup lookback")
@@ -338,6 +338,43 @@ def render_both(jk: JackResult, cfg: MarketConfig, names: dict, displays: dict[s
     return jk.table
 
 
+def render_trigger(tb: TriggerBarResult, cfg: MarketConfig, names: dict, displays: dict[str, str] | None = None,
+                   limit: int = 60) -> pd.DataFrame:
+    """Trigger bars on the latest session (best first). Prints at most `limit` rows; returns the whole table."""
+    cur = cfg.currency
+    t = _new_table(f"{cfg.market.upper()} trigger bars · {tb.as_of:%Y-%m-%d} · be ready for a break above the high next session")
+    for col, kw in (("#", {"justify": "right", "style": "dim"}), ("Symbol", {"style": "bold"}),
+                    ("Name", {"max_width": 22, "no_wrap": True, "overflow": "ellipsis"}), ("Ours", {}),
+                    ("Score", {"justify": "right"}), ("On", {}), ("Close", {"justify": "right"}),
+                    ("Buy above", {"justify": "right", "style": "bold"}), ("Stop", {"justify": "right"}),
+                    ("Risk%", {"justify": "right"}), ("xADR", {"justify": "right"}), ("ADR%", {"justify": "right"}),
+                    ("Vol×", {"justify": "right"}), ("<52wH", {"justify": "right"})):
+        t.add_column(col, **kw)
+    for w in tb.windows:
+        t.add_column(w.upper(), justify="right")
+    t.add_column(f"Avg {CURRENCY_SYMBOL.get(cur, cur)}Vol", justify="right")
+    for i, (sym, r) in enumerate(tb.table.head(limit).iterrows(), start=1):
+        t.add_row(
+            str(i), _symbol_cell(sym, r, displays or {}), short_name(names.get(sym, "")), r["ours"] or "-",
+            f"{int(r['score'])}/6", r["ma"], f"{r['close']:.2f}", f"{r['buy_above']:.2f}", f"{r['stop']:.2f}",
+            f"{r['risk_pct']:.1f}", f"{r['risk_vs_adr']:.2f}", f"{r['adr_pct']:.1f}", f"{r['vol_ratio']:.1f}",
+            "-" if pd.isna(r["below_high_pct"]) else f"{r['below_high_pct']:.0f}%",
+            *[fmt_pct(r[f"ret_{w}"]) for w in tb.windows], money(r["avg_traded_value"], cur),
+        )
+    if len(tb.table):
+        console.print(t)
+    console.print(
+        f"Trigger bars: {len(tb.table)} names"
+        + (f" (best {limit} shown)" if len(tb.table) > limit else "")
+        + f" · {int((tb.table['ours'] != '').sum()) if len(tb.table) else 0} on one of our lists"
+    )
+    console.print(
+        "[dim]Tight bar (range ≤ 2/3 of ADR) on a key moving average in an uptrend; buy above its high, stop under its low. "
+        "Score = how many of 6 bonus signs (inside bar, tightest of 10, low volume, strong close, ≤ ½ ADR, 2+ averages).[/]"
+    )
+    return tb.table
+
+
 def render_breakouts(bo: BreakoutResult, cfg: MarketConfig, names: dict, window: str | None,
         displays: dict[str, str] | None = None) -> pd.DataFrame:
     table = bo.table
@@ -420,6 +457,9 @@ def render(res: ScanResults, cfg: MarketConfig, universe: pd.DataFrame, args: ar
         console.print()
     if args.scan in ("all", "watchlist"):
         shown["watchlist"] = render_watchlist(res.watchlist, cfg, names, args.window, displays)
+        console.print()
+    if args.scan in ("all", "trigger") and res.trigger_bars is not None:
+        shown["trigger"] = render_trigger(res.trigger_bars, cfg, names, displays, limit=60 if args.scan == "trigger" else 12)
         console.print()
     if args.scan in ("all", "both") and res.jack is not None:
         shown["both"] = render_both(res.jack, cfg, names, displays)

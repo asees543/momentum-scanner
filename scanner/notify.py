@@ -161,6 +161,34 @@ def jack_entry(sym: str, r: pd.Series, windows: list[str], cur: str, url: str, n
     return "\n".join([_title_line(sym, r, name), numbers, _returns_line(r, windows, cur, url)])
 
 
+BONUS_WORDS = [  # (column, label) in the order the course lists them
+    ("inside", "inside bar"), ("tightest", "tightest of recent bars"), ("low_volume", "low volume"),
+    ("strong_close", "strong close"), ("half_adr", "range under half an ADR"), ("confluence", "2+ key averages"),
+]
+
+
+def trigger_bar_flags(r: pd.Series) -> list[str]:
+    """Which of the six course bonuses this bar has, in words ('low volume' carries the ratio)."""
+    out = []
+    for col, label in BONUS_WORDS:
+        if r[col]:
+            out.append(f"low volume {r['vol_ratio']:.1f}×" if col == "low_volume" else label)
+    return out
+
+
+def trigger_bar_entry(sym: str, r: pd.Series, windows: list[str], cur: str, url: str, name: str = "") -> str:
+    """One trigger bar: the plan (buy above the bar's high, stop under its low) and why it ranks."""
+    wide = " · wide" if r["risk_pct"] > 5 else ""
+    plan = (
+        f"{int(r['score'])}/6 · on {_e(r['ma'])} · buy above {r['buy_above']:.2f} · stop {r['stop']:.2f} "
+        f"({r['risk_pct']:.1f}%, {r['risk_vs_adr']:.1f}× ADR{wide})"
+    )
+    why = trigger_bar_flags(r) + ([f"{r['below_high_pct']:.0f}% below 52w high"] if pd.notna(r["below_high_pct"]) else [])
+    if r["ours"]:
+        why.append({"watchlist": "on our watchlist", "leader": "a leader today", "breakout": "a breakout today"}[r["ours"]])
+    return "\n".join([_title_line(sym, r, name), plan, ", ".join(why), _returns_line(r, windows, cur, url)])
+
+
 WINDOW_WORDS = {"1m": "1-month", "3m": "3-month", "6m": "6-month"}
 LIST_CHUNK = 20  # names per block, so a long list splits between names, never inside one
 
@@ -294,6 +322,23 @@ def format_alerts(
         ]
     if diff.catch_up_skipped:
         blocks.append(f"⏪ {diff.catch_up_skipped} earlier missed session(s) were not checked.")
+    tbr = results.trigger_bars
+    if tbr is not None:
+        tb = tbr.table
+        shown_tb = tb.head(cfg.trigger_bar.message_max)
+        head = (
+            f"🔔 <b>Trigger bars today</b> · {len(tb)} names, {len(shown_tb)} shown (names on our lists first, then by "
+            "how many of the course's 6 signs of a good one they have). A tight bar on a key moving average in an "
+            "uptrend: be ready for a break above its high on the next session."
+        )
+        if tb.empty:
+            blocks.append(f"{head}\nNone today.")
+        else:
+            blocks.append(head)
+            shown.extend(shown_tb.loc[s] for s in shown_tb.index)
+            blocks += [trigger_bar_entry(display(s), shown_tb.loc[s], windows, cur, url(s), name(s)) for s in shown_tb.index]
+            if len(tb) > len(shown_tb):
+                blocks.append(f"…and {len(tb) - len(shown_tb)} more on the dashboard.")
     if diff.new_watchlist:
         blocks.append("👀 <b>New on watchlist</b> (closest to trigger first)")
         blocks += wl_entries(diff.new_watchlist)

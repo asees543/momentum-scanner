@@ -16,7 +16,8 @@ import numpy as np
 import pandas as pd
 
 from scanner import indicators as ind
-from scanner.config import BreakoutConfig, JackConfig, LeadersConfig, LiquidityConfig, MarketConfig, SetupConfig
+from scanner.config import (BreakoutConfig, JackConfig, LeadersConfig, LiquidityConfig, MarketConfig, SetupConfig,
+                            TriggerBarConfig)
 from scanner.data.base import Panels
 
 
@@ -363,6 +364,21 @@ class JackResult:
 
 
 @dataclass
+class TriggerBarResult:
+    """Names whose latest daily bar is a Trigger Bar (see `trigger_bars`)."""
+
+    as_of: pd.Timestamp
+    # One row per name. Order: names on one of our lists first (breakout, watchlist, leader), then the rest; within
+    # each, more bonuses first, then tighter against ADR, then symbol. Columns: ours ("breakout" /
+    # "watchlist" / "leader" / "": the strongest of our lists it is on), close, buy_above (the bar's high), stop,
+    # risk_pct, risk_vs_adr, adr_pct, range_pct, range_vs_adr, ma (nearest key MA), ma_dist_pct, n_ma (key MAs near the
+    # bar), vol_ratio, inside, tightest, low_volume, strong_close, half_adr, confluence (the 6 bonuses), score (how many),
+    # below_high_pct (% under the 52-week high), ret_<w>, avg_traded_value (20-day, Stage 1's), flag_day_move.
+    table: pd.DataFrame
+    windows: list[str] = field(default_factory=list)
+
+
+@dataclass
 class ScanResults:
     leaders: LeadersResult
     watchlist: WatchlistResult
@@ -370,6 +386,7 @@ class ScanResults:
     jack: JackResult | None = None  # None where the screen was not computed (hand-built results in tests)
     # Window name -> that window's leaders, ranked by its gain (see `window_lists`); None where not computed.
     window_lists: dict[str, pd.DataFrame] | None = None
+    trigger_bars: TriggerBarResult | None = None  # None where not computed (hand-built results in tests)
 
 
 def _rows_needed(cfg: MarketConfig) -> int:
@@ -522,6 +539,111 @@ def window_lists(panels: Panels, cfg: MarketConfig, leaders: LeadersResult) -> d
     return out
 
 
+BONUSES = ["inside", "tightest", "low_volume", "strong_close", "half_adr", "confluence"]
+
+
+def trigger_bars(panels: Panels, cfg: MarketConfig, leaders: LeadersResult, watchlist: WatchlistResult,
+                 breakouts: BreakoutResult) -> TriggerBarResult:
+    """Trigger Bars on the as-of (last) session: a tight daily bar on a key moving average in an uptrend. The point is
+    to be ready for a possible breakout through its high on the NEXT session (Blueprint Trading Course, p.36-37).
+
+    With H, L, C the bar's high, low, close; ADR% the 20-day average daily range; range% = 100 x (H / L - 1):
+      liquid      C >= min_price, 20-day average C x volume >= min_avg_traded_value, not circuit-stuck (Stage 1, minus
+                  its ADR rule: the trigger bar has its own)
+      volatility  ADR% >= min_adr_pct
+      uptrend     C > SMA(sma_mid) and C > SMA(sma_long)
+      tight       0 < range% <= max_range_vs_adr x ADR%
+      on a MA     for the key MAs (EMA fast, EMA mid, SMA mid, SMA long):
+                    distance_k = max(L - MA_k, MA_k - H, 0) / MA_k x 100      (0 when the MA is inside the bar)
+                  and the smallest distance_k <= near_ma_adr_mult x ADR%
+      risk        stop = L - stop_buffer; risk% = 100 x (H - stop) / H <= ADR%   (the course: stop under 1 ADR)
+    Entry is a buy through H, so `buy_above` = H. The EMA is seeded from the first bar of the tail (see `ind.ema`).
+    Six bonuses (the course's "better" signs, each True/False) rank the survivors:
+      inside        H <= previous H and L >= previous L
+      tightest      range% <= the smallest range% of the previous `tightest_lookback` bars
+      low_volume    volume / mean(volume of the previous `volume_window` sessions) < low_volume_ratio
+      strong_close  (C - L) / (H - L) >= strong_close
+      half_adr      range% <= half_adr_mult x ADR%
+      confluence    at least min_confluence key MAs within near_ma_adr_mult x ADR% of the bar
+    Missing values fail. The relative strength line the course also looks at is not included. The table is ordered
+    with names already on one of our lists first (see TriggerBarResult).
+    """
+    t, lq = cfg.trigger_bar, cfg.liquidity
+    rows = max(t.sma_long, t.sma_mid, lq.window, t.volume_window + 1, t.tightest_lookback + 1) + 5 * t.ema_mid
+    p = panels.tail(rows)
+    c, h, lo, v = p.close, p.high, p.low, p.volume
+    liq = liquidity_frames(p, lq)
+    adr = liq.adr_pct.iloc[-1]
+    adv = liq.avg_traded_value.iloc[-1]
+    stuck = liq.circuit_stuck.iloc[-1] if liq.circuit_stuck is not None else pd.Series(False, index=c.columns)
+    cl, hi, low = c.iloc[-1], h.iloc[-1], lo.iloc[-1]
+    rng_frame = 100 * (h / lo - 1)
+    rng = rng_frame.iloc[-1]
+
+    mas = {
+        f"{t.ema_fast} EMA": ind.ema(c, t.ema_fast).iloc[-1],
+        f"{t.ema_mid} EMA": ind.ema(c, t.ema_mid).iloc[-1],
+        f"{t.sma_mid} SMA": ind.sma(c, t.sma_mid).iloc[-1],
+        f"{t.sma_long} SMA": ind.sma(c, t.sma_long).iloc[-1],
+    }
+    dist = pd.DataFrame(
+        {k: pd.concat([low - m, m - hi, low * 0], axis=1).max(axis=1) / m * 100 for k, m in mas.items()}
+    )
+    near = dist <= t.near_ma_adr_mult * adr.to_numpy()[:, None]  # NaN compares False
+    stop = low - t.stop_buffer
+    risk = 100 * (hi - stop) / hi
+
+    ok = (
+        (cl >= lq.min_price) & (adv >= lq.min_avg_traded_value) & ~stuck.astype(bool)
+        & (adr >= t.min_adr_pct)
+        & (cl > mas[f"{t.sma_mid} SMA"]) & (cl > mas[f"{t.sma_long} SMA"])
+        & (rng > 0) & (rng <= t.max_range_vs_adr * adr)
+        & near.any(axis=1)
+        & (risk <= adr)
+    ).fillna(False).astype(bool)
+
+    bonus = pd.DataFrame(index=c.columns)
+    bonus["inside"] = (hi <= h.iloc[-2]) & (low >= lo.iloc[-2])
+    bonus["tightest"] = rng <= rng_frame.shift(1).rolling(t.tightest_lookback, min_periods=t.tightest_lookback).min().iloc[-1]
+    vol_ratio = v.iloc[-1] / ind.prior_mean(v, t.volume_window).iloc[-1]
+    bonus["low_volume"] = vol_ratio < t.low_volume_ratio
+    bonus["strong_close"] = (cl - low) / (hi - low) >= t.strong_close
+    bonus["half_adr"] = rng <= t.half_adr_mult * adr
+    bonus["confluence"] = near.sum(axis=1) >= t.min_confluence
+    bonus = bonus.fillna(False).astype(bool)
+
+    windows = list(cfg.leaders.windows)
+    out = pd.DataFrame({"close": cl, "buy_above": hi, "stop": stop, "risk_pct": risk, "risk_vs_adr": risk / adr,
+                        "adr_pct": adr, "range_pct": rng, "range_vs_adr": rng / adr})
+    nearest = dist.fillna(np.inf)
+    out["ma"] = pd.Series(np.array(list(dist.columns))[nearest.to_numpy().argmin(axis=1)], index=c.columns).where(near.any(axis=1))
+    out["ma_dist_pct"] = dist.min(axis=1)
+    out["n_ma"] = near.sum(axis=1)
+    out["vol_ratio"] = vol_ratio
+    out = out.join(bonus)
+    out["score"] = bonus.sum(axis=1)
+    for w, win in cfg.leaders.windows.items():
+        out[f"ret_{w}"] = ind.pct_return(c, win.lookback).iloc[-1]  # close_t / close_(t-n) - 1, as the leaders scan
+    out["avg_traded_value"] = adv
+    # Context, not a rule: how far the close is under the highest high of the last high_window sessions.
+    out["below_high_pct"] = 100 * (1 - cl / h.rolling(t.high_window, min_periods=t.high_window // 2).max().iloc[-1])
+    max_lb = max(w.lookback for w in cfg.leaders.windows.values())
+    out["flag_day_move"] = (max_day_move(c.iloc[-(max_lb + 1):]) >= cfg.leaders.flag_day_move_multiple).fillna(False)
+
+    ours = pd.Series("", index=c.columns)
+    for name, table in (("leader", leaders.table), ("watchlist", watchlist.table), ("breakout", breakouts.table)):
+        ours[ours.index.isin(table.index)] = name  # later lists overwrite: the strongest one wins
+    out.insert(0, "ours", ours)
+
+    out = out[ok]
+    # A trigger bar alone flags hundreds of names on a quiet day (464 US names on 2026-11-13), and the course pairs
+    # it with a leading stock, so names already on one of our lists come first.
+    out = out.assign(_o=out["ours"].map({**OURS_ORDER, "": 9})).sort_values(
+        ["_o", "score", "range_vs_adr"], ascending=[True, False, True], kind="stable").drop(columns="_o")
+    out.index.name = "symbol"
+    return TriggerBarResult(as_of=p.dates[-1], table=out, windows=windows)
+
+
 OURS_ORDER = {"breakout": 0, "watchlist": 1, "leader": 2}
 
 
@@ -589,7 +711,7 @@ def run_scans(panels: Panels, cfg: MarketConfig, mode: Literal["fixed", "rank"] 
     watchlist = watchlist_from_frames(p, liq, lf, sf, cfg, max_lb)
     breakouts = breakouts_from_frames(p, liq, lf, sf, cfg, max_lb)
     return ScanResults(leaders, watchlist, breakouts, jack_screen(panels, cfg, leaders, watchlist, breakouts),
-                       window_lists(panels, cfg, leaders))
+                       window_lists(panels, cfg, leaders), trigger_bars(panels, cfg, leaders, watchlist, breakouts))
 
 
 def missed_breakouts(

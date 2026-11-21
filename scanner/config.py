@@ -246,6 +246,30 @@ class JackConfig(_Strict):
     min_avg_traded_value: float = Field(gt=0)  # 50-day average of close x volume above this (USD / INR)
 
 
+class TriggerBarConfig(_Strict):
+    """Trigger Bar scan: a tight daily bar sitting on a key moving average in an uptrend, so the NEXT session may
+    break out through its high. Rules from the Blueprint Trading Course (Jack Corsellis), pages 36-37; the numbers
+    marked (course) there are used as written, the rest are assumptions. See `scans.trigger_bars`."""
+
+    min_adr_pct: float = Field(ge=0)  # 20-day ADR% at least this (the course's examples run from 1.6% to 6.9%)
+    max_range_vs_adr: float = Field(gt=0)  # the bar's high-to-low % at most this x ADR% (course: 1/2 to 2/3 in better cases)
+    near_ma_adr_mult: float = Field(ge=0)  # a key MA inside the bar, or within this x ADR% of it ("on or in proximity")
+    ema_fast: int = Field(ge=2)  # key MAs: 10 EMA, 21 EMA, 50 SMA, 200 SMA (course)
+    ema_mid: int = Field(ge=2)
+    sma_mid: int = Field(ge=2)  # close must be above this SMA ("preferably above its 50-day": required here)
+    sma_long: int = Field(ge=2)  # close must be above this SMA (required by the course)
+    tightest_lookback: int = Field(ge=2)  # bonus: range no wider than any of the previous N bars
+    volume_window: int = Field(ge=2)  # bonus: volume below its average of the N sessions before (course: 30-day)
+    low_volume_ratio: float = Field(gt=0)  # "below average" = volume / that average under this
+    strong_close: float = Field(ge=0, le=1)  # bonus: close in the upper part of the bar: (close - low) / (high - low) >=
+    half_adr_mult: float = Field(gt=0)  # bonus: range at most this x ADR% (the tight end of the course's 1/2 to 2/3)
+    min_confluence: int = Field(ge=1)  # bonus: at least this many key MAs near the bar
+    stop_buffer: float = Field(ge=0)  # stop = bar low minus this many price units (course: $0.01)
+    high_window: int = Field(ge=20)  # sessions behind the 52-week high shown as context (not a filter)
+    message_max: int = Field(ge=0)  # names listed in the alert message (best first)
+    max_listed: int = Field(ge=0)  # names kept on the dashboard (best first)
+
+
 class MarketConfig(_Strict):
     market: str
     currency: str
@@ -259,6 +283,7 @@ class MarketConfig(_Strict):
     backtest: BacktestConfig
     study: StudyConfig
     jack: JackConfig
+    trigger_bar: TriggerBarConfig
 
 
 def load_config(market: str, config_dir: Path = CONFIG_DIR) -> MarketConfig:

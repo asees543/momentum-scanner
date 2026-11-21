@@ -22,7 +22,7 @@ import numpy as np
 import pandas as pd
 
 from scanner.config import PROJECT_ROOT, MarketConfig
-from scanner.notify import jack_rule_text, money, short_name
+from scanner.notify import jack_rule_text, money, short_name, trigger_bar_flags
 from scanner.scans import ScanResults
 
 SITE_DATA = PROJECT_ROOT / "site" / "data"
@@ -88,6 +88,19 @@ def snapshot(res: ScanResults, cfg: MarketConfig, universe: pd.DataFrame, chart_
              "flag": bool(r["flag_day_move"])}
             for s, r in wl.iterrows()
         ],
+        # Trigger bars on the latest session, best first, at most trigger_bar.max_listed (None where not computed).
+        "trigger_bars": None if res.trigger_bars is None else {
+            "count": len(res.trigger_bars.table),
+            "items": [
+                {**meta(s), "ours": r["ours"], "score": int(r["score"]), "ma": r["ma"], "close": _f(r["close"]),
+                 "buy_above": _f(r["buy_above"]), "stop": _f(r["stop"]), "risk_pct": _f(r["risk_pct"]),
+                 "risk_vs_adr": _f(r["risk_vs_adr"]), "adr_pct": _f(r["adr_pct"]), "vol_ratio": _f(r["vol_ratio"]),
+                 "below_high_pct": _f(r["below_high_pct"], 1), "signs": trigger_bar_flags(r), "returns": rets(r),
+                 "avg_value": money(r["avg_traded_value"], cfg.currency), "avg_value_raw": _f(r["avg_traded_value"], 0),
+                 "flag": bool(r["flag_day_move"])}
+                for s, r in res.trigger_bars.table.head(cfg.trigger_bar.max_listed).iterrows()
+            ],
+        },
         # The leaders of each window, ranked by that window's gain (None where not computed).
         "leader_lists": None if res.window_lists is None else {
             "min_day_value": money(cfg.leaders.min_day_value, cfg.currency),
@@ -334,6 +347,47 @@ def _jack_panel(snap: dict) -> str:
     )
 
 
+def _trigger_bar_panel(snap: dict) -> str:
+    tb = snap.get("trigger_bars")
+    if tb is None:  # a snapshot written before this section existed
+        return ""
+    ws = snap["windows"]
+    if tb["items"]:
+        head = ["Symbol", "Name", "Ours", "Score", "On", "Close", "Buy above", "Stop", "Risk %", "Risk / ADR", "ADR %",
+                "Vol ×", "Below 52w high"] + [w.upper() for w in ws] + ["Avg value"]
+        body = []
+        for r in tb["items"]:
+            badge = f'<span class="badge {"ok" if r["ours"] else ""}">{r["ours"] or "–"}</span>'
+            body.append(
+                "<tr>" + _sym_cell(r) + f'<td class="name">{html.escape(r["name"])}</td>'
+                + f'<td class="l" data-v="{r["ours"]}">{badge}</td>'
+                + f'<td data-v="{r["score"]}" title="{html.escape(", ".join(r["signs"]) or "none")}">{r["score"]}/6</td>'
+                + f'<td class="l">{html.escape(r["ma"])}</td>'
+                + f'<td data-v="{r["close"]}">{_num(r["close"])}</td><td data-v="{r["buy_above"]}"><b>{_num(r["buy_above"])}</b></td>'
+                + f'<td data-v="{r["stop"]}">{_num(r["stop"])}</td>'
+                + f'<td data-v="{r["risk_pct"]}">{_num(r["risk_pct"], "{:.1f}")}</td>'
+                + f'<td data-v="{r["risk_vs_adr"]}">{_num(r["risk_vs_adr"], "{:.2f}")}</td>'
+                + f'<td data-v="{r["adr_pct"]}">{_num(r["adr_pct"], "{:.1f}")}</td>'
+                + f'<td data-v="{r["vol_ratio"]}">{_num(r["vol_ratio"], "{:.1f}")}</td>'
+                + f'<td data-v="{r["below_high_pct"]}">{_num(r["below_high_pct"], "{:.0f}%")}</td>'
+                + "".join(_ret(r["returns"].get(w)) for w in ws)
+                + f'<td data-v="{r.get("avg_value_raw") or 0}">{html.escape(r["avg_value"])}</td></tr>'
+            )
+        table = ('<div class="scroll tall"><table class="sortable"><thead><tr>' + _header(head)
+                 + "</tr></thead><tbody>" + "".join(body) + "</tbody></table></div>")
+    else:
+        table = '<p class="note">None on this session.</p>'
+    more = f" The best {len(tb['items'])} of {tb['count']} are listed." if tb["count"] > len(tb["items"]) else ""
+    return (
+        f'<div class="panel"><h2>Trigger bars ({tb["count"]})</h2>{table}'
+        '<p class="note">A tight daily bar sitting on a key moving average (10 / 21-day EMA, 50 / 200-day SMA) in an uptrend, '
+        "from the Blueprint Trading Course: be ready for a break above its high (<b>Buy above</b>) on the next session, with "
+        "the stop just under its low. Score = how many of the course's six signs of a good one it has (inside bar, tightest of "
+        "recent bars, low volume, strong close, range under half an ADR, two or more averages nearby); hover a score to "
+        "see which. Names already on one of our lists are first." + more + "</p></div>"
+    )
+
+
 def _leader_lists_panels(snap: dict) -> str:
     ll = snap.get("leader_lists")
     if ll is None:  # a snapshot written before these lists existed
@@ -381,6 +435,7 @@ def _market_section(snap: dict, has_report: bool, first: bool) -> str:
         f'<section class="market" id="{snap["market"]}"{"" if first else " hidden"}>'
         f'<div class="panel"><div class="chips">' + "".join(f'<span class="chip">{c}</span>' for c in chips) + "</div>" + report + "</div>"
         + _jack_panel(snap)
+        + _trigger_bar_panel(snap)
         + f'<div class="panel"><h2>Breakouts</h2>{_breakouts_table(snap)}'
         + '<p class="note">Close above the trigger on at least 1.5× average volume, from a name on the previous '
           "session's watchlist. Stop = the breakout day's low. “stop &gt; ADR” = the stop is more than one average "

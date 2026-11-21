@@ -136,3 +136,28 @@ jack:
                                    #   dollar that is Rs 2,200 crore, which no name in our liquid India list reaches.
                                    #   Instead the same RANK: 250M is the top 10.5% of the liquid US names (2026-11-13
                                    #   data), and the top 10.5% of the liquid India names starts at about Rs 119 crore
+
+# Trigger Bar scan (user asked 2026-11-21: "tell when a trigger bar appears so I can be ready for a breakout next day").
+# Rules from the Blueprint Trading Course (Jack Corsellis), pages 36-37. A bar qualifies when ALL hold on the latest
+# session: liquid (the Stage 1 price and value floors, not circuit-stuck), ADR >= min_adr_pct, close above the 50 and
+# 200-day SMAs, the bar's range <= max_range_vs_adr x ADR, a key MA (10 EMA / 21 EMA / 50 SMA / 200 SMA) inside the bar
+# or within near_ma_adr_mult x ADR of it, and the stop (below the bar low) no wider than 1 ADR. Ranked by how many of 6
+# course bonuses it also has.
+trigger_bar:
+  min_adr_pct: 1.5                 # (assumption) the course's example setups have ADRs of 1.6% to 6.9%, so no 5% floor here
+  max_range_vs_adr: 0.67           # (course) bar range 1/2 to 2/3 of the 20-day ADR in the better cases; 2/3 as the cap
+  near_ma_adr_mult: 0.5            # (assumption) "on or in proximity" of a key MA: inside the bar, or within half an ADR
+  ema_fast: 10                     # (course) key moving averages: 10-day EMA,
+  ema_mid: 21                      # (course) 21-day EMA,
+  sma_mid: 50                      # (course) 50-day SMA ("preferably above": required here, assumption),
+  sma_long: 200                    # (course) and 200-day SMA (required)
+  tightest_lookback: 10            # (assumption) bonus: tightest range of the previous 10 bars ("tightest within prior weeks")
+  volume_window: 30                # (course) bonus: volume vs its 30-day average
+  low_volume_ratio: 1.0            # (assumption) "low relative volume" = below its average
+  strong_close: 0.5                # (assumption) bonus: close in the upper half of the bar ("the stronger it closes the better")
+  half_adr_mult: 0.5               # (course) bonus: range <= 1/2 ADR, the tight end of 1/2 to 2/3
+  min_confluence: 2                # (assumption) bonus: two or more key MAs near the bar
+  stop_buffer: 0.05              # (course: $0.01) stop = bar low minus this
+  high_window: 252                 # (assumption) context column only: % below the 52-week high (252 sessions)
+  message_max: 20                  # (assumption) names in the alert message, best first; the rest are on the dashboard
+  max_listed: 100                  # (assumption) names kept on the dashboard, best first (keeps the daily data file small)
