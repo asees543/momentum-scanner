@@ -223,6 +223,7 @@ a { color: var(--accent); }
 .badge.ok { color: var(--good); } .badge.wide { color: var(--warn); }
 .flag { color: var(--warn); }
 .tall { max-height: 460px; overflow-y: auto; }
+tr.divider td { text-align: center; color: var(--muted); font-size: 12px; background: var(--chip); border-top: 2px solid var(--accent); }
 .report h1 { font-size: 20px; } .report h2 { margin-top: 24px; } .report td, .report th { cursor: default; }
 """
 
@@ -236,6 +237,7 @@ try { const t = localStorage.getItem('tab'); const b = t && document.querySelect
 document.querySelectorAll('table.sortable').forEach(table => {
   table.querySelectorAll('th').forEach((th, i) => th.addEventListener('click', () => {
     const asc = th.getAttribute('aria-sort') !== 'ascending';
+    table.querySelectorAll('tr.divider').forEach(r => r.remove());  // a re-sorted list no longer has our names grouped
     table.querySelectorAll('th').forEach(x => x.removeAttribute('aria-sort'));
     th.setAttribute('aria-sort', asc ? 'ascending' : 'descending');
     const rows = [...table.tBodies[0].rows];
@@ -356,7 +358,10 @@ def _trigger_bar_panel(snap: dict) -> str:
         head = ["Symbol", "Name", "Ours", "Score", "On", "Close", "Buy above", "Stop", "Risk %", "Risk / ADR", "ADR %",
                 "Vol ×", "Below 52w high"] + [w.upper() for w in ws] + ["Avg value"]
         body = []
-        for r in tb["items"]:
+        for i, r in enumerate(tb["items"]):
+            if i and r["ours"] == "" and tb["items"][i - 1]["ours"] != "":
+                # the list is ordered names on our lists first: draw the line where they end
+                body.append(f'<tr class="divider"><td colspan="{len(head)}">▲ on one of our lists · not on our lists ▼</td></tr>')
             badge = f'<span class="badge {"ok" if r["ours"] else ""}">{r["ours"] or "–"}</span>'
             body.append(
                 "<tr>" + _sym_cell(r) + f'<td class="name">{html.escape(r["name"])}</td>'
@@ -384,7 +389,7 @@ def _trigger_bar_panel(snap: dict) -> str:
         "from the Blueprint Trading Course: be ready for a break above its high (<b>Buy above</b>) on the next session, with "
         "the stop just under its low. Score = how many of the course's six signs of a good one it has (inside bar, tightest of "
         "recent bars, low volume, strong close, range under half an ADR, two or more averages nearby); hover a score to "
-        "see which. Names already on one of our lists are first." + more + "</p></div>"
+        "see which. Names already on one of our lists are first, with a line where they end (the line goes away if you re-sort)." + more + "</p></div>"
     )
 
 

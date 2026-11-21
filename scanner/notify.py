@@ -167,6 +167,9 @@ BONUS_WORDS = [  # (column, label) in the order the course lists them
 ]
 
 
+TB_DIVIDER = "──────── not on our lists below ────────"
+
+
 def trigger_bar_flags(r: pd.Series) -> list[str]:
     """Which of the six course bonuses this bar has, in words ('low volume' carries the ratio)."""
     out = []
@@ -336,7 +339,13 @@ def format_alerts(
         else:
             blocks.append(head)
             shown.extend(shown_tb.loc[s] for s in shown_tb.index)
-            blocks += [trigger_bar_entry(display(s), shown_tb.loc[s], windows, cur, url(s), name(s)) for s in shown_tb.index]
+            on_ours = None  # the table is ordered names on our lists first: draw the line where they end
+            for s in shown_tb.index:
+                ours = shown_tb.loc[s, "ours"] != ""
+                if on_ours and not ours:
+                    blocks.append(TB_DIVIDER)
+                on_ours = ours
+                blocks.append(trigger_bar_entry(display(s), shown_tb.loc[s], windows, cur, url(s), name(s)))
             if len(tb) > len(shown_tb):
                 blocks.append(f"…and {len(tb) - len(shown_tb)} more on the dashboard.")
     if diff.new_watchlist:

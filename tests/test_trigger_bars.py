@@ -13,7 +13,7 @@ from scanner import scans
 from scanner.config import load_config
 from scanner.dashboard import build_site, snapshot, write_snapshot
 from scanner.data.us_loader import chart_url
-from scanner.notify import format_alerts, trigger_bar_entry, trigger_bar_flags
+from scanner.notify import TB_DIVIDER, format_alerts, trigger_bar_entry, trigger_bar_flags
 from scanner.state import MarketState, diff_results
 from tests.synth import Bars, panels_from, us_cfg
 
@@ -252,3 +252,41 @@ def test_dashboard_panel_and_old_snapshots(tmp_path):
     (data / "us.json").write_text(json.dumps(old))
     build_site(out, data, reports)
     assert "Trigger bars (" not in (out / "index.html").read_text()
+
+
+# --- the line where names on our lists end ------------------------------------------------------------------
+
+
+def with_ours(res, ours: list[str]):
+    """Both names X (better) and Y, with X and Y marked as on our lists (or not) in that order."""
+    table = res.trigger_bars.table.assign(ours=ours)
+    return dataclasses.replace(res, trigger_bars=dataclasses.replace(res.trigger_bars, table=table))
+
+
+def test_message_draws_a_line_only_where_our_names_end():
+    cfg, res = results_with_a_bar(message_max=10)
+    assert list(res.trigger_bars.table.index) == ["X", "Y"]
+    mixed = alert_text(with_ours(res, ["watchlist", ""]), cfg)
+    assert mixed.count(TB_DIVIDER) == 1 and mixed.index("<b>X</b>") < mixed.index(TB_DIVIDER) < mixed.index("<b>Y</b>")
+    assert alert_text(with_ours(res, ["watchlist", "leader"]), cfg).count(TB_DIVIDER) == 0   # all on our lists
+    assert alert_text(with_ours(res, ["", ""]), cfg).count(TB_DIVIDER) == 0                  # none on our lists
+
+
+def test_dashboard_draws_the_line_and_drops_it_when_re_sorted(tmp_path):
+    cfg, res = results_with_a_bar()
+    reports = tmp_path / "reports"
+    reports.mkdir()
+
+    def page(ours):
+        data = tmp_path / f"data_{'_'.join(o or 'none' for o in ours)}"
+        write_snapshot(snapshot(with_ours(res, ours), cfg, UNIVERSE, chart_url), data)
+        out = tmp_path / f"site_{data.name}"
+        build_site(out, data, reports)
+        return (out / "index.html").read_text()
+
+    mixed = page(["watchlist", ""])
+    assert mixed.count('<tr class="divider">') == 1
+    assert mixed.index(">X</a>") < mixed.index('<tr class="divider">') < mixed.index(">Y</a>")
+    assert page(["watchlist", "leader"]).count('<tr class="divider">') == 0
+    assert page(["", ""]).count('<tr class="divider">') == 0
+    assert "tr.divider').forEach(r => r.remove())" in mixed             # re-sorting removes it

@@ -353,7 +353,11 @@ def render_trigger(tb: TriggerBarResult, cfg: MarketConfig, names: dict, display
     for w in tb.windows:
         t.add_column(w.upper(), justify="right")
     t.add_column(f"Avg {CURRENCY_SYMBOL.get(cur, cur)}Vol", justify="right")
+    prev_ours = None
     for i, (sym, r) in enumerate(tb.table.head(limit).iterrows(), start=1):
+        if prev_ours and not r["ours"]:
+            t.add_section()  # the line where names on one of our lists end
+        prev_ours = bool(r["ours"])
         t.add_row(
             str(i), _symbol_cell(sym, r, displays or {}), short_name(names.get(sym, "")), r["ours"] or "-",
             f"{int(r['score'])}/6", r["ma"], f"{r['close']:.2f}", f"{r['buy_above']:.2f}", f"{r['stop']:.2f}",
