@@ -288,6 +288,549 @@
   "passing": 21,
   "rule": "above 21 EMA, 50 & 200 SMA, ADR above 4%, 50-day value above ₹120.0 Cr"
  },
+ "leader_lists": {
+  "lists": {
+   "1m": [
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NSE:SGMART",
+     "close": 1097.05,
+     "day_value": "₹205.6 Cr",
+     "day_value_raw": 2055929935.0,
+     "flag": false,
+     "name": "SG Mart Limited",
+     "returns": {
+      "1m": 0.4133,
+      "3m": 0.4683,
+      "6m": 0.7647
+     },
+     "symbol": "SGMART"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NSE:ICIL",
+     "close": 580.25,
+     "day_value": "₹48.5 Cr",
+     "day_value_raw": 485136580.0,
+     "flag": false,
+     "name": "Indo Count Industries Limited",
+     "returns": {
+      "1m": 0.3692,
+      "3m": 0.4834,
+      "6m": 0.8993
+     },
+     "symbol": "ICIL"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NSE:GREAVESCOT",
+     "close": 268.31,
+     "day_value": "₹452.9 Cr",
+     "day_value_raw": 4529239916.0,
+     "flag": false,
+     "name": "Greaves Cotton Limited",
+     "returns": {
+      "1m": 0.3383,
+      "3m": 0.3521,
+      "6m": 0.5967
+     },
+     "symbol": "GREAVESCOT"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NSE:ATHERENERG",
+     "close": 1935.4,
+     "day_value": "₹339.1 Cr",
+     "day_value_raw": 3391107282.0,
+     "flag": false,
+     "name": "Ather Energy Limited",
+     "returns": {
+      "1m": 0.3265,
+      "3m": 0.2679,
+      "6m": 1.129
+     },
+     "symbol": "ATHERENERG"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NSE:JLHL",
+     "close": 317.4,
+     "day_value": "₹593.9 Cr",
+     "day_value_raw": 5939018242.0,
+     "flag": false,
+     "name": "Jupiter Life Line Hospitals Limited",
+     "returns": {
+      "1m": 0.3014,
+      "3m": 0.0044,
+      "6m": 0.2039
+     },
+     "symbol": "JLHL"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NSE:SYMBIOTEC",
+     "close": 1598.6,
+     "day_value": "₹47.1 Cr",
+     "day_value_raw": 470715756.0,
+     "flag": false,
+     "name": "Symbiotec Pharmalab Limited",
+     "returns": {
+      "1m": 0.2907,
+      "3m": null,
+      "6m": null
+     },
+     "symbol": "SYMBIOTEC"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NSE:SAILIFE",
+     "close": 1800.7,
+     "day_value": "₹111.2 Cr",
+     "day_value_raw": 1112382395.0,
+     "flag": false,
+     "name": "Sai Life Sciences Limited",
+     "returns": {
+      "1m": 0.29,
+      "3m": 0.2408,
+      "6m": 0.5778
+     },
+     "symbol": "SAILIFE"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NSE:STYLEBAAZA",
+     "close": 500.15,
+     "day_value": "₹111.1 Cr",
+     "day_value_raw": 1111423814.0,
+     "flag": false,
+     "name": "Baazar Style Retail Limited",
+     "returns": {
+      "1m": 0.2735,
+      "3m": 0.4376,
+      "6m": 0.4093
+     },
+     "symbol": "STYLEBAAZA"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NSE:ALICON",
+     "close": 1075.75,
+     "day_value": "₹94.9 Cr",
+     "day_value_raw": 949494601.0,
+     "flag": false,
+     "name": "Alicon Castalloy Limited",
+     "returns": {
+      "1m": 0.2643,
+      "3m": 0.4511,
+      "6m": 0.6385
+     },
+     "symbol": "ALICON"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NSE:WELSPUNLIV",
+     "close": 268.78,
+     "day_value": "₹571.4 Cr",
+     "day_value_raw": 5713670383.0,
+     "flag": false,
+     "name": "Welspun Living Limited",
+     "returns": {
+      "1m": 0.2368,
+      "3m": 0.6817,
+      "6m": 0.8975
+     },
+     "symbol": "WELSPUNLIV"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NSE:IREDA",
+     "close": 131.7,
+     "day_value": "₹514.4 Cr",
+     "day_value_raw": 5144276291.0,
+     "flag": false,
+     "name": "Indian Renewable Energy Development Age…",
+     "returns": {
+      "1m": 0.2362,
+      "3m": 0.1218,
+      "6m": 0.0389
+     },
+     "symbol": "IREDA"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NSE:MARSONS",
+     "close": 152.56,
+     "day_value": "₹96.9 Cr",
+     "day_value_raw": 969128383.0,
+     "flag": false,
+     "name": "Marsons Limited",
+     "returns": {
+      "1m": 0.2322,
+      "3m": 0.4872,
+      "6m": 0.0117
+     },
+     "symbol": "MARSONS"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NSE:PPLPHARMA",
+     "close": 239.3,
+     "day_value": "₹93.6 Cr",
+     "day_value_raw": 935722119.0,
+     "flag": false,
+     "name": "Piramal Pharma Limited",
+     "returns": {
+      "1m": 0.2307,
+      "3m": 0.1252,
+      "6m": 0.357
+     },
+     "symbol": "PPLPHARMA"
+    }
+   ],
+   "3m": [
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NSE:RAYMOND",
+     "close": 1198.7,
+     "day_value": "₹61.4 Cr",
+     "day_value_raw": 614065216.0,
+     "flag": false,
+     "name": "Raymond Limited",
+     "returns": {
+      "1m": 0.0602,
+      "3m": 0.8671,
+      "6m": 1.2137
+     },
+     "symbol": "RAYMOND"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NSE:WELSPUNLIV",
+     "close": 268.78,
+     "day_value": "₹571.4 Cr",
+     "day_value_raw": 5713670383.0,
+     "flag": false,
+     "name": "Welspun Living Limited",
+     "returns": {
+      "1m": 0.2368,
+      "3m": 0.6817,
+      "6m": 0.8975
+     },
+     "symbol": "WELSPUNLIV"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NSE:INDOMIM",
+     "close": 1263.2,
+     "day_value": "₹85.7 Cr",
+     "day_value_raw": 857178433.0,
+     "flag": false,
+     "name": "INDO-MIM Limited",
+     "returns": {
+      "1m": 0.0866,
+      "3m": 0.5194,
+      "6m": null
+     },
+     "symbol": "INDOMIM"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NSE:MARSONS",
+     "close": 152.56,
+     "day_value": "₹96.9 Cr",
+     "day_value_raw": 969128383.0,
+     "flag": false,
+     "name": "Marsons Limited",
+     "returns": {
+      "1m": 0.2322,
+      "3m": 0.4872,
+      "6m": 0.0117
+     },
+     "symbol": "MARSONS"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NSE:ICIL",
+     "close": 580.25,
+     "day_value": "₹48.5 Cr",
+     "day_value_raw": 485136580.0,
+     "flag": false,
+     "name": "Indo Count Industries Limited",
+     "returns": {
+      "1m": 0.3692,
+      "3m": 0.4834,
+      "6m": 0.8993
+     },
+     "symbol": "ICIL"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NSE:SGMART",
+     "close": 1097.05,
+     "day_value": "₹205.6 Cr",
+     "day_value_raw": 2055929935.0,
+     "flag": false,
+     "name": "SG Mart Limited",
+     "returns": {
+      "1m": 0.4133,
+      "3m": 0.4683,
+      "6m": 0.7647
+     },
+     "symbol": "SGMART"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NSE:ALICON",
+     "close": 1075.75,
+     "day_value": "₹94.9 Cr",
+     "day_value_raw": 949494601.0,
+     "flag": false,
+     "name": "Alicon Castalloy Limited",
+     "returns": {
+      "1m": 0.2643,
+      "3m": 0.4511,
+      "6m": 0.6385
+     },
+     "symbol": "ALICON"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NSE:OAL",
+     "close": 516.7,
+     "day_value": "₹272.1 Cr",
+     "day_value_raw": 2720800688.0,
+     "flag": false,
+     "name": "Oriental Aromatics Limited",
+     "returns": {
+      "1m": -0.1725,
+      "3m": 0.4488,
+      "6m": 0.6803
+     },
+     "symbol": "OAL"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NSE:STYLEBAAZA",
+     "close": 500.15,
+     "day_value": "₹111.1 Cr",
+     "day_value_raw": 1111423814.0,
+     "flag": false,
+     "name": "Baazar Style Retail Limited",
+     "returns": {
+      "1m": 0.2735,
+      "3m": 0.4376,
+      "6m": 0.4093
+     },
+     "symbol": "STYLEBAAZA"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NSE:THELEELA",
+     "close": 698.1,
+     "day_value": "₹48.3 Cr",
+     "day_value_raw": 483432837.0,
+     "flag": false,
+     "name": "Leela Palaces Hotels & Resorts Limited",
+     "returns": {
+      "1m": 0.121,
+      "3m": 0.373,
+      "6m": 0.7157
+     },
+     "symbol": "THELEELA"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NSE:NEOGEN",
+     "close": 2920.2,
+     "day_value": "₹61.5 Cr",
+     "day_value_raw": 615125519.0,
+     "flag": false,
+     "name": "Neogen Chemicals Limited",
+     "returns": {
+      "1m": 0.1766,
+      "3m": 0.3653,
+      "6m": 0.7221
+     },
+     "symbol": "NEOGEN"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NSE:GREAVESCOT",
+     "close": 268.31,
+     "day_value": "₹452.9 Cr",
+     "day_value_raw": 4529239916.0,
+     "flag": false,
+     "name": "Greaves Cotton Limited",
+     "returns": {
+      "1m": 0.3383,
+      "3m": 0.3521,
+      "6m": 0.5967
+     },
+     "symbol": "GREAVESCOT"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NSE:MOTILALOFS",
+     "close": 1205.65,
+     "day_value": "₹124.0 Cr",
+     "day_value_raw": 1239943534.0,
+     "flag": false,
+     "name": "Motilal Oswal Financial Services Limited",
+     "returns": {
+      "1m": 0.1809,
+      "3m": 0.3433,
+      "6m": 0.4244
+     },
+     "symbol": "MOTILALOFS"
+    }
+   ],
+   "6m": [
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NSE:CUPID",
+     "close": 365.65,
+     "day_value": "₹228.1 Cr",
+     "day_value_raw": 2281216085.0,
+     "flag": false,
+     "name": "Cupid Limited",
+     "returns": {
+      "1m": 0.0873,
+      "3m": 0.2401,
+      "6m": 2.0614
+     },
+     "symbol": "CUPID"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NSE:RAYMOND",
+     "close": 1198.7,
+     "day_value": "₹61.4 Cr",
+     "day_value_raw": 614065216.0,
+     "flag": false,
+     "name": "Raymond Limited",
+     "returns": {
+      "1m": 0.0602,
+      "3m": 0.8671,
+      "6m": 1.2137
+     },
+     "symbol": "RAYMOND"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NSE:ATHERENERG",
+     "close": 1935.4,
+     "day_value": "₹339.1 Cr",
+     "day_value_raw": 3391107282.0,
+     "flag": false,
+     "name": "Ather Energy Limited",
+     "returns": {
+      "1m": 0.3265,
+      "3m": 0.2679,
+      "6m": 1.129
+     },
+     "symbol": "ATHERENERG"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NSE:SANSERA",
+     "close": 4798.4,
+     "day_value": "₹95.7 Cr",
+     "day_value_raw": 957362353.0,
+     "flag": false,
+     "name": "Sansera Engineering Limited",
+     "returns": {
+      "1m": 0.1562,
+      "3m": 0.2674,
+      "6m": 0.93
+     },
+     "symbol": "SANSERA"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NSE:ICIL",
+     "close": 580.25,
+     "day_value": "₹48.5 Cr",
+     "day_value_raw": 485136580.0,
+     "flag": false,
+     "name": "Indo Count Industries Limited",
+     "returns": {
+      "1m": 0.3692,
+      "3m": 0.4834,
+      "6m": 0.8993
+     },
+     "symbol": "ICIL"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NSE:WELSPUNLIV",
+     "close": 268.78,
+     "day_value": "₹571.4 Cr",
+     "day_value_raw": 5713670383.0,
+     "flag": false,
+     "name": "Welspun Living Limited",
+     "returns": {
+      "1m": 0.2368,
+      "3m": 0.6817,
+      "6m": 0.8975
+     },
+     "symbol": "WELSPUNLIV"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NSE:SKYGOLD",
+     "close": 874.9,
+     "day_value": "₹170.8 Cr",
+     "day_value_raw": 1708319289.0,
+     "flag": false,
+     "name": "SKY GOLD AND DIAMONDS LIMITED",
+     "returns": {
+      "1m": -0.149,
+      "3m": 0.1304,
+      "6m": 0.8763
+     },
+     "symbol": "SKYGOLD"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NSE:DIACABS",
+     "close": 363.05,
+     "day_value": "₹77.7 Cr",
+     "day_value_raw": 776636171.0,
+     "flag": false,
+     "name": "Diamond Power Infrastructure Limited",
+     "returns": {
+      "1m": 0.0497,
+      "3m": -0.0121,
+      "6m": 0.8608
+     },
+     "symbol": "DIACABS"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NSE:KALYANKJIL",
+     "close": 638.7,
+     "day_value": "₹1286.6 Cr",
+     "day_value_raw": 12865898957.0,
+     "flag": false,
+     "name": "Kalyan Jewellers India Limited",
+     "returns": {
+      "1m": 0.1585,
+      "3m": 0.0412,
+      "6m": 0.8591
+     },
+     "symbol": "KALYANKJIL"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NSE:PGIL",
+     "close": 1435.5,
+     "day_value": "₹50.2 Cr",
+     "day_value_raw": 501711556.0,
+     "flag": false,
+     "name": "Pearl Global Industries Limited",
+     "returns": {
+      "1m": 0.1235,
+      "3m": 0.1648,
+      "6m": 0.8038
+     },
+     "symbol": "PGIL"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NSE:SHILPAMED",
+     "close": 849.15,
+     "day_value": "₹130.7 Cr",
+     "day_value_raw": 1306622807.0,
+     "flag": false,
+     "name": "Shilpa Medicare Limited",
+     "returns": {
+      "1m": -0.0309,
+      "3m": 0.0522,
+      "6m": 0.7828
+     },
+     "symbol": "SHILPAMED"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NSE:SGMART",
+     "close": 1097.05,
+     "day_value": "₹205.6 Cr",
+     "day_value_raw": 2055929935.0,
+     "flag": false,
+     "name": "SG Mart Limited",
+     "returns": {
+      "1m": 0.4133,
+      "3m": 0.4683,
+      "6m": 0.7647
+     },
+     "symbol": "SGMART"
+    }
+   ]
+  },
+  "min_day_value": "₹46.5 Cr"
+ },
  "market": "india",
  "summary": {
   "breakouts_ok": 1,
