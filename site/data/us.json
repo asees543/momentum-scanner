@@ -45,6 +45,1137 @@
   "passing": 4,
   "rule": "above 21 EMA, 50 & 200 SMA, ADR above 4%, 50-day value above $250.0M"
  },
+ "leader_lists": {
+  "lists": {
+   "1m": [
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:AKAN",
+     "close": 4.23,
+     "day_value": "$215.3M",
+     "day_value_raw": 215337102.0,
+     "flag": false,
+     "name": "Akanda Corp.",
+     "returns": {
+      "1m": 2.7768,
+      "3m": -0.1296,
+      "6m": -0.844
+     },
+     "symbol": "AKAN"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:INO",
+     "close": 1.76,
+     "day_value": "$13.5M",
+     "day_value_raw": 13499256.0,
+     "flag": true,
+     "name": "Inovio Pharmaceuticals, Inc.",
+     "returns": {
+      "1m": 1.2,
+      "3m": 0.4667,
+      "6m": 0.3037
+     },
+     "symbol": "INO"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:STAK",
+     "close": 1.9,
+     "day_value": "$11.0M",
+     "day_value_raw": 10998898.0,
+     "flag": true,
+     "name": "STAK Inc.",
+     "returns": {
+      "1m": 0.9,
+      "3m": 0.2667,
+      "6m": 0.8095
+     },
+     "symbol": "STAK"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:NCPL",
+     "close": 2.74,
+     "day_value": "$6.0M",
+     "day_value_raw": 5957061.0,
+     "flag": false,
+     "name": "Netcapital Inc.",
+     "returns": {
+      "1m": 0.7452,
+      "3m": 11.0175,
+      "6m": 2.3455
+     },
+     "symbol": "NCPL"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NYSE:BGS",
+     "close": 3.63,
+     "day_value": "$9.8M",
+     "day_value_raw": 9783449.0,
+     "flag": false,
+     "name": "B&G Foods, Inc.",
+     "returns": {
+      "1m": 0.7123,
+      "3m": 0.0522,
+      "6m": -0.1295
+     },
+     "symbol": "BGS"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:REPL",
+     "close": 19.07,
+     "day_value": "$37.5M",
+     "day_value_raw": 37455272.0,
+     "flag": false,
+     "name": "Replimune Group, Inc.",
+     "returns": {
+      "1m": 0.6271,
+      "3m": 0.224,
+      "6m": 2.8839
+     },
+     "symbol": "REPL"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NYSE:BRBR",
+     "close": 14.57,
+     "day_value": "$82.2M",
+     "day_value_raw": 82235337.0,
+     "flag": false,
+     "name": "BellRing Brands, Inc.",
+     "returns": {
+      "1m": 0.5941,
+      "3m": 0.4037,
+      "6m": 0.6352
+     },
+     "symbol": "BRBR"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:TLS",
+     "close": 7.26,
+     "day_value": "$8.2M",
+     "day_value_raw": 8162418.0,
+     "flag": false,
+     "name": "Telos Corporation",
+     "returns": {
+      "1m": 0.5748,
+      "3m": 0.65,
+      "6m": 0.5647
+     },
+     "symbol": "TLS"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:UPBD",
+     "close": 25.44,
+     "day_value": "$43.2M",
+     "day_value_raw": 43244007.0,
+     "flag": false,
+     "name": "Upbound Group, Inc.",
+     "returns": {
+      "1m": 0.5733,
+      "3m": 0.3271,
+      "6m": 0.426
+     },
+     "symbol": "UPBD"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NYSE:FUN",
+     "close": 11.06,
+     "day_value": "$31.6M",
+     "day_value_raw": 31628405.0,
+     "flag": false,
+     "name": "Six Flags Entertainment Corporation",
+     "returns": {
+      "1m": 0.5644,
+      "3m": -0.2978,
+      "6m": -0.4423
+     },
+     "symbol": "FUN"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NYSE:ONT",
+     "close": 21.69,
+     "day_value": "$11.0M",
+     "day_value_raw": 11040275.0,
+     "flag": false,
+     "name": "Onterris, Inc.",
+     "returns": {
+      "1m": 0.5548,
+      "3m": 0.348,
+      "6m": 0.3043
+     },
+     "symbol": "ONT"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:AXGN",
+     "close": 55.75,
+     "day_value": "$48.8M",
+     "day_value_raw": 48806282.0,
+     "flag": false,
+     "name": "Axogen, Inc.",
+     "returns": {
+      "1m": 0.5282,
+      "3m": 0.1108,
+      "6m": 0.3631
+     },
+     "symbol": "AXGN"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:ULCC",
+     "close": 7.67,
+     "day_value": "$26.4M",
+     "day_value_raw": 26443944.0,
+     "flag": false,
+     "name": "Frontier Group Holdings, Inc.",
+     "returns": {
+      "1m": 0.5218,
+      "3m": 0.2472,
+      "6m": 0.5495
+     },
+     "symbol": "ULCC"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:GDYN",
+     "close": 12.66,
+     "day_value": "$19.0M",
+     "day_value_raw": 18950817.0,
+     "flag": false,
+     "name": "Grid Dynamics Holdings, Inc.",
+     "returns": {
+      "1m": 0.5162,
+      "3m": 0.6506,
+      "6m": 0.7756
+     },
+     "symbol": "GDYN"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:INSM",
+     "close": 141.33,
+     "day_value": "$878.4M",
+     "day_value_raw": 878395358.0,
+     "flag": false,
+     "name": "Insmed Incorporated",
+     "returns": {
+      "1m": 0.5029,
+      "3m": 0.1002,
+      "6m": 0.3303
+     },
+     "symbol": "INSM"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:GEVO",
+     "close": 1.61,
+     "day_value": "$7.1M",
+     "day_value_raw": 7129768.0,
+     "flag": false,
+     "name": "Gevo, Inc.",
+     "returns": {
+      "1m": 0.4505,
+      "3m": 0.0523,
+      "6m": -0.0904
+     },
+     "symbol": "GEVO"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:PTLO",
+     "close": 6.09,
+     "day_value": "$9.0M",
+     "day_value_raw": 9047335.0,
+     "flag": false,
+     "name": "Portillo's Inc.",
+     "returns": {
+      "1m": 0.4097,
+      "3m": 0.2875,
+      "6m": 0.5112
+     },
+     "symbol": "PTLO"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NYSE:VLRS",
+     "close": 7.95,
+     "day_value": "$5.5M",
+     "day_value_raw": 5534138.0,
+     "flag": false,
+     "name": "Controladora Vuela Compania de Aviacion…",
+     "returns": {
+      "1m": 0.4046,
+      "3m": 0.0816,
+      "6m": 0.1589
+     },
+     "symbol": "VLRS"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:LQDA",
+     "close": 54.43,
+     "day_value": "$90.7M",
+     "day_value_raw": 90713692.0,
+     "flag": false,
+     "name": "Liquidia Corporation",
+     "returns": {
+      "1m": 0.4007,
+      "3m": -0.2677,
+      "6m": -0.1074
+     },
+     "symbol": "LQDA"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:PEPG",
+     "close": 3.78,
+     "day_value": "$16.7M",
+     "day_value_raw": 16742100.0,
+     "flag": false,
+     "name": "PepGen Inc.",
+     "returns": {
+      "1m": 0.3897,
+      "3m": 0.299,
+      "6m": 1.5033
+     },
+     "symbol": "PEPG"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:LFTO",
+     "close": 22.86,
+     "day_value": "$21.3M",
+     "day_value_raw": 21298183.0,
+     "flag": false,
+     "name": "Liftoff Mobile, Inc.",
+     "returns": {
+      "1m": 0.3863,
+      "3m": 0.1628,
+      "6m": null
+     },
+     "symbol": "LFTO"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NYSE:EVC",
+     "close": 8.64,
+     "day_value": "$13.1M",
+     "day_value_raw": 13076952.0,
+     "flag": false,
+     "name": "Entravision Communications Corporation",
+     "returns": {
+      "1m": 0.3693,
+      "3m": 0.0261,
+      "6m": -0.122
+     },
+     "symbol": "EVC"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NYSE:HAWK",
+     "close": 16.14,
+     "day_value": "$26.0M",
+     "day_value_raw": 26040275.0,
+     "flag": false,
+     "name": "HawkEye 360, Inc.",
+     "returns": {
+      "1m": 0.362,
+      "3m": -0.2627,
+      "6m": -0.47
+     },
+     "symbol": "HAWK"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:PRCT",
+     "close": 24.7,
+     "day_value": "$25.6M",
+     "day_value_raw": 25620422.0,
+     "flag": false,
+     "name": "PROCEPT BioRobotics Corporation",
+     "returns": {
+      "1m": 0.3519,
+      "3m": 0.1585,
+      "6m": -0.1483
+     },
+     "symbol": "PRCT"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NYSE:GKOS",
+     "close": 237.31,
+     "day_value": "$257.3M",
+     "day_value_raw": 257331130.0,
+     "flag": false,
+     "name": "Glaukos Corporation",
+     "returns": {
+      "1m": 0.3419,
+      "3m": 0.2887,
+      "6m": 0.9738
+     },
+     "symbol": "GKOS"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NYSE:VIA",
+     "close": 45.8,
+     "day_value": "$43.5M",
+     "day_value_raw": 43464703.0,
+     "flag": false,
+     "name": "Via Transportation, Inc.",
+     "returns": {
+      "1m": 0.3241,
+      "3m": 0.8305,
+      "6m": 2.0595
+     },
+     "symbol": "VIA"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:EVGO",
+     "close": 1.43,
+     "day_value": "$8.5M",
+     "day_value_raw": 8504619.0,
+     "flag": false,
+     "name": "EVgo Inc.",
+     "returns": {
+      "1m": 0.3241,
+      "3m": -0.0467,
+      "6m": -0.2394
+     },
+     "symbol": "EVGO"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:IRWD",
+     "close": 4.7,
+     "day_value": "$14.2M",
+     "day_value_raw": 14179773.0,
+     "flag": false,
+     "name": "Ironwood Pharmaceuticals, Inc.",
+     "returns": {
+      "1m": 0.3239,
+      "3m": 0.0905,
+      "6m": 0.199
+     },
+     "symbol": "IRWD"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NYSE:REF",
+     "close": 18.51,
+     "day_value": "$5.9M",
+     "day_value_raw": 5861210.0,
+     "flag": false,
+     "name": "Reformation Inc.",
+     "returns": {
+      "1m": 0.3231,
+      "3m": 0.2275,
+      "6m": null
+     },
+     "symbol": "REF"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:XNCR",
+     "close": 33.26,
+     "day_value": "$40.6M",
+     "day_value_raw": 40585280.0,
+     "flag": false,
+     "name": "Xencor, Inc.",
+     "returns": {
+      "1m": 0.3219,
+      "3m": 0.3089,
+      "6m": 1.9408
+     },
+     "symbol": "XNCR"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:LMRI",
+     "close": 14.26,
+     "day_value": "$6.3M",
+     "day_value_raw": 6308952.0,
+     "flag": false,
+     "name": "Lumexa Imaging Holdings, Inc.",
+     "returns": {
+      "1m": 0.3191,
+      "3m": 0.1893,
+      "6m": 0.7825
+     },
+     "symbol": "LMRI"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:CRCT",
+     "close": 8.35,
+     "day_value": "$11.0M",
+     "day_value_raw": 10970514.0,
+     "flag": false,
+     "name": "Cricut, Inc.",
+     "returns": {
+      "1m": 0.3191,
+      "3m": 0.5237,
+      "6m": 1.098
+     },
+     "symbol": "CRCT"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NYSE:BOBS",
+     "close": 19.82,
+     "day_value": "$16.1M",
+     "day_value_raw": 16075506.0,
+     "flag": false,
+     "name": "Bob's Discount Furniture, Inc.",
+     "returns": {
+      "1m": 0.3143,
+      "3m": 0.0778,
+      "6m": 0.716
+     },
+     "symbol": "BOBS"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:TREE",
+     "close": 34.88,
+     "day_value": "$11.8M",
+     "day_value_raw": 11830076.0,
+     "flag": false,
+     "name": "LendingTree, Inc.",
+     "returns": {
+      "1m": 0.3123,
+      "3m": 0.1162,
+      "6m": -0.0423
+     },
+     "symbol": "TREE"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:EVER",
+     "close": 29.0,
+     "day_value": "$28.2M",
+     "day_value_raw": 28150039.0,
+     "flag": false,
+     "name": "EverQuote, Inc.",
+     "returns": {
+      "1m": 0.3116,
+      "3m": 0.1827,
+      "6m": 0.536
+     },
+     "symbol": "EVER"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:ALGT",
+     "close": 91.21,
+     "day_value": "$43.4M",
+     "day_value_raw": 43403373.0,
+     "flag": false,
+     "name": "Allegiant Travel Company",
+     "returns": {
+      "1m": 0.3021,
+      "3m": 0.1164,
+      "6m": 0.1357
+     },
+     "symbol": "ALGT"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:VRDN",
+     "close": 29.96,
+     "day_value": "$52.4M",
+     "day_value_raw": 52367801.0,
+     "flag": false,
+     "name": "Viridian Therapeutics, Inc.",
+     "returns": {
+      "1m": 0.302,
+      "3m": 0.252,
+      "6m": 0.7378
+     },
+     "symbol": "VRDN"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:APP",
+     "close": 348.29,
+     "day_value": "$1.6B",
+     "day_value_raw": 1622919290.0,
+     "flag": false,
+     "name": "Applovin Corporation",
+     "returns": {
+      "1m": 0.3001,
+      "3m": 0.1335,
+      "6m": -0.2769
+     },
+     "symbol": "APP"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:LRMR",
+     "close": 3.14,
+     "day_value": "$5.4M",
+     "day_value_raw": 5359792.0,
+     "flag": false,
+     "name": "Larimar Therapeutics, Inc.",
+     "returns": {
+      "1m": 0.2975,
+      "3m": -0.2266,
+      "6m": -0.0899
+     },
+     "symbol": "LRMR"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NYSE:COTY",
+     "close": 3.95,
+     "day_value": "$24.1M",
+     "day_value_raw": 24147381.0,
+     "flag": false,
+     "name": "Coty Inc.",
+     "returns": {
+      "1m": 0.2951,
+      "3m": 0.4416,
+      "6m": 0.9458
+     },
+     "symbol": "COTY"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:CAPR",
+     "close": 7.59,
+     "day_value": "$80.0M",
+     "day_value_raw": 80037273.0,
+     "flag": false,
+     "name": "Capricor Therapeutics, Inc.",
+     "returns": {
+      "1m": 0.2908,
+      "3m": 0.072,
+      "6m": -0.7371
+     },
+     "symbol": "CAPR"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NYSE:PRG",
+     "close": 39.35,
+     "day_value": "$29.4M",
+     "day_value_raw": 29399328.0,
+     "flag": false,
+     "name": "PROG Holdings, Inc.",
+     "returns": {
+      "1m": 0.2838,
+      "3m": -0.0525,
+      "6m": 0.176
+     },
+     "symbol": "PRG"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:CLMB",
+     "close": 40.14,
+     "day_value": "$8.0M",
+     "day_value_raw": 8004919.0,
+     "flag": false,
+     "name": "Climb Global Solutions, Inc.",
+     "returns": {
+      "1m": 0.2812,
+      "3m": 0.4159,
+      "6m": 0.9151
+     },
+     "symbol": "CLMB"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:GMAB",
+     "close": 50.6,
+     "day_value": "$141.3M",
+     "day_value_raw": 141341128.0,
+     "flag": false,
+     "name": "Genmab A/S",
+     "returns": {
+      "1m": 0.2787,
+      "3m": 0.5352,
+      "6m": 0.8831
+     },
+     "symbol": "GMAB"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:DCTH",
+     "close": 18.79,
+     "day_value": "$11.1M",
+     "day_value_raw": 11125954.0,
+     "flag": false,
+     "name": "Delcath Systems, Inc.",
+     "returns": {
+      "1m": 0.2782,
+      "3m": 0.1145,
+      "6m": 0.7051
+     },
+     "symbol": "DCTH"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:CGON",
+     "close": 79.47,
+     "day_value": "$133.0M",
+     "day_value_raw": 133030477.0,
+     "flag": false,
+     "name": "CG Oncology, Inc.",
+     "returns": {
+      "1m": 0.2768,
+      "3m": 0.0417,
+      "6m": 0.2369
+     },
+     "symbol": "CGON"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NYSE:BHC",
+     "close": 8.22,
+     "day_value": "$30.8M",
+     "day_value_raw": 30799396.0,
+     "flag": false,
+     "name": "Bausch Health Companies Inc.",
+     "returns": {
+      "1m": 0.2744,
+      "3m": 0.1861,
+      "6m": 0.5027
+     },
+     "symbol": "BHC"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:RYTM",
+     "close": 112.36,
+     "day_value": "$168.5M",
+     "day_value_raw": 168471237.0,
+     "flag": false,
+     "name": "Rhythm Pharmaceuticals, Inc.",
+     "returns": {
+      "1m": 0.2679,
+      "3m": -0.0251,
+      "6m": 0.2791
+     },
+     "symbol": "RYTM"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:CAR",
+     "close": 124.39,
+     "day_value": "$46.4M",
+     "day_value_raw": 46364254.0,
+     "flag": false,
+     "name": "Avis Budget Group, Inc.",
+     "returns": {
+      "1m": 0.2643,
+      "3m": -0.0961,
+      "6m": -0.2553
+     },
+     "symbol": "CAR"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:WING",
+     "close": 151.53,
+     "day_value": "$102.2M",
+     "day_value_raw": 102218197.0,
+     "flag": false,
+     "name": "Wingstop Inc.",
+     "returns": {
+      "1m": 0.2633,
+      "3m": 0.3228,
+      "6m": 0.0792
+     },
+     "symbol": "WING"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:MNKD",
+     "close": 3.85,
+     "day_value": "$16.1M",
+     "day_value_raw": 16084437.0,
+     "flag": false,
+     "name": "MannKind Corporation",
+     "returns": {
+      "1m": 0.2623,
+      "3m": -0.0541,
+      "6m": 0.1391
+     },
+     "symbol": "MNKD"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:FENC",
+     "close": 13.09,
+     "day_value": "$5.2M",
+     "day_value_raw": 5211705.0,
+     "flag": false,
+     "name": "Fennec Pharmaceuticals Inc.",
+     "returns": {
+      "1m": 0.2611,
+      "3m": 0.1028,
+      "6m": 0.3182
+     },
+     "symbol": "FENC"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NYSE:ARDT",
+     "close": 15.08,
+     "day_value": "$23.2M",
+     "day_value_raw": 23235837.0,
+     "flag": false,
+     "name": "Ardent Health, Inc.",
+     "returns": {
+      "1m": 0.2504,
+      "3m": 0.3797,
+      "6m": 0.6338
+     },
+     "symbol": "ARDT"
+    }
+   ],
+   "3m": [
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:NCPL",
+     "close": 2.74,
+     "day_value": "$6.0M",
+     "day_value_raw": 5957061.0,
+     "flag": false,
+     "name": "Netcapital Inc.",
+     "returns": {
+      "1m": 0.7452,
+      "3m": 11.0175,
+      "6m": 2.3455
+     },
+     "symbol": "NCPL"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:MRNA",
+     "close": 195.0,
+     "day_value": "$1.9B",
+     "day_value_raw": 1882257000.0,
+     "flag": false,
+     "name": "Moderna, Inc.",
+     "returns": {
+      "1m": -0.2067,
+      "3m": 2.0972,
+      "6m": 3.1596
+     },
+     "symbol": "MRNA"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:NAUT",
+     "close": 2.12,
+     "day_value": "$13.2M",
+     "day_value_raw": 13227582.0,
+     "flag": false,
+     "name": "Nautilus Biotechnology, Inc.",
+     "returns": {
+      "1m": -0.2177,
+      "3m": 1.4883,
+      "6m": -0.1654
+     },
+     "symbol": "NAUT"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:KOD",
+     "close": 97.17,
+     "day_value": "$67.3M",
+     "day_value_raw": 67333659.0,
+     "flag": false,
+     "name": "Kodiak Sciences Inc",
+     "returns": {
+      "1m": 0.1077,
+      "3m": 1.3904,
+      "6m": 1.682
+     },
+     "symbol": "KOD"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:SKYA",
+     "close": 2.18,
+     "day_value": "$6.6M",
+     "day_value_raw": 6552208.0,
+     "flag": false,
+     "name": "SkyAI, Inc.",
+     "returns": {
+      "1m": -0.2431,
+      "3m": 1.211,
+      "6m": 0.2044
+     },
+     "symbol": "SKYA"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NYSE:SG",
+     "close": 12.16,
+     "day_value": "$52.5M",
+     "day_value_raw": 52450858.0,
+     "flag": false,
+     "name": "Sweetgreen, Inc.",
+     "returns": {
+      "1m": 0.1969,
+      "3m": 1.0893,
+      "6m": 0.2434
+     },
+     "symbol": "SG"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:MYGN",
+     "close": 5.46,
+     "day_value": "$6.8M",
+     "day_value_raw": 6814905.0,
+     "flag": false,
+     "name": "Myriad Genetics, Inc.",
+     "returns": {
+      "1m": -0.0197,
+      "3m": 0.9024,
+      "6m": 0.4293
+     },
+     "symbol": "MYGN"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NYSE:VIA",
+     "close": 45.8,
+     "day_value": "$43.5M",
+     "day_value_raw": 43464703.0,
+     "flag": false,
+     "name": "Via Transportation, Inc.",
+     "returns": {
+      "1m": 0.3241,
+      "3m": 0.8305,
+      "6m": 2.0595
+     },
+     "symbol": "VIA"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:CYPH",
+     "close": 1.41,
+     "day_value": "$22.7M",
+     "day_value_raw": 22724239.0,
+     "flag": false,
+     "name": "Cypherpunk Technologies Inc.",
+     "returns": {
+      "1m": -0.5766,
+      "3m": 0.7516,
+      "6m": 0.175
+     },
+     "symbol": "CYPH"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:GDYN",
+     "close": 12.66,
+     "day_value": "$19.0M",
+     "day_value_raw": 18950817.0,
+     "flag": false,
+     "name": "Grid Dynamics Holdings, Inc.",
+     "returns": {
+      "1m": 0.5162,
+      "3m": 0.6506,
+      "6m": 0.7756
+     },
+     "symbol": "GDYN"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:TLS",
+     "close": 7.26,
+     "day_value": "$8.2M",
+     "day_value_raw": 8162418.0,
+     "flag": false,
+     "name": "Telos Corporation",
+     "returns": {
+      "1m": 0.5748,
+      "3m": 0.65,
+      "6m": 0.5647
+     },
+     "symbol": "TLS"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:RCEL",
+     "close": 15.62,
+     "day_value": "$6.0M",
+     "day_value_raw": 6044268.0,
+     "flag": false,
+     "name": "Avita Medical, Inc.",
+     "returns": {
+      "1m": 0.0216,
+      "3m": 0.5858,
+      "6m": 2.4105
+     },
+     "symbol": "RCEL"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NYSE:CHPT",
+     "close": 8.72,
+     "day_value": "$8.0M",
+     "day_value_raw": 8025452.0,
+     "flag": false,
+     "name": "ChargePoint Holdings, Inc.",
+     "returns": {
+      "1m": 0.0393,
+      "3m": 0.5655,
+      "6m": 0.2422
+     },
+     "symbol": "CHPT"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:NTSK",
+     "close": 23.93,
+     "day_value": "$135.8M",
+     "day_value_raw": 135751661.0,
+     "flag": false,
+     "name": "Netskope, Inc.",
+     "returns": {
+      "1m": 0.0972,
+      "3m": 0.5569,
+      "6m": 1.0366
+     },
+     "symbol": "NTSK"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NYSE:RSKD",
+     "close": 9.46,
+     "day_value": "$15.8M",
+     "day_value_raw": 15780065.0,
+     "flag": false,
+     "name": "Riskified Ltd.",
+     "returns": {
+      "1m": 0.057,
+      "3m": 0.5357,
+      "6m": 0.9874
+     },
+     "symbol": "RSKD"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:GMAB",
+     "close": 50.6,
+     "day_value": "$141.3M",
+     "day_value_raw": 141341128.0,
+     "flag": false,
+     "name": "Genmab A/S",
+     "returns": {
+      "1m": 0.2787,
+      "3m": 0.5352,
+      "6m": 0.8831
+     },
+     "symbol": "GMAB"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:CRCT",
+     "close": 8.35,
+     "day_value": "$11.0M",
+     "day_value_raw": 10970514.0,
+     "flag": false,
+     "name": "Cricut, Inc.",
+     "returns": {
+      "1m": 0.3191,
+      "3m": 0.5237,
+      "6m": 1.098
+     },
+     "symbol": "CRCT"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:CDNA",
+     "close": 70.0,
+     "day_value": "$54.7M",
+     "day_value_raw": 54677560.0,
+     "flag": false,
+     "name": "CareDx, Inc.",
+     "returns": {
+      "1m": -0.0105,
+      "3m": 0.5158,
+      "6m": 2.2362
+     },
+     "symbol": "CDNA"
+    }
+   ],
+   "6m": [
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:MRNA",
+     "close": 195.0,
+     "day_value": "$1.9B",
+     "day_value_raw": 1882257000.0,
+     "flag": false,
+     "name": "Moderna, Inc.",
+     "returns": {
+      "1m": -0.2067,
+      "3m": 2.0972,
+      "6m": 3.1596
+     },
+     "symbol": "MRNA"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:REPL",
+     "close": 19.07,
+     "day_value": "$37.5M",
+     "day_value_raw": 37455272.0,
+     "flag": false,
+     "name": "Replimune Group, Inc.",
+     "returns": {
+      "1m": 0.6271,
+      "3m": 0.224,
+      "6m": 2.8839
+     },
+     "symbol": "REPL"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:RCEL",
+     "close": 15.62,
+     "day_value": "$6.0M",
+     "day_value_raw": 6044268.0,
+     "flag": false,
+     "name": "Avita Medical, Inc.",
+     "returns": {
+      "1m": 0.0216,
+      "3m": 0.5858,
+      "6m": 2.4105
+     },
+     "symbol": "RCEL"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:NCPL",
+     "close": 2.74,
+     "day_value": "$6.0M",
+     "day_value_raw": 5957061.0,
+     "flag": false,
+     "name": "Netcapital Inc.",
+     "returns": {
+      "1m": 0.7452,
+      "3m": 11.0175,
+      "6m": 2.3455
+     },
+     "symbol": "NCPL"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:CDNA",
+     "close": 70.0,
+     "day_value": "$54.7M",
+     "day_value_raw": 54677560.0,
+     "flag": false,
+     "name": "CareDx, Inc.",
+     "returns": {
+      "1m": -0.0105,
+      "3m": 0.5158,
+      "6m": 2.2362
+     },
+     "symbol": "CDNA"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NYSE:VIA",
+     "close": 45.8,
+     "day_value": "$43.5M",
+     "day_value_raw": 43464703.0,
+     "flag": false,
+     "name": "Via Transportation, Inc.",
+     "returns": {
+      "1m": 0.3241,
+      "3m": 0.8305,
+      "6m": 2.0595
+     },
+     "symbol": "VIA"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:XNCR",
+     "close": 33.26,
+     "day_value": "$40.6M",
+     "day_value_raw": 40585280.0,
+     "flag": false,
+     "name": "Xencor, Inc.",
+     "returns": {
+      "1m": 0.3219,
+      "3m": 0.3089,
+      "6m": 1.9408
+     },
+     "symbol": "XNCR"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:KOD",
+     "close": 97.17,
+     "day_value": "$67.3M",
+     "day_value_raw": 67333659.0,
+     "flag": false,
+     "name": "Kodiak Sciences Inc",
+     "returns": {
+      "1m": 0.1077,
+      "3m": 1.3904,
+      "6m": 1.682
+     },
+     "symbol": "KOD"
+    },
+    {
+     "chart": "https://www.tradingview.com/chart/?symbol=NASDAQ:PEPG",
+     "close": 3.78,
+     "day_value": "$16.7M",
+     "day_value_raw": 16742100.0,
+     "flag": false,
+     "name": "PepGen Inc.",
+     "returns": {
+      "1m": 0.3897,
+      "3m": 0.299,
+      "6m": 1.5033
+     },
+     "symbol": "PEPG"
+    }
+   ]
+  },
+  "min_day_value": "$5.0M"
+ },
  "market": "us",
  "summary": {
   "breakouts_ok": 0,
@@ -56,7 +1187,7 @@
   },
   "liquid": 1260,
   "qualified_today": 10,
-  "symbols_with_data": 5783,
+  "symbols_with_data": 5912,
   "watchlist": 45
  },
  "title": "US",
