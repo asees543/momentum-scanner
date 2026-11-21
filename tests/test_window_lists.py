@@ -76,7 +76,7 @@ def test_a_leader_not_in_the_table_is_never_listed_and_an_empty_table_gives_empt
 
 def test_both_markets_set_the_user_floor():
     assert load_config("us").leaders.min_day_value == 5_000_000      # the user's C*V/100 > 50,000
-    assert load_config("india").leaders.min_day_value == 5_000_000   # same number, in rupees
+    assert load_config("india").leaders.min_day_value == 465_000_000   # $5M at 93.3 rupees per dollar, not 5M rupees
     assert LeadersConfig.model_fields["min_day_value"].default == 0   # off unless configured
 
 
