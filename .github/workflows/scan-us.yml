@@ -121,5 +121,10 @@ jobs:
       - uses: actions/upload-pages-artifact@v5
         with:
           path: _site
+      # deploy-pages looks the artifact up through the API about a second after the upload and sometimes finds none
+      # ("Found 0 artifact(s)", repeatedly on 2026-11-24); a short wait lets the listing catch up. Re-running only this
+      # job does not help: it uploads a second artifact with the same name ("Multiple artifacts").
+      - name: Wait for the artifact to be listed
+        run: sleep 20
       - id: deploy
         uses: actions/deploy-pages@v5
