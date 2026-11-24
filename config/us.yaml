@@ -177,3 +177,19 @@ trigger_bar:
   high_window: 252                 # (assumption) context column only: % below the 52-week high (252 sessions)
   message_max: 20                  # (assumption) names in the alert message, best first; the rest are on the dashboard
   max_listed: 100                  # (assumption) names kept on the dashboard, best first (keeps the daily data file small)
+
+# Sector and industry strength (user asked 2026-11-21: "knowing what sectors are in strength for both countries").
+# Each liquid (Stage 1) name is mapped to Yahoo's sector and industry (reference/sectors/<market>.csv, filled by
+# `python -m scanner.sectors`). A group is ranked on three equally weighted measures among its liquid names: the share
+# that are leaders today, the share above their 50-day average, and the median 3-month return.
+sectors:
+  min_names_sector: 5              # (assumption) a sector needs at least 5 liquid names to be ranked
+  min_names_industry: 5            # (assumption) same for an industry (Yahoo has about 140 industries)
+  change_sessions: 5               # (assumption) "money flowing": share above the 50-day average now vs 5 sessions ago
+  sma: 50                          # (assumption) "above its 50-day average" (the same average the setup rules use)
+  message_sectors: 5               # (assumption) sectors listed in the alert message, strongest first
+  message_industries: 8            # (assumption) industries listed in the alert message
+  dashboard_industries: 25         # (assumption) industries kept on the dashboard
+  max_new_per_run: 150             # (assumption) unmapped names looked up per daily run (keeps the run short)
+  stale_days: 180                  # (assumption) look a classified name up again after about 6 months
+  retry_days: 30                   # (assumption) retry a name Yahoo had no sector for after 30 days

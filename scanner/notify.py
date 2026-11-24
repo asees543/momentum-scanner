@@ -167,6 +167,39 @@ BONUS_WORDS = [  # (column, label) in the order the course lists them
 ]
 
 
+def sector_lines(sr, cfg: MarketConfig) -> list[str]:
+    """The alert's sector section as blocks: the strongest sectors, the weakest one, the strongest industries."""
+    sc = cfg.sectors
+    word = {"1m": "1M", "3m": "3M", "6m": "6M"}.get(cfg.leaders.sort_by, cfg.leaders.sort_by.upper())
+
+    def line(i: int, name: str, r: pd.Series, extra: str = "") -> str:
+        return (
+            f"{i}. <b>{_e(name)}</b>{extra} · {int(r['leaders'])} of {int(r['names'])} leaders ({r['leader_pct']:.0f}%) · "
+            f"{r['above_pct']:.0f}% above 50d ({r['d_above']:+.0f}) · median {word} {_pct(r['median_ret'])}"
+            + (f" · {int(r['watchlist'])} on watchlist" if r["watchlist"] else "")
+            + (f" · {int(r['trigger_bars'])} trigger bar{'s' if r['trigger_bars'] != 1 else ''}" if r["trigger_bars"] else "")
+        )
+
+    head = (
+        f"🧭 <b>Sectors in strength</b> · ranked on leaders, share above the 50-day average and median {word} return "
+        f"(sector known for {100 * sr.coverage:.0f}% of {sr.liquid:,} liquid names)"
+    )
+    if sr.sectors.empty:
+        return [f"{head}\nNo sector has enough classified names yet."]
+    top = sr.sectors.head(sc.message_sectors)
+    lines = [line(i, n, r) for i, (n, r) in enumerate(top.iterrows(), start=1)]
+    weakest = sr.sectors.index[-1] if len(sr.sectors) > sc.message_sectors else None
+    if weakest is not None:
+        r = sr.sectors.iloc[-1]
+        lines.append(f"Weakest: <b>{_e(weakest)}</b> · {int(r['leaders'])} of {int(r['names'])} leaders · {r['above_pct']:.0f}% above 50d ({r['d_above']:+.0f})")
+    blocks = [head + "\n" + "\n".join(lines)]
+    inds = sr.industries.head(sc.message_industries)
+    if len(inds):
+        blocks.append("<b>Strongest industries</b>\n" + "\n".join(
+            line(i, n, r, f" <i>({_e(r['sector'])})</i>") for i, (n, r) in enumerate(inds.iterrows(), start=1)))
+    return blocks
+
+
 TB_DIVIDER = "──────── not on our lists below ────────"
 
 
@@ -325,6 +358,8 @@ def format_alerts(
         ]
     if diff.catch_up_skipped:
         blocks.append(f"⏪ {diff.catch_up_skipped} earlier missed session(s) were not checked.")
+    if results.sectors is not None:
+        blocks += sector_lines(results.sectors, cfg)
     tbr = results.trigger_bars
     if tbr is not None:
         tb = tbr.table

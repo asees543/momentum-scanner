@@ -37,6 +37,12 @@ def _f(x, digits=2):
     return None if x is None or (isinstance(x, float) and not np.isfinite(x)) or pd.isna(x) else round(float(x), digits)
 
 
+def _group_row(name: str, r) -> dict:
+    return {"name": name, "names": int(r["names"]), "leaders": int(r["leaders"]), "leader_pct": _f(r["leader_pct"], 1),
+            "above_pct": _f(r["above_pct"], 1), "d_above": _f(r["d_above"], 1), "median_ret": _f(r["median_ret"], 4),
+            "watchlist": int(r["watchlist"]), "trigger_bars": int(r["trigger_bars"]), "score": _f(r["score"], 1)}
+
+
 def snapshot(res: ScanResults, cfg: MarketConfig, universe: pd.DataFrame, chart_url) -> dict:
     """JSON-ready view of one scan. Deterministic (no run timestamp), so an unchanged day gives an
     unchanged file and no commit."""
@@ -88,11 +94,20 @@ def snapshot(res: ScanResults, cfg: MarketConfig, universe: pd.DataFrame, chart_
              "flag": bool(r["flag_day_move"])}
             for s, r in wl.iterrows()
         ],
+        # Sector and industry strength (None where there is no sector map).
+        "sectors": None if res.sectors is None else {
+            "coverage": _f(100 * res.sectors.coverage, 1), "classified": res.sectors.classified, "liquid": res.sectors.liquid,
+            "sort_window": cfg.leaders.sort_by,
+            "sectors": [_group_row(n, r) for n, r in res.sectors.sectors.iterrows()],
+            "industries": [{**_group_row(n, r), "sector": r["sector"]}
+                           for n, r in res.sectors.industries.head(cfg.sectors.dashboard_industries).iterrows()],
+        },
         # Trigger bars on the latest session, best first, at most trigger_bar.max_listed (None where not computed).
         "trigger_bars": None if res.trigger_bars is None else {
             "count": len(res.trigger_bars.table),
             "items": [
-                {**meta(s), "ours": r["ours"], "score": int(r["score"]), "ma": r["ma"], "close": _f(r["close"]),
+                {**meta(s), "sector": res.sectors.sector_of.get(s, "") if res.sectors is not None else "",
+                 "ours": r["ours"], "score": int(r["score"]), "ma": r["ma"], "close": _f(r["close"]),
                  "buy_above": _f(r["buy_above"]), "stop": _f(r["stop"]), "risk_pct": _f(r["risk_pct"]),
                  "risk_vs_adr": _f(r["risk_vs_adr"]), "adr_pct": _f(r["adr_pct"]), "vol_ratio": _f(r["vol_ratio"]),
                  "below_high_pct": _f(r["below_high_pct"], 1), "signs": trigger_bar_flags(r), "returns": rets(r),
@@ -223,6 +238,7 @@ a { color: var(--accent); }
 .badge.ok { color: var(--good); } .badge.wide { color: var(--warn); }
 .flag { color: var(--warn); }
 .tall { max-height: 460px; overflow-y: auto; }
+.lead2 th:nth-child(2), .lead3 th:nth-child(2), .lead3 th:nth-child(3) { text-align: left; }
 tr.divider td { text-align: center; color: var(--muted); font-size: 12px; background: var(--chip); border-top: 2px solid var(--accent); }
 .report h1 { font-size: 20px; } .report h2 { margin-top: 24px; } .report td, .report th { cursor: default; }
 """
@@ -349,13 +365,49 @@ def _jack_panel(snap: dict) -> str:
     )
 
 
+def _sector_panel(snap: dict) -> str:
+    sc = snap.get("sectors")
+    if sc is None:  # a snapshot written before this section existed, or no sector map
+        return ""
+
+    def table(rows: list[dict], label: str, with_sector: bool) -> str:
+        if not rows:
+            return '<p class="note">Not enough classified names yet.</p>'
+        head = ["#", label] + (["Sector"] if with_sector else []) + ["Names", "Leaders", "Leaders %", "Above 50d %", "Δ above",
+                                                                    "Median " + sc["sort_window"].upper(), "Watchlist", "Trigger bars", "Score"]
+        body = []
+        for i, r in enumerate(rows, start=1):
+            body.append(
+                f'<tr><td data-v="{i}">{i}</td><td class="l"><b>{html.escape(r["name"])}</b></td>'
+                + (f'<td class="l name">{html.escape(r["sector"])}</td>' if with_sector else "")
+                + f'<td data-v="{r["names"]}">{r["names"]}</td><td data-v="{r["leaders"]}">{r["leaders"]}</td>'
+                + f'<td data-v="{r["leader_pct"]}">{_num(r["leader_pct"], "{:.0f}%")}</td>'
+                + f'<td data-v="{r["above_pct"]}">{_num(r["above_pct"], "{:.0f}%")}</td>'
+                + f'<td data-v="{r["d_above"]}" class="{"pos" if (r["d_above"] or 0) > 0 else "neg" if (r["d_above"] or 0) < 0 else ""}">{_num(r["d_above"], "{:+.0f}")}</td>'
+                + _ret(r["median_ret"]) + f'<td data-v="{r["watchlist"]}">{r["watchlist"]}</td>'
+                + f'<td data-v="{r["trigger_bars"]}">{r["trigger_bars"]}</td><td data-v="{r["score"]}"><b>{_num(r["score"], "{:.0f}")}</b></td></tr>'
+            )
+        return (f'<div class="scroll tall"><table class="sortable {"lead3" if with_sector else "lead2"}"><thead><tr>' + _header(head)
+                + "</tr></thead><tbody>" + "".join(body) + "</tbody></table></div>")
+
+    return (
+        f'<div class="panel"><h2>Sectors in strength ({len(sc["sectors"])})</h2>{table(sc["sectors"], "Sector", False)}'
+        f'<h2 style="margin-top:16px">Strongest industries</h2>{table(sc["industries"], "Industry", True)}'
+        '<p class="note">Among liquid names only. <b>Score</b> = the average percentile rank (0–100) of three things: the share of '
+        "the group's names that are leaders today, the share above their 50-day average, and the median return over the "
+        f"{html.escape(sc['sort_window'].upper())} window. <b>Δ above</b> = change in the share above the 50-day average over the last "
+        f"5 sessions (money flowing in or out). A ranking of where the strength is, not a forecast. Sector from Yahoo, known for "
+        f"{sc['classified']:,} of {sc['liquid']:,} liquid names ({sc['coverage']:.0f}%).</p></div>"
+    )
+
+
 def _trigger_bar_panel(snap: dict) -> str:
     tb = snap.get("trigger_bars")
     if tb is None:  # a snapshot written before this section existed
         return ""
     ws = snap["windows"]
     if tb["items"]:
-        head = ["Symbol", "Name", "Ours", "Score", "On", "Close", "Buy above", "Stop", "Risk %", "Risk / ADR", "ADR %",
+        head = ["Symbol", "Name", "Sector", "Ours", "Score", "On", "Close", "Buy above", "Stop", "Risk %", "Risk / ADR", "ADR %",
                 "Vol ×", "Below 52w high"] + [w.upper() for w in ws] + ["Avg value"]
         body = []
         for i, r in enumerate(tb["items"]):
@@ -365,6 +417,7 @@ def _trigger_bar_panel(snap: dict) -> str:
             badge = f'<span class="badge {"ok" if r["ours"] else ""}">{r["ours"] or "–"}</span>'
             body.append(
                 "<tr>" + _sym_cell(r) + f'<td class="name">{html.escape(r["name"])}</td>'
+                + f'<td class="l name">{html.escape(r.get("sector", ""))}</td>'
                 + f'<td class="l" data-v="{r["ours"]}">{badge}</td>'
                 + f'<td data-v="{r["score"]}" title="{html.escape(", ".join(r["signs"]) or "none")}">{r["score"]}/6</td>'
                 + f'<td class="l">{html.escape(r["ma"])}</td>'
@@ -440,6 +493,7 @@ def _market_section(snap: dict, has_report: bool, first: bool) -> str:
         f'<section class="market" id="{snap["market"]}"{"" if first else " hidden"}>'
         f'<div class="panel"><div class="chips">' + "".join(f'<span class="chip">{c}</span>' for c in chips) + "</div>" + report + "</div>"
         + _jack_panel(snap)
+        + _sector_panel(snap)
         + _trigger_bar_panel(snap)
         + f'<div class="panel"><h2>Breakouts</h2>{_breakouts_table(snap)}'
         + '<p class="note">Close above the trigger on at least 1.5× average volume, from a name on the previous '

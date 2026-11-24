@@ -270,6 +270,21 @@ class TriggerBarConfig(_Strict):
     max_listed: int = Field(ge=0)  # names kept on the dashboard (best first)
 
 
+class SectorConfig(_Strict):
+    """Sector and industry strength (python -m scanner.sectors fills the map; see scanner/sectors.py)."""
+
+    min_names_sector: int = Field(ge=1)  # a sector needs at least this many liquid names to be ranked
+    min_names_industry: int = Field(ge=1)  # same, for an industry
+    change_sessions: int = Field(ge=1)  # "money flowing in": change in the share above the 50-day SMA over this many sessions
+    sma: int = Field(ge=2)  # the average used for "share above its 50-day"
+    message_sectors: int = Field(ge=0)  # sectors listed in the alert message
+    message_industries: int = Field(ge=0)  # industries listed in the alert message
+    dashboard_industries: int = Field(ge=0)  # industries kept on the dashboard
+    max_new_per_run: int = Field(ge=0)  # unmapped liquid names looked up per run (--update-sectors)
+    stale_days: int = Field(ge=1)  # a classified name is looked up again after this many days
+    retry_days: int = Field(ge=1)  # a name Yahoo had no sector for is retried after this many days
+
+
 class MarketConfig(_Strict):
     market: str
     currency: str
@@ -284,6 +299,7 @@ class MarketConfig(_Strict):
     study: StudyConfig
     jack: JackConfig
     trigger_bar: TriggerBarConfig
+    sectors: SectorConfig
 
 
 def load_config(market: str, config_dir: Path = CONFIG_DIR) -> MarketConfig:

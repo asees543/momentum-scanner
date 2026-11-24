@@ -19,6 +19,7 @@ from scanner import indicators as ind
 from scanner.config import (BreakoutConfig, JackConfig, LeadersConfig, LiquidityConfig, MarketConfig, SetupConfig,
                             TriggerBarConfig)
 from scanner.data.base import Panels
+from scanner.sectors import SectorResult, sector_strength
 
 
 @dataclass
@@ -387,6 +388,7 @@ class ScanResults:
     # Window name -> that window's leaders, ranked by its gain (see `window_lists`); None where not computed.
     window_lists: dict[str, pd.DataFrame] | None = None
     trigger_bars: TriggerBarResult | None = None  # None where not computed (hand-built results in tests)
+    sectors: SectorResult | None = None  # None when no sector map is given to run_scans
 
 
 def _rows_needed(cfg: MarketConfig) -> int:
@@ -697,7 +699,8 @@ def jack_screen(panels: Panels, cfg: MarketConfig, leaders: LeadersResult, watch
                       ours_count=len(ours), windows=windows)
 
 
-def run_scans(panels: Panels, cfg: MarketConfig, mode: Literal["fixed", "rank"] | None = None) -> ScanResults:
+def run_scans(panels: Panels, cfg: MarketConfig, mode: Literal["fixed", "rank"] | None = None,
+              sector_map: pd.DataFrame | None = None) -> ScanResults:
     """All stages on the as-of (last) session of `panels`, sharing one set of frames."""
     if panels.close.empty:
         raise ValueError("no price data")
@@ -710,8 +713,14 @@ def run_scans(panels: Panels, cfg: MarketConfig, mode: Literal["fixed", "rank"] 
     leaders = leaders_from_frames(p, liq, lf, cfg.leaders, mode)
     watchlist = watchlist_from_frames(p, liq, lf, sf, cfg, max_lb)
     breakouts = breakouts_from_frames(p, liq, lf, sf, cfg, max_lb)
+    tbars = trigger_bars(panels, cfg, leaders, watchlist, breakouts)
+    sectors = None
+    if sector_map is not None and len(sector_map):
+        liquid_now = liq.liquid.iloc[-1] & p.close.iloc[-1].notna()
+        sectors = sector_strength(panels, cfg, sector_map, liquid_now.index[liquid_now], leaders.table.index,
+                                  watchlist.table.index, tbars.table.index)
     return ScanResults(leaders, watchlist, breakouts, jack_screen(panels, cfg, leaders, watchlist, breakouts),
-                       window_lists(panels, cfg, leaders), trigger_bars(panels, cfg, leaders, watchlist, breakouts))
+                       window_lists(panels, cfg, leaders), tbars, sectors)
 
 
 def missed_breakouts(

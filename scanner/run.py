@@ -48,8 +48,11 @@ from scanner.notify import (
 )
 from scanner.dashboard import SITE_DATA, snapshot, write_snapshot
 from scanner.quality import QualityReport, quality_report, yahoo_split_dates
+from scanner import scans
+from scanner import sectors as sectors_mod
 from scanner.scans import (BreakoutResult, JackResult, LeadersResult, ScanResults, TriggerBarResult, WatchlistResult,
                           missed_breakouts, run_scans)
+from scanner.sectors import SectorResult
 from scanner.state import STATE_DIR, MarketState, diff_results, state_path
 
 MARKETS: dict[str, ModuleType] = {"us": us_loader, "india": india_loader}
@@ -61,7 +64,7 @@ err_console = Console(stderr=True)
 def parse_args(argv: list[str] | None) -> argparse.Namespace:
     p = argparse.ArgumentParser(prog="python -m scanner.run", description=__doc__.split("\n\n")[0])
     p.add_argument("--market", default="us", choices=sorted(MARKETS))
-    p.add_argument("--scan", default="all", choices=["all", "leaders", "watchlist", "breakouts", "both", "trigger"],
+    p.add_argument("--scan", default="all", choices=["all", "leaders", "watchlist", "breakouts", "both", "trigger", "sectors"],
                    help="what to print (default: breakouts, watchlist, names on both screens and leader counts)")
     p.add_argument("--window", help="only names that are leaders in this window (e.g. 1m, 3m, 6m); for the "
                    "watchlist and breakouts: a leader in that window during the setup lookback")
@@ -79,6 +82,8 @@ def parse_args(argv: list[str] | None) -> argparse.Namespace:
                    help="send the whole current watchlist to Telegram now (state is not touched)")
     p.add_argument("--dry-run", action="store_true",
                    help="with --alert or --send-watchlist: print the messages instead of sending; state is not saved")
+    p.add_argument("--update-sectors", action="store_true",
+                   help="look up sectors for liquid names the sector map lacks (Yahoo; at most sectors.max_new_per_run)")
     p.add_argument("--quality", action="store_true",
                    help="print a data-quality report (jumps, missing days, frozen/circuit streaks) instead of scans")
     p.add_argument("--check-splits", action="store_true",
@@ -338,6 +343,50 @@ def render_both(jk: JackResult, cfg: MarketConfig, names: dict, displays: dict[s
     return jk.table
 
 
+def update_sector_map(panels: Panels, cfg: MarketConfig, current: pd.DataFrame, market: str) -> pd.DataFrame:
+    """Fill in sectors for liquid names the map lacks, most traded first. Never raises: a scan matters more than a
+    sector, so any failure is reported and the map as it was is used."""
+    try:
+        snap = scans.liquidity_snapshot(panels, cfg.liquidity)
+        liquid = snap[snap["liquid"]].sort_values("avg_traded_value", ascending=False).index.tolist()
+        new, st = sectors_mod.update_map(liquid, current, cfg.sectors, pause=0.1)
+        if st.looked_up:
+            sectors_mod.save_map(new, market)
+        console.print(
+            f"[dim]Sectors: looked up {st.looked_up} ({st.classified} classified, {st.none} without a sector), "
+            f"{st.errors} errors" + (", stopped early (Yahoo refusing requests)" if st.stopped_early else "")
+            + (f", {st.skipped_for_cap} left for later runs" if st.skipped_for_cap else "") + "[/]"
+        )
+        return new
+    except Exception as e:  # noqa: BLE001
+        err_console.print(f"[yellow]Sector update failed ({type(e).__name__}: {str(e)[:80]}); using the map as it was.[/]")
+        return current
+
+
+def render_sectors(sr: SectorResult, cfg: MarketConfig) -> pd.DataFrame:
+    """Sectors (all) and the strongest industries, strongest first."""
+    for title, table, label in ((f"{cfg.market.upper()} sectors in strength · {sr.as_of:%Y-%m-%d}", sr.sectors, "Sector"),
+                                ("Strongest industries", sr.industries.head(cfg.sectors.dashboard_industries), "Industry")):
+        t = _new_table(title)
+        cols = [("#", {"justify": "right", "style": "dim"}), (label, {"style": "bold", "no_wrap": True})]
+        if label == "Industry":
+            cols.append(("Sector", {"no_wrap": True, "max_width": 22}))
+        cols += [("Names", {"justify": "right"}), ("Leaders", {"justify": "right"}), ("% above 50d", {"justify": "right"}),
+                 ("Δ5d", {"justify": "right"}), ("Median 3M", {"justify": "right"}), ("Watch", {"justify": "right"}),
+                 ("TBars", {"justify": "right"}), ("Score", {"justify": "right"})]
+        for col, kw in cols:
+            t.add_column(col, **kw)
+        for i, (name, r) in enumerate(table.iterrows(), start=1):
+            t.add_row(str(i), str(name), *([str(r["sector"])] if label == "Industry" else []), str(int(r["names"])),
+                      f"{int(r['leaders'])} ({r['leader_pct']:.0f}%)", f"{r['above_pct']:.0f}%", f"{r['d_above']:+.0f}",
+                      fmt_pct(r["median_ret"]), str(int(r["watchlist"])), str(int(r["trigger_bars"])), f"{r['score']:.0f}")
+        console.print(t)
+    console.print(f"Sector known for {sr.classified} of {sr.liquid} liquid names ({100 * sr.coverage:.0f}%). "
+                  "[dim]Score = average percentile rank of: share of names that are leaders, share above the 50-day average, "
+                  "median 3-month return.[/]")
+    return sr.sectors
+
+
 def render_trigger(tb: TriggerBarResult, cfg: MarketConfig, names: dict, displays: dict[str, str] | None = None,
                    limit: int = 60) -> pd.DataFrame:
     """Trigger bars on the latest session (best first). Prints at most `limit` rows; returns the whole table."""
@@ -462,6 +511,11 @@ def render(res: ScanResults, cfg: MarketConfig, universe: pd.DataFrame, args: ar
     if args.scan in ("all", "watchlist"):
         shown["watchlist"] = render_watchlist(res.watchlist, cfg, names, args.window, displays)
         console.print()
+    if args.scan in ("all", "sectors") and res.sectors is not None:
+        shown["sectors"] = render_sectors(res.sectors, cfg)
+        console.print()
+    elif args.scan == "sectors":
+        console.print("[yellow]No sector map yet: run `python -m scanner.sectors --market " + cfg.market + "`.[/]")
     if args.scan in ("all", "trigger") and res.trigger_bars is not None:
         shown["trigger"] = render_trigger(res.trigger_bars, cfg, names, displays, limit=60 if args.scan == "trigger" else 12)
         console.print()
@@ -648,7 +702,10 @@ def _main(args: argparse.Namespace) -> int:
                 table.to_csv(out, index=False)
                 console.print(f"[dim]Wrote {len(table)} rows to {out}[/]")
         return 0
-    res = run_scans(panels, cfg, mode=args.mode)
+    sector_map = sectors_mod.load_map(args.market)
+    if args.update_sectors:
+        sector_map = update_sector_map(panels, cfg, sector_map, args.market)
+    res = run_scans(panels, cfg, mode=args.mode, sector_map=sector_map)
     shown = render(res, cfg, universe, args, report)
     if args.csv:
         write_csv(args.csv, shown, res.leaders.as_of, _names(universe))
