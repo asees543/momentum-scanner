@@ -1,9 +1,9 @@
 {
-  "active_count": 5826,
-  "as_of": "2026-11-23",
+  "active_count": 5762,
+  "as_of": "2026-11-24",
   "breakouts": [],
   "market": "us",
-  "updated_at": "2026-11-23T22:06:02+00:00",
+  "updated_at": "2026-11-24T22:06:34+00:00",
   "watchlist": {
     "ACHC": {
       "first_seen": "2026-11-18",
@@ -17,10 +17,6 @@
       "first_seen": "2026-11-17",
       "trigger": 7.995
     },
-    "ALEC": {
-      "first_seen": "2026-11-23",
-      "trigger": 2.84
-    },
     "AOUT": {
       "first_seen": "2026-11-19",
       "trigger": 19.651
@@ -33,13 +29,13 @@
       "first_seen": "2026-11-13",
       "trigger": 57.26
     },
-    "ARHS": {
-      "first_seen": "2026-11-13",
-      "trigger": 15.17
+    "ATEN": {
+      "first_seen": "2026-11-24",
+      "trigger": 33.97
     },
     "AXGN": {
       "first_seen": "2026-11-16",
-      "trigger": 59.72
+      "trigger": 60.0
     },
     "AZTA": {
       "first_seen": "2026-11-20",
@@ -53,10 +49,6 @@
       "first_seen": "2026-11-19",
       "trigger": 8.85
     },
-    "BOBS": {
-      "first_seen": "2026-11-13",
-      "trigger": 21.75
-    },
     "CHTR": {
       "first_seen": "2026-11-18",
       "trigger": 142.6
@@ -69,10 +61,6 @@
       "first_seen": "2026-11-19",
       "trigger": 39.65
     },
-    "ENOV": {
-      "first_seen": "2026-11-13",
-      "trigger": 29.89
-    },
     "ESAB": {
       "first_seen": "2026-11-23",
       "trigger": 90.51
@@ -81,21 +69,21 @@
       "first_seen": "2026-11-19",
       "trigger": 70.64
     },
-    "EVER": {
-      "first_seen": "2026-11-13",
-      "trigger": 31.2
-    },
     "FIGS": {
       "first_seen": "2026-11-23",
       "trigger": 23.765
     },
+    "FIRY": {
+      "first_seen": "2026-11-24",
+      "trigger": 14.9
+    },
+    "FLGT": {
+      "first_seen": "2026-11-24",
+      "trigger": 26.75
+    },
     "FUN": {
       "first_seen": "2026-11-17",
       "trigger": 12.31
-    },
-    "GKOS": {
-      "first_seen": "2026-11-13",
-      "trigger": 250.61
     },
     "GLIBK": {
       "first_seen": "2026-11-23",
@@ -109,21 +97,9 @@
       "first_seen": "2026-11-23",
       "trigger": 19.28
     },
-    "ICMB": {
-      "first_seen": "2026-11-23",
-      "trigger": 1.15
-    },
-    "JACK": {
-      "first_seen": "2026-11-17",
-      "trigger": 15.19
-    },
     "KD": {
       "first_seen": "2026-11-23",
       "trigger": 17.39
-    },
-    "KNSA": {
-      "first_seen": "2026-11-13",
-      "trigger": 99.31
     },
     "LFTO": {
       "first_seen": "2026-11-20",
@@ -145,6 +121,10 @@
       "first_seen": "2026-11-16",
       "trigger": 25.4
     },
+    "OBIO": {
+      "first_seen": "2026-11-24",
+      "trigger": 7.825
+    },
     "ONT": {
       "first_seen": "2026-11-13",
       "trigger": 24.435
@@ -157,9 +137,17 @@
       "first_seen": "2026-11-13",
       "trigger": 22.36
     },
+    "PRCT": {
+      "first_seen": "2026-11-24",
+      "trigger": 26.54
+    },
     "PRG": {
       "first_seen": "2026-11-13",
-      "trigger": 40.95
+      "trigger": 41.6
+    },
+    "PTLO": {
+      "first_seen": "2026-11-24",
+      "trigger": 7.228
     },
     "PXLW": {
       "first_seen": "2026-11-23",
@@ -169,25 +157,9 @@
       "first_seen": "2026-11-17",
       "trigger": 23.75
     },
-    "RHLD": {
-      "first_seen": "2026-11-23",
-      "trigger": 165.16
-    },
     "SG": {
       "first_seen": "2026-11-13",
-      "trigger": 13.89
-    },
-    "SGHT": {
-      "first_seen": "2026-11-13",
-      "trigger": 11.595
-    },
-    "SMPL": {
-      "first_seen": "2026-11-13",
-      "trigger": 13.57
-    },
-    "STGW": {
-      "first_seen": "2026-11-23",
-      "trigger": 12.26
+      "trigger": 13.46
     },
     "TLS": {
       "first_seen": "2026-11-18",
@@ -201,13 +173,13 @@
       "first_seen": "2026-11-23",
       "trigger": 54.265
     },
+    "UIS": {
+      "first_seen": "2026-11-24",
+      "trigger": 2.98
+    },
     "VLRS": {
       "first_seen": "2026-11-13",
       "trigger": 8.85
-    },
-    "VNCE": {
-      "first_seen": "2026-11-23",
-      "trigger": 13.9
     },
     "WWW": {
       "first_seen": "2026-11-23",
