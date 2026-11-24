@@ -27,6 +27,8 @@ ADNT,Consumer Cyclical,Auto Parts,2026-11-24,ok
 ADPT,Healthcare,Diagnostics & Research,2026-11-24,ok
 ADRX,Healthcare,Biotechnology,2026-11-24,ok
 ADTN,Technology,Communication Equipment,2026-11-24,ok
+ADUR,Industrials,Pollution & Treatment Controls,2026-11-24,ok
+ADV,Communication Services,Advertising Agencies,2026-11-24,ok
 ADXN,Healthcare,Biotechnology,2026-11-24,ok
 AEHL,Industrials,Building Products & Equipment,2026-11-24,ok
 AEHR,Technology,Semiconductor Equipment & Materials,2026-11-24,ok
@@ -63,6 +65,7 @@ ALGT,Industrials,Airlines,2026-11-24,ok
 ALHC,Healthcare,Healthcare Plans,2026-11-24,ok
 ALIT,Technology,Software - Application,2026-11-24,ok
 ALKT,Technology,Software - Application,2026-11-24,ok
+ALLT,Technology,Software - Infrastructure,2026-11-24,ok
 ALM,Basic Materials,Other Industrial Metals & Mining,2026-11-24,ok
 ALMR,Healthcare,Medical Devices,2026-11-24,ok
 ALMS,Healthcare,Biotechnology,2026-11-24,ok
@@ -71,6 +74,7 @@ ALNT,Technology,Electronic Components,2026-11-24,ok
 ALNY,Healthcare,Biotechnology,2026-11-24,ok
 ALOY,Basic Materials,Other Industrial Metals & Mining,2026-11-24,ok
 ALT,Healthcare,Biotechnology,2026-11-24,ok
+ALTO,Basic Materials,Specialty Chemicals,2026-11-24,ok
 ALVO,Healthcare,Drug Manufacturers - Specialty & Generic,2026-11-24,ok
 AMAT,Technology,Semiconductor Equipment & Materials,2026-11-24,ok
 AMBA,Technology,Semiconductor Equipment & Materials,2026-11-24,ok
@@ -95,6 +99,7 @@ ANNX,Healthcare,Biotechnology,2026-11-24,ok
 ANRO,Healthcare,Biotechnology,2026-11-24,ok
 AORT,Healthcare,Medical Devices,2026-11-24,ok
 AOSL,Technology,Semiconductors,2026-11-24,ok
+AOUT,Consumer Cyclical,Leisure,2026-11-24,ok
 APEI,Consumer Defensive,Education & Training Services,2026-11-24,ok
 APH,Technology,Electronic Components,2026-11-24,ok
 APLD,Technology,Information Technology Services,2026-11-24,ok
@@ -107,6 +112,7 @@ ARCT,Healthcare,Biotechnology,2026-11-24,ok
 ARDT,Healthcare,Medical Care Facilities,2026-11-24,ok
 ARDX,Healthcare,Biotechnology,2026-11-24,ok
 ARHS,Consumer Cyclical,Specialty Retail,2026-11-24,ok
+ARKO,Consumer Cyclical,Specialty Retail,2026-11-24,ok
 ARLO,Industrials,Building Products & Equipment,2026-11-24,ok
 ARM,Technology,Semiconductors,2026-11-24,ok
 ARQQ,Technology,Software - Infrastructure,2026-11-24,ok
@@ -133,6 +139,7 @@ ATEN,Technology,Software - Infrastructure,2026-11-24,ok
 ATEX,Communication Services,Telecom Services,2026-11-24,ok
 ATI,Industrials,Metal Fabrication,2026-11-24,ok
 ATLC,Financial Services,Credit Services,2026-11-24,ok
+ATNI,Communication Services,Telecom Services,2026-11-24,ok
 ATRO,Industrials,Aerospace & Defense,2026-11-24,ok
 ATTO,Healthcare,Biotechnology,2026-11-24,ok
 AUGO,Basic Materials,Gold,2026-11-24,ok
@@ -181,6 +188,7 @@ BJRI,Consumer Cyclical,Restaurants,2026-11-24,ok
 BKD,Healthcare,Medical Care Facilities,2026-11-24,ok
 BKKT,Technology,Software - Infrastructure,2026-11-24,ok
 BKSY,Industrials,Specialty Business Services,2026-11-24,ok
+BKTI,Technology,Communication Equipment,2026-11-24,ok
 BKYI,Industrials,Security & Protection Services,2026-11-24,ok
 BL,Technology,Software - Application,2026-11-24,ok
 BLDP,Industrials,Electrical Equipment & Parts,2026-11-24,ok
@@ -231,6 +239,7 @@ CAMT,Technology,Semiconductor Equipment & Materials,2026-11-24,ok
 CAPR,Healthcare,Biotechnology,2026-11-24,ok
 CAR,Industrials,Rental & Leasing Services,2026-11-24,ok
 CARG,Communication Services,Internet Content & Information,2026-11-24,ok
+CARL,Healthcare,Health Information Services,2026-11-24,ok
 CARS,Communication Services,Internet Content & Information,2026-11-24,ok
 CAVA,Consumer Cyclical,Restaurants,2026-11-24,ok
 CBIO,Healthcare,Biotechnology,2026-11-24,ok
@@ -277,11 +286,13 @@ CLSK,Financial Services,Capital Markets,2026-11-24,ok
 CLVT,Technology,Information Technology Services,2026-11-24,ok
 CLW,Basic Materials,Paper & Paper Products,2026-11-24,ok
 CLYM,Healthcare,Biotechnology,2026-11-24,ok
+CMCL,Basic Materials,Gold,2026-11-24,ok
 CMCO,Industrials,Farm & Heavy Construction Machinery,2026-11-24,ok
 CMPR,Industrials,Specialty Business Services,2026-11-24,ok
 CMPS,Healthcare,Medical Care Facilities,2026-11-24,ok
 CMTG,Real Estate,REIT - Mortgage,2026-11-24,ok
 CNC,Healthcare,Healthcare Plans,2026-11-24,ok
+CNL,Basic Materials,Gold,2026-11-24,ok
 CNXC,Technology,Information Technology Services,2026-11-24,ok
 COAG,Healthcare,Biotechnology,2026-11-24,ok
 COCO,Consumer Defensive,Beverages - Non-Alcoholic,2026-11-24,ok
@@ -304,6 +315,7 @@ CRDO,Technology,Semiconductors,2026-11-24,ok
 CRL,Healthcare,Diagnostics & Research,2026-11-24,ok
 CRMD,Healthcare,Biotechnology,2026-11-24,ok
 CRML,Basic Materials,Other Industrial Metals & Mining,2026-11-24,ok
+CRNC,Technology,Software - Application,2026-11-24,ok
 CRS,Industrials,Metal Fabrication,2026-11-24,ok
 CRSP,Healthcare,Biotechnology,2026-11-24,ok
 CRSR,Technology,Computer Hardware,2026-11-24,ok
@@ -405,6 +417,7 @@ EMBC,Healthcare,Medical Instruments & Supplies,2026-11-24,ok
 ENGN,Healthcare,Biotechnology,2026-11-24,ok
 ENOV,Healthcare,Medical Devices,2026-11-24,ok
 ENPH,Technology,Solar,2026-11-24,ok
+ENTA,Healthcare,Biotechnology,2026-11-24,ok
 ENTG,Technology,Semiconductor Equipment & Materials,2026-11-24,ok
 ENVX,Industrials,Electrical Equipment & Parts,2026-11-24,ok
 EOLS,Healthcare,Drug Manufacturers - Specialty & Generic,2026-11-24,ok
@@ -419,6 +432,7 @@ ESAB,Industrials,Metal Fabrication,2026-11-24,ok
 ESTA,Healthcare,Medical Devices,2026-11-24,ok
 ESTC,Technology,Software - Application,2026-11-24,ok
 ETON,Healthcare,Drug Manufacturers - Specialty & Generic,2026-11-24,ok
+ETRA,Healthcare,Biotechnology,2026-11-24,ok
 ETSY,Consumer Cyclical,Internet Retail,2026-11-24,ok
 EVC,Communication Services,Advertising Agencies,2026-11-24,ok
 EVER,Communication Services,Internet Content & Information,2026-11-24,ok
@@ -436,6 +450,7 @@ FCEL,Industrials,Electrical Equipment & Parts,2026-11-24,ok
 FCUV,Technology,Scientific & Technical Instruments,2026-11-24,ok
 FDMT,Healthcare,Biotechnology,2026-11-24,ok
 FEIM,Technology,Communication Equipment,2026-11-24,ok
+FENC,Healthcare,Biotechnology,2026-11-24,ok
 FET,Energy,Oil & Gas Equipment & Services,2026-11-24,ok
 FF,Basic Materials,Specialty Chemicals,2026-11-24,ok
 FICO,Technology,Software - Application,2026-11-24,ok
@@ -443,6 +458,7 @@ FIG,Technology,Software - Application,2026-11-24,ok
 FIGR,Financial Services,Capital Markets,2026-11-24,ok
 FIGS,Consumer Cyclical,Apparel Manufacturing,2026-11-24,ok
 FIP,Industrials,Conglomerates,2026-11-24,ok
+FIRY,Communication Services,Electronic Gaming & Multimedia,2026-11-24,ok
 FIVN,Technology,Software - Infrastructure,2026-11-24,ok
 FIX,Industrials,Engineering & Construction,2026-11-24,ok
 FLEX,Technology,Electronic Components,2026-11-24,ok
@@ -483,7 +499,9 @@ FWDI,Financial Services,Asset Management,2026-11-24,ok
 FWRD,Industrials,Integrated Freight & Logistics,2026-11-24,ok
 FWRG,Consumer Cyclical,Restaurants,2026-11-24,ok
 GAU,Basic Materials,Gold,2026-11-24,ok
+GCO,Consumer Cyclical,Apparel Retail,2026-11-24,ok
 GCT,Technology,Software - Infrastructure,2026-11-24,ok
+GDRX,Healthcare,Health Information Services,2026-11-24,ok
 GDS,Technology,Information Technology Services,2026-11-24,ok
 GDYN,Technology,Information Technology Services,2026-11-24,ok
 GEMI,Financial Services,Capital Markets,2026-11-24,ok
@@ -503,6 +521,7 @@ GLAS,Healthcare,Drug Manufacturers - Specialty & Generic,2026-11-24,ok
 GLIBK,Communication Services,Telecom Services,2026-11-24,ok
 GLND,Energy,Oil & Gas E&P,2026-11-24,ok
 GLOB,Technology,Information Technology Services,2026-11-24,ok
+GLSI,Healthcare,Biotechnology,2026-11-24,ok
 GLUE,Healthcare,Biotechnology,2026-11-24,ok
 GLW,Technology,Electronic Components,2026-11-24,ok
 GLXY,Financial Services,Capital Markets,2026-11-24,ok
@@ -579,15 +598,20 @@ ILPT,Real Estate,REIT - Industrial,2026-11-24,ok
 IMCR,Healthcare,Biotechnology,2026-11-24,ok
 IMMX,Healthcare,Biotechnology,2026-11-24,ok
 IMNM,Healthcare,Biotechnology,2026-11-24,ok
+IMOS,Technology,Semiconductors,2026-11-24,ok
+IMRX,Healthcare,Biotechnology,2026-11-24,ok
 IMSR,Utilities,Utilities - Regulated Electric,2026-11-24,ok
 IMTX,Healthcare,Biotechnology,2026-11-24,ok
 IMXI,Technology,Software - Infrastructure,2026-11-24,ok
 INBX,Healthcare,Biotechnology,2026-11-24,ok
 INDI,Technology,Semiconductors,2026-11-24,ok
 INFQ,Technology,Software - Infrastructure,2026-11-24,ok
+INHD,Basic Materials,Steel,2026-11-24,ok
 INIO,Industrials,Specialty Industrial Machinery,2026-11-24,ok
+INNV,Healthcare,Medical Care Facilities,2026-11-24,ok
 INO,Healthcare,Biotechnology,2026-11-24,ok
 INOD,Technology,Information Technology Services,2026-11-24,ok
+INR,Energy,Oil & Gas E&P,2026-11-24,ok
 INSM,Healthcare,Biotechnology,2026-11-24,ok
 INSW,Energy,Oil & Gas Midstream,2026-11-24,ok
 INTA,Technology,Software - Application,2026-11-24,ok
@@ -603,6 +627,7 @@ IRD,Healthcare,Biotechnology,2026-11-24,ok
 IREN,Financial Services,Capital Markets,2026-11-24,ok
 IRLA,Healthcare,Biotechnology,2026-11-24,ok
 IRON,Healthcare,Biotechnology,2026-11-24,ok
+IRS,Real Estate,Real Estate Services,2026-11-24,ok
 IRTC,Healthcare,Medical Devices,2026-11-24,ok
 IRWD,Healthcare,Drug Manufacturers - Specialty & Generic,2026-11-24,ok
 ITG,Industrials,Engineering & Construction,2026-11-24,ok
@@ -660,6 +685,7 @@ LB,Energy,Oil & Gas E&P,2026-11-24,ok
 LBRT,Energy,Oil & Gas Equipment & Services,2026-11-24,ok
 LBRX,Healthcare,Biotechnology,2026-11-24,ok
 LCID,Consumer Cyclical,Auto Manufacturers,2026-11-24,ok
+LEGH,Consumer Cyclical,Residential Construction,2026-11-24,ok
 LEGN,Healthcare,Biotechnology,2026-11-24,ok
 LENZ,Healthcare,Biotechnology,2026-11-24,ok
 LEU,Energy,Uranium,2026-11-24,ok
@@ -670,6 +696,7 @@ LGIH,Consumer Cyclical,Residential Construction,2026-11-24,ok
 LGN,Industrials,Engineering & Construction,2026-11-24,ok
 LIF,Technology,Software - Application,2026-11-24,ok
 LIFE,Financial Services,Insurance Brokers,2026-11-24,ok
+LILA,Communication Services,Telecom Services,2026-11-24,ok
 LILAK,Communication Services,Telecom Services,2026-11-24,ok
 LIME,Industrials,Rental & Leasing Services,2026-11-24,ok
 LINC,Consumer Defensive,Education & Training Services,2026-11-24,ok
@@ -693,6 +720,7 @@ LU,Financial Services,Credit Services,2026-11-24,ok
 LUMN,Communication Services,Telecom Services,2026-11-24,ok
 LUNG,Healthcare,Medical Devices,2026-11-24,ok
 LUNR,Industrials,Aerospace & Defense,2026-11-24,ok
+LUXE,Consumer Cyclical,Luxury Goods,2026-11-24,ok
 LWLG,Basic Materials,Specialty Chemicals,2026-11-24,ok
 LXEO,Healthcare,Biotechnology,2026-11-24,ok
 LXRX,Healthcare,Biotechnology,2026-11-24,ok
@@ -782,11 +810,13 @@ NCPL,Financial Services,Capital Markets,2026-11-24,ok
 NEO,Healthcare,Diagnostics & Research,2026-11-24,ok
 NESR,Energy,Oil & Gas Equipment & Services,2026-11-24,ok
 NET,Technology,Software - Infrastructure,2026-11-24,ok
+NEWP,Basic Materials,Silver,2026-11-24,ok
 NEXN,Communication Services,Advertising Agencies,2026-11-24,ok
 NEXR,Consumer Cyclical,Internet Retail,2026-11-24,ok
 NEXT,Energy,Oil & Gas Equipment & Services,2026-11-24,ok
 NG,Basic Materials,Gold,2026-11-24,ok
 NGNE,Healthcare,Biotechnology,2026-11-24,ok
+NGS,Energy,Oil & Gas Equipment & Services,2026-11-24,ok
 NHP,Real Estate,REIT - Healthcare Facilities,2026-11-24,ok
 NMAX,Communication Services,Broadcasting,2026-11-24,ok
 NN,Technology,Software - Infrastructure,2026-11-24,ok
@@ -803,6 +833,7 @@ NRXP,Healthcare,Biotechnology,2026-11-24,ok
 NSIT,Technology,Electronics & Computer Distribution,2026-11-24,ok
 NSP,Industrials,Staffing & Employment Services,2026-11-24,ok
 NTAP,Technology,Software - Infrastructure,2026-11-24,ok
+NTCL,Technology,Software - Application,2026-11-24,ok
 NTGR,Technology,Communication Equipment,2026-11-24,ok
 NTLA,Healthcare,Biotechnology,2026-11-24,ok
 NTRA,Healthcare,Diagnostics & Research,2026-11-24,ok
@@ -870,6 +901,7 @@ OXM,Consumer Cyclical,Apparel Manufacturing,2026-11-24,ok
 P,Technology,Computer Hardware,2026-11-24,ok
 PACB,Healthcare,Medical Devices,2026-11-24,ok
 PALI,Healthcare,Biotechnology,2026-11-24,ok
+PANL,Industrials,Marine Shipping,2026-11-24,ok
 PANW,Technology,Software - Infrastructure,2026-11-24,ok
 PAR,Technology,Software - Application,2026-11-24,ok
 PARR,Energy,Oil & Gas Refining & Marketing,2026-11-24,ok
@@ -897,6 +929,7 @@ PLSE,Healthcare,Medical Instruments & Supplies,2026-11-24,ok
 PLTK,Communication Services,Electronic Gaming & Multimedia,2026-11-24,ok
 PLTR,Technology,Software - Infrastructure,2026-11-24,ok
 PLUG,Industrials,Electrical Equipment & Parts,2026-11-24,ok
+PLX,Healthcare,Biotechnology,2026-11-24,ok
 PLXS,Technology,Electronic Components,2026-11-24,ok
 PMTS,Financial Services,Credit Services,2026-11-24,ok
 PNTG,Healthcare,Medical Care Facilities,2026-11-24,ok
@@ -923,6 +956,7 @@ PSEC,Financial Services,Asset Management,2026-11-24,ok
 PSFE,Technology,Software - Infrastructure,2026-11-24,ok
 PSIG,Industrials,Integrated Freight & Logistics,2026-11-24,ok
 PSIX,Industrials,Specialty Industrial Machinery,2026-11-24,ok
+PSQL,Technology,Computer Hardware,2026-11-24,ok
 PTEN,Energy,Oil & Gas Drilling,2026-11-24,ok
 PTLO,Consumer Cyclical,Restaurants,2026-11-24,ok
 PTON,Consumer Cyclical,Leisure,2026-11-24,ok
@@ -933,6 +967,7 @@ PURR,Financial Services,Capital Markets,2026-11-24,ok
 PVLA,Healthcare,Biotechnology,2026-11-24,ok
 PWP,Financial Services,Capital Markets,2026-11-24,ok
 PWR,Industrials,Engineering & Construction,2026-11-24,ok
+PXED,Consumer Defensive,Education & Training Services,2026-11-24,ok
 PXLW,Technology,Semiconductors,2026-11-24,ok
 Q,Technology,Semiconductor Equipment & Materials,2026-11-24,ok
 QBTS,Technology,Computer Hardware,2026-11-24,ok
@@ -947,6 +982,7 @@ QS,Consumer Cyclical,Auto Parts,2026-11-24,ok
 QSI,Healthcare,Medical Devices,2026-11-24,ok
 QTEX,Technology,Computer Hardware,2026-11-24,ok
 QTTB,Healthcare,Biotechnology,2026-11-24,ok
+QUAD,Industrials,Specialty Business Services,2026-11-24,ok
 QUBT,Technology,Computer Hardware,2026-11-24,ok
 QUIT,Healthcare,Biotechnology,2026-11-24,ok
 QURE,Healthcare,Biotechnology,2026-11-24,ok
@@ -959,6 +995,7 @@ RBRK,Technology,Software - Infrastructure,2026-11-24,ok
 RCAT,Industrials,Aerospace & Defense,2026-11-24,ok
 RCEL,Healthcare,Medical Devices,2026-11-24,ok
 RCKT,Healthcare,Biotechnology,2026-11-24,ok
+RCT,Technology,Software - Application,2026-11-24,ok
 RCUS,Healthcare,Biotechnology,2026-11-24,ok
 RDDT,Communication Services,Internet Content & Information,2026-11-24,ok
 RDW,Industrials,Aerospace & Defense,2026-11-24,ok
@@ -987,6 +1024,7 @@ RLAY,Healthcare,Biotechnology,2026-11-24,ok
 RLMD,Healthcare,Biotechnology,2026-11-24,ok
 RMBS,Technology,Semiconductors,2026-11-24,ok
 RMIX,Basic Materials,Building Materials,2026-11-24,ok
+RMNI,Technology,Software - Application,2026-11-24,ok
 RNG,Technology,Software - Application,2026-11-24,ok
 RNGR,Energy,Oil & Gas Equipment & Services,2026-11-24,ok
 ROAD,Industrials,Engineering & Construction,2026-11-24,ok
@@ -1023,6 +1061,7 @@ SBET,Financial Services,Capital Markets,2026-11-24,ok
 SBGI,Communication Services,Broadcasting,2026-11-24,ok
 SCSC,Technology,Electronics & Computer Distribution,2026-11-24,ok
 SCTX,Healthcare,Biotechnology,2026-11-24,ok
+SCZM,Basic Materials,Other Industrial Metals & Mining,2026-11-24,ok
 SDGR,Healthcare,Health Information Services,2026-11-24,ok
 SDRL,Energy,Oil & Gas Drilling,2026-11-24,ok
 SEAT,Communication Services,Internet Content & Information,2026-11-24,ok
@@ -1051,6 +1090,7 @@ SHOP,Technology,Software - Application,2026-11-24,ok
 SIBN,Healthcare,Medical Devices,2026-11-24,ok
 SILC,Technology,Communication Equipment,2026-11-24,ok
 SIMO,Technology,Semiconductors,2026-11-24,ok
+SIND,Basic Materials,Other Precious Metals & Mining,2026-11-24,ok
 SION,Healthcare,Biotechnology,2026-11-24,ok
 SITM,Technology,Semiconductors,2026-11-24,ok
 SKE,Basic Materials,Other Industrial Metals & Mining,2026-11-24,ok
@@ -1065,6 +1105,8 @@ SMMT,Healthcare,Biotechnology,2026-11-24,ok
 SMPL,Consumer Defensive,Packaged Foods,2026-11-24,ok
 SMR,Industrials,Specialty Industrial Machinery,2026-11-24,ok
 SMTC,Technology,Semiconductors,2026-11-24,ok
+SMTK,Technology,Semiconductor Equipment & Materials,2026-11-24,ok
+SMWB,Technology,Software - Application,2026-11-24,ok
 SMX,Industrials,Specialty Business Services,2026-11-24,ok
 SNAP,Communication Services,Internet Content & Information,2026-11-24,ok
 SNDK,Technology,Computer Hardware,2026-11-24,ok
@@ -1089,6 +1131,7 @@ SRRK,Healthcare,Biotechnology,2026-11-24,ok
 SRTA,Healthcare,Medical Care Facilities,2026-11-24,ok
 SRZN,Healthcare,Biotechnology,2026-11-24,ok
 SSMR,Basic Materials,Other Industrial Metals & Mining,2026-11-24,ok
+SSTK,Communication Services,Internet Content & Information,2026-11-24,ok
 SSYS,Technology,Computer Hardware,2026-11-24,ok
 STAA,Healthcare,Medical Instruments & Supplies,2026-11-24,ok
 STAK,Energy,Oil & Gas Equipment & Services,2026-11-24,ok
@@ -1150,11 +1193,13 @@ TLRY,Healthcare,Drug Manufacturers - Specialty & Generic,2026-11-24,ok
 TLS,Technology,Software - Infrastructure,2026-11-24,ok
 TMC,Basic Materials,Other Industrial Metals & Mining,2026-11-24,ok
 TMDX,Healthcare,Medical Devices,2026-11-24,ok
+TMQ,Basic Materials,Other Industrial Metals & Mining,2026-11-24,ok
 TNDM,Healthcare,Medical Devices,2026-11-24,ok
 TNGX,Healthcare,Biotechnology,2026-11-24,ok
 TNMG,Communication Services,Publishing,2026-11-24,ok
 TNXP,Healthcare,Biotechnology,2026-11-24,ok
 TOP,Financial Services,Capital Markets,2026-11-24,ok
+TOYO,Technology,Solar,2026-11-24,ok
 TPB,Consumer Defensive,Tobacco,2026-11-24,ok
 TPL,Energy,Oil & Gas E&P,2026-11-24,ok
 TRAX,Healthcare,Biotechnology,2026-11-24,ok
@@ -1213,6 +1258,7 @@ VECO,Technology,Semiconductor Equipment & Materials,2026-11-24,ok
 VELO,Technology,Computer Hardware,2026-11-24,ok
 VEON,Communication Services,Telecom Services,2026-11-24,ok
 VERA,Healthcare,Biotechnology,2026-11-24,ok
+VFF,Consumer Defensive,Farm Products,2026-11-24,ok
 VG,Energy,Oil & Gas Midstream,2026-11-24,ok
 VIA,Technology,Software - Application,2026-11-24,ok
 VIAV,Technology,Communication Equipment,2026-11-24,ok
@@ -1238,6 +1284,7 @@ VSEC,Industrials,Aerospace & Defense,2026-11-24,ok
 VSH,Technology,Electronic Components,2026-11-24,ok
 VSTM,Healthcare,Biotechnology,2026-11-24,ok
 VSXY,Consumer Cyclical,Apparel Retail,2026-11-24,ok
+VTSI,Technology,Software - Application,2026-11-24,ok
 VYX,Technology,Information Technology Services,2026-11-24,ok
 VZLA,Basic Materials,Other Industrial Metals & Mining,2026-11-24,ok
 W,Consumer Cyclical,Internet Retail,2026-11-24,ok
