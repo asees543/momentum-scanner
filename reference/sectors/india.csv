@@ -25,6 +25,7 @@ AFFLE.NS,Communication Services,Advertising Agencies,2026-11-24,ok
 AGARWALEYE.NS,Healthcare,Medical Instruments & Supplies,2026-11-24,ok
 AGI.NS,Consumer Cyclical,Packaging & Containers,2026-11-24,ok
 AGIIL.NS,Real Estate,Real Estate - Development,2026-11-24,ok
+AHLUCONT.NS,,,2026-11-24,none
 AIIL.NS,Financial Services,Capital Markets,2026-11-24,ok
 AJMERA.NS,Real Estate,Real Estate - Development,2026-11-24,ok
 AKUMS.NS,Healthcare,Drug Manufacturers - Specialty & Generic,2026-11-24,ok
@@ -37,6 +38,7 @@ AMAL.NS,Basic Materials,Chemicals,2026-11-24,ok
 AMANTA.NS,Healthcare,Drug Manufacturers - Specialty & Generic,2026-11-24,ok
 AMBER.NS,Consumer Cyclical,"Furnishings, Fixtures & Appliances",2026-11-24,ok
 ANANTRAJ.NS,Real Estate,Real Estate - Development,2026-11-24,ok
+ANGELONE.NS,,,2026-11-24,none
 ANTELOPUS.NS,Energy,Oil & Gas E&P,2026-11-24,ok
 ANUP.NS,Industrials,Specialty Industrial Machinery,2026-11-24,ok
 AONESTEELS.NS,Basic Materials,Steel,2026-11-24,ok
@@ -50,8 +52,10 @@ ARCIL.NS,Financial Services,Asset Management,2026-11-24,ok
 ARIS.NS,Industrials,Engineering & Construction,2026-11-24,ok
 ARMANFIN.NS,Financial Services,Credit Services,2026-11-24,ok
 ARMEE.NS,Technology,Information Technology Services,2026-11-24,ok
+ARTEMISMED.NS,,,2026-11-24,none
 ARVINDFASN.NS,Consumer Cyclical,Apparel Retail,2026-11-24,ok
 ASHAPURMIN.NS,Basic Materials,Other Industrial Metals & Mining,2026-11-24,ok
+ASHOKA.NS,,,2026-11-24,none
 ASIANENE.NS,Energy,Oil & Gas Equipment & Services,2026-11-24,ok
 ASKAUTOLTD.NS,Consumer Cyclical,Auto Parts,2026-11-24,ok
 ASTEC.NS,Basic Materials,Agricultural Inputs,2026-11-24,ok
@@ -64,6 +68,7 @@ AURUM.NS,Real Estate,Real Estate Services,2026-11-24,ok
 AVADHSUGAR.NS,Consumer Defensive,Confectioners,2026-11-24,ok
 AVALON.NS,Technology,Electronic Components,2026-11-24,ok
 AVANTEL.NS,Technology,Communication Equipment,2026-11-24,ok
+AVTNPL.NS,,,2026-11-24,none
 AWFIS.NS,Industrials,Rental & Leasing Services,2026-11-24,ok
 AXISCADES.NS,Industrials,Engineering & Construction,2026-11-24,ok
 AYE.NS,Financial Services,Credit Services,2026-11-24,ok
@@ -89,16 +94,20 @@ BLEL.NS,Basic Materials,Steel,2026-11-24,ok
 BLS.NS,Industrials,Specialty Business Services,2026-11-24,ok
 BLSE.NS,Industrials,Specialty Business Services,2026-11-24,ok
 BLUEJET.NS,Healthcare,Biotechnology,2026-11-24,ok
+BLUESTARCO.NS,,,2026-11-24,none
 BLUESTONE.NS,Consumer Cyclical,Luxury Goods,2026-11-24,ok
 BLUSPRING.NS,Industrials,Specialty Business Services,2026-11-24,ok
 BOMDYEING.NS,Consumer Cyclical,Textile Manufacturing,2026-11-24,ok
+BONFIG.NS,,,2026-11-24,none
 BOROLTD.NS,Consumer Cyclical,"Furnishings, Fixtures & Appliances",2026-11-24,ok
 BORORENEW.NS,Technology,Solar,2026-11-24,ok
 BOSCH-HCIL.NS,Consumer Cyclical,"Furnishings, Fixtures & Appliances",2026-11-24,ok
+BPLPHARMA.NS,,,2026-11-24,none
 BSOFT.NS,Technology,Information Technology Services,2026-11-24,ok
 BUILDPRO.NS,Consumer Cyclical,Home Improvement Retail,2026-11-24,ok
 CAPACITE.NS,Industrials,Engineering & Construction,2026-11-24,ok
 CAPILLARY.NS,Technology,Software - Application,2026-11-24,ok
+CAPLIPOINT.NS,,,2026-11-24,none
 CARBORUNIV.NS,Industrials,Tools & Accessories,2026-11-24,ok
 CARTRADE.NS,Consumer Cyclical,Auto & Truck Dealerships,2026-11-24,ok
 CCAVENUE.NS,Technology,Software - Infrastructure,2026-11-24,ok
@@ -124,7 +133,10 @@ CUPID.NS,Consumer Defensive,Household & Personal Products,2026-11-24,ok
 CYIENT.NS,Industrials,Conglomerates,2026-11-24,ok
 CYIENTDLM.NS,Industrials,Aerospace & Defense,2026-11-24,ok
 DALMIASUG.NS,Consumer Defensive,Confectioners,2026-11-24,ok
+DAMCAPITAL.NS,,,2026-11-24,none
 DATAPATTNS.NS,Industrials,Aerospace & Defense,2026-11-24,ok
+DCAL.NS,,,2026-11-24,none
+DCBBANK.NS,,,2026-11-24,none
 DCXINDIA.NS,Industrials,Aerospace & Defense,2026-11-24,ok
 DECNGOLD.NS,Basic Materials,Gold,2026-11-24,ok
 DEEDEV.NS,Industrials,Metal Fabrication,2026-11-24,ok
@@ -139,6 +151,7 @@ DIACABS.NS,Industrials,Specialty Industrial Machinery,2026-11-24,ok
 DIVGIITTS.NS,Consumer Cyclical,Auto Parts,2026-11-24,ok
 DODLA.NS,Consumer Defensive,Food Distribution,2026-11-24,ok
 DREDGECORP.NS,Industrials,Engineering & Construction,2026-11-24,ok
+DSSL.NS,,,2026-11-24,none
 DYCL.NS,Industrials,Electrical Equipment & Parts,2026-11-24,ok
 DYNAMATECH.NS,Consumer Cyclical,Auto Parts,2026-11-24,ok
 E2E.NS,Technology,Software - Infrastructure,2026-11-24,ok
@@ -164,11 +177,13 @@ EUREKAFORB.NS,Consumer Cyclical,"Furnishings, Fixtures & Appliances",2026-11-24,
 EUROPRATIK.NS,Basic Materials,Building Materials,2026-11-24,ok
 EVONILE.NS,Healthcare,Drug Manufacturers - Specialty & Generic,2026-11-24,ok
 EXICOM.NS,Industrials,Electrical Equipment & Parts,2026-11-24,ok
+EXIDEIND.NS,,,2026-11-24,none
 FAZE3Q.NS,Consumer Cyclical,Textile Manufacturing,2026-11-24,ok
 FEDFINA.NS,Financial Services,Credit Services,2026-11-24,ok
 FIEMIND.NS,Consumer Cyclical,Auto Parts,2026-11-24,ok
 FILATEX.NS,Consumer Cyclical,Textile Manufacturing,2026-11-24,ok
 FINCABLES.NS,Industrials,Electrical Equipment & Parts,2026-11-24,ok
+FIRSTCRY.NS,,,2026-11-24,none
 FIVESTAR.NS,Financial Services,Credit Services,2026-11-24,ok
 FORCEMOT.NS,Consumer Cyclical,Auto Manufacturers,2026-11-24,ok
 FRACTAL.NS,Technology,Software - Infrastructure,2026-11-24,ok
@@ -176,6 +191,7 @@ FREDUN.NS,Healthcare,Drug Manufacturers - Specialty & Generic,2026-11-24,ok
 FRONTSP.NS,Industrials,Metal Fabrication,2026-11-24,ok
 FSL.NS,Technology,Information Technology Services,2026-11-24,ok
 FUSION.NS,Financial Services,Credit Services,2026-11-24,ok
+FUSIONCX.NS,,,2026-11-24,none
 GABRIEL.NS,Consumer Cyclical,Auto Parts,2026-11-24,ok
 GAEL.NS,Consumer Defensive,Packaged Foods,2026-11-24,ok
 GAJA.NS,Financial Services,Asset Management,2026-11-24,ok
@@ -204,10 +220,12 @@ GOODLUCK.NS,Basic Materials,Steel,2026-11-24,ok
 GRANULES.NS,Healthcare,Drug Manufacturers - Specialty & Generic,2026-11-24,ok
 GRAPHITE.NS,Industrials,Electrical Equipment & Parts,2026-11-24,ok
 GREAVESCOT.NS,Industrials,Specialty Industrial Machinery,2026-11-24,ok
+GREENLAM.NS,,,2026-11-24,none
 GREENPLY.NS,Basic Materials,Lumber & Wood Production,2026-11-24,ok
 GRINDWELL.NS,Industrials,Building Products & Equipment,2026-11-24,ok
 GRSE.NS,Industrials,Aerospace & Defense,2026-11-24,ok
 GRWRHITECH.NS,Basic Materials,Specialty Chemicals,2026-11-24,ok
+GSPLTRANS.NS,,,2026-11-24,none
 GUFICBIO.NS,Healthcare,Drug Manufacturers - Specialty & Generic,2026-11-24,ok
 GUJALKALI.NS,Basic Materials,Chemicals,2026-11-24,ok
 GUJTHEM.NS,Healthcare,Drug Manufacturers - Specialty & Generic,2026-11-24,ok
@@ -219,6 +237,7 @@ HARIOMPIPE.NS,Basic Materials,Steel,2026-11-24,ok
 HATSUN.NS,Consumer Defensive,Packaged Foods,2026-11-24,ok
 HBLENGINE.NS,Industrials,Electrical Equipment & Parts,2026-11-24,ok
 HCG.NS,Healthcare,Medical Care Facilities,2026-11-24,ok
+HDFIRE.NS,,,2026-11-24,none
 HEGAM.NS,Industrials,Electrical Equipment & Parts,2026-11-24,ok
 HERITGFOOD.NS,Consumer Defensive,Packaged Foods,2026-11-24,ok
 HEROMOTORS.NS,Consumer Cyclical,Auto Parts,2026-11-24,ok
@@ -237,6 +256,7 @@ IIFL.NS,Financial Services,Credit Services,2026-11-24,ok
 IKIO.NS,Technology,Electronic Components,2026-11-24,ok
 INDIACEM.NS,Basic Materials,Building Materials,2026-11-24,ok
 INDIAGLYCO.NS,Basic Materials,Chemicals,2026-11-24,ok
+INDIASHLTR.NS,,,2026-11-24,none
 INDNIPPON.NS,Consumer Cyclical,Auto Parts,2026-11-24,ok
 INDOCO.NS,Healthcare,Drug Manufacturers - Specialty & Generic,2026-11-24,ok
 INDOMIM.NS,Industrials,Metal Fabrication,2026-11-24,ok
@@ -249,6 +269,7 @@ INOXINDIA.NS,Industrials,Specialty Industrial Machinery,2026-11-24,ok
 INTELLECT.NS,Technology,Software - Application,2026-11-24,ok
 IOLCP.NS,Healthcare,Drug Manufacturers - Specialty & Generic,2026-11-24,ok
 IONEXCHANG.NS,Industrials,Pollution & Treatment Controls,2026-11-24,ok
+IREDA.NS,,,2026-11-24,none
 IRMENERGY.NS,Utilities,Utilities - Regulated Gas,2026-11-24,ok
 ITDC.NS,Consumer Cyclical,Lodging,2026-11-24,ok
 ITI.NS,Technology,Communication Equipment,2026-11-24,ok
@@ -265,6 +286,8 @@ JGCHEM.NS,Basic Materials,Other Industrial Metals & Mining,2026-11-24,ok
 JINDALPOLY.NS,Consumer Cyclical,Packaging & Containers,2026-11-24,ok
 JINDALSAW.NS,Basic Materials,Steel,2026-11-24,ok
 JINDRILL.NS,Energy,Oil & Gas Equipment & Services,2026-11-24,ok
+JKIL.NS,,,2026-11-24,none
+JLHL.NS,,,2026-11-24,none
 JMFINANCIL.NS,Financial Services,Capital Markets,2026-11-24,ok
 JNPR.NS,Utilities,Utilities - Renewable,2026-11-24,ok
 JSFB.NS,Financial Services,Banks - Regional,2026-11-24,ok
@@ -279,6 +302,7 @@ KALYANKJIL.NS,Consumer Cyclical,Luxury Goods,2026-11-24,ok
 KANOHAR.NS,Industrials,Electrical Equipment & Parts,2026-11-24,ok
 KARAMTARA.NS,Technology,Solar,2026-11-24,ok
 KARURVYSYA.NS,Financial Services,Banks - Regional,2026-11-24,ok
+KAYNES.NS,,,2026-11-24,none
 KDDL.NS,Consumer Cyclical,Luxury Goods,2026-11-24,ok
 KEC.NS,Industrials,Engineering & Construction,2026-11-24,ok
 KENNAMET.NS,Industrials,Tools & Accessories,2026-11-24,ok
@@ -302,6 +326,7 @@ KPL.NS,Healthcare,Drug Manufacturers - Specialty & Generic,2026-11-24,ok
 KRBL.NS,Consumer Defensive,Packaged Foods,2026-11-24,ok
 KRISHANA.NS,Basic Materials,Agricultural Inputs,2026-11-24,ok
 KRISHNADEF.NS,Industrials,Specialty Industrial Machinery,2026-11-24,ok
+KRN.NS,,,2026-11-24,none
 KROSS.NS,Consumer Cyclical,Auto Parts,2026-11-24,ok
 KSHINTL.NS,Industrials,Electrical Equipment & Parts,2026-11-24,ok
 KSL.NS,Basic Materials,Steel,2026-11-24,ok
@@ -310,6 +335,7 @@ LALITHAA.NS,Consumer Cyclical,Luxury Goods,2026-11-24,ok
 LANDMARK.NS,Consumer Cyclical,Auto & Truck Dealerships,2026-11-24,ok
 LASERPOWER.NS,Industrials,Electrical Equipment & Parts,2026-11-24,ok
 LATENTVIEW.NS,Industrials,Consulting Services,2026-11-24,ok
+LAURUSLABS.NS,,,2026-11-24,none
 LCCPROJECT.NS,Industrials,Infrastructure Operations,2026-11-24,ok
 LCL.NS,Industrials,Specialty Industrial Machinery,2026-11-24,ok
 LEAPIND.NS,Industrials,Integrated Freight & Logistics,2026-11-24,ok
@@ -329,6 +355,7 @@ MANAPPURAM.NS,Financial Services,Credit Services,2026-11-24,ok
 MANGLMCEM.NS,Basic Materials,Building Materials,2026-11-24,ok
 MANINDS.NS,Basic Materials,Steel,2026-11-24,ok
 MANINFRA.NS,Industrials,Engineering & Construction,2026-11-24,ok
+MANIPALHOS.NS,,,2026-11-24,none
 MANORAMA.NS,Consumer Defensive,Packaged Foods,2026-11-24,ok
 MAPMYINDIA.NS,Technology,Software - Infrastructure,2026-11-24,ok
 MARATHON.NS,Real Estate,Real Estate - Development,2026-11-24,ok
@@ -337,11 +364,14 @@ MARKOLINES.NS,Industrials,Infrastructure Operations,2026-11-24,ok
 MARKSANS.NS,Healthcare,Drug Manufacturers - General,2026-11-24,ok
 MARSONS.NS,Industrials,Electrical Equipment & Parts,2026-11-24,ok
 MASTEK.NS,Technology,Information Technology Services,2026-11-24,ok
+MAXESTATES.NS,,,2026-11-24,none
 MAYURUNIQ.NS,Consumer Cyclical,Textile Manufacturing,2026-11-24,ok
+MBAPL.NS,,,2026-11-24,none
 MBEL.NS,Industrials,Engineering & Construction,2026-11-24,ok
 MEDIASSIST.NS,Healthcare,Healthcare Plans,2026-11-24,ok
 MENONBE.NS,Consumer Cyclical,Auto Parts,2026-11-24,ok
 MIDHANI.NS,Basic Materials,Steel,2026-11-24,ok
+MILKYMIST.NS,,,2026-11-24,none
 MINDACORP.NS,Consumer Cyclical,Auto Parts,2026-11-24,ok
 MMFL.NS,Industrials,Metal Fabrication,2026-11-24,ok
 MOBIKWIK.NS,Technology,Software - Infrastructure,2026-11-24,ok
@@ -359,9 +389,12 @@ MVELECTRO.NS,Industrials,Electrical Equipment & Parts,2026-11-24,ok
 MVGJL.NS,Consumer Cyclical,Luxury Goods,2026-11-24,ok
 NACLIND.NS,Basic Materials,Agricultural Inputs,2026-11-24,ok
 NAM-INDIA.NS,Financial Services,Asset Management,2026-11-24,ok
+NAVA.NS,,,2026-11-24,none
+NDRAUTO.NS,,,2026-11-24,none
 NELCAST.NS,Industrials,Metal Fabrication,2026-11-24,ok
 NELCO.NS,Technology,Communication Equipment,2026-11-24,ok
 NEOGEN.NS,Basic Materials,Specialty Chemicals,2026-11-24,ok
+NEPHROPLUS.NS,,,2026-11-24,none
 NETWEB.NS,Technology,Computer Hardware,2026-11-24,ok
 NEULANDLAB.NS,Healthcare,Drug Manufacturers - Specialty & Generic,2026-11-24,ok
 NEWGEN.NS,Technology,Software - Infrastructure,2026-11-24,ok
@@ -374,6 +407,7 @@ NORTHARC.NS,Financial Services,Credit Services,2026-11-24,ok
 NRBBEARING.NS,Consumer Cyclical,Auto Parts,2026-11-24,ok
 NUVAMA.NS,Financial Services,Asset Management,2026-11-24,ok
 OAL.NS,Basic Materials,Specialty Chemicals,2026-11-24,ok
+OMPOWER.NS,,,2026-11-24,none
 ONESOURCE.NS,Healthcare,Biotechnology,2026-11-24,ok
 OPTIEMUS.NS,Technology,Electronics & Computer Distribution,2026-11-24,ok
 ORCHPHARMA.NS,Healthcare,Drug Manufacturers - Specialty & Generic,2026-11-24,ok
@@ -390,7 +424,9 @@ PARKHOSPS.NS,Healthcare,Medical Care Facilities,2026-11-24,ok
 PAUSHAKLTD.NS,Basic Materials,Specialty Chemicals,2026-11-24,ok
 PDSL.NS,Industrials,Specialty Business Services,2026-11-24,ok
 PENIND.NS,Industrials,Specialty Industrial Machinery,2026-11-24,ok
+PERMAGN.NS,,,2026-11-24,none
 PFOCUS.NS,Communication Services,Entertainment,2026-11-24,ok
+PGEL.NS,,,2026-11-24,none
 PGHL.NS,Healthcare,Drug Manufacturers - Specialty & Generic,2026-11-24,ok
 PGIL.NS,Consumer Cyclical,Apparel Manufacturing,2026-11-24,ok
 PICCADIL.NS,Consumer Defensive,Beverages - Wineries & Distilleries,2026-11-24,ok
@@ -411,10 +447,12 @@ PRAKASH.NS,Basic Materials,Steel,2026-11-24,ok
 PRASOLCHEM.NS,Basic Materials,Specialty Chemicals,2026-11-24,ok
 PRECWIRE.NS,Industrials,Electrical Equipment & Parts,2026-11-24,ok
 PREMEXPLN.NS,Basic Materials,Specialty Chemicals,2026-11-24,ok
+PRICOLLTD.NS,,,2026-11-24,none
 PRINCEPIPE.NS,Industrials,Building Products & Equipment,2026-11-24,ok
 PRIVISCL.NS,Basic Materials,Specialty Chemicals,2026-11-24,ok
 PROTEAN.NS,Technology,Information Technology Services,2026-11-24,ok
 PSPPROJECT.NS,Industrials,Engineering & Construction,2026-11-24,ok
+PVRINOX.NS,,,2026-11-24,none
 PWL.NS,Consumer Defensive,Education & Training Services,2026-11-24,ok
 QPOWER.NS,Industrials,Electrical Equipment & Parts,2026-11-24,ok
 QUADFUTURE.NS,Industrials,Railroads,2026-11-24,ok
@@ -441,17 +479,20 @@ RIIL.NS,Industrials,Engineering & Construction,2026-11-24,ok
 RIR.NS,Technology,Semiconductors,2026-11-24,ok
 RISHABH.NS,Technology,Scientific & Technical Instruments,2026-11-24,ok
 RKFORGE.NS,Industrials,Metal Fabrication,2026-11-24,ok
+RML.NS,,,2026-11-24,none
 ROLEXRINGS.NS,Industrials,Metal Fabrication,2026-11-24,ok
 ROSSTECH.NS,Industrials,Aerospace & Defense,2026-11-24,ok
 ROUTE.NS,Communication Services,Telecom Services,2026-11-24,ok
 RPEL.NS,Basic Materials,Chemicals,2026-11-24,ok
 RPGLIFE.NS,Healthcare,Drug Manufacturers - Specialty & Generic,2026-11-24,ok
+RPSGVENT.NS,,,2026-11-24,none
 RPTECH.NS,Technology,Electronics & Computer Distribution,2026-11-24,ok
 RRKABEL.NS,Industrials,Electrical Equipment & Parts,2026-11-24,ok
 RSL.NS,Basic Materials,Steel,2026-11-24,ok
 RSYSTEMS.NS,Technology,Information Technology Services,2026-11-24,ok
 RUBICON.NS,Healthcare,Drug Manufacturers - General,2026-11-24,ok
 RUNWALENTR.NS,Real Estate,Real Estate - Development,2026-11-24,ok
+RVNL.NS,,,2026-11-24,none
 SAFARI.NS,Consumer Cyclical,Footwear & Accessories,2026-11-24,ok
 SAILIFE.NS,Healthcare,Diagnostics & Research,2026-11-24,ok
 SAIPARENT.NS,Healthcare,Drug Manufacturers - General,2026-11-24,ok
@@ -462,6 +503,8 @@ SAMHI.NS,Consumer Cyclical,Lodging,2026-11-24,ok
 SAMMAANCAP.NS,Financial Services,Mortgage Finance,2026-11-24,ok
 SANATHAN.NS,Consumer Cyclical,Textile Manufacturing,2026-11-24,ok
 SANDHAR.NS,Consumer Cyclical,Auto Parts,2026-11-24,ok
+SANDUMA.NS,,,2026-11-24,none
+SANGAMIND.NS,,,2026-11-24,none
 SANGHVIMOV.NS,Industrials,Rental & Leasing Services,2026-11-24,ok
 SANOFICONR.NS,Healthcare,Drug Manufacturers - General,2026-11-24,ok
 SANSERA.NS,Consumer Cyclical,Auto Parts,2026-11-24,ok
@@ -473,6 +516,7 @@ SBCL.NS,Industrials,Metal Fabrication,2026-11-24,ok
 SCHNEIDER.NS,Industrials,Electrical Equipment & Parts,2026-11-24,ok
 SCI.NS,Industrials,Marine Shipping,2026-11-24,ok
 SEAMECLTD.NS,Industrials,Marine Shipping,2026-11-24,ok
+SEIL.NS,,,2026-11-24,none
 SEJALLTD.NS,Industrials,Building Products & Equipment,2026-11-24,ok
 SENORES.NS,Healthcare,Drug Manufacturers - General,2026-11-24,ok
 SETL.NS,Industrials,Specialty Industrial Machinery,2026-11-24,ok
@@ -482,8 +526,10 @@ SGMART.NS,Industrials,Industrial Distribution,2026-11-24,ok
 SHADOWFAX.NS,Industrials,Integrated Freight & Logistics,2026-11-24,ok
 SHAILY.NS,Basic Materials,Specialty Chemicals,2026-11-24,ok
 SHAKTIPUMP.NS,Industrials,Specialty Industrial Machinery,2026-11-24,ok
+SHALPAINTS.NS,,,2026-11-24,none
 SHANTIGOLD.NS,Consumer Cyclical,Luxury Goods,2026-11-24,ok
 SHARDACROP.NS,Basic Materials,Agricultural Inputs,2026-11-24,ok
+SHARDAMOTR.NS,,,2026-11-24,none
 SHAREINDIA.NS,Financial Services,Capital Markets,2026-11-24,ok
 SHILCTECH.NS,Industrials,Electrical Equipment & Parts,2026-11-24,ok
 SHILPAMED.NS,Healthcare,Drug Manufacturers - Specialty & Generic,2026-11-24,ok
@@ -502,9 +548,11 @@ SKYWAYS.NS,Industrials,Integrated Freight & Logistics,2026-11-24,ok
 SMARTWORKS.NS,Real Estate,Real Estate Services,2026-11-24,ok
 SMLMAH.NS,Consumer Cyclical,Auto Manufacturers,2026-11-24,ok
 SMSPHARMA.NS,Healthcare,Drug Manufacturers - General,2026-11-24,ok
+SMT.NS,,,2026-11-24,none
 SOBHA.NS,Real Estate,Real Estate - Development,2026-11-24,ok
 SOLARA.NS,Healthcare,Drug Manufacturers - Specialty & Generic,2026-11-24,ok
 SOMANYCERA.NS,Industrials,Building Products & Equipment,2026-11-24,ok
+SONA.NS,,,2026-11-24,none
 SONATSOFTW.NS,Technology,Information Technology Services,2026-11-24,ok
 SOTL.NS,Basic Materials,Specialty Chemicals,2026-11-24,ok
 SOUTHWEST.NS,Energy,Oil & Gas Equipment & Services,2026-11-24,ok
@@ -516,6 +564,7 @@ SPORTKING.NS,Consumer Cyclical,Textile Manufacturing,2026-11-24,ok
 SRIT.NS,Technology,Information Technology Services,2026-11-24,ok
 SSRETAIL.NS,Consumer Cyclical,Specialty Retail,2026-11-24,ok
 SSWL.NS,Consumer Cyclical,Auto Parts,2026-11-24,ok
+STALLION.NS,,,2026-11-24,none
 STAR.NS,Healthcare,Drug Manufacturers - Specialty & Generic,2026-11-24,ok
 STEAMHOUSE.NS,Utilities,Utilities - Regulated Gas,2026-11-24,ok
 STOVEKRAFT.NS,Consumer Cyclical,"Furnishings, Fixtures & Appliances",2026-11-24,ok
@@ -553,6 +602,7 @@ TECHNOCRAF.NS,Industrials,Infrastructure Operations,2026-11-24,ok
 TECHNOE.NS,Industrials,Engineering & Construction,2026-11-24,ok
 TEGA.NS,Industrials,Specialty Industrial Machinery,2026-11-24,ok
 TEMPSENS.NS,Technology,Scientific & Technical Instruments,2026-11-24,ok
+TENNIND.NS,,,2026-11-24,none
 TEXINFRA.NS,Real Estate,Real Estate Services,2026-11-24,ok
 TEXRAIL.NS,Industrials,Railroads,2026-11-24,ok
 TFCILTD.NS,Financial Services,Credit Services,2026-11-24,ok
@@ -569,12 +619,16 @@ TINNARUBR.NS,Basic Materials,Specialty Chemicals,2026-11-24,ok
 TIPSMUSIC.NS,Communication Services,Entertainment,2026-11-24,ok
 TITAGARH.NS,Industrials,Railroads,2026-11-24,ok
 TNPETRO.NS,Basic Materials,Specialty Chemicals,2026-11-24,ok
+TONBO.NS,,,2026-11-24,none
 TRITURBINE.NS,Industrials,Specialty Industrial Machinery,2026-11-24,ok
 TRIVENI.NS,Consumer Defensive,Confectioners,2026-11-24,ok
 TRIVENIPT.NS,Industrials,Specialty Industrial Machinery,2026-11-24,ok
 TRUALT.NS,Energy,Oil & Gas Refining & Marketing,2026-11-24,ok
+TTKHLTCARE.NS,,,2026-11-24,none
 TTKPRESTIG.NS,Consumer Cyclical,"Furnishings, Fixtures & Appliances",2026-11-24,ok
 TVSELECT.NS,Technology,Computer Hardware,2026-11-24,ok
+TVSHLTD.NS,,,2026-11-24,none
+TVSSCS.NS,,,2026-11-24,none
 UDS.NS,Industrials,Specialty Business Services,2026-11-24,ok
 UNIMECH.NS,Industrials,Aerospace & Defense,2026-11-24,ok
 UNIPARTS.NS,Industrials,Farm & Heavy Construction Machinery,2026-11-24,ok
@@ -585,12 +639,19 @@ UTTAMSUGAR.NS,Consumer Defensive,Confectioners,2026-11-24,ok
 V2RETAIL.NS,Consumer Cyclical,Apparel Retail,2026-11-24,ok
 VAIBHAVGBL.NS,Consumer Cyclical,Luxury Goods,2026-11-24,ok
 VALIANTORG.NS,Basic Materials,Chemicals,2026-11-24,ok
+VAML.NS,,,2026-11-24,none
 VARMORA.NS,Basic Materials,Building Materials,2026-11-24,ok
+VARROC.NS,,,2026-11-24,none
 VENKEYS.NS,Consumer Defensive,Farm Products,2026-11-24,ok
 VENUSPIPES.NS,Basic Materials,Steel,2026-11-24,ok
+VENUSREM.NS,,,2026-11-24,none
+VESUVIUS.NS,,,2026-11-24,none
+VIJAYA.NS,,,2026-11-24,none
 VIKRAMSOLR.NS,Technology,Solar,2026-11-24,ok
+VINATIORGA.NS,,,2026-11-24,none
 VINCOFE.NS,Consumer Defensive,Beverages - Non-Alcoholic,2026-11-24,ok
 VINDHYATEL.NS,Industrials,Engineering & Construction,2026-11-24,ok
+VIPIND.NS,,,2026-11-24,none
 VISHNU.NS,Basic Materials,Specialty Chemicals,2026-11-24,ok
 VIVIANA.NS,Industrials,Engineering & Construction,2026-11-24,ok
 VIYASH.NS,Healthcare,Drug Manufacturers - Specialty & Generic,2026-11-24,ok
@@ -599,6 +660,7 @@ VRLLOG.NS,Industrials,Trucking,2026-11-24,ok
 VSSL.NS,Basic Materials,Steel,2026-11-24,ok
 WABAG.NS,Industrials,Engineering & Construction,2026-11-24,ok
 WALCHANNAG.NS,Industrials,Engineering & Construction,2026-11-24,ok
+WANBURY.NS,,,2026-11-24,none
 WELCORP.NS,Basic Materials,Steel,2026-11-24,ok
 WELENT.NS,Industrials,Engineering & Construction,2026-11-24,ok
 WELSPUNLIV.NS,Consumer Cyclical,Textile Manufacturing,2026-11-24,ok
@@ -606,6 +668,8 @@ WENDT.NS,Industrials,Tools & Accessories,2026-11-24,ok
 WESTLIFE.NS,Consumer Cyclical,Restaurants,2026-11-24,ok
 WHEELS.NS,Consumer Cyclical,Auto Parts,2026-11-24,ok
 WINDLAS.NS,Healthcare,Drug Manufacturers - Specialty & Generic,2026-11-24,ok
+WINDMACHIN.NS,,,2026-11-24,none
+WOCKPHARMA.NS,,,2026-11-24,none
 WSTCSTPAPR.NS,Basic Materials,Paper & Paper Products,2026-11-24,ok
 XPROINDIA.NS,Basic Materials,Specialty Chemicals,2026-11-24,ok
 XTRANET.NS,Technology,Information Technology Services,2026-11-24,ok
@@ -613,5 +677,6 @@ YASHO.NS,Basic Materials,Specialty Chemicals,2026-11-24,ok
 ZAGGLE.NS,Technology,Software - Infrastructure,2026-11-24,ok
 ZENSARTECH.NS,Technology,Information Technology Services,2026-11-24,ok
 ZENTEC.NS,Industrials,Aerospace & Defense,2026-11-24,ok
+ZETWERK.NS,,,2026-11-24,none
 ZOTA.NS,Healthcare,Biotechnology,2026-11-24,ok
 ZYDUSWELL.NS,Consumer Defensive,Packaged Foods,2026-11-24,ok
