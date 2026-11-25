@@ -1,9 +1,9 @@
 {
-  "active_count": 2413,
-  "as_of": "2026-11-23",
+  "active_count": 2415,
+  "as_of": "2026-11-25",
   "breakouts": [],
   "market": "india",
-  "updated_at": "2026-11-23T12:32:26+00:00",
+  "updated_at": "2026-11-25T12:33:24+00:00",
   "watchlist": {
     "AARTIDRUGS.NS": {
       "first_seen": "2026-11-13",
@@ -29,6 +29,10 @@
       "first_seen": "2026-11-18",
       "trigger": 326.18
     },
+    "AMANTA.NS": {
+      "first_seen": "2026-11-25",
+      "trigger": 245.7
+    },
     "ANUP.NS": {
       "first_seen": "2026-11-19",
       "trigger": 1834.0
@@ -36,14 +40,6 @@
     "APLLTD.NS": {
       "first_seen": "2026-11-17",
       "trigger": 1075.0
-    },
-    "ATHERENERG.NS": {
-      "first_seen": "2026-11-13",
-      "trigger": 2021.5
-    },
-    "AVTNPL.NS": {
-      "first_seen": "2026-11-20",
-      "trigger": 108.45
     },
     "AWFIS.NS": {
       "first_seen": "2026-11-13",
@@ -53,10 +49,6 @@
       "first_seen": "2026-11-13",
       "trigger": 2789.0
     },
-    "BLUSPRING.NS": {
-      "first_seen": "2026-11-13",
-      "trigger": 172.03
-    },
     "BOROLTD.NS": {
       "first_seen": "2026-11-17",
       "trigger": 346.95
@@ -64,6 +56,10 @@
     "BPLPHARMA.NS": {
       "first_seen": "2026-11-20",
       "trigger": 2492.8
+    },
+    "CEMPRO.NS": {
+      "first_seen": "2026-11-25",
+      "trigger": 1457.2
     },
     "CHEMPLASTS.NS": {
       "first_seen": "2026-11-13",
@@ -81,10 +77,6 @@
       "first_seen": "2026-11-13",
       "trigger": 502.1
     },
-    "DIACABS.NS": {
-      "first_seen": "2026-11-13",
-      "trigger": 398.5
-    },
     "EIMCOELECO.NS": {
       "first_seen": "2026-11-18",
       "trigger": 2740.0
@@ -97,10 +89,6 @@
       "first_seen": "2026-11-13",
       "trigger": 2137.6001
     },
-    "FAZE3Q.NS": {
-      "first_seen": "2026-11-23",
-      "trigger": 686.5
-    },
     "FIEMIND.NS": {
       "first_seen": "2026-11-18",
       "trigger": 2247.3
@@ -109,10 +97,6 @@
       "first_seen": "2026-11-23",
       "trigger": 119.78
     },
-    "GREAVESCOT.NS": {
-      "first_seen": "2026-11-23",
-      "trigger": 281.01
-    },
     "GRWRHITECH.NS": {
       "first_seen": "2026-11-13",
       "trigger": 8079.5
@@ -120,6 +104,10 @@
     "GYFTR.NS": {
       "first_seen": "2026-11-18",
       "trigger": 233.99
+    },
+    "HINDOILEXP.NS": {
+      "first_seen": "2026-11-25",
+      "trigger": 238.89
     },
     "ICIL.NS": {
       "first_seen": "2026-11-23",
@@ -133,10 +121,6 @@
       "first_seen": "2026-11-23",
       "trigger": 1322.0
     },
-    "INFOBEAN.NS": {
-      "first_seen": "2026-11-13",
-      "trigger": 174.73
-    },
     "IXIGO.NS": {
       "first_seen": "2026-11-18",
       "trigger": 179.57
@@ -148,10 +132,6 @@
     "KDDL.NS": {
       "first_seen": "2026-11-23",
       "trigger": 5198.0
-    },
-    "KITEX.NS": {
-      "first_seen": "2026-11-13",
-      "trigger": 138.99
     },
     "KMEW.NS": {
       "first_seen": "2026-11-19",
@@ -173,21 +153,9 @@
       "first_seen": "2026-11-19",
       "trigger": 1360.0
     },
-    "KROSS.NS": {
-      "first_seen": "2026-11-18",
-      "trigger": 316.0
-    },
-    "KSHINTL.NS": {
-      "first_seen": "2026-11-23",
-      "trigger": 1091.8
-    },
-    "LAURUSLABS.NS": {
-      "first_seen": "2026-11-23",
-      "trigger": 2488.0
-    },
     "LUMAXTECH.NS": {
       "first_seen": "2026-11-13",
-      "trigger": 2503.0
+      "trigger": 2480.0
     },
     "MARATHON.NS": {
       "first_seen": "2026-11-23",
@@ -205,6 +173,10 @@
       "first_seen": "2026-11-18",
       "trigger": 703.0
     },
+    "MOLBIO.NS": {
+      "first_seen": "2026-11-25",
+      "trigger": 1580.0
+    },
     "MOMSBELIEF.NS": {
       "first_seen": "2026-11-20",
       "trigger": 307.88
@@ -213,13 +185,17 @@
       "first_seen": "2026-11-20",
       "trigger": 1277.8
     },
+    "NEOGEN.NS": {
+      "first_seen": "2026-11-25",
+      "trigger": 2970.0
+    },
     "NILKAMAL.NS": {
       "first_seen": "2026-11-13",
       "trigger": 2280.0
     },
-    "OPTIEMUS.NS": {
-      "first_seen": "2026-11-13",
-      "trigger": 870.5
+    "NUVAMA.NS": {
+      "first_seen": "2026-11-25",
+      "trigger": 1964.3
     },
     "PARAGMILK.NS": {
       "first_seen": "2026-11-18",
@@ -233,10 +209,6 @@
       "first_seen": "2026-11-13",
       "trigger": 253.9
     },
-    "PRINCEPIPE.NS": {
-      "first_seen": "2026-11-13",
-      "trigger": 325.9
-    },
     "RAMKY.NS": {
       "first_seen": "2026-11-13",
       "trigger": 409.85
@@ -248,10 +220,6 @@
     "ROLEXRINGS.NS": {
       "first_seen": "2026-11-13",
       "trigger": 220.0
-    },
-    "ROSSTECH.NS": {
-      "first_seen": "2026-11-17",
-      "trigger": 1603.5
     },
     "RPEL.NS": {
       "first_seen": "2026-11-20",
@@ -305,6 +273,10 @@
       "first_seen": "2026-11-16",
       "trigger": 766.9
     },
+    "TIPSMUSIC.NS": {
+      "first_seen": "2026-11-25",
+      "trigger": 834.5
+    },
     "UNIMECH.NS": {
       "first_seen": "2026-11-16",
       "trigger": 2025.6
@@ -317,6 +289,10 @@
       "first_seen": "2026-11-13",
       "trigger": 350.3
     },
+    "WELSPUNLIV.NS": {
+      "first_seen": "2026-11-25",
+      "trigger": 278.99
+    },
     "WESTLIFE.NS": {
       "first_seen": "2026-11-13",
       "trigger": 723.6
@@ -324,14 +300,9 @@
     "XPROINDIA.NS": {
       "first_seen": "2026-11-19",
       "trigger": 1308.7
-    },
-    "ZENSARTECH.NS": {
-      "first_seen": "2026-11-13",
-      "trigger": 582.0
     }
   },
   "wide_breakouts": [
-    "PERMAGN.NS",
-    "RATNAVEER.NS"
+    "GREAVESCOT.NS"
   ]
 }
