@@ -1970,7 +1970,7 @@
  },
  "market": "us",
  "sectors": {
-  "classified": 1257,
+  "classified": 1258,
   "coverage": 93.5,
   "industries": [
    {
@@ -2234,14 +2234,14 @@
     "watchlist": 7
    },
    {
-    "above_pct": 35.0,
+    "above_pct": 34.4,
     "d_above": -3.3,
-    "leader_pct": 11.7,
+    "leader_pct": 11.5,
     "leaders": 7,
-    "median_ret": -0.1099,
+    "median_ret": -0.1127,
     "name": "Software - Application",
-    "names": 60,
-    "score": 64.4,
+    "names": 61,
+    "score": 63.8,
     "sector": "Technology",
     "trigger_bars": 1,
     "watchlist": 1
@@ -2299,7 +2299,7 @@
     "watchlist": 0
    }
   ],
-  "liquid": 1344,
+  "liquid": 1345,
   "sectors": [
    {
     "above_pct": 43.1,
@@ -2366,9 +2366,9 @@
     "d_above": -0.6,
     "leader_pct": 6.6,
     "leaders": 21,
-    "median_ret": -0.2665,
+    "median_ret": -0.2666,
     "name": "Technology",
-    "names": 319,
+    "names": 320,
     "score": 48.5,
     "trigger_bars": 3,
     "watchlist": 8
@@ -2444,7 +2444,7 @@
    "3m": 35,
    "6m": 13
   },
-  "liquid": 1344,
+  "liquid": 1345,
   "qualified_today": 23,
   "symbols_with_data": 5912,
   "watchlist": 42
