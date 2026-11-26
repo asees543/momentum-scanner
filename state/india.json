@@ -1,9 +1,11 @@
 {
-  "active_count": 2415,
-  "as_of": "2026-11-25",
-  "breakouts": [],
+  "active_count": 2416,
+  "as_of": "2026-11-26",
+  "breakouts": [
+    "SUDEEPPHRM.NS"
+  ],
   "market": "india",
-  "updated_at": "2026-11-25T12:33:24+00:00",
+  "updated_at": "2026-11-26T12:32:45+00:00",
   "watchlist": {
     "AARTIDRUGS.NS": {
       "first_seen": "2026-11-13",
@@ -45,17 +47,9 @@
       "first_seen": "2026-11-13",
       "trigger": 298.98
     },
-    "BBL.NS": {
-      "first_seen": "2026-11-13",
-      "trigger": 2789.0
-    },
     "BOROLTD.NS": {
       "first_seen": "2026-11-17",
       "trigger": 346.95
-    },
-    "BPLPHARMA.NS": {
-      "first_seen": "2026-11-20",
-      "trigger": 2492.8
     },
     "CEMPRO.NS": {
       "first_seen": "2026-11-25",
@@ -65,17 +59,13 @@
       "first_seen": "2026-11-13",
       "trigger": 259.78
     },
-    "CNL.NS": {
-      "first_seen": "2026-11-13",
-      "trigger": 1550.2
+    "COMSYN.NS": {
+      "first_seen": "2026-11-26",
+      "trigger": 289.97
     },
     "CUPID.NS": {
       "first_seen": "2026-11-18",
       "trigger": 393.0
-    },
-    "DALMIASUG.NS": {
-      "first_seen": "2026-11-13",
-      "trigger": 502.1
     },
     "EIMCOELECO.NS": {
       "first_seen": "2026-11-18",
@@ -96,10 +86,6 @@
     "FILATEX.NS": {
       "first_seen": "2026-11-23",
       "trigger": 119.78
-    },
-    "GRWRHITECH.NS": {
-      "first_seen": "2026-11-13",
-      "trigger": 8079.5
     },
     "GYFTR.NS": {
       "first_seen": "2026-11-18",
@@ -153,9 +139,17 @@
       "first_seen": "2026-11-19",
       "trigger": 1360.0
     },
+    "KSHINTL.NS": {
+      "first_seen": "2026-11-26",
+      "trigger": 1091.8
+    },
     "LUMAXTECH.NS": {
       "first_seen": "2026-11-13",
       "trigger": 2480.0
+    },
+    "MANAKCOAT.NS": {
+      "first_seen": "2026-11-26",
+      "trigger": 184.81
     },
     "MARATHON.NS": {
       "first_seen": "2026-11-23",
@@ -164,6 +158,10 @@
     "MARSONS.NS": {
       "first_seen": "2026-11-23",
       "trigger": 172.78
+    },
+    "MAXESTATES.NS": {
+      "first_seen": "2026-11-26",
+      "trigger": 622.2
     },
     "MBEL.NS": {
       "first_seen": "2026-11-13",
@@ -203,7 +201,7 @@
     },
     "PDSL.NS": {
       "first_seen": "2026-11-13",
-      "trigger": 424.9
+      "trigger": 429.0
     },
     "PPLPHARMA.NS": {
       "first_seen": "2026-11-13",
@@ -225,17 +223,9 @@
       "first_seen": "2026-11-20",
       "trigger": 2050.8999
     },
-    "RUBICON.NS": {
-      "first_seen": "2026-11-13",
-      "trigger": 1777.9
-    },
     "SAILIFE.NS": {
       "first_seen": "2026-11-19",
       "trigger": 1954.8
-    },
-    "SAMBHV.NS": {
-      "first_seen": "2026-11-13",
-      "trigger": 178.9
     },
     "SANSERA.NS": {
       "first_seen": "2026-11-13",
@@ -245,9 +235,13 @@
       "first_seen": "2026-11-13",
       "trigger": 693.4
     },
-    "SUDEEPPHRM.NS": {
-      "first_seen": "2026-11-13",
-      "trigger": 1257.3
+    "SHADOWFAX.NS": {
+      "first_seen": "2026-11-26",
+      "trigger": 315.25
+    },
+    "STYLEBAAZA.NS": {
+      "first_seen": "2026-11-26",
+      "trigger": 545.0
     },
     "SUNTV.NS": {
       "first_seen": "2026-11-20",
@@ -257,17 +251,13 @@
       "first_seen": "2026-11-13",
       "trigger": 1664.9
     },
-    "TANLA.NS": {
-      "first_seen": "2026-11-16",
-      "trigger": 738.95
-    },
     "TCPLPACK.NS": {
       "first_seen": "2026-11-16",
       "trigger": 4719.0
     },
     "THELEELA.NS": {
       "first_seen": "2026-11-13",
-      "trigger": 706.7
+      "trigger": 705.2
     },
     "TIMEX.NS": {
       "first_seen": "2026-11-16",
@@ -285,13 +275,17 @@
       "first_seen": "2026-11-13",
       "trigger": 387.9
     },
+    "VOLTAS.NS": {
+      "first_seen": "2026-11-26",
+      "trigger": 1262.4
+    },
     "VRLLOG.NS": {
       "first_seen": "2026-11-13",
       "trigger": 350.3
     },
     "WELSPUNLIV.NS": {
       "first_seen": "2026-11-25",
-      "trigger": 278.99
+      "trigger": 284.5
     },
     "WESTLIFE.NS": {
       "first_seen": "2026-11-13",
@@ -303,6 +297,6 @@
     }
   },
   "wide_breakouts": [
-    "GREAVESCOT.NS"
+    "RUBICON.NS"
   ]
 }
