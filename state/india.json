@@ -1,11 +1,12 @@
 {
-  "active_count": 2416,
-  "as_of": "2026-11-26",
+  "active_count": 2417,
+  "as_of": "2026-11-27",
   "breakouts": [
-    "SUDEEPPHRM.NS"
+    "INDOMIM.NS",
+    "UTTAMSUGAR.NS"
   ],
   "market": "india",
-  "updated_at": "2026-11-26T12:32:45+00:00",
+  "updated_at": "2026-11-27T12:32:53+00:00",
   "watchlist": {
     "AARTIDRUGS.NS": {
       "first_seen": "2026-11-13",
@@ -31,9 +32,9 @@
       "first_seen": "2026-11-18",
       "trigger": 326.18
     },
-    "AMANTA.NS": {
-      "first_seen": "2026-11-25",
-      "trigger": 245.7
+    "AJMERA.NS": {
+      "first_seen": "2026-11-27",
+      "trigger": 169.77
     },
     "ANUP.NS": {
       "first_seen": "2026-11-19",
@@ -43,6 +44,10 @@
       "first_seen": "2026-11-17",
       "trigger": 1075.0
     },
+    "AVTNPL.NS": {
+      "first_seen": "2026-11-27",
+      "trigger": 108.45
+    },
     "AWFIS.NS": {
       "first_seen": "2026-11-13",
       "trigger": 298.98
@@ -50,6 +55,10 @@
     "BOROLTD.NS": {
       "first_seen": "2026-11-17",
       "trigger": 346.95
+    },
+    "BPLPHARMA.NS": {
+      "first_seen": "2026-11-27",
+      "trigger": 2492.8
     },
     "CEMPRO.NS": {
       "first_seen": "2026-11-25",
@@ -103,9 +112,9 @@
       "first_seen": "2026-11-13",
       "trigger": 453.65
     },
-    "INDOMIM.NS": {
-      "first_seen": "2026-11-23",
-      "trigger": 1322.0
+    "IREDA.NS": {
+      "first_seen": "2026-11-27",
+      "trigger": 133.6
     },
     "IXIGO.NS": {
       "first_seen": "2026-11-18",
@@ -118,6 +127,14 @@
     "KDDL.NS": {
       "first_seen": "2026-11-23",
       "trigger": 5198.0
+    },
+    "KITEX.NS": {
+      "first_seen": "2026-11-27",
+      "trigger": 138.99
+    },
+    "KMCSHIL.NS": {
+      "first_seen": "2026-11-27",
+      "trigger": 210.25
     },
     "KMEW.NS": {
       "first_seen": "2026-11-19",
@@ -135,10 +152,6 @@
       "first_seen": "2026-11-13",
       "trigger": 254.99
     },
-    "KRISHNADEF.NS": {
-      "first_seen": "2026-11-19",
-      "trigger": 1360.0
-    },
     "KSHINTL.NS": {
       "first_seen": "2026-11-26",
       "trigger": 1091.8
@@ -146,10 +159,6 @@
     "LUMAXTECH.NS": {
       "first_seen": "2026-11-13",
       "trigger": 2480.0
-    },
-    "MANAKCOAT.NS": {
-      "first_seen": "2026-11-26",
-      "trigger": 184.81
     },
     "MARATHON.NS": {
       "first_seen": "2026-11-23",
@@ -191,10 +200,6 @@
       "first_seen": "2026-11-13",
       "trigger": 2280.0
     },
-    "NUVAMA.NS": {
-      "first_seen": "2026-11-25",
-      "trigger": 1964.3
-    },
     "PARAGMILK.NS": {
       "first_seen": "2026-11-18",
       "trigger": 351.0
@@ -203,21 +208,13 @@
       "first_seen": "2026-11-13",
       "trigger": 429.0
     },
-    "PPLPHARMA.NS": {
-      "first_seen": "2026-11-13",
-      "trigger": 253.9
-    },
     "RAMKY.NS": {
       "first_seen": "2026-11-13",
       "trigger": 409.85
     },
-    "RAYMOND.NS": {
-      "first_seen": "2026-11-18",
-      "trigger": 1250.0
-    },
-    "ROLEXRINGS.NS": {
-      "first_seen": "2026-11-13",
-      "trigger": 220.0
+    "ROSSTECH.NS": {
+      "first_seen": "2026-11-27",
+      "trigger": 1603.5
     },
     "RPEL.NS": {
       "first_seen": "2026-11-20",
@@ -251,33 +248,9 @@
       "first_seen": "2026-11-13",
       "trigger": 1664.9
     },
-    "TCPLPACK.NS": {
-      "first_seen": "2026-11-16",
-      "trigger": 4719.0
-    },
-    "THELEELA.NS": {
-      "first_seen": "2026-11-13",
-      "trigger": 705.2
-    },
-    "TIMEX.NS": {
-      "first_seen": "2026-11-16",
-      "trigger": 766.9
-    },
-    "TIPSMUSIC.NS": {
-      "first_seen": "2026-11-25",
-      "trigger": 834.5
-    },
-    "UNIMECH.NS": {
-      "first_seen": "2026-11-16",
-      "trigger": 2025.6
-    },
-    "UTTAMSUGAR.NS": {
-      "first_seen": "2026-11-13",
-      "trigger": 387.9
-    },
-    "VOLTAS.NS": {
-      "first_seen": "2026-11-26",
-      "trigger": 1262.4
+    "TECHNOCRAF.NS": {
+      "first_seen": "2026-11-27",
+      "trigger": 533.4
     },
     "VRLLOG.NS": {
       "first_seen": "2026-11-13",
@@ -285,11 +258,7 @@
     },
     "WELSPUNLIV.NS": {
       "first_seen": "2026-11-25",
-      "trigger": 284.5
-    },
-    "WESTLIFE.NS": {
-      "first_seen": "2026-11-13",
-      "trigger": 723.6
+      "trigger": 286.69
     },
     "XPROINDIA.NS": {
       "first_seen": "2026-11-19",
@@ -297,6 +266,6 @@
     }
   },
   "wide_breakouts": [
-    "RUBICON.NS"
+    "RAYMOND.NS"
   ]
 }
